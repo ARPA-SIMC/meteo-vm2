@@ -33,7 +33,7 @@ TESTGRP(vm2_parser);
 template<> template<>
 void to::test<1>()
 {
-  std::string line("201201020300,123,456,78.9,,,\n");
+  std::string line("201201020300,123,456,78.9,,,000000000\n");
   std::stringstream in(line);
   vm2::Parser parser(in);
 
@@ -45,7 +45,7 @@ void to::test<1>()
   ensure_equals(value.variable_id, 456);
   ensure_equals(value.value1, 78.9);
   ensure_equals(value.value2, vm2::MISSING_DOUBLE);
-  ensure_equals(value.flags, "");
+  ensure_equals(value.flags, "000000000");
 }
 // Parse a malformed VM2 message
 template<> template<>

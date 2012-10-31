@@ -29,7 +29,7 @@
 
 namespace vm2 {
 
-std::string Parser::regexp_str = "^[0-9]{12},[0-9]+,[0-9]+,[^,]*,[^,]*,[^,]*,[^,]*[\r\n]+$";
+std::string Parser::regexp_str = "^[0-9]{12},[0-9]+,[0-9]+,[^,]*,[^,]*,[^,]*,[^,]*[\r\n]*$";
 wibble::Regexp Parser::regexp(Parser::regexp_str, 0, REG_EXTENDED);
 
 Parser::Parser(std::istream& in) : in(in), lineno(0) {}
@@ -46,11 +46,11 @@ bool Parser::next(Value& value) {
         return false;
       else
         break;
-    line.append(1, c);
     if (c == '\r')
       continue;
     if (c == '\n')
       break;
+    line.append(1, c);
   }
   ++lineno;
 
@@ -105,8 +105,15 @@ bool Parser::next(Value& value) {
   }
 
   ++i;
+  if (i == splitter.end())
+    throw wibble::exception::Consistency(
+        wibble::str::fmtf("reading line %d", lineno),
+        "line does not contain a value3 field");
+  value.value3 = *i;
+
+  ++i;
   if (i != splitter.end())
-    value.value3 = *i;
+    value.flags = *i;
 
   return true;
 }

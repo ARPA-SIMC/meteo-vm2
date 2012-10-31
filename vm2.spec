@@ -21,6 +21,8 @@ VM2 decoding/encoding library
 %configure
 make %{?_smp_mflags}
 
+%check
+make check
 
 %install
 rm -rf $RPM_BUILD_ROOT

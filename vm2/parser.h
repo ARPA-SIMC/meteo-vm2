@@ -33,6 +33,21 @@
 
 namespace vm2 {
 
+/**
+ * A VM2 file contains a list of values in CSV format with the following 
+ * columns:
+ *
+ *  - reftime: UTC reference time (YYYYmmddHHMM)
+ *  - station_id: integer
+ *  - variable id: integer
+ *  - value 1: double (empty if missing)
+ *  - value 2: double (empty if missing)
+ *  - value 3: string (without comma)
+ *  - flags: string (without comma)
+ *
+ * E.g.
+ *  201201010000,1,2,4.56,7.8,X,000000000
+ */
 struct Parser {
   static std::string regexp_str;
   static wibble::Regexp regexp;
@@ -42,8 +57,9 @@ struct Parser {
 
   Parser(std::istream& in);
   ~Parser();
-  bool next(Value& value);
 
+  // Store the next VM2 message in value
+  bool next(Value& value);
   // Convert VM2 reftime in YYYY-mm-ddTHH:MM:SSZ reftime
   static std::string decode_reftime(std::string s);
   // Convert YYYY-mm-ddTHH:MM:SSZ reftime in VM2 reftime

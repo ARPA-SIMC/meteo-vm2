@@ -70,7 +70,7 @@ void to::test<3>()
 template<> template<>
 void to::test<4>()
 {
-  std::string line("201201020300,123,456,78.9,,,\n");
+  std::string line("201201020300,123,456,78.9,-5.3,,\n");
   std::stringstream in(line);
   vm2::Parser parser(in);
 

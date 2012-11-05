@@ -30,7 +30,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files
-%doc ChangeLog
+%doc
 %{_libdir}/*
 %{_includedir}/*
 %{_libdir}/pkgconfig/vm2.pc

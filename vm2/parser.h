@@ -24,7 +24,7 @@
 
 /**
  * @file
- * @page FormatOfVM2ValueFile Format of VM2 value file
+ * @page VM2ValueFile VM2 value file
  *
  * A VM2 file contains a list of values in CSV format with the following 
  * columns:

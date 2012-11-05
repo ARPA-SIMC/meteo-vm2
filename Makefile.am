@@ -1,4 +1,4 @@
-SUBDIRS = wibble vm2
+SUBDIRS = wibble vm2 doc
 
 pkgconfigdir = $(libdir)/pkgconfig
 

@@ -19,6 +19,7 @@
  */
 
 #include <wibble/tests.h>
+#include <wibble/exception.h>
 #include <vm2/parser.h>
 
 #define ensure_throws(x) do { try { x; ensure(false); } catch (wibble::exception::Generic& e) { } } while (0)

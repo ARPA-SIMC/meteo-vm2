@@ -22,49 +22,84 @@
 #ifndef VM2_PARSER_H
 #define VM2_PARSER_H
 
+/**
+ * @file
+ * @page FormatOfVM2ValueFile Format of VM2 value file
+ *
+ * A VM2 file contains a list of values in CSV format with the following 
+ * columns:
+ *  - REFTIME: reference time (YYYYmmddHHMM) if the value (in UTC)
+ *  - STATION ID: integer
+ *  - VARIABLE ID id: integer
+ *  - VALUE 1: double (empty if missing)
+ *  - VALUE 2: double (empty if missing)
+ *  - VALUE 3: string (without comma)
+ *  - FLAGS: string (without comma)
+ *
+ * E.g.
+ *
+ * @code
+ * 201201010000,1,2,4.56,7.8,X,000000000
+ * 201201010030,1,2,12.0,9.4,X,000000000
+ * @endcode
+ *
+ * Read VM2 values from stdin
+ *
+ * @code
+ *
+ * vm2::Parser parser(std::cin);
+ * vm2::Value value;
+ * while (parser.next(value)) {
+ *  // ...
+ * }
+ *
+ * @endcode
+ *
+ * Serialize a VM2 file
+ *
+ * @code
+ *
+ * vm2::Value value;
+ * // Populate the value
+ * value.reftime = "2012-01-01T00:00:00Z";
+ * value.station_id = 123;
+ * // ...
+ * // Serialize
+ * vm2::Parser::serialize(std::cout, value);
+ *
+ * @endcode
+ */
+
 #include <string>
 #include <vector>
 #include <istream>
 #include <ostream>
-
-#include <wibble/regexp.h>
 
 #include <vm2/value.h>
 
 namespace vm2 {
 
 /**
- * A VM2 file contains a list of values in CSV format with the following 
- * columns:
- *
- *  - reftime: UTC reference time (YYYYmmddHHMM)
- *  - station_id: integer
- *  - variable id: integer
- *  - value 1: double (empty if missing)
- *  - value 2: double (empty if missing)
- *  - value 3: string (without comma)
- *  - flags: string (without comma)
- *
- * E.g.
- *  201201010000,1,2,4.56,7.8,X,000000000
+ * Parser for the VM2 value files
  */
 struct Parser {
+  /// Pattern of a VM2 value
   static std::string regexp_str;
-  static wibble::Regexp regexp;
 
   std::istream& in;
+  /// Number of the last line parsed
   int lineno;
 
   Parser(std::istream& in);
   ~Parser();
 
-  // Store the next VM2 message in value
+  /// Store the next VM2 message in value
   bool next(Value& value);
-  // Convert VM2 reftime in YYYY-mm-ddTHH:MM:SSZ reftime
+  /// Convert VM2 reftime in YYYY-mm-ddTHH:MM:SSZ reftime
   static std::string decode_reftime(std::string s);
-  // Convert YYYY-mm-ddTHH:MM:SSZ reftime in VM2 reftime
+  /// Convert YYYY-mm-ddTHH:MM:SSZ reftime in VM2 reftime
   static std::string encode_reftime(std::string reftime);
-  // Serialize a value
+  /// Serialize a value
   static void serialize(std::ostream& out, const Value& value);
 };
 

@@ -1,3 +1,5 @@
+/vm2.pc
+/doc/Doxygen.stamp
 wibble.tar.gz
 stamp-h1
 missing
@@ -20,6 +22,8 @@ Makefile.in
 Makefile
 /wibble
 /vm2/vm2-test
+/doc/doxygen
+/doc/Doxygen
 .libs
 .deps
 *.o

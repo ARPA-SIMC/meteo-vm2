@@ -22,6 +22,9 @@
 #ifndef VM2_VALUE_H
 #define VM2_VALUE_H
 
+/**
+ * @file
+ */
 #include <string>
 #include <limits>
 #include <wibble/string.h>
@@ -30,9 +33,16 @@ namespace vm2 {
 
 static double MISSING_DOUBLE = std::numeric_limits<double>::max();
 
+/**
+ * VM2 value. 
+ *
+ * For VM2 value parsing, see @ref FormatOfVM2ValueFile.
+ * For VM2 value attributes, see @ref FormatOfVM2AttributesFile.
+ */
 struct Value {
-  // YYYY-mm-ddTHH:MM:SSZ
+  /// YYYY-mm-ddTHH:MM:SSZ datetime
   std::string reftime;
+
   unsigned int station_id;
   unsigned int variable_id;
 

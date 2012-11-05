@@ -23,8 +23,19 @@ else
 	PKG_CHECK_MODULES([LUA],[lua])
 fi
 
+AC_PATH_PROG([DOXYGEN], [doxygen])
+if test x$DOXYGEN = x
+then
+	have_doxygen=no
+else
+	have_doxygen=yes
+fi
+AM_CONDITIONAL([HAVE_DOXYGEN], [test x$have_doxygen = xyes])
+
 AC_CONFIG_FILES([Makefile
 		 wibble/Makefile
                  vm2/Makefile
-		 vm2.pc])
+		 vm2.pc
+		 doc/Doxygen
+		 doc/Makefile])
 AC_OUTPUT

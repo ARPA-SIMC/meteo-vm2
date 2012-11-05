@@ -22,6 +22,65 @@
 #ifndef VM2_SOURCE_H
 #define VM2_SOURCE_H
 
+/**
+ * @file
+ * @page FormatOfVM2AttributesFile Format of VM2 attributes file
+ *
+ * The attributes file is a Lua script that return a table with 
+ * the stations and variables attributes:
+ *
+ * @code
+ *
+ *  return {
+ *    stations = {
+ *      [145] = { lon=1285000, lat=4412645, rep='synop' },
+ *      [218] = { mykey=4 
+ *    },
+ *    variables = {
+ *      [245] = {  ... }
+ *    }
+ *  }
+ * @endcode
+ *
+ * You can create a vm2::Source instance to query the attributes file.
+ *
+ * E.g., if you want the attributes associated to the station with id = 12:
+ *
+ * @code
+ *  // Open the attributes file "v2m.lua"
+ *  vm2::Source source("vm2.lua");
+ *  // Push the station 12 on top of the stack
+ *  source.lua_push_station(12);
+ *  // If stations 12 exists there's a table else a nil value
+ *  if (lua_istable(source.L,-1)) {
+ *    ...
+ *  }
+ *  // Pop the table or the nil value
+ *  lua_pop(L,1);
+ *
+ * @endcode
+ *
+ * Or, if you want the list of station id matching the attributes
+ * `lon=1285000` and `lat=4412645`:
+ *
+ * @code
+ *
+ *  // Open the attributes file "v2m.lua"
+ *  vm2::Source source("vm2.lua");
+ *  // Create the query table
+ *  lua_newtable(source.L);
+ *  // Save the index of the query table
+ *  int idx = lua_gettop(source.L);
+ *  // Populate the query table
+ *  lua_pushnumber(source.L, 1285000);
+ *  lua_setfield(source.L, idx, "lon");
+ *  lua_pushnumber(source.L, 4412645);
+ *  lua_setfield(source.L, idx, "lat");
+ *  // Get the list of station id matching the query table
+ *  std::vector<int> stations = source.lua_find_stations(idx);
+ *
+ * @endcode
+ */
 #include <stdio.h>
 #include <string>
 #include <vector>
@@ -32,49 +91,6 @@
 
 namespace vm2 {
 
-/**
- * The lua file has the following schema:
- *  
- * \code{.lua}
- *
- *  return {
- *    stations = {
- *      [id] = { key=value, ... },
- *      ...
- *    },
- *    variables = {
- *      [id] = { key=value, ... },
- *    }
- *  }
- * \encode
- *
- * Get the attributes associated to the station with id = 12
- *
- * \code{.cpp}
- * 
- *  vm2::Source source("vm2.lua");
- *  source.lua_push_station(12);
- *  if (lua_istable(source.L,-1)) {
- *    ...
- *  }
- *  lua_pop(L,1);
- *
- * \encode
- *
- * Get the list of station id containing the attributes `{lon=12,lat=44}`
- *
- * \code{.cpp}
- *  vm2::Source source("vm2.lua");
- *  lua_newtable(source.L);
- *  int idx = lua_gettop(source.L);
- *  lua_pushnumber(source.L, 12);
- *  lua_setfield(source.L, idx, "lon");
- *  lua_pushnumber(source.L, 44);
- *  lua_setfield(source.L, idx, "lat");
- *  std::vector<int> stations = source.lua_find_stations(idx);
- *
- * \encode
- */
 struct Source {
   lua_State* L;
   
@@ -85,13 +101,13 @@ struct Source {
   Source(const std::string& path);
   ~Source();
 
-  // Push on top of the stack the station attributes (or nil if not found)
+  /// Push on top of the stack the station attributes (or nil if not found)
   void lua_push_station(int id);
-  // Push on top of the stack the variable attributes (or nil if not found)
+  /// Push on top of the stack the variable attributes (or nil if not found)
   void lua_push_variable(int id);
-  // List of station id matching the table at the given index
+  /// List of station id matching the table at the given index
   std::vector<int> lua_find_stations(int idx);
-  // List of station id matching the table at the given index
+  /// List of station id matching the table at the given index
   std::vector<int> lua_find_variables(int idx);
 };
 

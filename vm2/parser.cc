@@ -30,7 +30,8 @@
 namespace vm2 {
 
 std::string Parser::regexp_str = "^[0-9]{12},[0-9]+,[0-9]+,[^,]*,[^,]*,[^,]*,[^,]*[\r\n]*$";
-wibble::Regexp Parser::regexp(Parser::regexp_str, 0, REG_EXTENDED);
+
+static wibble::Regexp regexp(Parser::regexp_str, 0, REG_EXTENDED);
 
 Parser::Parser(std::istream& in) : in(in), lineno(0) {}
 Parser::~Parser() {}

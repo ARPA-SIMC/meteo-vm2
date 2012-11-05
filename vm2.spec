@@ -30,10 +30,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files
-%doc
+%doc ChangeLog
 %{_libdir}/*
 %{_includedir}/*
 %{_libdir}/pkgconfig/vm2.pc
+%{_docdir}/%{name}/html/*
+%{_docdir}/%{name}/examples/*
 
 
 

@@ -1,0 +1,26 @@
+return {
+ stations={
+  [1]={lon=1207738,lat=4460016,rep="locali"},
+  [2]={lon=1128402,lat=4483906,rep="locali"},
+  [3]={lon=1166134,lat=4485799,rep="locali"},
+  [4]={lon=1226798,lat=4416614,rep="locali"},
+  [5]={lon=1115610,lat=4426852,rep="locali"},
+  [6]={lon=1189605,lat=4438166,rep="locali"},
+  [7]={lon=1162264,lat=4465378,rep="locali"},
+  [8]={lon=1132646,lat=4426093,rep="locali"},
+  [9]={lon=1110011,lat=4455084,rep="locali"},
+  [10]={lon=1100414,lat=4450405,rep="locali"},
+ },
+ variables={
+  [1]={unit="m",bcode="B20013",pind=254,p1=0,p2=0,lt1=256,l1=0,l1=258,},
+  [2]={unit="hm",bcode="B20001",pind=254,p1=0,p2=0,lt1=1,},
+  [3]={unit="1/8",bcode="B20010",pind=254,p1=0,p2=0,lt1=256,},
+  [9]={unit="hPa",bcode="B10051",pind=254,p1=0,p2=0,lt1=101,},
+  [10]={unit="MGP",bcode="B10009",pind=254,p1=0,p2=0,lt1=1,},
+  [11]={unit="hPa",bcode="B10004",pind=254,p1=0,p2=0,lt1=1,},
+  [12]={unit="codetable",bcode="B10063",pind=254,p1=0,p2=10800,lt1=1,},
+  [13]={unit="hPa",bcode="B10061",pind=4,p1=0,p2=10800,lt1=1,},
+  [14]={unit="mm",bcode="B13011",pind=1,p1=0,p2=21600,lt1=1,},
+  [15]={unit="mm",bcode="B13011",pind=1,p1=0,p2=43200,lt1=1,},
+ }
+}

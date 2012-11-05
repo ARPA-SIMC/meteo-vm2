@@ -1,0 +1,19 @@
+/**
+@mainpage
+
+This package is a library to encode/decode VM2 files.
+
+A VM2 values file is a list of values in CSV form (\ref values.vm2 "example"). 
+See \ref FormatOfVM2ValueFile "here" for a detailed description and vm2::Parser.
+
+Each value has 2 identifier (station and variable), which (can) map a set of
+attributes: for example, the coordinates of the station or the measured
+physical quantity. The attributes are stored in a Lua file, plain or compiled
+(\ref source.lua "example").  See \ref FormatOfVM2AttributesFile "here" for a
+detailed description, vm2::Source and \ref generate-source.lua "here" for a lua
+script that creates the attributes file.
+
+@example values.vm2
+@example source.lua
+@example generate-source.lua
+*/

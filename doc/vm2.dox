@@ -16,4 +16,5 @@ script that creates the attributes file.
 @example values.vm2
 @example source.lua
 @example generate-source.lua
+@example oracle-source.py
 */

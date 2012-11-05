@@ -25,7 +25,8 @@ examplesdir = $(docdir)/examples
 examples_DATA = \
 		examples/generate-source.lua \
 		examples/source.lua \
-		examples/values.vm2
+		examples/values.vm2 \
+		examples/oracle-source.py
 
 
 EXTRA_DIST = \
@@ -33,4 +34,5 @@ EXTRA_DIST = \
 	     vm2.dox \
 	     examples/generate-source.lua \
 	     examples/source.lua \
-	     examples/values.vm2
+	     examples/values.vm2 \
+	     examples/oracle-source.py

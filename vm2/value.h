@@ -27,7 +27,6 @@
  */
 #include <string>
 #include <limits>
-#include <wibble/string.h>
 
 namespace vm2 {
 

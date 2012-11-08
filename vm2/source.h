@@ -85,8 +85,6 @@
 #include <string>
 #include <vector>
 
-#include <wibble/exception.h>
-
 #include <lua.hpp>
 
 namespace vm2 {

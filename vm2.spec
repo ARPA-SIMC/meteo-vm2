@@ -16,7 +16,6 @@ VM2 decoding/encoding library
 %prep
 %setup -q
 
-
 %build
 %configure
 make %{?_smp_mflags}
@@ -28,16 +27,35 @@ make check
 rm -rf $RPM_BUILD_ROOT
 %make_install
 
-
 %files
-%doc
-%{_libdir}/*
+%defattr(-,root,root,-)
+%{_libdir}/*.so.*
+
+%package devel
+Summary:        C++ library for VM2 data - development files
+Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}
+
+%description devel
+VM2 decoding/encoding library - development files
+
+%files devel
+%defattr(-,root,root,-)
 %{_includedir}/*
+%{_libdir}/*.a
+%{_libdir}/*.la
+%{_libdir}/*.so
 %{_libdir}/pkgconfig/vm2.pc
-%{_docdir}/%{name}/html/*
-%{_docdir}/%{name}/examples/*
 
+%package doc
+Summary:        C++ library for VM2 data - documentation
 
+%description doc
+VM2 decoding/encoding library - documentation
+
+%files doc
+%defattr(-,root,root,-)
+%{_docdir}/*
+%{_docdir}/*
 
 %changelog
 * Tue Oct 30 2012 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.1-1%{dist}

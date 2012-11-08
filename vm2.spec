@@ -53,9 +53,8 @@ Summary:        C++ library for VM2 data - documentation
 VM2 decoding/encoding library - documentation
 
 %files doc
+%doc %{_docdir}/%{name}/*
 %defattr(-,root,root,-)
-%{_docdir}/*
-%{_docdir}/*
 
 %changelog
 * Tue Oct 30 2012 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.1-1%{dist}

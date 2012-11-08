@@ -1,4 +1,3 @@
-#!/usr/bin/python
 import cx_Oracle
 import sys
 

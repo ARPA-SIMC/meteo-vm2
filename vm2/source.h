@@ -91,15 +91,26 @@
 
 namespace vm2 {
 
-struct Source {
-  lua_State* L;
-  
+/**
+ * Attributes file reader.
+ *
+ * This class loads the attributes file (see \ref VM2AttributesFile)
+ * in a previously opened Lua interpreter.
+ *
+ * The stations and variables attributes are stored in Lua references.
+ */
+struct CoreSource {
+  std::string path;
+  lua_State *L;
+
   int stations_ref;
   int variables_ref;
   int filter_ref;
 
-  Source(const std::string& path);
-  ~Source();
+  /// Load the attributes file path in Lua VM L
+  CoreSource(const std::string& path, lua_State* L);
+  /// Unload the attributes
+  ~CoreSource();
 
   /// Push on top of the stack the station attributes (or nil if not found)
   void lua_push_station(int id);
@@ -108,6 +119,26 @@ struct Source {
   /// List of station id matching the table at the given index
   std::vector<int> lua_find_stations(int idx);
   /// List of station id matching the table at the given index
+  std::vector<int> lua_find_variables(int idx);
+};
+
+/**
+ * Helper class for CoreSource, creates the CoreSource and the Lua interpreter.
+ */
+struct Source {
+  lua_State* L;
+  CoreSource *coresource;
+
+  Source(const std::string& path);
+  ~Source();
+
+  /// @see CoreSource::lua_push_station
+  void lua_push_station(int id);
+  /// @see CoreSource::lua_push_variable
+  void lua_push_variable(int id);
+  /// @see CoreSource::lua_find_stations
+  std::vector<int> lua_find_stations(int idx);
+  /// @see CoreSource::lua_find_variables
   std::vector<int> lua_find_variables(int idx);
 };
 

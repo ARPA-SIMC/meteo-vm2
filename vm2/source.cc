@@ -46,10 +46,7 @@ static const char* filter = \
                             "  return res "
                             "end";
 
-Source::Source(const std::string& path) : L(0), stations_ref(LUA_NOREF), variables_ref(LUA_NOREF), filter_ref(LUA_NOREF) {
-  L = lua_open();
-  luaL_openlibs(L);
-
+CoreSource::CoreSource(const std::string& path, lua_State* L) : path(path), L(L), stations_ref(LUA_NOREF), variables_ref(LUA_NOREF), filter_ref(LUA_NOREF) {
   if (luaL_dofile(L, path.c_str()) != 0) {
     std::string msg = lua_tostring(L, -1);
     lua_pop(L, 1);
@@ -76,27 +73,26 @@ Source::Source(const std::string& path) : L(0), stations_ref(LUA_NOREF), variabl
   lua_pop(L, 1);
 }
 
-Source::~Source() {
+CoreSource::~CoreSource() {
     luaL_unref(L, LUA_REGISTRYINDEX, stations_ref);
     luaL_unref(L, LUA_REGISTRYINDEX, variables_ref);
     luaL_unref(L, LUA_REGISTRYINDEX, filter_ref);
-    lua_close(L);
 }
 
-void Source::lua_push_station(int id) {
+void CoreSource::lua_push_station(int id) {
   lua_rawgeti(L, LUA_REGISTRYINDEX, stations_ref);
   lua_pushinteger(L, id);
   lua_gettable(L, -2);
   lua_remove(L, -2);
 }
-void Source::lua_push_variable(int id) {
+void CoreSource::lua_push_variable(int id) {
   lua_rawgeti(L, LUA_REGISTRYINDEX, variables_ref);
   lua_pushinteger(L, id);
   lua_gettable(L, -2);
   lua_remove(L, -2);
 }
 
-std::vector<int> Source::lua_find_stations(int idx) {
+std::vector<int> CoreSource::lua_find_stations(int idx) {
   std::vector<int> res;
 
   lua_rawgeti(L, LUA_REGISTRYINDEX, filter_ref);
@@ -117,7 +113,7 @@ std::vector<int> Source::lua_find_stations(int idx) {
   lua_pop(L,1);
   return res;
 }
-std::vector<int> Source::lua_find_variables(int idx) {
+std::vector<int> CoreSource::lua_find_variables(int idx) {
   std::vector<int> res;
 
   lua_rawgeti(L, LUA_REGISTRYINDEX, filter_ref);
@@ -137,6 +133,29 @@ std::vector<int> Source::lua_find_variables(int idx) {
   }
   lua_pop(L,1);
   return res;
+}
+
+Source::Source(const std::string& path) {
+  L = lua_open();
+  luaL_openlibs(L);
+  coresource = new CoreSource(path, L);
+}
+Source::~Source() {
+  delete coresource;
+  lua_close(L);
+}
+
+void Source::lua_push_station(int id) {
+  return coresource->lua_push_station(id);
+}
+void Source::lua_push_variable(int id) {
+  return coresource->lua_push_variable(id);
+}
+std::vector<int> Source::lua_find_stations(int idx) {
+  return coresource->lua_find_stations(idx);
+}
+std::vector<int> Source::lua_find_variables(int idx) {
+  return coresource->lua_find_variables(idx);
 }
 
 }

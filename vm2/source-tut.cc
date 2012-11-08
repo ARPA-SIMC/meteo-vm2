@@ -26,6 +26,15 @@
 namespace tut {
 
 struct vm2_source_shar {
+  lua_State* L;
+
+  vm2_source_shar() {
+    L = lua_open();
+    luaL_openlibs(L);
+  }
+  ~vm2_source_shar() {
+    lua_close(L);
+  }
 };
 TESTGRP(vm2_source);
 
@@ -165,5 +174,14 @@ void to::test<5>()
     lua_pop(L,1);
   }
 }
+// Open a CoreSource
+template<> template<>
+void to::test<6>()
+{
+  vm2::CoreSource source1(TOP_SRCDIR"/test/data/source-1.lua", L);
+  vm2::CoreSource source2(TOP_SRCDIR"/test/data/source-2.luac", L);
+}
+
+
 
 }

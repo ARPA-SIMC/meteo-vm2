@@ -95,10 +95,18 @@ struct Parser {
 
   /// Store the next VM2 message in value
   bool next(Value& value);
+
+  /**
+   * Store the next VM2 message in value, and the raw message in \a raw
+   */
+  bool next(Value& value, std::string& raw);
+
   /// Convert VM2 reftime in YYYY-mm-ddTHH:MM:SSZ reftime
-  static std::string decode_reftime(std::string s);
+  static std::string decode_reftime(const std::string& s);
+
   /// Convert YYYY-mm-ddTHH:MM:SSZ reftime in VM2 reftime
-  static std::string encode_reftime(std::string reftime);
+  static std::string encode_reftime(const std::string& reftime);
+
   /// Serialize a value
   static void serialize(std::ostream& out, const Value& value);
 };

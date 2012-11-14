@@ -38,7 +38,10 @@ Parser::~Parser() {}
 
 bool Parser::next(Value& value) {
   std::string line;
+  return next(value, line);
+}
 
+bool Parser::next(Value& value, std::string& line) {
   while (true) {
     char c;
     in.get(c);
@@ -119,7 +122,7 @@ bool Parser::next(Value& value) {
   return true;
 }
 
-std::string Parser::decode_reftime(std::string s) {
+std::string Parser::decode_reftime(const std::string& s) {
   return \
       s.substr(0,4) + "-" +
       s.substr(4,2) + "-" +
@@ -127,7 +130,7 @@ std::string Parser::decode_reftime(std::string s) {
       s.substr(8,2) + ":" +
       s.substr(10,2)+ ":00Z";
 }
-std::string Parser::encode_reftime(std::string reftime) {
+std::string Parser::encode_reftime(const std::string& reftime) {
   return \
       reftime.substr(0,4) +
       reftime.substr(5,2) +

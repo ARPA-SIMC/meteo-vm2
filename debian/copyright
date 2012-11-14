@@ -1,0 +1,19 @@
+Format-Specification: http://wiki.debian.org/Proposals/CopyrightFormat?action=recall&rev=196
+Upstream-Name: vm2
+Upstream-Maintainer: 
+ Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
+Upstream-Source: http://www.arpa.emr.it
+
+Files: *
+Copyright: Copyright (C) 2012, ARPA-SIM <urpsim@smr.arpa.emr.it>
+License: LGPL-3
+ Licensed under the GNU Lesser General Public License which
+ incorporates the terms and conditions of version 3 of the GNU
+ General Public License.                                                                                    
+ The texts of these two licenses can be found in
+ /usr/share/common-licenses/GPL-3 and /usr/share/common-licenses/LGPL-3
+
+Files:
+ debian/*
+Copyright: Copyright (C) 2012, Enrico Zini <enrico@debian.org>
+License: GPL-3

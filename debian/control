@@ -1,0 +1,18 @@
+Source: vm2
+Section: science
+Priority: optional
+Maintainer: Enrico Zini <enrico@debian.org>
+Build-Depends: debhelper (>= 7.0.50~), dh-buildinfo
+Standards-Version: 3.9.3.0
+
+Package: libvm2
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Library to work with VM2 weather samples (shared)
+
+Package: libvm2-dev
+Section: libdevel
+Architecture: any
+Depends: libvm2 (= ${binary:Version}), ${misc:Depends}
+Description: Library to work with VM2 weather samples (development)

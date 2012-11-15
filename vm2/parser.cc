@@ -42,6 +42,7 @@ bool Parser::next(Value& value) {
 }
 
 bool Parser::next(Value& value, std::string& line) {
+  line.clear();
   while (true) {
     char c;
     in.get(c);

@@ -7,7 +7,7 @@ pkgconfig_DATA = meteo-vm2.pc
 default-source.luac: default-source.lua
 	luac -o $@ $^
 
-sourcedir = $(localstatedir)/lib/$(PACKAGE)
+sourcedir = $(sharedstatedir)/$(PACKAGE)
 
 source_DATA = default-source.lua default-source.luac
 

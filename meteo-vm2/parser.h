@@ -19,8 +19,8 @@
  *
  * Author: Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
  */
-#ifndef VM2_PARSER_H
-#define VM2_PARSER_H
+#ifndef METEO_VM2_PARSER_H
+#define METEO_VM2_PARSER_H
 
 /**
  * @file
@@ -48,8 +48,8 @@
  *
  * @code
  *
- * vm2::Parser parser(std::cin);
- * vm2::Value value;
+ * meteo::vm2::Parser parser(std::cin);
+ * meteo::vm2::Value value;
  * while (parser.next(value)) {
  *  // ...
  * }
@@ -60,7 +60,7 @@
  *
  * @code
  *
- * vm2::Value value;
+ * meteo::vm2::Value value;
  * // Populate the value
  * value.year = 2012;
  * value.month = 1;
@@ -68,7 +68,7 @@
  * value.station_id = 123;
  * // ...
  * // Serialize
- * vm2::Parser::serialize(std::cout, value);
+ * meteo::vm2::Parser::serialize(std::cout, value);
  *
  * @endcode
  */
@@ -78,8 +78,9 @@
 #include <istream>
 #include <ostream>
 
-#include <vm2/value.h>
+#include <meteo-vm2/value.h>
 
+namespace meteo {
 namespace vm2 {
 
 /**
@@ -109,5 +110,6 @@ struct Parser {
 };
 
 }
+}
 
-#endif        /* VM2_PARSER_H */
+#endif        /* METEO_VM2_PARSER_H */

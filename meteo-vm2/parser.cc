@@ -19,7 +19,7 @@
  *
  * Author: Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
  */
-#include <vm2/parser.h>
+#include <meteo-vm2/parser.h>
 
 #include <stdlib.h>
 
@@ -27,6 +27,7 @@
 #include <wibble/string.h>
 #include <wibble/regexp.h>
 
+namespace meteo {
 namespace vm2 {
 
 std::string Parser::regexp_str = "^[0-9]{12}([0-9][0-9])?,[0-9]+,[0-9]+,[+-]?[0-9.]*,[+-]?[0-9.]*,[^,\n\r]*,[^,\n\r]*[\r\n]*$";
@@ -147,4 +148,5 @@ void Parser::serialize(std::ostream& out, const Value& value) {
       << value.flags << std::endl;
 }
 
+}
 }

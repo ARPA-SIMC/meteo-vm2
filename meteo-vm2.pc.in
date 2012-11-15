@@ -7,4 +7,4 @@ Name: vm2
 Description: VM2 library
 Version: @VERSION@
 Cflags: -I${includedir} @LUA_CFLAGS@ @LIBS@
-Libs: -L${libdir} @LUA_LIBS@ -lvm2
+Libs: -L${libdir} @LUA_LIBS@ -lmeteo-vm2

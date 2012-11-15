@@ -19,31 +19,31 @@
  */
 
 #include <wibble/tests.h>
-#include <vm2/source.h>
+#include "source.h"
 
 #define ensure_throws(x) do { try { x; ensure(false); } catch (wibble::exception::Generic& e) { } } while (0)
 
 namespace tut {
 
-struct vm2_source_shar {
+struct meteo_vm2_source_shar {
   lua_State* L;
 
-  vm2_source_shar() {
+  meteo_vm2_source_shar() {
     L = lua_open();
     luaL_openlibs(L);
   }
-  ~vm2_source_shar() {
+  ~meteo_vm2_source_shar() {
     lua_close(L);
   }
 };
-TESTGRP(vm2_source);
+TESTGRP(meteo_vm2_source);
 
 // Load files
 template<> template<>
 void to::test<1>()
 {
-  vm2::Source source1(TOP_SRCDIR"/test/data/source-1.lua");
-  vm2::Source source2(TOP_SRCDIR"/test/data/source-2.luac");
+  meteo::vm2::Source source1(TOP_SRCDIR"/test/data/source-1.lua");
+  meteo::vm2::Source source2(TOP_SRCDIR"/test/data/source-2.luac");
 }
 
 
@@ -51,7 +51,7 @@ void to::test<1>()
 template<> template<>
 void to::test<2>()
 {
-  vm2::Source source(TOP_SRCDIR"/test/data/source-1.lua");
+  meteo::vm2::Source source(TOP_SRCDIR"/test/data/source-1.lua");
   lua_State *L = source.L;
 
   int start_idx = lua_gettop(L);
@@ -78,7 +78,7 @@ void to::test<2>()
 template<> template<>
 void to::test<3>()
 {
-  vm2::Source source(TOP_SRCDIR"/test/data/source-1.lua");
+  meteo::vm2::Source source(TOP_SRCDIR"/test/data/source-1.lua");
   lua_State *L = source.L;
   int start_idx = lua_gettop(L);
 
@@ -124,7 +124,7 @@ void to::test<3>()
 template<> template<>
 void to::test<4>()
 {
-  vm2::Source source(TOP_SRCDIR"/test/data/source-1.lua");
+  meteo::vm2::Source source(TOP_SRCDIR"/test/data/source-1.lua");
   lua_State *L = source.L;
   int qidx;
 
@@ -151,7 +151,7 @@ void to::test<4>()
 template<> template<>
 void to::test<5>()
 {
-  vm2::Source source(TOP_SRCDIR"/test/data/source-1.lua");
+  meteo::vm2::Source source(TOP_SRCDIR"/test/data/source-1.lua");
   lua_State *L = source.L;
   int qidx;
 
@@ -178,8 +178,8 @@ void to::test<5>()
 template<> template<>
 void to::test<6>()
 {
-  vm2::CoreSource source1(TOP_SRCDIR"/test/data/source-1.lua", L);
-  vm2::CoreSource source2(TOP_SRCDIR"/test/data/source-2.luac", L);
+  meteo::vm2::CoreSource source1(TOP_SRCDIR"/test/data/source-1.lua", L);
+  meteo::vm2::CoreSource source2(TOP_SRCDIR"/test/data/source-2.luac", L);
 }
 
 

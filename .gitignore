@@ -1,4 +1,4 @@
-/vm2.pc
+/meteo-vm2.pc
 /doc/Doxygen.stamp
 wibble.tar.gz
 stamp-h1
@@ -21,7 +21,7 @@ aclocal.m4
 Makefile.in
 Makefile
 /wibble
-/vm2/vm2-test
+/meteo-vm2/meteo-vm2-test
 /doc/doxygen
 /doc/Doxygen
 .libs

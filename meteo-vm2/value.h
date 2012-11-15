@@ -19,8 +19,8 @@
  *
  * Author: Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
  */
-#ifndef VM2_VALUE_H
-#define VM2_VALUE_H
+#ifndef METEO_VM2_VALUE_H
+#define METEO_VM2_VALUE_H
 
 /**
  * @file
@@ -28,6 +28,7 @@
 #include <string>
 #include <limits>
 
+namespace meteo {
 namespace vm2 {
 
 static double MISSING_DOUBLE = std::numeric_limits<double>::max();
@@ -56,5 +57,5 @@ struct Value {
 };
 
 }
-
-#endif        /* VM2_VALUE_H */
+}
+#endif        /* METEO_VM2_VALUE_H */

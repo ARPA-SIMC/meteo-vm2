@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.68])
-AC_INIT([vm2], [0.1], [edigiacomo@arpa.emr.it])
+AC_INIT([meteo-vm2], [0.1], [edigiacomo@arpa.emr.it])
 AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADERS([config.h])
 AM_CONFIG_HEADER(wibble/config.h)
@@ -34,8 +34,8 @@ AM_CONDITIONAL([HAVE_DOXYGEN], [test x$have_doxygen = xyes])
 
 AC_CONFIG_FILES([Makefile
 		 wibble/Makefile
-                 vm2/Makefile
-		 vm2.pc
+                 meteo-vm2/Makefile
+		 meteo-vm2.pc
 		 doc/Doxygen
 		 doc/Makefile])
 AC_OUTPUT

@@ -26,9 +26,9 @@
 
 namespace tut {
 
-struct vm2_parser_shar {
+struct meteo_vm2_parser_shar {
 };
-TESTGRP(vm2_parser);
+TESTGRP(meteo_vm2_parser);
 
 // Parse a well-formed VM2 message
 template<> template<>
@@ -36,9 +36,9 @@ void to::test<1>()
 {
   std::string line("201201020300,123,456,78.9,,,000000000\n");
   std::stringstream in(line);
-  vm2::Parser parser(in);
+  meteo::vm2::Parser parser(in);
 
-  vm2::Value value;
+  meteo::vm2::Value value;
   ensure(parser.next(value));
   ensure_equals(in.tellg(), line.size());
   ensure_equals(value.year, 2012);
@@ -50,7 +50,7 @@ void to::test<1>()
   ensure_equals(value.station_id, 123);
   ensure_equals(value.variable_id, 456);
   ensure_equals(value.value1, 78.9);
-  ensure_equals(value.value2, vm2::MISSING_DOUBLE);
+  ensure_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
   ensure_equals(value.flags, "000000000");
 }
 // Parse a malformed VM2 message
@@ -59,9 +59,9 @@ void to::test<2>()
 {
   std::string line("201201020300,123,456,78.9,,");
   std::stringstream in(line);
-  vm2::Parser parser(in);
+  meteo::vm2::Parser parser(in);
 
-  vm2::Value value;
+  meteo::vm2::Value value;
   ensure_throws(parser.next(value));
 }
 // Serializer
@@ -70,13 +70,13 @@ void to::test<3>()
 {
   std::string line("20120102030000,123,456,78.9,-5.3,,\n");
   std::stringstream in(line);
-  vm2::Parser parser(in);
+  meteo::vm2::Parser parser(in);
 
-  vm2::Value value;
+  meteo::vm2::Value value;
   ensure(parser.next(value));
 
   std::stringstream out;
-  vm2::Parser::serialize(out, value);
+  meteo::vm2::Parser::serialize(out, value);
   ensure_equals(out.str().substr(0,out.str().size()-1),line.substr(0,line.size()-1));
 }
 // Parse a well-formed VM2 message (with seconds)
@@ -85,9 +85,9 @@ void to::test<4>()
 {
   std::string line("20120102030058,123,456,78.9,,,000000000\n");
   std::stringstream in(line);
-  vm2::Parser parser(in);
+  meteo::vm2::Parser parser(in);
 
-  vm2::Value value;
+  meteo::vm2::Value value;
   ensure(parser.next(value));
   ensure_equals(in.tellg(), line.size());
   ensure_equals(value.year, 2012);
@@ -99,7 +99,7 @@ void to::test<4>()
   ensure_equals(value.station_id, 123);
   ensure_equals(value.variable_id, 456);
   ensure_equals(value.value1, 78.9);
-  ensure_equals(value.value2, vm2::MISSING_DOUBLE);
+  ensure_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
   ensure_equals(value.flags, "000000000");
 }
 

@@ -20,12 +20,13 @@
  * Author: Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
  */
 
-#include <vm2/source.h>
+#include <meteo-vm2/source.h>
 
 #include <iostream>
 
 #include <wibble/exception.h>
 
+namespace meteo {
 namespace vm2 {
 
 static const char* filter = \
@@ -158,4 +159,5 @@ std::vector<int> Source::lua_find_variables(int idx) {
   return coresource->lua_find_variables(idx);
 }
 
+}
 }

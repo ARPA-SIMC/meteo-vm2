@@ -19,8 +19,8 @@
  *
  * Author: Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
  */
-#ifndef VM2_SOURCE_H
-#define VM2_SOURCE_H
+#ifndef METEO_VM2_SOURCE_H
+#define METEO_VM2_SOURCE_H
 
 /**
  * @file
@@ -42,13 +42,13 @@
  *  }
  * @endcode
  *
- * You can create a vm2::Source instance to query the attributes file.
+ * You can create a meteo::vm2::Source instance to query the attributes file.
  *
  * E.g., if you want the attributes associated to the station with id = 12:
  *
  * @code
  *  // Open the attributes file "v2m.lua"
- *  vm2::Source source("vm2.lua");
+ *  meteo::vm2::Source source("vm2.lua");
  *  // Push the station 12 on top of the stack
  *  source.lua_push_station(12);
  *  // If stations 12 exists there's a table else a nil value
@@ -66,7 +66,7 @@
  * @code
  *
  *  // Open the attributes file "v2m.lua"
- *  vm2::Source source("vm2.lua");
+ *  meteo::vm2::Source source("vm2.lua");
  *  // Create the query table
  *  lua_newtable(source.L);
  *  // Save the index of the query table
@@ -87,6 +87,7 @@
 
 #include <lua.hpp>
 
+namespace meteo {
 namespace vm2 {
 
 /**
@@ -141,5 +142,6 @@ struct Source {
 };
 
 }
+}
 
-#endif        /* VM2_SOURCE_H */
+#endif        /* METEO_VM2_SOURCE_H */

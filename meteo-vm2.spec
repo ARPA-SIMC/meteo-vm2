@@ -1,4 +1,4 @@
-Name:           vm2
+Name:           meteo-vm2
 Version:        0.1 
 Release:        1%{?dist}
 Summary:        C++ library for VM2 data 
@@ -44,7 +44,7 @@ VM2 decoding/encoding library - development files
 %{_libdir}/*.a
 %{_libdir}/*.la
 %{_libdir}/*.so
-%{_libdir}/pkgconfig/vm2.pc
+%{_libdir}/pkgconfig/meteo-vm2.pc
 
 %package doc
 Summary:        C++ library for VM2 data - documentation

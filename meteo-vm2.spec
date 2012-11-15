@@ -30,6 +30,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %{_libdir}/*.so.*
+%{_localstatedir}/lib/%{name}/default-source.lua*
 
 %package devel
 Summary:        C++ library for VM2 data - development files

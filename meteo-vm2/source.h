@@ -93,7 +93,7 @@ namespace source {
 
 /**
  * @brief Default source path.The path is the value of the environment variable
- * `METEO_VM2_SOURCE` or, if unset, `$localstatedir/lib/meteo-vm2/default.luac`.
+ * `METEO_VM2_SOURCE` or, if unset, `$localstatedir/lib/meteo-vm2/source/default.luac`.
  */
 std::string path();
 

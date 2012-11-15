@@ -89,6 +89,12 @@
 
 namespace meteo {
 namespace vm2 {
+namespace source {
+
+/// Default source path
+std::string path();
+
+}
 
 /**
  * Attributes file reader.
@@ -124,9 +130,17 @@ struct CoreSource {
 /**
  * Helper class for CoreSource, creates the CoreSource and the Lua interpreter.
  */
-struct Source {
-  lua_State* L;
+class Source {
+ private:
+  static Source* instance;
+
   CoreSource *coresource;
+
+ public:
+  lua_State* L;
+
+  /// Get the default source
+  static Source* get();
 
   Source(const std::string& path);
   ~Source();

@@ -7,7 +7,8 @@ dist_pkginclude_HEADERS = \
 
 lib_LTLIBRARIES = libmeteo-vm2.la
 
-libmeteo_vm2_la_CPPFLAGS = -I$(top_srcdir) -I$(top_builddir) $(LUA_CFLAGS)
+libmeteo_vm2_la_CPPFLAGS = -I$(top_srcdir) -I$(top_builddir) $(LUA_CFLAGS) \
+			   -DMETEO_VM2_DEFAULT_SOURCE='"$(localstatedir)/lib/$(PACKAGE)/default-source.luac"'
 
 libmeteo_vm2_la_LDFLAGS = $(LUA_LIBS) -lpthread
 

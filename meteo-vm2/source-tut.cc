@@ -19,7 +19,9 @@
  */
 
 #include <wibble/tests.h>
+
 #include "source.h"
+#include <stdlib.h>
 
 #define ensure_throws(x) do { try { x; ensure(false); } catch (wibble::exception::Generic& e) { } } while (0)
 
@@ -180,6 +182,16 @@ void to::test<6>()
 {
   meteo::vm2::CoreSource source1(TOP_SRCDIR"/test/data/source-1.lua", L);
   meteo::vm2::CoreSource source2(TOP_SRCDIR"/test/data/source-2.luac", L);
+}
+// Test default source
+template<> template<>
+void to::test<7>()
+{
+  ::setenv("METEO_VM2_SOURCE", TOP_SRCDIR"/test/data/source-2.luac", 1);
+  lua_State* L = meteo::vm2::Source::get()->L;
+  meteo::vm2::Source::get()->lua_push_station(1);
+  ensure(lua_istable(L, -1));
+  lua_pop(L, 1);
 }
 
 

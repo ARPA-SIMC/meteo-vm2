@@ -1,0 +1,4 @@
+return {
+	stations = {},
+	variables = {},
+}

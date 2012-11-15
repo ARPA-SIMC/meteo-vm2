@@ -28,6 +28,20 @@
 
 namespace meteo {
 namespace vm2 {
+namespace source {
+
+static char* _path = NULL;
+
+std::string path() {
+  if (!_path) {
+    _path = ::getenv("METEO_VM2_SOURCE");
+    if (!_path)
+      _path = METEO_VM2_DEFAULT_SOURCE;
+  }
+  return _path;
+}
+
+}
 
 static const char* filter = \
                             "return function(q, l) "
@@ -134,6 +148,15 @@ std::vector<int> CoreSource::lua_find_variables(int idx) {
   }
   lua_pop(L,1);
   return res;
+}
+
+Source* Source::instance = NULL;
+
+Source* Source::get() {
+  if (!instance) {
+    instance = new Source(source::path());
+  }
+  return instance;
 }
 
 Source::Source(const std::string& path) {

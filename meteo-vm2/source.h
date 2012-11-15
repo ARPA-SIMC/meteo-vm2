@@ -91,7 +91,10 @@ namespace meteo {
 namespace vm2 {
 namespace source {
 
-/// Default source path
+/**
+ * @brief Default source path.The path is the value of the environment variable
+ * `METEO_VM2_SOURCE` or, if unset, `$localstatedir/lib/meteo-vm2/default.luac`.
+ */
 std::string path();
 
 }
@@ -134,12 +137,13 @@ class Source {
  private:
   static Source* instance;
 
-  CoreSource *coresource;
+  CoreSource* coresource;
 
  public:
+  /// Lua VM
   lua_State* L;
 
-  /// Get the default source
+  /// Get the default source (singleton) using the default path
   static Source* get();
 
   Source(const std::string& path);

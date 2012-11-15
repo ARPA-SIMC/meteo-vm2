@@ -89,7 +89,7 @@ namespace vm2 {
 struct Parser {
   /// Pattern of a VM2 value
   static std::string regexp_str;
-
+  /// Input stream
   std::istream& in;
   /// Number of the last line parsed
   int lineno;
@@ -100,9 +100,7 @@ struct Parser {
   /// Store the next VM2 message in value
   bool next(Value& value);
 
-  /**
-   * Store the next VM2 message in value, and the raw message in \a raw
-   */
+  /// Store the next VM2 message in value, and the raw message in \a raw
   bool next(Value& value, std::string& raw);
   
   /// Serialize a value

@@ -44,6 +44,7 @@ struct Value {
   int mday;
   int hour;
   int min;
+  int sec;
 
   unsigned int station_id;
   unsigned int variable_id;

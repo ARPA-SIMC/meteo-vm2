@@ -29,7 +29,7 @@
 
 namespace vm2 {
 
-std::string Parser::regexp_str = "^[0-9]{12},[0-9]+,[0-9]+,[+-]?[0-9.]*,[+-]?[0-9.]*,[^,\n\r]*,[^,\n\r]*[\r\n]*$";
+std::string Parser::regexp_str = "^[0-9]{12}([0-9][0-9])?,[0-9]+,[0-9]+,[+-]?[0-9.]*,[+-]?[0-9.]*,[^,\n\r]*,[^,\n\r]*[\r\n]*$";
 
 static wibble::Regexp regexp(Parser::regexp_str, 0, REG_EXTENDED);
 
@@ -71,10 +71,11 @@ bool Parser::next(Value& value, std::string& line) {
         wibble::str::fmtf("reading line %d", lineno),
         "line does not contain a date field");
 
+  value.sec = 0;
   if (sscanf(i->c_str(),
-             "%04d%02d%02d%02d%02d",
+             "%04d%02d%02d%02d%02d%02d",
              &value.year, &value.month, &value.mday,
-             &value.hour, &value.min) != 5) {
+             &value.hour, &value.min, &value.sec) < 5) {
     throw wibble::exception::Consistency(
         wibble::str::fmtf("reading line %d", lineno),
         "invalid date format");
@@ -131,9 +132,9 @@ bool Parser::next(Value& value, std::string& line) {
 }
 
 void Parser::serialize(std::ostream& out, const Value& value) {
-  out << wibble::str::fmtf("%04d%02d%02d%02d%02d,",
+  out << wibble::str::fmtf("%04d%02d%02d%02d%02d%02d,",
                            value.year, value.month, value.mday,
-                           value.hour, value.min)
+                           value.hour, value.min, value.sec)
       << value.station_id << ","
       << value.variable_id << ",";
   if (value.value1 != vm2::MISSING_DOUBLE)

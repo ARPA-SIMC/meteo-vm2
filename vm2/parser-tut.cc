@@ -46,6 +46,7 @@ void to::test<1>()
   ensure_equals(value.mday, 2);
   ensure_equals(value.hour, 3);
   ensure_equals(value.min, 0);
+  ensure_equals(value.sec, 0);
   ensure_equals(value.station_id, 123);
   ensure_equals(value.variable_id, 456);
   ensure_equals(value.value1, 78.9);
@@ -67,7 +68,7 @@ void to::test<2>()
 template<> template<>
 void to::test<3>()
 {
-  std::string line("201201020300,123,456,78.9,-5.3,,\n");
+  std::string line("20120102030000,123,456,78.9,-5.3,,\n");
   std::stringstream in(line);
   vm2::Parser parser(in);
 
@@ -76,8 +77,30 @@ void to::test<3>()
 
   std::stringstream out;
   vm2::Parser::serialize(out, value);
-
   ensure_equals(out.str().substr(0,out.str().size()-1),line.substr(0,line.size()-1));
+}
+// Parse a well-formed VM2 message (with seconds)
+template<> template<>
+void to::test<4>()
+{
+  std::string line("20120102030058,123,456,78.9,,,000000000\n");
+  std::stringstream in(line);
+  vm2::Parser parser(in);
+
+  vm2::Value value;
+  ensure(parser.next(value));
+  ensure_equals(in.tellg(), line.size());
+  ensure_equals(value.year, 2012);
+  ensure_equals(value.month, 1);
+  ensure_equals(value.mday, 2);
+  ensure_equals(value.hour, 3);
+  ensure_equals(value.min, 0);
+  ensure_equals(value.sec, 58);
+  ensure_equals(value.station_id, 123);
+  ensure_equals(value.variable_id, 456);
+  ensure_equals(value.value1, 78.9);
+  ensure_equals(value.value2, vm2::MISSING_DOUBLE);
+  ensure_equals(value.flags, "000000000");
 }
 
 }

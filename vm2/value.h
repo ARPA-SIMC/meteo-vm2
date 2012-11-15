@@ -39,8 +39,11 @@ static double MISSING_DOUBLE = std::numeric_limits<double>::max();
  * For VM2 value attributes, see @ref FormatOfVM2AttributesFile.
  */
 struct Value {
-  /// YYYY-mm-ddTHH:MM:SSZ datetime
-  std::string reftime;
+  int year;
+  int month;
+  int mday;
+  int hour;
+  int min;
 
   unsigned int station_id;
   unsigned int variable_id;

@@ -61,7 +61,9 @@
  *
  * vm2::Value value;
  * // Populate the value
- * value.reftime = "2012-01-01T00:00:00Z";
+ * value.year = 2012;
+ * value.month = 1;
+ * // ...
  * value.station_id = 123;
  * // ...
  * // Serialize
@@ -100,12 +102,6 @@ struct Parser {
    * Store the next VM2 message in value, and the raw message in \a raw
    */
   bool next(Value& value, std::string& raw);
-
-  /// Convert VM2 reftime in YYYY-mm-ddTHH:MM:SSZ reftime
-  static std::string decode_reftime(const std::string& s);
-
-  /// Convert YYYY-mm-ddTHH:MM:SSZ reftime in VM2 reftime
-  static std::string encode_reftime(const std::string& reftime);
 
   /// Serialize a value
   static void serialize(std::ostream& out, const Value& value);

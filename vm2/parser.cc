@@ -71,7 +71,14 @@ bool Parser::next(Value& value, std::string& line) {
         wibble::str::fmtf("reading line %d", lineno),
         "line does not contain a date field");
 
-  value.reftime = Parser::decode_reftime(*i);
+  if (sscanf(i->c_str(),
+             "%04d%02d%02d%02d%02d",
+             &value.year, &value.month, &value.mday,
+             &value.hour, &value.min) != 5) {
+    throw wibble::exception::Consistency(
+        wibble::str::fmtf("reading line %d", lineno),
+        "invalid date format");
+  }
 
   ++i;
   if (i == splitter.end())
@@ -123,24 +130,10 @@ bool Parser::next(Value& value, std::string& line) {
   return true;
 }
 
-std::string Parser::decode_reftime(const std::string& s) {
-  return \
-      s.substr(0,4) + "-" +
-      s.substr(4,2) + "-" +
-      s.substr(6,2) + "T" +
-      s.substr(8,2) + ":" +
-      s.substr(10,2)+ ":00Z";
-}
-std::string Parser::encode_reftime(const std::string& reftime) {
-  return \
-      reftime.substr(0,4) +
-      reftime.substr(5,2) +
-      reftime.substr(8,2) +
-      reftime.substr(11,2) +
-      reftime.substr(14,2);
-}
 void Parser::serialize(std::ostream& out, const Value& value) {
-  out << Parser::encode_reftime(value.reftime) << ","
+  out << wibble::str::fmtf("%04d%02d%02d%02d%02d,",
+                           value.year, value.month, value.mday,
+                           value.hour, value.min)
       << value.station_id << ","
       << value.variable_id << ",";
   if (value.value1 != vm2::MISSING_DOUBLE)

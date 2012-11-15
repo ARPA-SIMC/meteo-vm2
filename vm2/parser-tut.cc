@@ -41,7 +41,11 @@ void to::test<1>()
   vm2::Value value;
   ensure(parser.next(value));
   ensure_equals(in.tellg(), line.size());
-  ensure_equals(value.reftime, "2012-01-02T03:00:00Z");
+  ensure_equals(value.year, 2012);
+  ensure_equals(value.month, 1);
+  ensure_equals(value.mday, 2);
+  ensure_equals(value.hour, 3);
+  ensure_equals(value.min, 0);
   ensure_equals(value.station_id, 123);
   ensure_equals(value.variable_id, 456);
   ensure_equals(value.value1, 78.9);
@@ -59,16 +63,9 @@ void to::test<2>()
   vm2::Value value;
   ensure_throws(parser.next(value));
 }
-// Reftime decoder/encoder
-template<> template<>
-void to::test<3>()
-{
-  ensure_equals(vm2::Parser::decode_reftime("201102030400"), "2011-02-03T04:00:00Z");
-  ensure_equals(vm2::Parser::encode_reftime("2011-02-03T04:00:00Z"), "201102030400");
-}
 // Serializer
 template<> template<>
-void to::test<4>()
+void to::test<3>()
 {
   std::string line("201201020300,123,456,78.9,-5.3,,\n");
   std::stringstream in(line);

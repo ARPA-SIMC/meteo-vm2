@@ -1,4 +1,0 @@
-usr/include/vm2/*.h
-usr/lib/libvm2.so
-usr/lib/*.a
-usr/lib/pkgconfig

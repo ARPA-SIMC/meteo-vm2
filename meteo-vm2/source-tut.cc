@@ -66,11 +66,11 @@ void to::test<2>()
   lua_pop(L,1);
   
   lua_getfield(L, -1, "lon");
-  ensure_equals(12.07738, lua_tonumber(L, -1));
+  ensure_equals(1207738, lua_tonumber(L, -1));
   lua_pop(L,1);
 
   lua_getfield(L, -1, "lat");
-  ensure_equals(44.60016, lua_tonumber(L, -1));
+  ensure_equals(4460016, lua_tonumber(L, -1));
   lua_pop(L,1);
 
   lua_pop(L,1);

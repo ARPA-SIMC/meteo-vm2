@@ -143,7 +143,11 @@ class Source {
   /// Lua VM
   lua_State* L;
 
-  /// Get the default source (singleton) using the default path
+  /**
+   * Get the default source (singleton) using the default path
+   * (`METEO_VM2_SOURCE` environment variable or, if unset,
+   * `$sharedstatedir/meteo-vm2/source/default.luac`).
+   */
   static Source* get();
 
   Source(const std::string& path);

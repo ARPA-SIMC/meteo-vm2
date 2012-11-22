@@ -7767,6 +7767,7 @@ return {
   [12710]={lat=4500949,lon=977124,rep='simnpr'},
   [12712]={lat=4462255,lon=1040761,rep='simnpr'},
   [12714]={lat=4387178,lon=1174720,rep='idrost'},
+  [12715]={lat=4469725,lon=1009278,rep='simnpr'},
   [18574]={lat=5155000,lon=83333,rep='temp'},
   [18806]={lat=5211667,lon=96667,rep='temp'},
   [19616]={lat=5317775,lon=-51667,rep='temp'},

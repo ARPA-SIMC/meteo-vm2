@@ -95,7 +95,7 @@ struct Parser {
   int lineno;
 
   Parser(std::istream& in);
-  ~Parser();
+  virtual ~Parser();
 
   /// Store the next VM2 message in value
   bool next(Value& value);

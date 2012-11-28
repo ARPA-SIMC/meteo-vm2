@@ -43,9 +43,9 @@ bool Parser::next(Value& value) {
 }
 
 bool Parser::next(Value& value, std::string& line) {
+  char c;
   line.clear();
   while (true) {
-    char c;
     in.get(c);
     if (!in.good())
       if (line.size() == 0)

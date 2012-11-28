@@ -1,6 +1,6 @@
 if HAVE_DOXYGEN
 
-Doxygen.stamp: Doxygen vm2.dox
+Doxygen.stamp: Doxygen meteo-vm2.dox
 	doxygen Doxygen
 	date -u > $@
 
@@ -26,13 +26,15 @@ examples_DATA = \
 		examples/generate-source.lua \
 		examples/source.lua \
 		examples/values.vm2 \
-		examples/oracle-source.py
+		examples/oracle-source.py \
+		examples/parser.f90
 
 
 EXTRA_DIST = \
 	     Doxygen.in \
-	     vm2.dox \
+	     meteo-vm2.dox \
 	     examples/generate-source.lua \
 	     examples/source.lua \
 	     examples/values.vm2 \
-	     examples/oracle-source.py
+	     examples/oracle-source.py \
+	     examples/parser.f90

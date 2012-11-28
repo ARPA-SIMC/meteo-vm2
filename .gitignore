@@ -1,6 +1,3 @@
-/default.luac
-/meteo-vm2.pc
-/doc/Doxygen.stamp
 wibble.tar.gz
 stamp-h1
 missing
@@ -22,9 +19,13 @@ aclocal.m4
 Makefile.in
 Makefile
 /wibble
+/meteo-vm2f.pc
 /meteo-vm2/meteo-vm2-test
+/meteo-vm2.pc
 /doc/doxygen
+/doc/Doxygen.stamp
 /doc/Doxygen
+/default.luac
 .libs
 .deps
 *.o

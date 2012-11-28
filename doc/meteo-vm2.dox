@@ -17,4 +17,10 @@ script that creates the attributes file.
 @example source.lua
 @example generate-source.lua
 @example oracle-source.py
+@example parser.f90
+
+@page FortranBinding Fortran binding
+meteo-vm2 comes with a Fortran interface for parsing (\ref parser.f90 "example")
+and retrieving the attributes for stations and variables.
+
 */

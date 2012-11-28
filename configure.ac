@@ -7,9 +7,8 @@ AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADERS([config.h])
 AM_CONFIG_HEADER(wibble/config.h)
 
-
-
 AC_PROG_CXX
+AC_PROG_FC
 AM_INIT_AUTOMAKE([foreign nostdinc subdir-objects])
 LT_INIT
 
@@ -35,7 +34,9 @@ AM_CONDITIONAL([HAVE_DOXYGEN], [test x$have_doxygen = xyes])
 AC_CONFIG_FILES([Makefile
 		 wibble/Makefile
                  meteo-vm2/Makefile
+		 fortran/Makefile
 		 meteo-vm2.pc
+		 meteo-vm2f.pc
 		 doc/Doxygen
 		 doc/Makefile])
 AC_OUTPUT

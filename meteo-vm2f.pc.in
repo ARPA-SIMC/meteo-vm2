@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: meteo-vm2f
+Description: VM2 library - fortran bindings
+Version: @VERSION@
+Cflags: -I${includedir} @LUA_CFLAGS@ @LIBS@
+Libs: -L${libdir} @LUA_LIBS@ -lmeteo-vm2 -lmeteo-vm2f

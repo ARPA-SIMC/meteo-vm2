@@ -1,6 +1,6 @@
 Name:           meteo-vm2
-Version:        0.1 
-Release:        1%{?dist}
+Version:        0.1
+Release:        2%{?dist}
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
@@ -29,7 +29,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%{_libdir}/*.so.*
+%{_libdir}/lib%{name}.so.*
 %{_sharedstatedir}/%{name}/source/default.lua*
 
 %package devel
@@ -41,10 +41,10 @@ VM2 decoding/encoding library - development files
 
 %files devel
 %defattr(-,root,root,-)
-%{_includedir}/*
-%{_libdir}/*.a
-%{_libdir}/*.la
-%{_libdir}/*.so
+%{_includedir}/%{name}/*
+%{_libdir}/lib%{name}.a
+%{_libdir}/lib%{name}.la
+%{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/meteo-vm2.pc
 
 %package doc
@@ -57,6 +57,34 @@ VM2 decoding/encoding library - documentation
 %doc %{_docdir}/%{name}/*
 %defattr(-,root,root,-)
 
+%package fortran
+Summary:        meteo-vm2 Fortran library
+Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}, cnf-devel
+
+%description fortran
+VM2 decoding/encoding library - Fortran bindings
+
+%files fortran
+%defattr(-,root,root,-)
+%{_libdir}/lib%{name}-fortran.so.*
+
+%package fortran-devel
+Summary:        meteo-vm2 Fortran development library
+Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}, %{name}f = %{?epoch:%epoch:}%{version}-%{release}
+
+%description fortran-devel
+VM2 decoding/encoding library - Fortran development files
+
+%files fortran-devel
+%defattr(-,root,root,-)
+%{_includedir}/meteo-vm2-fortran.h
+%{_libdir}/lib%{name}-fortran.a
+%{_libdir}/lib%{name}-fortran.la
+%{_libdir}/lib%{name}-fortran.so
+
 %changelog
+* Thu Nov 29 2012 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.2-1%{dist}
+- Fortran bindings
+
 * Tue Oct 30 2012 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.1-1%{dist}
 - First version

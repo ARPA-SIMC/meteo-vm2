@@ -27,7 +27,8 @@ examples_DATA = \
 		examples/source.lua \
 		examples/values.vm2 \
 		examples/oracle-source.py \
-		examples/parser.f90
+		examples/parser.f90 \
+		examples/source.f90
 
 
 EXTRA_DIST = \
@@ -37,4 +38,5 @@ EXTRA_DIST = \
 	     examples/source.lua \
 	     examples/values.vm2 \
 	     examples/oracle-source.py \
-	     examples/parser.f90
+	     examples/parser.f90 \
+	     examples/source.f90

@@ -49,4 +49,4 @@ program parser
     STOP 1
   endif
 
-end subroutine parser
+end program parser

@@ -70,7 +70,7 @@ VM2 decoding/encoding library - Fortran bindings
 
 %package fortran-devel
 Summary:        meteo-vm2 Fortran development library
-Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}, %{name}f = %{?epoch:%epoch:}%{version}-%{release}
+Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}, %{name}-fortran = %{?epoch:%epoch:}%{version}-%{release}
 
 %description fortran-devel
 VM2 decoding/encoding library - Fortran development files

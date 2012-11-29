@@ -30,6 +30,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %{_libdir}/lib%{name}.so.*
+%dir %{_sharedstatedir}/%{name}
 %{_sharedstatedir}/%{name}/source/default.lua*
 
 %package devel
@@ -41,6 +42,7 @@ VM2 decoding/encoding library - development files
 
 %files devel
 %defattr(-,root,root,-)
+%dir %{_includedir}/%{name}
 %{_includedir}/%{name}/*
 %{_libdir}/lib%{name}.a
 %{_libdir}/lib%{name}.la
@@ -54,7 +56,7 @@ Summary:        C++ library for VM2 data - documentation
 VM2 decoding/encoding library - documentation
 
 %files doc
-%doc %{_docdir}/%{name}/*
+%doc %{_docdir}/%{name}
 %defattr(-,root,root,-)
 
 %package fortran

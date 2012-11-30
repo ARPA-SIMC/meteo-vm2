@@ -1,6 +1,6 @@
 Name:           meteo-vm2
 Version:        0.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
@@ -83,6 +83,12 @@ VM2 decoding/encoding library - Fortran development files
 %{_libdir}/lib%{name}-fortran.a
 %{_libdir}/lib%{name}-fortran.la
 %{_libdir}/lib%{name}-fortran.so
+
+%post
+/sbin/ldconfig
+
+%postun
+/sbin/ldconfig
 
 %changelog
 * Thu Nov 29 2012 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.2-1%{dist}

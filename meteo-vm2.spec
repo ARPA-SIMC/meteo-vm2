@@ -91,7 +91,10 @@ VM2 decoding/encoding library - Fortran development files
 /sbin/ldconfig
 
 %changelog
-* Thu Nov 29 2012 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.2-1%{dist}
+* Fri Nov 30 2012 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.1-3%{dist}
+- %post and %postun directives
+
+* Thu Nov 29 2012 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.1-2%{dist}
 - Fortran bindings
 
 * Tue Oct 30 2012 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.1-1%{dist}

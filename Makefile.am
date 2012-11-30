@@ -12,6 +12,7 @@ sourcedir = $(sharedstatedir)/$(PACKAGE)/source
 source_DATA = default.lua default.luac
 
 EXTRA_DIST = \
+	     autogen.sh \
 	     meteo-vm2.pc.in \
 	     test/data/source-1.lua \
 	     test/data/source-2.luac \

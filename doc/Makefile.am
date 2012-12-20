@@ -28,7 +28,8 @@ examples_DATA = \
 		examples/values.vm2 \
 		examples/oracle-source.py \
 		examples/parser.f90 \
-		examples/source.f90
+		examples/source.f90 \
+		examples/bufr.lua
 
 
 EXTRA_DIST = \
@@ -39,4 +40,5 @@ EXTRA_DIST = \
 	     examples/values.vm2 \
 	     examples/oracle-source.py \
 	     examples/parser.f90 \
-	     examples/source.f90
+	     examples/source.f90 \
+	     examples/bufr.lua

@@ -19,9 +19,13 @@ aclocal.m4
 Makefile.in
 Makefile
 /wibble
+/src/meteo-vm2-to-bufr
+/src/bufr-to-meteo-vm2
 /meteo-vm2f.pc
 /meteo-vm2/meteo-vm2-test
 /meteo-vm2.pc
+/meteo-vm2-*.tar.gz
+/fortran/test
 /doc/doxygen
 /doc/Doxygen.stamp
 /doc/Doxygen

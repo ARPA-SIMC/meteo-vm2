@@ -1,14 +1,14 @@
 Name:           meteo-vm2
-Version:        0.1
-Release:        3%{?dist}
+Version:        0.2
+Release:        1%{?dist}
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
 URL:            http://www.arpa.emr.it/sim
 Source:         %{name}-%{version}.tar.gz
 
-BuildRequires:  libtool, pkgconfig, lua-devel >= 5.1
-Requires:       lua >= 5.1 
+BuildRequires:  libtool, pkgconfig, lua-devel >= 5.1, libdballe-devel >= 5.19
+Requires:       lua >= 5.1
 
 %description
 VM2 decoding/encoding library
@@ -83,6 +83,18 @@ VM2 decoding/encoding library - Fortran development files
 %{_libdir}/lib%{name}-fortran.a
 %{_libdir}/lib%{name}-fortran.la
 %{_libdir}/lib%{name}-fortran.so
+
+%package utils
+Summary:        meteo-vm2 utilities
+Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}, libdballe5 >= 5.19
+
+%description utils
+Collection of utilities for VM2 files
+
+%files utils
+%defattr(-,root,root,-)
+%{_bindir}/meteo-vm2-to-bufr
+%{_bindir}/bufr-to-meteo-vm2
 
 %post
 /sbin/ldconfig

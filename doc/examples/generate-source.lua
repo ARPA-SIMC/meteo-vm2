@@ -25,7 +25,7 @@ con = assert(env:connect("edigiacomo"))
 -- fetch stations
 
 io.write(" stations={\n")
-cur = assert(con:execute("SELECT id, latitude, longitude, report FROM vm2_stations ORDER BY id"))
+cur = assert(con:execute("SELECT id, ST_X(geom) as longitude, ST_Y(geom) as latitude, report FROM core.stations ORDER BY id"))
 row = cur:fetch({}, "a")
 while row do
 	s = string.format("  [%d]={lon=%d,lat=%d,rep=%q},\n",row.id, row.longitude*100000, row.latitude*100000, row.report)
@@ -36,12 +36,12 @@ cur:close()
 io.write(" },\n")
 -- fetch variables
 io.write(" variables={\n")
-cur = assert(con:execute("SELECT id, bcode, ltype1, NULLIF(l1,'NaN') as l1, NULLIF(ltype2,'NaN') as ltype2, NULLIF(l2,'NaN') as l2, pind, p1, p2, unit FROM vm2_variables ORDER BY id"))
+cur = assert(con:execute("SELECT id, bcode, lt1, NULLIF(l1,'NaN') as l1, NULLIF(lt2,'NaN') as lt2, NULLIF(l2,'NaN') as l2, tr, p1, p2, unit FROM core.variables ORDER BY id"))
 row = cur:fetch({}, "a")
 while row do
-	s = string.format("  [%d]={unit=%q,bcode=%q,pind=%d,p1=%d,p2=%d,lt1=%d,",row.id, row.unit, row.bcode, row.pind, row.p1, row.p2, row.ltype1)
+	s = string.format("  [%d]={unit=%q,bcode=%q,tr=%d,p1=%d,p2=%d,lt1=%d,",row.id, row.unit, row.bcode, row.tr, row.p1, row.p2, row.lt1)
 	if (row.l1 ~= nil) then s = s .. string.format("l1=%d,", row.l1) end
-	if (row.ltype2 ~= nil) then s = s .. string.format("l1=%d,", row.ltype2) end
+	if (row.lt2 ~= nil) then s = s .. string.format("l1=%d,", row.lt2) end
 	if (row.l2 ~= nil) then s = s .. string.format("l1=%d,", row.l2) end
 	s = s .. "},\n"
 	io.write(s)

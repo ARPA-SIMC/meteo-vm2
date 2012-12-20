@@ -1,4 +1,4 @@
-SUBDIRS = wibble meteo-vm2 fortran doc
+SUBDIRS = wibble meteo-vm2 fortran src doc
 
 pkgconfigdir = $(libdir)/pkgconfig
 

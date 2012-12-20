@@ -1,0 +1,9 @@
+2012-12-20 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
+	* autogen.sh: wibble is downloaded if wibble/ is not found
+	* configure.ac: libdballe check
+	* Makefile.am: src/ directory in SUBDIRS
+	* src/Makefile.am: created Makefile for src/
+	* src/bufr-to-meteo-vm2.cc: BUFR to VM2 converter
+	* src/meteo-vm2-to-bufr.cc: VM2 to BUFr converter
+	* default.lua: attribute file updated
+	* doc/examples/generate-source.lua: updated example

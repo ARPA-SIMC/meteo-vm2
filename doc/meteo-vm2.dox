@@ -19,10 +19,37 @@ script that creates the attributes file.
 @example oracle-source.py
 @example parser.f90
 @example source.f90
+@example bufr.lua
 
 @page FortranBinding Fortran binding
 meteo-vm2 comes with a Fortran interface for parsing (\ref parser.f90
 "example") and retrieving the attributes for stations and variables (\ref
 source.f90 "example").
+
+@page Utils Utility programs
+@section UtilMeteoVm2ToBufr meteo-vm2-to-bufr
+`meteo-vm2-to-bufr` is a VM2 to BUFR converter. Every attribute in the "stations" 
+section is a local B table descriptor and the key **must** be in the form `BXXYYY`; 
+the "variables" section **must** have the following keys: `bcode`, `unit`, `tr`, 
+`p1`, `p2`, `lt1`, `l1` (optional), `lt2` (optional), `l2` (optional).
+@code
+return {
+  stations={
+    ....
+    [12]={B05001=70.944410,B06001=-8.666670,B01194='synop',B01019='JAN MAYEN',B01001=1,B01002=1,},
+    ...
+  },
+  variables={
+    ...
+    [1]={unit='m',bcode='B20013',tr=254,p1=0,p2=0,lt1=256,l1=0,lt2=258,},
+    [2]={unit='hm',bcode='B20001',tr=254,p1=0,p2=0,lt1=1,},
+    ...
+}
+@endcode
+For a complete example, see \ref bufr.lua.
+
+@section UtilBufrToMeteoVm2 bufr-to-meteo-vm2
+`bufr-to-meteo-vm2` is a BUFR to VM2 converter. The lookup on the attributes
+file is the reverse of the command `meteo-vm2-to-bufr`.
 
 */

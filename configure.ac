@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.68])
-AC_INIT([meteo-vm2], [0.1], [edigiacomo@arpa.emr.it])
+AC_INIT([meteo-vm2], [0.2], [edigiacomo@arpa.emr.it])
 AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADERS([config.h])
 AM_CONFIG_HEADER(wibble/config.h)
@@ -31,10 +31,30 @@ else
 fi
 AM_CONDITIONAL([HAVE_DOXYGEN], [test x$have_doxygen = xyes])
 
+AC_ARG_ENABLE([bufr],
+	      [AS_HELP_STRING([--enable-bufr], [build BUFR support])],
+	      [],
+	      [enable_bufr=yes])
+if test $enable_bufr = yes
+then
+	PKG_CHECK_EXISTS([libdballe >= 5.19], [have_dballe=yes], [have_dballe=no])
+	if test $have_dballe = yes
+	then
+		AC_DEFINE([HAVE_DBALLE], 1, [dballe functions are available])
+		PKG_CHECK_MODULES(DBALLE,[libdballe >= 5.19])
+	else
+		AC_MSG_WARN([compiling without DB-All.e: BUFR support will be disabled])
+	fi
+else
+	have_dballe=no
+fi
+AM_CONDITIONAL([DBALLE], [test x"$have_dballe" = x"yes"])
+
 AC_CONFIG_FILES([Makefile
 		 wibble/Makefile
                  meteo-vm2/Makefile
 		 fortran/Makefile
+		 src/Makefile
 		 meteo-vm2.pc
 		 meteo-vm2f.pc
 		 doc/Doxygen

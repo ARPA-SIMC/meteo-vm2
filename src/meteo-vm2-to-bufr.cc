@@ -34,7 +34,7 @@ int main(int argc, const char** argv)
   meteo::vm2::Source* source = NULL;
 
   if (argc > 1 
-      && (strcmp(argv[1], "-h") || strcmp(argv[1], "--help"))) {
+      && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0)) {
     show_usage(std::cerr);
     return 0;
   }

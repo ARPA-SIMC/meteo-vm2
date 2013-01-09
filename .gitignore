@@ -29,7 +29,7 @@ Makefile
 /doc/doxygen
 /doc/Doxygen.stamp
 /doc/Doxygen
-/default.luac
+/*.luac
 .libs
 .deps
 *.o

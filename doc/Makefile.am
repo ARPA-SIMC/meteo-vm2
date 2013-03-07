@@ -1,20 +1,24 @@
 if HAVE_DOXYGEN
 
 Doxygen.stamp: Doxygen meteo-vm2.dox
-	doxygen Doxygen
+	$(DOXYGEN) Doxygen
 	date -u > $@
 
 all-local: Doxygen.stamp
 
-install-data-local:
-	$(mkinstalldirs) $(DESTDIR)$(docdir)/html
-	find doxygen/html -type f -exec $(INSTALL_DATA) '{}' $(DESTDIR)$(docdir)/html \;
+install-data-local: install-doxygen-html
 
-uninstall-local:
-	rm -rf $(DESTDIR)$(docdir)/html
+uninstall-local: uninstall-doxygen-html
+
+install-doxygen-html:
+	test -z ${htmldir} || $(mkinstalldirs) ${htmldir}
+	cp -r $(builddir)/doxygen/html ${docdir}
+
+uninstall-doxygen-html:
+	$(RM) -r ${docdir}/html
 
 clean-local:
-	rm -rf $(builddir)/doxygen
+	$(RM) -r $(builddir)/doxygen
 
 CLEANFILES = Doxygen.stamp
 

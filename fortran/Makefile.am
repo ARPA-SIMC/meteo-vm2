@@ -2,7 +2,7 @@ dist_include_HEADERS = meteo-vm2-fortran.h
 
 lib_LTLIBRARIES = libmeteo-vm2-fortran.la
 
-libmeteo_vm2_fortran_la_CPPFLAGS = -I$(top_srcdir) -I$(top_builddir)
+libmeteo_vm2_fortran_la_CPPFLAGS = -I$(top_srcdir) -I$(top_builddir) $(LUA_CFLAGS)
 
 libmeteo_vm2_fortran_la_LIBADD = $(top_builddir)/meteo-vm2/libmeteo-vm2.la -lcnf
 

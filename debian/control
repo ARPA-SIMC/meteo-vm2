@@ -5,26 +5,41 @@ Maintainer: Enrico Zini <enrico@debian.org>
 Build-Depends: debhelper (>= 7.0.50~), dh-buildinfo
 Standards-Version: 3.9.3.0
 
-Package: libmeteo-vm2
+Package: libmeteo-vm2-0
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Library to work with VM2 weather samples (shared)
+ Library to work with VM2 weather samples.
+ .
+ This package contains the shared library and the source tables.
 
 Package: libmeteo-vm2-dev
 Section: libdevel
 Architecture: any
-Depends: libmeteo-vm2 (= ${binary:Version}), ${misc:Depends}
+Depends: libmeteo-vm2-0 (= ${binary:Version}), ${misc:Depends}
 Description: Library to work with VM2 weather samples (development)
+ Library to work with VM2 weather samples.
+ .
+ This package contains the development files.
 
 Package: libmeteo-vm2-tools
 Section: misc
 Architecture: any
-Depends: libmeteo-vm2 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Library to work with VM2 weather samples (tools)
+ Tools to handle VM2 files:
+ .
+ * bufr-to-meteo-vm2: BUFR to VM2 converter
+ * meteo-vm2-to-bufr: VM2 to BUFR converter
+ .
+ This package contains a set of VM2 tools.
 
 Package: libmeteo-vm2-doc
 Section: doc
 Architecture: all
 Depends: ${misc:Depends}
 Description: Library to work with VM2 weather samples (documentation)
+ Library to work with VM2 weather samples.
+ .
+ This package contains the documentation and some examples.

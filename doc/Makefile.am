@@ -1,5 +1,7 @@
 if HAVE_DOXYGEN
 
+htmldir=$(DESTDIR)@docdir@
+
 Doxygen.stamp: Doxygen meteo-vm2.dox
 	$(DOXYGEN) Doxygen
 	date -u > $@
@@ -12,10 +14,10 @@ uninstall-local: uninstall-doxygen-html
 
 install-doxygen-html:
 	test -z ${htmldir} || $(mkinstalldirs) ${htmldir}
-	cp -r $(builddir)/doxygen/html ${docdir}
+	cp -r $(builddir)/doxygen/html ${htmldir}
 
 uninstall-doxygen-html:
-	$(RM) -r ${docdir}/html
+	$(RM) -r ${htmldir}/html
 
 clean-local:
 	$(RM) -r $(builddir)/doxygen

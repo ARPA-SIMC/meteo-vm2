@@ -11,11 +11,11 @@ install-data-local: install-doxygen-html
 uninstall-local: uninstall-doxygen-html
 
 install-doxygen-html:
-	test -z ${htmldir} || $(mkinstalldirs) ${htmldir}
-	cp -r $(builddir)/doxygen/html ${docdir}
+	$(mkinstalldirs) $(DESTDIR)$(docdir)
+	cp -r $(builddir)/doxygen/html $(DESTDIR)$(docdir)
 
 uninstall-doxygen-html:
-	$(RM) -r ${docdir}/html
+	$(RM) -r $(DESTDIR)$(docdir)/html
 
 clean-local:
 	$(RM) -r $(builddir)/doxygen

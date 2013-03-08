@@ -16,3 +16,15 @@ Section: libdevel
 Architecture: any
 Depends: libmeteo-vm2 (= ${binary:Version}), ${misc:Depends}
 Description: Library to work with VM2 weather samples (development)
+
+Package: libmeteo-vm2-tools
+Section: misc
+Architecture: any
+Depends: libmeteo-vm2 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Library to work with VM2 weather samples (tools)
+
+Package: libmeteo-vm2-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends}
+Description: Library to work with VM2 weather samples (documentation)

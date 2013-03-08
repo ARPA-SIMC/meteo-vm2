@@ -36,8 +36,8 @@ static double MISSING_DOUBLE = std::numeric_limits<double>::max();
 /**
  * VM2 value. 
  *
- * For VM2 value parsing, see @ref FormatOfVM2ValueFile.
- * For VM2 value attributes, see @ref FormatOfVM2AttributesFile.
+ * For VM2 value parsing, see @ref VM2ValueFile.
+ * For VM2 value attributes, see @ref VM2AttributesFile.
  */
 struct Value {
   int year;

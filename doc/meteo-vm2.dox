@@ -14,19 +14,33 @@ detailed description, vm2::Source and \ref generate-source.lua "here" for a lua
 script that creates the attributes file.
 
 @example values.vm2
+This is an example of a VM2 file. See @ref VM2ValueFile for a detailed
+description.
 @example source.lua
+This is an example of a source table. See @ref VM2AttributesFile for a detailed
+description.
 @example generate-source.lua
+This example is a Lua script that generates a source table from a PostgreSQL
+database.
 @example oracle-source.py
+This example is a Python script that generates a source table from an Oracle
+database.
 @example parser.f90
+Example of a VM2 parser for Fortran90.
 @example source.f90
+Example of a VM2 source table reader for Fortran90.
 @example bufr.lua
+This is an example of a source table that maps stations and variables to B
+table local descriptor. See @ref VM2ValueFile for a detailed description.
 
 @page FortranBinding Fortran binding
+@brief API for Fortran
 meteo-vm2 comes with a Fortran interface for parsing (\ref parser.f90
 "example") and retrieving the attributes for stations and variables (\ref
 source.f90 "example").
 
 @page Utils Utility programs
+@brief Tools for VM2 files
 @section UtilMeteoVm2ToBufr meteo-vm2-to-bufr
 `meteo-vm2-to-bufr` is a VM2 to BUFR converter. Every attribute in the "stations" 
 section is a local B table descriptor and the key **must** be in the form `BXXYYY`; 

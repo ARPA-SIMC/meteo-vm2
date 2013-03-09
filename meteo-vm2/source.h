@@ -25,6 +25,7 @@
 /**
  * @file
  * @page VM2AttributesFile VM2 attributes file
+ * @brief Format of a VM2 attributes file and how to read it.
  *
  * The attributes file is a Lua script that return a table with 
  * the stations and variables attributes:

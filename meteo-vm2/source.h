@@ -1,7 +1,7 @@
 /*
  * source - Reader for VM2 attributes file
  *
- * Copyright (C) 2012  ARPA-SIM <urpsim@smr.arpa.emr.it>
+ * Copyright (C) 2012,2013 ARPA-SIM <urpsim@smr.arpa.emr.it>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,67 +21,12 @@
  */
 #ifndef METEO_VM2_SOURCE_H
 #define METEO_VM2_SOURCE_H
-
 /**
  * @file
- * @page VM2AttributesFile VM2 attributes file
- * @brief Format of a VM2 attributes file and how to read it.
- *
- * The attributes file is a Lua script that return a table with 
- * the stations and variables attributes:
- *
- * @code
- *
- *  return {
- *    stations = {
- *      [145] = { lon=1285000, lat=4412645, rep='synop' },
- *      [218] = { mykey=4 
- *    },
- *    variables = {
- *      [245] = {  ... }
- *    }
- *  }
- * @endcode
- *
- * You can create a meteo::vm2::Source instance to query the attributes file.
- *
- * E.g., if you want the attributes associated to the station with id = 12:
- *
- * @code
- *  // Open the attributes file "v2m.lua"
- *  meteo::vm2::Source source("vm2.lua");
- *  // Push the station 12 on top of the stack
- *  source.lua_push_station(12);
- *  // If stations 12 exists there's a table else a nil value
- *  if (lua_istable(source.L,-1)) {
- *    ...
- *  }
- *  // Pop the table or the nil value
- *  lua_pop(L,1);
- *
- * @endcode
- *
- * Or, if you want the list of station id matching the attributes
- * `lon=1285000` and `lat=4412645`:
- *
- * @code
- *
- *  // Open the attributes file "v2m.lua"
- *  meteo::vm2::Source source("vm2.lua");
- *  // Create the query table
- *  lua_newtable(source.L);
- *  // Save the index of the query table
- *  int idx = lua_gettop(source.L);
- *  // Populate the query table
- *  lua_pushnumber(source.L, 1285000);
- *  lua_setfield(source.L, idx, "lon");
- *  lua_pushnumber(source.L, 4412645);
- *  lua_setfield(source.L, idx, "lat");
- *  // Get the list of station id matching the query table
- *  std::vector<int> stations = source.lua_find_stations(idx);
- *
- * @endcode
+ * @brief Reader for VM2 attributes file
+ * @see @ref VM2AttributesFile
  */
+
 #include <stdio.h>
 #include <string>
 #include <vector>
@@ -93,8 +38,9 @@ namespace vm2 {
 namespace source {
 
 /**
- * @brief Default source path.The path is the value of the environment variable
- * `METEO_VM2_SOURCE` or, if unset, `$localstatedir/lib/meteo-vm2/source/default.luac`.
+ * @brief Default source path.
+ * The path is the value of the environment variable `METEO_VM2_SOURCE` or, if
+ * unset, `$localstatedir/lib/meteo-vm2/source/default.luac`.
  */
 std::string path();
 

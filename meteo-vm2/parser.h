@@ -1,7 +1,7 @@
 /*
  * parser - Parse VM2 files
  *
- * Copyright (C) 2012  ARPA-SIM <urpsim@smr.arpa.emr.it>
+ * Copyright (C) 2012,2013 ARPA-SIM <urpsim@smr.arpa.emr.it>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,57 +21,10 @@
  */
 #ifndef METEO_VM2_PARSER_H
 #define METEO_VM2_PARSER_H
-
 /**
  * @file
- * @page VM2ValueFile VM2 value file
- * @brief Format of a VM2 file and how to read it
- *
- * A VM2 file contains a list of values in CSV format with the following 
- * columns:
- *  - REFTIME: reference time (YYYYmmddHHMM or YYYYmmddHHMMSS) in UTC
- *  - STATION ID: integer
- *  - VARIABLE ID id: integer
- *  - VALUE 1: double (empty if missing)
- *  - VALUE 2: double (empty if missing)
- *  - VALUE 3: string (without comma)
- *  - FLAGS: string (without comma)
- *
- * E.g.
- *
- * @code
- * 201201010000,1,2,4.56,7.8,X,000000000
- * 201201010030,1,2,12.0,9.4,X,000000000
- * 20120101003045,1,2,12.0,9.4,X,000000000
- * @endcode
- *
- * Read VM2 values from stdin
- *
- * @code
- *
- * meteo::vm2::Parser parser(std::cin);
- * meteo::vm2::Value value;
- * while (parser.next(value)) {
- *  // ...
- * }
- *
- * @endcode
- *
- * Serialize a VM2 file
- *
- * @code
- *
- * meteo::vm2::Value value;
- * // Populate the value
- * value.year = 2012;
- * value.month = 1;
- * // ...
- * value.station_id = 123;
- * // ...
- * // Serialize
- * meteo::vm2::Parser::serialize(std::cout, value);
- *
- * @endcode
+ * @brief Parse VM2 files
+ * @see @ref VM2ValueFile
  */
 
 #include <string>
@@ -95,6 +48,7 @@ struct Parser {
   /// Number of the last line parsed
   int lineno;
 
+  /// Create a stdin parser
   Parser(std::istream& in);
   virtual ~Parser();
 
@@ -103,7 +57,7 @@ struct Parser {
 
   /// Store the next VM2 message in value, and the raw message in \a raw
   bool next(Value& value, std::string& raw);
-  
+
   /// Serialize a value
   static void serialize(std::ostream& out, const Value& value);
 };

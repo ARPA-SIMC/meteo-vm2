@@ -1,0 +1,16 @@
+/**
+ * @page MeteoVM2Tools VM2 tools
+ * @brief Tools to handle VM2 files
+ *
+ * @section ConvertVM2ToBUFR Convert VM2 to BUFR
+ * @code
+ * meteo-vm2-to-bufr [SOURCEFILE]
+ * @endcode
+ * Convert VM2 (stdin) to BUFR (stdout).
+ *
+ * @section ConvertBUFRToVM2 Convert BUFR to VM2
+ * @code
+ * bufr-to-meteo-vm2 [SOURCEFILE]
+ * @endcode
+ * Convert BUFR (stdin) to VM2 (stdout).
+ */

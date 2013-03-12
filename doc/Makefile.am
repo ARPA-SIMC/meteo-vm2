@@ -1,6 +1,13 @@
 if HAVE_DOXYGEN
 
-Doxygen.stamp: Doxygen meteo-vm2.dox
+DOXYFILES = \
+	    meteo-vm2-fortranbinding.dox \
+	    meteo-vm2-mainpage.dox \
+	    meteo-vm2-vm2attributesfile.dox \
+	    meteo-vm2-vm2valuefile.dox \
+	    meteo-vm2-tools.dox
+
+Doxygen.stamp: Doxygen $(DOXYFILES)
 	$(DOXYGEN) Doxygen
 	date -u > $@
 
@@ -38,7 +45,11 @@ examples_DATA = \
 
 EXTRA_DIST = \
 	     Doxygen.in \
-	     meteo-vm2.dox \
+	     meteo-vm2-fortranbinding.dox \
+	     meteo-vm2-mainpage.dox \
+	     meteo-vm2-vm2attributesfile.dox \
+	     meteo-vm2-vm2valuefile.dox \
+	     meteo-vm2-tools.dox \
 	     examples/generate-source.lua \
 	     examples/source.lua \
 	     examples/values.vm2 \

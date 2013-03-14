@@ -39,8 +39,10 @@ void to::test<1>()
   meteo::vm2::Parser parser(in);
 
   meteo::vm2::Value value;
-  ensure(parser.next(value));
+  std::string l;
+  ensure(parser.next(value, l));
   ensure_equals(in.tellg(), line.size());
+  ensure_equals(l.size(), line.substr(0, 37).size());
   ensure_equals(value.year, 2012);
   ensure_equals(value.month, 1);
   ensure_equals(value.mday, 2);

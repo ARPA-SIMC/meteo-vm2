@@ -52,10 +52,10 @@ struct Parser {
   Parser(std::istream& in);
   virtual ~Parser();
 
-  /// Store the next VM2 message in value
+  /// Read the next VM2 value
   bool next(Value& value);
 
-  /// Store the next VM2 message in value, and the raw message in \a raw
+  /// Read the next VM2 value and store the raw message (w/o trailing newline)
   bool next(Value& value, std::string& raw);
 
   /// Serialize a value

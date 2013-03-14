@@ -26,40 +26,36 @@
 
 #include <wibble/exception.h>
 
+#define METEO_VM2_SOURCE_FILTER \
+                            "return function(q, l) " \
+                            "  res = {} " \
+                            "  for idx,item in pairs(l) do " \
+                            "    found = true " \
+                            "    for k, v in pairs(q) do " \
+                            "      if (item[k] ~= v) then " \
+                            "        found = false " \
+                            "        break " \
+                            "      end " \
+                            "    end " \
+                            "    if (found) then " \
+                            "      table.insert(res,idx) " \
+                            "    end " \
+                            "  end " \
+                            "  return res " \
+                            "end"
+
 namespace meteo {
 namespace vm2 {
 namespace source {
 
-static char* _path = NULL;
-
 std::string path() {
-  if (!_path) {
-    _path = ::getenv("METEO_VM2_SOURCE");
-    if (!_path)
-      _path = METEO_VM2_DEFAULT_SOURCE;
-  }
-  return _path;
+	const char* s = ::getenv("METEO_VM2_SOURCE");
+	if (!s)
+		return METEO_VM2_DEFAULT_SOURCE;
+	return s;
 }
 
 }
-
-static const char* filter = \
-                            "return function(q, l) "
-                            "  res = {} "
-                            "  for idx,item in pairs(l) do "
-                            "    found = true "
-                            "    for k, v in pairs(q) do "
-                            "      if (item[k] ~= v) then "
-                            "        found = false "
-                            "        break "
-                            "      end "
-                            "    end "
-                            "    if (found) then "
-                            "      table.insert(res,idx) "
-                            "    end "
-                            "  end "
-                            "  return res "
-                            "end";
 
 CoreSource::CoreSource(const std::string& path, lua_State* L) : path(path), L(L), stations_ref(LUA_NOREF), variables_ref(LUA_NOREF), filter_ref(LUA_NOREF) {
   if (luaL_dofile(L, path.c_str()) != 0) {
@@ -69,7 +65,7 @@ CoreSource::CoreSource(const std::string& path, lua_State* L) : path(path), L(L)
         "while loading " + path,
         msg);
   }
-  
+
   lua_pushstring(L, "stations");
   lua_gettable(L, -2);
   stations_ref = luaL_ref(L, LUA_REGISTRYINDEX);
@@ -77,7 +73,7 @@ CoreSource::CoreSource(const std::string& path, lua_State* L) : path(path), L(L)
   lua_gettable(L, -2);
   variables_ref = luaL_ref(L, LUA_REGISTRYINDEX);
 
-  if (luaL_dostring(L, filter) != 0) {
+  if (luaL_dostring(L, METEO_VM2_SOURCE_FILTER) != 0) {
     std::string msg = lua_tostring(L, -1);
     lua_pop(L, 1);
     throw wibble::exception::Consistency(

@@ -33,7 +33,7 @@ endif
 
 examplesdir = $(docdir)/examples
 
-examples_DATA = \
+dist_examples_DATA = \
 		examples/generate-source.lua \
 		examples/source.lua \
 		examples/values.vm2 \
@@ -49,11 +49,4 @@ EXTRA_DIST = \
 	     meteo-vm2-mainpage.dox \
 	     meteo-vm2-vm2attributesfile.dox \
 	     meteo-vm2-vm2valuefile.dox \
-	     meteo-vm2-tools.dox \
-	     examples/generate-source.lua \
-	     examples/source.lua \
-	     examples/values.vm2 \
-	     examples/oracle-source.py \
-	     examples/parser.f90 \
-	     examples/source.f90 \
-	     examples/bufr.lua
+	     meteo-vm2-tools.dox

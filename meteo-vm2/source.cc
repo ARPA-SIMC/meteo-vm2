@@ -66,6 +66,11 @@ CoreSource::CoreSource(const std::string& path, lua_State* L) : path(path), L(L)
         msg);
   }
 
+  if (!lua_istable(L, -1))
+    throw wibble::exception::Consistency(
+        "while loading " + path,
+        "source file doesn't return a table");
+
   lua_pushstring(L, "stations");
   lua_gettable(L, -2);
   stations_ref = luaL_ref(L, LUA_REGISTRYINDEX);

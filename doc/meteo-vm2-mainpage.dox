@@ -9,8 +9,8 @@ See \ref VM2ValueFile "here" for a detailed description and vm2::Parser.
 Each value has 2 identifier (station and variable), which (can) map a set of
 attributes: for example, the coordinates of the station or the measured
 physical quantity. The attributes are stored in a Lua file, plain or compiled
-(\ref source.lua "example").  See \ref VM2AttributesFile "here" for a
-detailed description, vm2::Source and \ref generate-source.lua "here" for a lua
+(\ref source.lua "example").  See \ref VM2AttributesFile "here" for a detailed
+description, meteo::vm2::Source and \ref generate-source.lua "here" for a lua
 script that creates the attributes file.
 
 @section MeteoVM2License License

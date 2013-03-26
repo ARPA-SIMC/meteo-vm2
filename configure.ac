@@ -6,6 +6,7 @@ AC_INIT([meteo-vm2], [0.2.1], [edigiacomo@arpa.emr.it])
 AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADERS([config.h])
 AM_CONFIG_HEADER(wibble/config.h)
+AC_CONFIG_MACRO_DIR([m4])
 
 AC_PROG_CXX
 AC_PROG_FC

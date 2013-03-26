@@ -1,10 +1,12 @@
+ACLOCAL_AMFLAGS = -Im4
+
 SUBDIRS = wibble meteo-vm2 fortran src doc
 
 pkgconfigdir = $(libdir)/pkgconfig
 
 pkgconfig_DATA = meteo-vm2.pc
 
-%.luac: %.lua
+.lua.luac:
 	luac -o $@ $^
 
 sourcedir = $(sharedstatedir)/$(PACKAGE)/source

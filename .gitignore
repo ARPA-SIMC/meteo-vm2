@@ -25,6 +25,7 @@ Makefile
 /meteo-vm2/meteo-vm2-test
 /meteo-vm2.pc
 /meteo-vm2-*.tar.gz
+/m4
 /fortran/test
 /doc/doxygen
 /doc/Doxygen.stamp

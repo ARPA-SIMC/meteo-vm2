@@ -2,6 +2,10 @@
 @page VM2AttributesFile VM2 attributes file
 @brief Format of a VM2 attributes file and how to read it.
 
+@tableofcontents
+
+@section IntroVM2AttributesFile Introduction
+
 The attributes file is a Lua script that return a table with 
 the stations and variables attributes:
 
@@ -56,4 +60,11 @@ Or, if you want the list of station id matching the attributes
  std::vector<int> stations = source.lua_find_stations(idx);
 
 @endcode
- */
+
+@section DynamicVM2AttributesFile Dynamic attributes file
+The attribute file is a Lua script, so it's possible to write a dynamic
+attributes table.
+
+See @ref http-source.lua and @ref json-source-ws.py for a complete example.
+
+*/

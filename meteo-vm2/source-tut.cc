@@ -19,11 +19,12 @@
  */
 
 #include <wibble/tests.h>
+#include <wibble/exception.h>
 
 #include "source.h"
 #include <stdlib.h>
 
-#define ensure_throws(x) do { try { x; ensure(false); } catch (wibble::exception::Generic& e) { } } while (0)
+#define ensure_throws(x) do { try { x; ensure(false); } catch (wibble::exception::Generic& e) { } } while (0);
 
 namespace tut {
 
@@ -193,7 +194,12 @@ void to::test<7>()
   ensure(lua_istable(L, -1));
   lua_pop(L, 1);
 }
-
-
+// Test invalid source failure
+template<> template<>
+void to::test<8>()
+{
+    ensure_throws(meteo::vm2::CoreSource source("/dev/null", L));
+    ensure_throws(meteo::vm2::CoreSource source(TOP_SRCDIR"/test/data/INVALID.lua", L));
+}
 
 }

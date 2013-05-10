@@ -1,5 +1,5 @@
 Name:           meteo-vm2
-Version:        0.2
+Version:        0.3
 Release:        1%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -32,6 +32,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib%{name}.so.*
 %dir %{_sharedstatedir}/%{name}
 %{_sharedstatedir}/%{name}/source/default.lua*
+%{_sharedstatedir}/%{name}/source/bufr.lua*
 
 %package devel
 Summary:        C++ library for VM2 data - development files
@@ -95,7 +96,6 @@ Collection of utilities for VM2 files
 %defattr(-,root,root,-)
 %{_bindir}/meteo-vm2-to-bufr
 %{_bindir}/bufr-to-meteo-vm2
-%{_sharedstatedir}/%{name}/source/bufr.lua*
 
 %post
 /sbin/ldconfig
@@ -104,6 +104,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Fri May 10 2013 Daniele Branchini <dbranchini@arpa.emr.it> - 0.3-1%{dist}
+- reflecting upstream changes
+
 * Fri Nov 30 2012 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.1-3%{dist}
 - %post and %postun directives
 

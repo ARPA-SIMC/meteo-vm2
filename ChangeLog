@@ -1,3 +1,5 @@
+2013-05-09 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
+	* default.lua: source updated
 2013-03-27 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
 	* meteo-vm2/source.cc (CoreSource::CoreSource): check if source file
 	returns a table.

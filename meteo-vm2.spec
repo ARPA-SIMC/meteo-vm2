@@ -1,6 +1,6 @@
 Name:           meteo-vm2
 Version:        0.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
@@ -87,7 +87,7 @@ VM2 decoding/encoding library - Fortran development files
 
 %package utils
 Summary:        meteo-vm2 utilities
-Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}, libdballe5 >= 5.19
+Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}, libdballe6 >= 6.0
 
 %description utils
 Collection of utilities for VM2 files
@@ -104,6 +104,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Tue May 14 2013 Daniele Branchini <dbranchini@arpa.emr.it> - 0.3-2%{dist}
+- fixed dep for libdballe6
+
 * Fri May 10 2013 Daniele Branchini <dbranchini@arpa.emr.it> - 0.3-1%{dist}
 - reflecting upstream changes
 

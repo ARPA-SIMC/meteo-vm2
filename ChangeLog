@@ -1,3 +1,6 @@
+2013-07-26 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
+	* src/bufr-to-meteo-vm2.cc: fixed conversion bug
+	* src/meteo-vm2-to-bufr.cc: skip missing values
 2013-05-09 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
 	* default.lua: source updated
 2013-03-27 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>

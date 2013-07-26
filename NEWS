@@ -1,0 +1,5 @@
+0.4 (2013-07-26)
+
+- meteo-vm2-to-bufr: skip samples with missing value1 and write a proper
+  message to stderr
+- bufr-to-meteo-vm2: fixed a bug related to value1 conversion

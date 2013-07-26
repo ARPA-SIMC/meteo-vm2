@@ -157,8 +157,8 @@ int main(int argc, const char** argv)
             source->lua_push_variable(vm2value.variable_id);
             lua_getfield(L, -1, "unit");
             if (!lua_isnil(L, -1)) {
-              vm2value.value1 = wreport::convert_units(lua_tostring(L, -1),
-                                                       v.info()->unit,
+              vm2value.value1 = wreport::convert_units(v.info()->unit,
+                                                       lua_tostring(L, -1),
                                                        v.enqd());
             } else {
               vm2value.value1 = v.enqd();

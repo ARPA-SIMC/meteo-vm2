@@ -127,6 +127,9 @@ int main(int argc, const char** argv)
         std::string unit = lua_tostring(L, -1);
         lua_pop(L, 1);
 
+        if (value.value1 == meteo::vm2::MISSING_DOUBLE)
+            throw std::runtime_error("Cannot convert missing value to BUFR");
+
         double val = wreport::convert_units(unit.c_str(), 
                                             dballe::varinfo(varcode)->unit, 
                                             value.value1);

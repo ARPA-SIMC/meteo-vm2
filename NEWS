@@ -1,3 +1,7 @@
+0.5 (2013-07-31)
+
+- Attribute tables updated
+
 0.4 (2013-07-26)
 
 - meteo-vm2-to-bufr: skip samples with missing value1 and write a proper

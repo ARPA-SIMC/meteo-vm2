@@ -21,7 +21,7 @@ WHERE
 ORDER BY
 	s.id
 """):
-	print("  [%d]={lat=%d,lon=%d,rep='%s'}," % (row[0],row[1],row[2],row[3]))
+	print("  [%d]={lat=%d,lon=%d,rep='%s',}," % (row[0],row[1],row[2],row[3]))
 print(" },")
 
 print(" variables={")

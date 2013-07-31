@@ -1,5 +1,5 @@
 Name:           meteo-vm2
-Version:        0.4
+Version:        0.5
 Release:        1%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -104,6 +104,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Wed Jul 31 2013 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.5-1%{dist}
+- Attribute tables updated
+
 * Fri Jul 26 2013 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.4-1%{dist}
 - fixed bug in bufr-to-meteo-vm2
 - messages with missing value are skipped in meteo-vm2-to-bufr

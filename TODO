@@ -1,0 +1,23 @@
+= TODO
+
+== Missing stations
+
+----
+station 7000034 not found
+station 7000035 not found
+----
+
+== Missing variables
+
+----
+ variable 1000106 not found
+----
+
+== Duplicate stations
+
+----
+2 stations with same attributes (10000002, 10000073)
+2 stations with same attributes (2000003, 2000228)
+2 stations with same attributes (5000007, 5000000)
+2 stations with same attributes (9000004, 9000007)
+----

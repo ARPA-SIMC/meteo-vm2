@@ -1,3 +1,5 @@
+2013-08-19 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
+	* default.lua: airquality stations and variables
 2013-07-26 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
 	* src/bufr-to-meteo-vm2.cc: fixed conversion bug
 	* src/meteo-vm2-to-bufr.cc: skip missing values

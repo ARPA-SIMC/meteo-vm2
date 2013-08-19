@@ -94,7 +94,11 @@ int main(int argc, const char** argv)
         }
         if (stations.size() > 1) {
           std::cerr << stations.size() 
-              << " stations with same attributes" << std::endl;
+              << " stations with same attributes"
+              << " ("
+              << wibble::str::join(stations.begin(), stations.end())
+              << ")"
+              << std::endl;
           continue;
         }
         vm2value.station_id = stations.at(0);
@@ -148,8 +152,12 @@ int main(int argc, const char** argv)
               continue;
             }
             if (variables.size() > 1) {
-              std::cerr << variables.size()
-                  << " variables with same attributes" << std::endl;
+                std::cerr << variables.size()
+                    << " variables with same attributes"
+                    << " ("
+                    << wibble::str::join(variables.begin(), variables.end())
+                    << ")"
+                    << std::endl;
               continue;
             }
             vm2value.variable_id = variables.at(0);

@@ -1,3 +1,5 @@
+2013-08-27 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
+	* default.lua: fixed p1 for daily airquality variables
 2013-08-19 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
 	* src/bufr-to-meteo-vm2.cc: print id list when items are duplicated
 	* default.lua: airquality stations and variables

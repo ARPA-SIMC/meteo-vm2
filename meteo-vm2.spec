@@ -1,6 +1,6 @@
 Name:           meteo-vm2
 Version:        0.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
@@ -104,6 +104,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Mon Sep 30 2013 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.7-2%{dist}
+- Updated variables and stations
+
 * Tue Aug 27 2013 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.7-1%{dist}
 - Fixed p1 for daily airquality variables (p1=86400,p2=86400)
 

@@ -1,6 +1,6 @@
 Name:           meteo-vm2
-Version:        0.7
-Release:        2%{?dist}
+Version:        0.8
+Release:        1%{?dist}
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
@@ -103,6 +103,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Wed Oct 02 2013 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.8-1%{dist}
+- default.lua has station attributes with bcodes as keys
+
 * Mon Sep 30 2013 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.7-2%{dist}
 - Updated variables and stations
 

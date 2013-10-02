@@ -27,8 +27,6 @@ return {
 }
 @endcode
 
-For a complete example, see \ref bufr.lua.
-
 @section ConvertBUFRToVM2 Convert BUFR to VM2
 @code
 bufr-to-meteo-vm2 [SOURCEFILE]

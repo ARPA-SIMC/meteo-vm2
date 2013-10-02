@@ -1,4 +1,9 @@
-0.7. (2013-08-27)
+0.8 (2013-10-02)
+
+- default.lua has station attributes with bcode as keys
+- bufr.lua is removed (BUFR <-> VM2 conversions are made with default.lua)
+
+0.7 (2013-08-27)
 
 - Fixed p1 for daily airquality variables (still experimental)
 

@@ -40,7 +40,6 @@ dist_examples_DATA = \
 		examples/oracle-source.py \
 		examples/parser.f90 \
 		examples/source.f90 \
-		examples/bufr.lua \
 		examples/http-source.lua \
 		examples/json-source-ws.py
 

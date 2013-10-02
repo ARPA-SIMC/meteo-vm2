@@ -40,7 +40,7 @@ int main(int argc, const char** argv)
       return 0;
     }
     if (argc == 1)
-      source = new meteo::vm2::Source(METEO_VM2_BUFR_SOURCE);
+      source = meteo::vm2::Source::get();
     else
       source = new meteo::vm2::Source(argv[1]);
 
@@ -76,10 +76,10 @@ int main(int argc, const char** argv)
           std::string bcode = lua_tostring(L, -2);
           wreport::Varcode varcode = wreport::descriptor_code(bcode.c_str());
           if (lua_isnumber(L, -1)) {
-            msg.set(dballe::var(varcode, lua_tonumber(L, -1)), varcode, 
+            msg.set(dballe::var(varcode, (int) lua_tointeger(L, -1)), varcode,
                     dballe::Level(257), dballe::Trange());
           } else {
-            msg.set(dballe::var(varcode, lua_tostring(L, -1)), varcode, 
+            msg.set(dballe::var(varcode, lua_tostring(L, -1)), varcode,
                     dballe::Level(257), dballe::Trange());
           }
           lua_pop(L,1);

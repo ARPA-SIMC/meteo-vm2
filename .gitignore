@@ -30,7 +30,6 @@ Makefile
 /doc/doxygen
 /doc/Doxygen.stamp
 /doc/Doxygen
-/bufr.lua
 /*.luac
 .libs
 .deps

@@ -49,9 +49,6 @@ database.
 Example of a VM2 parser for Fortran90.
 @example source.f90
 Example of a VM2 source table reader for Fortran90.
-@example bufr.lua
-This is an example of a source table that maps stations and variables to B
-table local descriptor. See @ref VM2ValueFile for a detailed description.
 @example http-source.lua
 This is an example of a source that loads attributes from a JSON document
 retrieved from a CGI script. It'a simple example of a _dynamic source_.

@@ -1,3 +1,9 @@
+2013-10-02 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
+	* default.lua: removed alias in stations and removed airquality
+	stations
+	* bufr.lua: removed
+	* src/bufr-to-meteo-vm2.cc: removed reference to bufr.lua
+	* src/meteo-vm2-to-bufr.cc: removed reference to bufr.lua
 2013-08-27 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
 	* default.lua: fixed p1 for daily airquality variables
 2013-08-19 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>

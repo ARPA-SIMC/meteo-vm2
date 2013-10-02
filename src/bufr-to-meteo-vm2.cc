@@ -42,7 +42,7 @@ int main(int argc, const char** argv)
       return 0;
     }
     if (argc == 1)
-      source = new meteo::vm2::Source(METEO_VM2_BUFR_SOURCE);
+      source = meteo::vm2::Source::get();
     else
       source = new meteo::vm2::Source(argv[1]);
 

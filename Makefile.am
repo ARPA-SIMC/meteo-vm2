@@ -9,16 +9,11 @@ pkgconfig_DATA = meteo-vm2.pc
 .lua.luac:
 	luac -o $@ $^
 
-bufr.lua: default.lua
-	lua $(srcdir)/default2bufr.lua $< > $@
-
 sourcedir = $(sharedstatedir)/$(PACKAGE)/source
 
 source_DATA = \
 	      default.lua \
-	      default.luac \
-	      bufr.lua \
-	      bufr.luac
+	      default.luac
 
 EXTRA_DIST = \
 	     autogen.sh \
@@ -26,10 +21,7 @@ EXTRA_DIST = \
 	     test/data/source-1.lua \
 	     test/data/source-2.luac \
 	     test/data/1.vm2 \
-	     default.lua \
-	     default2bufr.lua
+	     default.lua
 
 CLEANFILES = \
-	     default.luac \
-	     bufr.lua \
-	     bufr.luac
+	     default.luac

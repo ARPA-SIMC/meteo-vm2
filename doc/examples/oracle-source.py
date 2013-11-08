@@ -21,7 +21,7 @@ for row in oracle.execute("""
                               p.id = s.point_id AND
                               r.id = s.report_id AND
                               s.id = i.station_id AND
-                              LOWER(r.name) NOT IN ('synop', 'temp')
+                              LOWER(r.name) NOT IN ('synop', 'temp', 'metar')
                           ORDER BY
                               s.id
                           """):

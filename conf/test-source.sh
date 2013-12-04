@@ -24,7 +24,6 @@ test_stations_uniqueness()
 		echo "Stations are not unique: $n_stations != $n_stations_unique"
 		EXIT_STATUS=1
 	}
-	
 }
 
 # Test uniqueness of the variables
@@ -37,7 +36,6 @@ test_variables_uniqueness()
 		echo "Variables are not unique: $n_variables != $n_variables_unique"
 		EXIT_STATUS=1
 	}
-	
 }
 
 test_stations_uniqueness

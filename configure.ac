@@ -58,6 +58,7 @@ AC_CONFIG_FILES([Makefile
 		 src/Makefile
 		 meteo-vm2.pc
 		 meteo-vm2f.pc
+		 conf/Makefile
 		 doc/Doxygen
 		 doc/Makefile])
 AC_OUTPUT

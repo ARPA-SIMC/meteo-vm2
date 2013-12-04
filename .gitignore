@@ -30,7 +30,7 @@ Makefile
 /doc/doxygen
 /doc/Doxygen.stamp
 /doc/Doxygen
-/*.luac
+/conf/*.luac
 .libs
 .deps
 *.o

@@ -11,3 +11,7 @@ source_DATA = \
 
 CLEANFILES = \
 	     default.luac
+
+dist_check_SCRIPTS = test-source.sh
+
+TESTS = test-source.sh

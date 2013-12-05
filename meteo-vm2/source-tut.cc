@@ -201,5 +201,21 @@ void to::test<8>()
     ensure_throws(meteo::vm2::CoreSource source("/dev/null", L));
     ensure_throws(meteo::vm2::CoreSource source(TOP_SRCDIR"/test/data/INVALID.lua", L));
 }
+// Stations from empty Lua table
+template<> template<>
+void to::test<9>()
+{
+  meteo::vm2::Source source(TOP_SRCDIR"/test/data/source-1.lua");
+  lua_State *L = source.L;
+  int qidx;
+
+  lua_newtable(L);
+  qidx = lua_gettop(L);
+
+  std::vector<int> res = source.lua_find_stations(qidx);
+  ensure(res.size() > 0);
+
+}
+
 
 }

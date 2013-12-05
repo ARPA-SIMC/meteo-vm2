@@ -8,20 +8,21 @@ meteo-vm2-to-bufr [SOURCEFILE]
 @endcode
 Convert VM2 (stdin) to BUFR (stdout). Every attribute in the "stations"
 section is a local B table descriptor and the key **must** be in the form
-`BXXYYY`; the "variables" section **must** have the following keys: `bcode`,
-`unit`, `tr`, `p1`, `p2`, `lt1`, `l1` (optional), `lt2` (optional), `l2`
-(optional).
+`BXXYYY`, except for `lon` (`B06001`), `lat` (`B05001`) and `rep` (`B01094`) keys.
+Variables" section **must** have the following keys: `bcode`,
+`unit` (optional), `tr`, `p1`, `p2`, `lt1`, `l1` (optional), `lt2` (optional), `l2`
+(optional); when `unit` is present, the tool tries to convert the value.
 
 @code
 return {
   stations={
     ....
-    [12]={B05001=70.944410,B06001=-8.666670,B01194='synop',B01019='JAN MAYEN',B01001=1,B01002=1,},
+    [12]={lat=7094441,lon=-866667,rep='synop',B01019='JAN MAYEN',B01001=1,B01002=1,},
     ...
   },
   variables={
     ...
-    [1]={unit='m',bcode='B20013',tr=254,p1=0,p2=0,lt1=256,l1=0,lt2=258,},
+    [1]={bcode='B20013',tr=254,p1=0,p2=0,lt1=256,l1=0,lt2=258,},
     [2]={unit='hm',bcode='B20001',tr=254,p1=0,p2=0,lt1=1,},
     ...
 }
@@ -33,4 +34,9 @@ bufr-to-meteo-vm2 [SOURCEFILE]
 @endcode
 Convert BUFR (stdin) to VM2 (stdout). The lookup on the attributes file is
 the reverse of the command `meteo-vm2-to-bufr`.
+
+The station lookup is made with `lon`, `lat` and `rep` keys, while the variable
+lookup is made with `bcode`, `tr`, `p1`, `p2`, `lt1`, `l1` (optional), `lt2`
+(optional), `l2` (optional); when `unit` is present, the tool tries to convert
+the value.
  */

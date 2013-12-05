@@ -63,13 +63,37 @@ int main(int argc, const char** argv)
         int idx;
         meteo::vm2::Value vm2value;
         const dballe::Msg& msg = **mi;
-        if (!msg.find_station_context()) {
+        const dballe::msg::Context* sta_ctx = msg.find_station_context();
+        if (!sta_ctx) {
           std::cerr << "Cannot find station context" << std::endl;
           continue;
         }
         // station
         lua_newtable(L);
         idx = lua_gettop(L);
+        // Station lookup by lon, lat, rep_memo
+        if (const wreport::Var *v = sta_ctx->find(WR_VAR(0, 6, 1))) {
+            lua_pushnumber(L, v->enqi());
+            lua_setfield(L, idx, "lon");
+        } else {
+            std::cerr << "Missing longitude" << std::endl;
+            continue;
+        }
+        if (const wreport::Var *v = sta_ctx->find(WR_VAR(0, 5, 1))) {
+            lua_pushnumber(L, v->enqi());
+            lua_setfield(L, idx, "lat");
+        } else {
+            std::cerr << "Missing latitude" << std::endl;
+            continue;
+        }
+        if (const wreport::Var *v = sta_ctx->find(WR_VAR(0, 1,194))) {
+            lua_pushstring(L, v->enqc());
+            lua_setfield(L, idx, "rep");
+        } else {
+            std::cerr << "Missing rep_memo" << std::endl;
+            continue;
+        }
+#if 0
         for (std::vector<wreport::Var*>::const_iterator vi = msg.find_station_context()->data.begin();
              vi != msg.find_station_context()->data.end(); ++vi) {
           if (*vi == msg.get_year_var()
@@ -85,7 +109,9 @@ int main(int argc, const char** argv)
             lua_pushnumber(L, v.enqd());
           }
           lua_setfield(L, idx, dballe::format_code(v.code()).c_str());
+
         }
+#endif
         std::vector<int> stations = source->lua_find_stations(idx);
         lua_settop(L, idx);
         if (stations.size() == 0) {

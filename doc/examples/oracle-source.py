@@ -25,7 +25,7 @@ for row in oracle.execute("""
                           ORDER BY
                               s.id
                           """):
-    s = "  [%d]={B05001=%d,B06001=%d,B01194='%s'," % (row[0],row[1],row[2],row[3])
+    s = "  [%d]={lat=%d,lon=%d,rep='%s'," % (row[0],row[1],row[2],row[3])
 
     if row[4]: s += "B01019='%s'," % (row[4].replace("'", "\\'"))
     s += "},"

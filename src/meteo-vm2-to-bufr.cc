@@ -81,7 +81,7 @@ int main(int argc, const char** argv)
           else if (bcode == "lat")
               varcode = WR_VAR(0, 5, 1);
           else if (bcode == "rep")
-              varcode = WR_VAR(0,11,94);
+              varcode = WR_VAR(0, 1,194);
           else
               varcode = wreport::descriptor_code(bcode.c_str());
           if (lua_isnumber(L, -1)) {

@@ -11,11 +11,11 @@ dist_source_DATA = \
 source_DATA = \
 	      default.luac
 
-check_PROGRAMS = test-conversion
+check_PROGRAMS = test-variables
 
-test_conversion_SOURCES = test-conversion.cc
+test_variables_SOURCES = test-variables.cc
 
-test_conversion_LDADD = @top_builddir@/meteo-vm2/libmeteo-vm2.la $(DBALLE_LIBS)
+test_variables_LDADD = @top_builddir@/meteo-vm2/libmeteo-vm2.la $(DBALLE_LIBS)
 
 check_SCRIPTS = test-source.sh
 
@@ -35,6 +35,6 @@ CLEANFILES = \
 	     default.luac \
 	     test-source.sh
 
-TESTS = test-conversion #test-source.sh
+TESTS = test-variables test-source.sh
 
 TESTS_ENVIRONMENT = @srcdir@/run-test

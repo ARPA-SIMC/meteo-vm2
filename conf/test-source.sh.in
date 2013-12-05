@@ -55,6 +55,6 @@ test_unit_conversion()
 
 test_stations_uniqueness
 test_variables_uniqueness
-test_unit_conversion
+#test_unit_conversion
 
 exit $EXIT_STATUS

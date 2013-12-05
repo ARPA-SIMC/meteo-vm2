@@ -1,5 +1,5 @@
 Name:           meteo-vm2
-Version:        0.8
+Version:        0.9
 Release:        1%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -103,6 +103,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Thu Dec 05 2013 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.9-1%{dist}
+- Aliases in station attributes (lon, lat, rep)
+
 * Wed Oct 02 2013 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.8-1%{dist}
 - default.lua has station attributes with bcodes as keys
 

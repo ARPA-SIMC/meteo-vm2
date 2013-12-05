@@ -50,7 +50,8 @@ int main(int argc, const char** argv)
     meteo::vm2::Value value;
     dballe::msg::BufrExporter exporter;
 
-    while (parser.next(value)) {
+    std::string line;
+    while (parser.next(value, line)) {
       int top = lua_gettop(L);
 
       try {
@@ -68,8 +69,7 @@ int main(int argc, const char** argv)
         if (lua_isnil(L, -1)) {
           lua_pop(L, 1);
           throw std::runtime_error(
-              wibble::str::fmtf("line %d: station %d not found",
-                                parser.lineno, value.station_id));
+              wibble::str::fmtf("Station %d not found", value.station_id));
         }
         lua_pushnil(L);
         while(lua_next(L, -2)) {
@@ -90,7 +90,7 @@ int main(int argc, const char** argv)
         if (lua_isnil(L, -1)) {
           lua_pop(L, 1);
           throw std::runtime_error(
-              wibble::str::fmtf("line %d: variable %d not found",
+              wibble::str::fmtf("Variable %d not found",
                                 parser.lineno, value.variable_id));
         }
         lua_getfield(L, -1, "bcode");
@@ -163,7 +163,7 @@ int main(int argc, const char** argv)
 
         std::cout << raw;
       } catch (std::exception& e) {
-        std::cerr << "line " << parser.lineno << ": " << e.what() << std::endl;
+        std::cerr << parser.lineno << ":[" << line << "] - " << e.what() << std::endl;
       }
 
       lua_settop(L, top);

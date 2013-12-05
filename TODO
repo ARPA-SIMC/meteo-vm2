@@ -1,16 +1,4 @@
-= TODO
-
-== Missing stations
-
-* Stazioni ambientali; la stazione 7000034 (HERA1 ROMAGNA) e 7000035 (HERA2
-  CARPE) non sono all'interno dell'anagrafica perché i servizi web del SIA non
-  danno informazioni oltre a id e nome.
-
-== Missing variables
-
-* Variabile 1000106: non è caricata all'interno dell'anagrafica perché è una
-  direzione del vento in gradi (ottanti in anagrafica) e non dovrei vederla
-
-== Duplicate stations
-
-* 9000004, 9000007: AGIP 29 e S. ALBERTO
+- Conversione VM2->BUFR e valore fuori dal range: come comportarsi?
+  - Scarto il valore fornendo un messaggio di errore (adesso è così)
+  - Setto il valore al massimo o al minimo e imposto un attributo (quale?)
+- Attributi: passare dal flag di 9 cifre ad array associativo?

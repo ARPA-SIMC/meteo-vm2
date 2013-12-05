@@ -2,15 +2,17 @@
 
 EXIT_STATUS=0
 
+LUA_REQUIRE_CMD="dofile('@srcdir@/default.lua')"
+
 # Print station id and unique keys
 print_stations_keys()
 {
-	lua -e "source = require('default'); for k, v in pairs(source.stations) do print(k, v.lon, v.lat, v.rep) end"
+	lua -e "source = $LUA_REQUIRE_CMD; for k, v in pairs(source.stations) do print(k, v.lon, v.lat, v.rep) end"
 }
 # Print variable id and unique keys
 print_variables_keys()
 {
-	lua -e "source = require('default'); for k, v in pairs(source.variables) do print(k, v.bcode, v.tr, v.p1, v.p2, v.lt1, v.l1, v.lt2, v.l2) end"
+	lua -e "source = $LUA_REQUIRE_CMD; for k, v in pairs(source.variables) do print(k, v.bcode, v.tr, v.p1, v.p2, v.lt1, v.l1, v.lt2, v.l2) end"
 }
 
 
@@ -38,7 +40,21 @@ test_variables_uniqueness()
 	}
 }
 
+test_unit_conversion()
+{
+	while read line
+	do
+		dump="$(echo "$line" | @top_builddir@/src/meteo-vm2-to-bufr @srcdir@/default.lua 2>&1 >/dev/null)"
+		[[ -n "$dump" ]] && \
+		{
+			echo "$line failed conversion: $dump"
+			EXIT_STATUS=1
+		}
+	done < <(lua -e "source = $LUA_REQUIRE_CMD; for k, v in pairs(source.variables) do print('201101010000,1,' .. k .. ',0,,,') end")
+}
+
 test_stations_uniqueness
 test_variables_uniqueness
+test_unit_conversion
 
 exit $EXIT_STATUS

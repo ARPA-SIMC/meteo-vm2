@@ -36,3 +36,4 @@ Makefile
 *.o
 *.lo
 *.la
+/conf/test-source.sh

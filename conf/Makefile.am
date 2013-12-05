@@ -1,3 +1,5 @@
+AM_CPPFLAGS = -I$(top_builddir) -I$(top_srcdir)
+
 .lua.luac:
 	luac -o $@ $^
 
@@ -8,6 +10,12 @@ dist_source_DATA = \
 
 source_DATA = \
 	      default.luac
+
+check_PROGRAMS = test-conversion
+
+test_conversion_SOURCES = test-conversion.cc
+
+test_conversion_LDADD = @top_builddir@/meteo-vm2/libmeteo-vm2.la $(DBALLE_LIBS)
 
 check_SCRIPTS = test-source.sh
 
@@ -27,4 +35,6 @@ CLEANFILES = \
 	     default.luac \
 	     test-source.sh
 
-TESTS = test-source.sh
+TESTS = test-conversion #test-source.sh
+
+TESTS_ENVIRONMENT = @srcdir@/run-test

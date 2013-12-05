@@ -5,7 +5,7 @@ EXIT_STATUS=0
 # Print station id and unique keys
 print_stations_keys()
 {
-	lua -e "source = require('default'); for k, v in pairs(source.stations) do print(k, v.B05001, v.B06001, v.B01194) end"
+	lua -e "source = require('default'); for k, v in pairs(source.stations) do print(k, v.lon, v.lat, v.rep) end"
 }
 # Print variable id and unique keys
 print_variables_keys()

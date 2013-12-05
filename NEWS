@@ -1,3 +1,10 @@
+0.9 (2013-12-05)
+
+- default.lua with station attributes aliases (lon, lat, rep)
+- VM2 tools handle the station attributes aliases
+- Station lookup in bufr-to-meteo-vm2 is done with lon, lat, rep keywords.
+- When unit is missing, VM2 tools ignore the conversion.
+
 0.8 (2013-10-02)
 
 - default.lua has station attributes with bcode as keys

@@ -74,7 +74,16 @@ int main(int argc, const char** argv)
         lua_pushnil(L);
         while(lua_next(L, -2)) {
           std::string bcode = lua_tostring(L, -2);
-          wreport::Varcode varcode = wreport::descriptor_code(bcode.c_str());
+          wreport::Varcode varcode;
+          // Handle "lon", "lat" and "rep" aliases
+          if (bcode == "lon")
+              varcode = WR_VAR(0, 6, 1);
+          else if (bcode == "lat")
+              varcode = WR_VAR(0, 5, 1);
+          else if (bcode == "rep")
+              varcode = WR_VAR(0,11,94);
+          else
+              varcode = wreport::descriptor_code(bcode.c_str());
           if (lua_isnumber(L, -1)) {
             msg.set(dballe::var(varcode, (int) lua_tointeger(L, -1)), varcode,
                     dballe::Level(257), dballe::Trange());

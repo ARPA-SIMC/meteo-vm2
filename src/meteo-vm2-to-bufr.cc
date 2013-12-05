@@ -124,7 +124,9 @@ int main(int argc, const char** argv)
         lua_pop(L, 1);
 
         lua_getfield(L, -1, "unit");
-        std::string unit = lua_tostring(L, -1);
+        std::string unit = dballe::varinfo(varcode)->unit;
+        if (lua_isstring(L, -1))
+            unit = lua_tostring(L, -1);
         lua_pop(L, 1);
 
         if (value.value1 == meteo::vm2::MISSING_DOUBLE)

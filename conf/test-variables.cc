@@ -10,6 +10,7 @@ int main()
     lua_State* L = source.L;
 
     lua_newtable(L);
+    int result = 0;
     int idx = lua_gettop(L);
     std::vector<int> vars = source.lua_find_variables(idx);
     idx = lua_gettop(L);
@@ -29,16 +30,18 @@ int main()
                     std::string unit = lua_tostring(L, -1);
                     lua_pop(L, 1);
                     var.set(varinfo->imin);
-                    wreport::convert_units(varinfo->unit, unit.c_str(), var.enqd());
+                    double v = wreport::convert_units(varinfo->unit, unit.c_str(), var.enqd());
+                    wreport::convert_units(unit.c_str(), varinfo->unit, v);
                 }
             }
         } catch (wreport::error_notfound& e) {
             std::cerr << "While testing variable " << *i << ": " << e.what() << std::endl;
-            return 1;
+            result = 1;
         }
 
         lua_pop(L, 1);
 
         lua_settop(L, idx);
     }
+    return result;
 }

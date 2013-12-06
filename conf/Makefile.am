@@ -11,11 +11,13 @@ dist_source_DATA = \
 source_DATA = \
 	      default.luac
 
-check_PROGRAMS = test-variables
+check_PROGRAMS = tut-main
 
-test_variables_SOURCES = test-variables.cc
+tut_main_SOURCES = \
+		   tut-main.cc \
+		   conf-tut.cc
 
-test_variables_LDADD = @top_builddir@/meteo-vm2/libmeteo-vm2.la $(DBALLE_LIBS)
+tut_main_LDADD = @top_builddir@/meteo-vm2/libmeteo-vm2.la $(DBALLE_LIBS)
 
 check_SCRIPTS = test-source.sh
 
@@ -35,6 +37,6 @@ CLEANFILES = \
 	     default.luac \
 	     test-source.sh
 
-TESTS = test-variables test-source.sh
+TESTS = tut-main
 
 TESTS_ENVIRONMENT = @srcdir@/run-test

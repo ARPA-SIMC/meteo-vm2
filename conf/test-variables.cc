@@ -13,6 +13,7 @@ int main()
     int result = 0;
     int idx = lua_gettop(L);
     std::vector<int> vars = source.lua_find_variables(idx);
+    lua_pop(L, 1);
     idx = lua_gettop(L);
     for (std::vector<int>::const_iterator i = vars.begin();
          i != vars.end(); ++i) {
@@ -28,11 +29,11 @@ int main()
                 lua_getfield(L, -1, "unit");
                 if (lua_isstring(L, -1)) {
                     std::string unit = lua_tostring(L, -1);
-                    lua_pop(L, 1);
                     var.set(varinfo->imin);
                     double v = wreport::convert_units(varinfo->unit, unit.c_str(), var.enqd());
                     wreport::convert_units(unit.c_str(), varinfo->unit, v);
                 }
+                lua_pop(L, 1);
             }
         } catch (wreport::error_notfound& e) {
             std::cerr << "While testing variable " << *i << ": " << e.what() << std::endl;

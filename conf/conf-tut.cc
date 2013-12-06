@@ -23,6 +23,7 @@
 
 #include <set>
 #include <meteo-vm2/source.h>
+#include <dballe/core/defs.h>
 
 namespace tut {
 
@@ -42,8 +43,8 @@ struct simc_conf_shar {
         return ids;
     }
     void get_station_unique_keys(int id, int& lon, int& lat, std::string& rep) {
-        lon = -1;
-        lat = -1;
+        lon = dballe::MISSING_INT;
+        lat = dballe::MISSING_INT;
         rep = "";
         source.lua_push_station(id);
         lua_getfield(L, -1, "lon");
@@ -60,6 +61,18 @@ struct simc_conf_shar {
         lua_pop(L, 1);
         lua_pop(L, 1);
     }
+    void get_variable_unique_keys(int id, std::string& bcode,
+                                  int& tr, int& p1, int& p2,
+                                  int& lt1, int& l1, int& lt2, int& l2) {
+        bcode = "";
+        tr  = dballe::MISSING_INT;
+        p1  = dballe::MISSING_INT;
+        p2  = dballe::MISSING_INT;
+        lt1 = dballe::MISSING_INT;
+        l1  = dballe::MISSING_INT;
+        lt2 = dballe::MISSING_INT;
+        l2  = dballe::MISSING_INT;
+    }
 };
 TESTGRP(simc_conf);
 
@@ -73,8 +86,8 @@ void to::test<1>()
         int lon, lat;
         std::string rep;
         get_station_unique_keys(*i, lon, lat, rep);
-        ensure(lon != -1);
-        ensure(lat != -1);
+        ensure(lon != dballe::MISSING_INT);
+        ensure(lat != dballe::MISSING_INT);
         ensure(rep != "");
     }
 }

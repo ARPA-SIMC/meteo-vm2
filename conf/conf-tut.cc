@@ -165,6 +165,8 @@ void to::test<4>()
 template<> template<>
 void to::test<5>()
 {
+    bool everything_ok = true;
+
     std::vector<int> ids = get_all_variables();
     for (std::vector<int>::const_iterator i = ids.begin();
          i != ids.end(); ++i) {
@@ -175,13 +177,19 @@ void to::test<5>()
         lua_pop(L, 1);
         wreport::Varcode varcode = wreport::descriptor_code(bcode.c_str());
         wreport::Varinfo varinfo = dballe::varinfo(varcode);
-        wreport::Var var(varinfo);
-        if (not unit.empty()) {
-            var.set(varinfo->imin);
-            double v = wreport::convert_units(varinfo->unit, unit.c_str(), var.enqd());
-            wreport::convert_units(unit.c_str(), varinfo->unit, v);
+        try {
+            wreport::Var var(varinfo);
+            if (not unit.empty()) {
+                var.set(varinfo->imin);
+                double v = wreport::convert_units(varinfo->unit, unit.c_str(), var.enqd());
+                wreport::convert_units(unit.c_str(), varinfo->unit, v);
+            }
+        } catch (const std::exception& e) {
+            std::cerr << "While inspecting variable " << *i << ": " << e.what() << std::endl;
+            everything_ok = false;
         }
     }
+    ensure(everything_ok);
 }
 
 }

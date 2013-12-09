@@ -5423,7 +5423,6 @@ return {
   [9]={unit='hPa',bcode='B10051',tr=254,p1=0,p2=0,lt1=101,},
   [10]={unit='MGP',bcode='B10009',tr=254,p1=0,p2=0,lt1=1,},
   [12]={unit='code table',bcode='B10063',tr=254,p1=0,p2=10800,lt1=1,},
-  [13]={unit='hPa',bcode='B10061',tr=4,p1=0,p2=10800,lt1=1,},
   [14]={unit='mm',bcode='B13011',tr=1,p1=0,p2=21600,lt1=1,},
   [15]={unit='mm',bcode='B13011',tr=1,p1=0,p2=43200,lt1=1,},
   [17]={unit='code table',bcode='B20003',tr=254,p1=0,p2=0,lt1=1,},

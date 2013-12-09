@@ -19,9 +19,11 @@ tut_main_SOURCES = \
 
 tut_main_LDADD = @top_builddir@/meteo-vm2/libmeteo-vm2.la $(DBALLE_LIBS)
 
-CLEANFILES = \
-	     default.luac
-
 TESTS = tut-main
 
 TESTS_ENVIRONMENT = @srcdir@/run-test
+
+CLEANFILES = \
+	     default.luac
+
+EXTRA_DIST = run-test

@@ -2,7 +2,5 @@
   - Scarto il valore fornendo un messaggio di errore (adesso è così)
   - Setto il valore al massimo o al minimo e imposto un attributo (quale?)
 - Attributi: passare dal flag di 9 cifre ad array associativo?
-- Variabile 692: B13211 non è presente in dballe.txt e non è standard.
+- Variabile 692: B13211 non è presente in dballe.txt e non è standard: RIMOSSA
   [692]={unit='mc',bcode='B13211',tr=254,p1=0,p2=0,lt1=1,},
-- Variabile 13: B10061, la X è una "Non-coordinate location (vertical)" e
-  quindi non andrebbe usata per un valore misurato.

@@ -21,8 +21,9 @@
 #include <wibble/tests.h>
 #include <wibble/exception.h>
 
-#include <set>
 #include <meteo-vm2/source.h>
+#include <wreport/conv.h>
+#include <dballe/core/record.h>
 #include <dballe/core/defs.h>
 
 namespace tut {
@@ -42,53 +43,62 @@ struct simc_conf_shar {
         lua_pop(L, 1);
         return ids;
     }
-    void get_station_unique_keys(int id, int& lon, int& lat, std::string& rep) {
-        lon = dballe::MISSING_INT;
-        lat = dballe::MISSING_INT;
-        rep = "";
-        source.lua_push_station(id);
-        lua_getfield(L, -1, "lon");
+    std::vector<int> get_all_variables() {
+        int idx;
+        lua_newtable(L);
+        idx = lua_gettop(L);
+        std::vector<int> ids = source.lua_find_variables(idx);
+        lua_pop(L, 1);
+        return ids;
+    }
+    void get_item_value(const char* name, const char* key, dballe::Record& record) {
+        lua_getfield(L, -1, name);
         if (lua_isnumber(L, -1))
-            lon = lua_tointeger(L, -1);
-        lua_pop(L, 1);
-        lua_getfield(L, -1, "lat");
-        if (lua_isnumber(L, -1))
-            lat = lua_tointeger(L, -1);
-        lua_pop(L, 1);
-        lua_getfield(L, -1, "rep");
-        if (lua_isstring(L, -1))
-            rep = lua_tostring(L, -1);
-        lua_pop(L, 1);
+            record[key].seti(lua_tointeger(L, -1));
+        else if (lua_isstring(L, -1))
+            record[key].setc(lua_tostring(L, -1));
         lua_pop(L, 1);
     }
-    void get_variable_unique_keys(int id, std::string& bcode,
-                                  int& tr, int& p1, int& p2,
-                                  int& lt1, int& l1, int& lt2, int& l2) {
-        bcode = "";
-        tr  = dballe::MISSING_INT;
-        p1  = dballe::MISSING_INT;
-        p2  = dballe::MISSING_INT;
-        lt1 = dballe::MISSING_INT;
-        l1  = dballe::MISSING_INT;
-        lt2 = dballe::MISSING_INT;
-        l2  = dballe::MISSING_INT;
+    void get_item_value(const char* name, std::string& val) {
+        lua_getfield(L, -1, name);
+        if (not lua_isnil(L, -1))
+            val = lua_tostring(L, -1);
+        lua_pop(L, 1);
+    }
+    void get_station_unique_keys(int id, dballe::Record& record) {
+        source.lua_push_station(id);
+        get_item_value("lon", "lon", record);
+        get_item_value("lat", "lat", record);
+        get_item_value("rep", "rep_memo", record);
+        lua_pop(L, 1);
+    }
+    void get_variable_unique_keys(int id, dballe::Record& record) {
+        source.lua_push_variable(id);
+        get_item_value("bcode", "var", record);
+        get_item_value("tr", "pindicator", record);
+        get_item_value("p1", "p1", record);
+        get_item_value("p2", "p2", record);
+        get_item_value("lt1", "leveltype1", record);
+        get_item_value("l1", "l1", record);
+        get_item_value("lt2", "leveltype2", record);
+        get_item_value("l2", "l2", record);
+        lua_pop(L, 1);
     }
 };
 TESTGRP(simc_conf);
 
-// Check stations have lon, lat and rep keys
+// Check stations have unique keys
 template<> template<>
 void to::test<1>()
 {
     std::vector<int> ids = get_all_stations();
     for (std::vector<int>::const_iterator i = ids.begin();
          i != ids.end(); ++i) {
-        int lon, lat;
-        std::string rep;
-        get_station_unique_keys(*i, lon, lat, rep);
-        ensure(lon != dballe::MISSING_INT);
-        ensure(lat != dballe::MISSING_INT);
-        ensure(rep != "");
+        dballe::Record record;
+        get_station_unique_keys(*i, record);
+        ensure(record.key_peek(dballe::DBA_KEY_LON));
+        ensure(record.key_peek(dballe::DBA_KEY_LAT));
+        ensure(record.key_peek(dballe::DBA_KEY_REP_MEMO));
     }
 }
 // Check stations are unique
@@ -99,14 +109,79 @@ void to::test<2>()
     std::map<std::string, int> keys;
     for (std::vector<int>::const_iterator i = ids.begin();
          i != ids.end(); ++i) {
-        int lon, lat;
-        std::string rep;
-        get_station_unique_keys(*i, lon, lat, rep);
-        std::string key = wibble::str::fmtf("%d,%d,%s", lon, lat, rep.c_str());
+        dballe::Record record;
+        get_station_unique_keys(*i, record);
+        std::string key = wibble::str::fmtf("/%d,%d/%s",
+                                            record.key(dballe::DBA_KEY_LON).enqi(),
+                                            record.key(dballe::DBA_KEY_LAT).enqi(),
+                                            record.key(dballe::DBA_KEY_REP_MEMO).enqc());
         ensure(keys.find(key) == keys.end());
         keys[key] = *i;
     }
     ensure_equals(ids.size(), keys.size());
+}
+// Check variables have unique keys
+template<> template<>
+void to::test<3>()
+{
+    std::vector<int> ids = get_all_variables();
+    for (std::vector<int>::const_iterator i = ids.begin();
+         i != ids.end(); ++i) {
+        dballe::Record record;
+        get_variable_unique_keys(*i, record);
+        ensure(record.key_peek(dballe::DBA_KEY_VAR));
+        ensure(record.key_peek(dballe::DBA_KEY_PINDICATOR));
+        ensure(record.key_peek(dballe::DBA_KEY_P1));
+        ensure(record.key_peek(dballe::DBA_KEY_P2));
+        ensure(record.key_peek(dballe::DBA_KEY_LEVELTYPE1));
+    }
+}
+// Check variables are unique
+template<> template<>
+void to::test<4>()
+{
+    std::vector<int> ids = get_all_variables();
+    std::map<std::string, int> keys;
+    for (std::vector<int>::const_iterator i = ids.begin();
+         i != ids.end(); ++i) {
+        dballe::Record record;
+        get_variable_unique_keys(*i, record);
+        std::stringstream ss;
+        ss  << record.get(dballe::DBA_KEY_VAR, "-") << ","
+            << record.get(dballe::DBA_KEY_PINDICATOR, "-") << ","
+            << record.get(dballe::DBA_KEY_P1, "-") << ","
+            << record.get(dballe::DBA_KEY_P2, "-") << ","
+            << record.get(dballe::DBA_KEY_LEVELTYPE1, "-") << ","
+            << record.get(dballe::DBA_KEY_L1, "-") << ","
+            << record.get(dballe::DBA_KEY_LEVELTYPE2, "-") << ","
+            << record.get(dballe::DBA_KEY_L2, "-");
+        std::string key = ss.str();
+        ensure(keys.find(key) == keys.end());
+        keys[key] = *i;
+    }
+    ensure_equals(ids.size(), keys.size());
+}
+// Check for unit conversion
+template<> template<>
+void to::test<5>()
+{
+    std::vector<int> ids = get_all_variables();
+    for (std::vector<int>::const_iterator i = ids.begin();
+         i != ids.end(); ++i) {
+        std::string bcode, unit;
+        source.lua_push_variable(*i);
+        get_item_value("bcode", bcode);
+        get_item_value("unit", unit);
+        lua_pop(L, 1);
+        wreport::Varcode varcode = wreport::descriptor_code(bcode.c_str());
+        wreport::Varinfo varinfo = dballe::varinfo(varcode);
+        wreport::Var var(varinfo);
+        if (not unit.empty()) {
+            var.set(varinfo->imin);
+            double v = wreport::convert_units(varinfo->unit, unit.c_str(), var.enqd());
+            wreport::convert_units(unit.c_str(), varinfo->unit, v);
+        }
+    }
 }
 
 }

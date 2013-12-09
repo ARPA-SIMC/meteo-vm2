@@ -31,8 +31,6 @@ Makefile
 /doc/Doxygen.stamp
 /doc/Doxygen
 /conf/tut-main
-/conf/test-variables
-/conf/test-source.sh
 /conf/*.luac
 .libs
 .deps

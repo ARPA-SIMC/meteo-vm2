@@ -29,6 +29,6 @@ meteo_vm2_test_CPPFLAGS = -I$(top_srcdir) -I$(top_builddir) $(LUA_CFLAGS) \
 			  -DSRCDIR='"$(CURDIR)/$(srcdir)"' \
 			  -DTOP_SRCDIR='"$(CURDIR)/$(top_srcdir)"'
 
-meteo_vm2_test_LDADD = $(builddir)/libmeteo-vm2.la
+meteo_vm2_test_LDADD = $(builddir)/libmeteo-vm2.la $(LUA_LIBS)
 
 TESTS = $(builddir)/meteo-vm2-test

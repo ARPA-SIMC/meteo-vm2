@@ -1,4 +1,4 @@
-AM_CPPFLAGS = -I$(top_builddir) -I$(top_srcdir)
+AM_CPPFLAGS = -I$(top_builddir) -I$(top_srcdir) $(LUA_CFLAGS)
 
 .lua.luac:
 	luac -o $@ $^
@@ -17,7 +17,7 @@ tut_main_SOURCES = \
 		   tut-main.cc \
 		   conf-tut.cc
 
-tut_main_LDADD = @top_builddir@/meteo-vm2/libmeteo-vm2.la $(DBALLE_LIBS)
+tut_main_LDADD = @top_builddir@/meteo-vm2/libmeteo-vm2.la $(DBALLE_LIBS) $(LUA_LIBS)
 
 TESTS = tut-main
 

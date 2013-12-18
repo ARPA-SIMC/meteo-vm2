@@ -1,3 +1,9 @@
+meteo-vm2 (0.9-1) UNRELEASED; urgency=low
+
+  * New version
+
+ -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Wed, 18 Dec 2013 16:57:00 +0100
+
 meteo-vm2 (0.3-1) UNRELEASED; urgency=low
 
   * Examples

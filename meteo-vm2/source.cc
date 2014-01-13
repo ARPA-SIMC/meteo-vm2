@@ -161,7 +161,7 @@ Source* Source::get() {
 }
 
 Source::Source(const std::string& path) {
-  L = lua_open();
+  L = luaL_newstate();
   luaL_openlibs(L);
   coresource = new CoreSource(path, L);
 }

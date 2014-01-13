@@ -32,7 +32,7 @@ struct meteo_vm2_source_shar {
   lua_State* L;
 
   meteo_vm2_source_shar() {
-    L = lua_open();
+    L = luaL_newstate();
     luaL_openlibs(L);
   }
   ~meteo_vm2_source_shar() {

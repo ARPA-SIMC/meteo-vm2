@@ -28,7 +28,7 @@ subroutine test_source()
     STOP 1
   endif
 
-  call getenv("METEO_VM2_SOURCE_TEST", filename)
+  call getenv("METEO_VM2_SOURCE", filename)
 
   filename = trim(filename)
 

@@ -26,8 +26,10 @@ meteo_vm2_test_SOURCES = \
 			 source-tut.cc
 
 meteo_vm2_test_CPPFLAGS = -I$(top_srcdir) -I$(top_builddir) $(LUA_CFLAGS) \
-			  -DSRCDIR='"$(CURDIR)/$(srcdir)"' \
-			  -DTOP_SRCDIR='"$(CURDIR)/$(top_srcdir)"'
+			  -DSRCDIR='"$(abs_srcdir)"' \
+			  -DTOP_SRCDIR='"$(abs_top_srcdir)"' \
+			  -DBUILDDIR='"$(abs_builddir)"' \
+			  -DTOP_BUILDDIR='"$(abs_top_builddir)"'
 
 meteo_vm2_test_LDADD = $(builddir)/libmeteo-vm2.la $(LUA_LIBS)
 

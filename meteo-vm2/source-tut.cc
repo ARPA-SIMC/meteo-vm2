@@ -46,7 +46,6 @@ template<> template<>
 void to::test<1>()
 {
   meteo::vm2::Source source1(TOP_SRCDIR"/test/data/source-1.lua");
-  meteo::vm2::Source source2(TOP_SRCDIR"/test/data/source-2.luac");
 }
 
 
@@ -182,13 +181,12 @@ template<> template<>
 void to::test<6>()
 {
   meteo::vm2::CoreSource source1(TOP_SRCDIR"/test/data/source-1.lua", L);
-  meteo::vm2::CoreSource source2(TOP_SRCDIR"/test/data/source-2.luac", L);
 }
 // Test default source
 template<> template<>
 void to::test<7>()
 {
-  ::setenv("METEO_VM2_SOURCE", TOP_SRCDIR"/test/data/source-2.luac", 1);
+  ::setenv("METEO_VM2_SOURCE", TOP_SRCDIR"/test/data/source-1.lua", 1);
   lua_State* L = meteo::vm2::Source::get()->L;
   meteo::vm2::Source::get()->lua_push_station(1);
   ensure(lua_istable(L, -1));

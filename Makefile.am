@@ -11,8 +11,3 @@ EXTRA_DIST = \
 	     meteo-vm2.pc.in \
 	     test/data/source-1.lua \
 	     test/data/1.vm2
-
-test/data/source-2.lua: test/data/source-1.lua
-	luac -o $@ $<
-
-CLEANFILES = test/data/source-2.lua

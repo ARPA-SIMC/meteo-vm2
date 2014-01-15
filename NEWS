@@ -1,3 +1,8 @@
+0.10 (2014-01-15)
+
+- Lua5.2 support
+- Needs shared libwibble
+
 0.9 (2013-12-05)
 
 - default.lua with station attributes aliases (lon, lat, rep)

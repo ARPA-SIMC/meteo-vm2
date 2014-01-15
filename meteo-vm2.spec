@@ -1,14 +1,22 @@
 Name:           meteo-vm2
-Version:        0.9
+Version:        0.10
 Release:        1%{?dist}
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
 URL:            http://www.arpa.emr.it/sim
 Source:         %{name}-%{version}.tar.gz
-
 BuildRequires:  libtool, pkgconfig, lua-devel >= 5.1, libdballe-devel >= 5.19
-Requires:       lua >= 5.1
+
+%if 0%{?fedora} < 19
+%define luaver 5.1
+%endif
+
+%if 0%{?fedora} == 20
+%define luaver 5.2
+%endif
+
+Requires:       lua = %{luaver}
 
 %description
 VM2 decoding/encoding library
@@ -103,6 +111,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Wed Jan 15 2014 Daniele Branchini <dbranchini@arpa.emr.it> - 0.10-1%{dist}
+- Support for Lua versioning
+
 * Thu Dec 05 2013 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.9-1%{dist}
 - Aliases in station attributes (lon, lat, rep)
 

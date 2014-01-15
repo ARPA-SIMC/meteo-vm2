@@ -18,12 +18,18 @@ PKG_CHECK_MODULES([WIBBLE], [libwibble],
 		   CFLAGS="$CFLAGS $WIBBLE_CFLAGS"
 		  ])
 
-PKG_CHECK_EXISTS([lua5.1], [have_lua=yes], [have_lua=no])
+PKG_CHECK_EXISTS([lua5.2], [have_lua=yes], [have_lua=no])
 if test x$have_lua = xyes
 then
-	PKG_CHECK_MODULES([LUA],[lua5.1])
+        PKG_CHECK_MODULES(LUA,lua5.2,,[have_lua=no])
 else
-	PKG_CHECK_MODULES([LUA],[lua])
+	PKG_CHECK_EXISTS([lua5.1], [have_lua=yes], [have_lua=no])
+	if test x$have_lua = xyes
+	then
+		PKG_CHECK_MODULES([LUA],[lua5.1])
+	else
+		PKG_CHECK_MODULES([LUA],[lua])
+	fi
 fi
 
 AC_PATH_PROG([DOXYGEN], [doxygen])

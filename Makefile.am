@@ -1,6 +1,6 @@
 ACLOCAL_AMFLAGS = -Im4
 
-SUBDIRS = wibble meteo-vm2 fortran src conf doc
+SUBDIRS = meteo-vm2 fortran src conf doc
 
 pkgconfigdir = $(libdir)/pkgconfig
 

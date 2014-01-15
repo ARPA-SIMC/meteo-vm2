@@ -10,9 +10,9 @@ lib_LTLIBRARIES = libmeteo-vm2.la
 libmeteo_vm2_la_CPPFLAGS = -I$(top_srcdir) -I$(top_builddir) $(LUA_CFLAGS) \
 			   -DMETEO_VM2_DEFAULT_SOURCE='"$(sharedstatedir)/$(PACKAGE)/source/default.luac"'
 
-libmeteo_vm2_la_LDFLAGS = $(LUA_LIBS) -lpthread -version-info 0:0:0
+libmeteo_vm2_la_LDFLAGS = -lpthread -version-info 0:0:0
 
-libmeteo_vm2_la_LIBADD = $(top_builddir)/wibble/libwibble.la
+libmeteo_vm2_la_LIBADD = $(LUA_LIBS)
 
 libmeteo_vm2_la_SOURCES = \
 			  source.cc \

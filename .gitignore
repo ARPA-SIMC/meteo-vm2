@@ -1,4 +1,3 @@
-wibble.tar.gz
 stamp-h1
 missing
 ltmain.sh
@@ -18,7 +17,6 @@ autom4te.cache
 aclocal.m4
 Makefile.in
 Makefile
-/wibble
 /src/meteo-vm2-to-bufr
 /src/bufr-to-meteo-vm2
 /meteo-vm2f.pc

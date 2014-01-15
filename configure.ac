@@ -5,7 +5,6 @@ AC_PREREQ([2.68])
 AC_INIT([meteo-vm2], [0.9], [edigiacomo@arpa.emr.it])
 AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADERS([config.h])
-AM_CONFIG_HEADER(wibble/config.h)
 AC_CONFIG_MACRO_DIR([m4])
 
 AC_PROG_CXX
@@ -13,7 +12,11 @@ AC_PROG_FC
 AM_INIT_AUTOMAKE([foreign nostdinc subdir-objects])
 LT_INIT
 
-AM_CONDITIONAL([WIBBLE_STANDALONE], [false])
+PKG_CHECK_MODULES([WIBBLE], [libwibble],
+		  [
+		   LIBS="$LIBS $WIBBLE_LIBS"
+		   CFLAGS="$CFLAGS $WIBBLE_CFLAGS"
+		  ])
 
 PKG_CHECK_EXISTS([lua5.1], [have_lua=yes], [have_lua=no])
 if test x$have_lua = xyes
@@ -52,8 +55,7 @@ fi
 AM_CONDITIONAL([DBALLE], [test x"$have_dballe" = x"yes"])
 
 AC_CONFIG_FILES([Makefile
-		 wibble/Makefile
-                 meteo-vm2/Makefile
+		 meteo-vm2/Makefile
 		 fortran/Makefile
 		 src/Makefile
 		 meteo-vm2.pc

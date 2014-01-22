@@ -3615,7 +3615,7 @@ return {
   [11102]={lon=1150303,lat=4440798,rep='regemro'},
   [11103]={lon=1227411,lat=4381986,rep='regemro'},
   [11104]={lon=1273940,lat=4395847,rep='regemro'},
-  [11105]={lon=1244649,lat=4393753,rep='simnbo'},
+  [11105]={lon=1244649,lat=4393753,rep='regemro'},
   [11108]={lon=1257107,lat=4414326,rep='cnr'},
   [11109]={lon=959791,lat=4469632,rep='regemro'},
   [11110]={lon=1149457,lat=4438998,rep='regemro'},

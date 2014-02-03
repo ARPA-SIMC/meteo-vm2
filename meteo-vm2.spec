@@ -6,7 +6,7 @@ Summary:        C++ library for VM2 data
 License:        GPLv2+
 URL:            http://www.arpa.emr.it/sim
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  libtool, pkgconfig, lua-devel >= 5.1, libdballe-devel >= 5.19
+BuildRequires:  libtool, pkgconfig, lua-devel >= 5.1, libdballe-devel >= 5.19, libwibble-devel >= 1.1
 
 %if 0%{?fedora} < 19
 %define luaver 5.1

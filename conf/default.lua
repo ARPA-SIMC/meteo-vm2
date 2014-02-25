@@ -4994,6 +4994,8 @@ return {
   [12991]={lon=1003391,lat=4415565,rep='fiduto',},
   [12992]={lon=1015241,lat=4424610,rep='fiduto',},
   [12993]={lon=994783,lat=4428860,rep='fiduto',},
+  [12998]={lon=1034306,lat=4473611,rep='fidupo', ident='12998'},
+  [12999]={lon=1034306,lat=4473611,rep='fidupo', ident='12999'},
   [53010]={lon=1038070,lat=4488547,rep='simc',},
   [70000]={lon=1175545,lat=4421978,rep='simc',},
   [2000003]={lon=1033000,lat=4480000,rep='airquality',},

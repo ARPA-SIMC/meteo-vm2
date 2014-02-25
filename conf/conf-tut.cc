@@ -53,15 +53,22 @@ struct simc_conf_shar {
     }
     void get_item_value(const char* name, const char* key, dballe::Record& record) {
         lua_getfield(L, -1, name);
-        if (lua_isnumber(L, -1))
-            record[key].seti(lua_tointeger(L, -1));
-        else if (lua_isstring(L, -1))
-            record[key].setc(lua_tostring(L, -1));
+        switch (lua_type(L, -1)) {
+            case LUA_TSTRING:
+                record[key].setc(lua_tostring(L, -1));
+                break;
+            case LUA_TNUMBER:
+                record[key].seti(lua_tointeger(L, -1));
+                break;
+            case LUA_TNIL:
+                record[key].setc("");
+                break;
+        }
         lua_pop(L, 1);
     }
     void get_item_value(const char* name, std::string& val) {
         lua_getfield(L, -1, name);
-        if (not lua_isnil(L, -1))
+        if (!lua_isnil(L, -1))
             val = lua_tostring(L, -1);
         lua_pop(L, 1);
     }
@@ -70,6 +77,7 @@ struct simc_conf_shar {
         get_item_value("lon", "lon", record);
         get_item_value("lat", "lat", record);
         get_item_value("rep", "rep_memo", record);
+        get_item_value("ident", "ident", record);
         lua_pop(L, 1);
     }
     void get_variable_unique_keys(int id, dballe::Record& record) {
@@ -99,6 +107,7 @@ void to::test<1>()
         ensure(record.key_peek(dballe::DBA_KEY_LON));
         ensure(record.key_peek(dballe::DBA_KEY_LAT));
         ensure(record.key_peek(dballe::DBA_KEY_REP_MEMO));
+        // DBA_KEY_IDENT is an optional workaround
     }
 }
 // Check stations are unique
@@ -111,10 +120,11 @@ void to::test<2>()
          i != ids.end(); ++i) {
         dballe::Record record;
         get_station_unique_keys(*i, record);
-        std::string key = wibble::str::fmtf("/%d,%d/%s",
+        std::string key = wibble::str::fmtf("/%d,%d/%s/%s",
                                             record.key(dballe::DBA_KEY_LON).enqi(),
                                             record.key(dballe::DBA_KEY_LAT).enqi(),
-                                            record.key(dballe::DBA_KEY_REP_MEMO).enqc());
+                                            record.key(dballe::DBA_KEY_REP_MEMO).enqc(),
+                                            record.key(dballe::DBA_KEY_IDENT).enqc());
         ensure(keys.find(key) == keys.end());
         keys[key] = *i;
     }

@@ -93,6 +93,13 @@ int main(int argc, const char** argv)
             std::cerr << "Missing rep_memo" << std::endl;
             continue;
         }
+        if (const wreport::Var *v = sta_ctx->find(WR_VAR(0, 1, 11))) {
+            lua_pushstring(L, v->enqc());
+            lua_setfield(L, idx, "ident");
+        } else {
+            std::cerr << "Missing ident" << std::endl;
+            continue;
+        }
 #if 0
         for (std::vector<wreport::Var*>::const_iterator vi = msg.find_station_context()->data.begin();
              vi != msg.find_station_context()->data.end(); ++vi) {

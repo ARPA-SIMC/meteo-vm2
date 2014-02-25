@@ -154,7 +154,7 @@ extern "C" {
        *errorcode = METEOVM2_ERROR_KEY_NOT_FOUND;
        return;
      }
-     if (!lua_isnumber(L, -1)) {
+     if (lua_type(L, -1) != LUA_TNUMBER) {
        lua_pop(L, 2);
        //throw std::runtime_error("Value is not a number");
        *errorcode = METEOVM2_ERROR_TYPE_CONVERSION;
@@ -200,7 +200,7 @@ extern "C" {
        *errorcode = METEOVM2_ERROR_KEY_NOT_FOUND;
        return;
      }
-     if (!lua_isstring(L, -1)) {
+     if (lua_type(L, -1) != LUA_TSTRING) {
        lua_pop(L, 2);
        //throw std::runtime_error("Value is not a string");
        *errorcode = METEOVM2_ERROR_TYPE_CONVERSION;
@@ -245,7 +245,7 @@ extern "C" {
        *errorcode = METEOVM2_ERROR_KEY_NOT_FOUND;
        return;
      }
-     if (!lua_isnumber(L, -1)) {
+     if (lua_type(L, -1) != LUA_TNUMBER) {
        lua_pop(L, 2);
        //throw std::runtime_error("Value is not a number");
        *errorcode = METEOVM2_ERROR_TYPE_CONVERSION;
@@ -291,7 +291,7 @@ extern "C" {
        *errorcode = METEOVM2_ERROR_KEY_NOT_FOUND;
        return;
      }
-     if (!lua_isstring(L, -1)) {
+     if (lua_type(L, -1) != LUA_TSTRING) {
        lua_pop(L, 2);
        //throw std::runtime_error("Value is not a string");
        *errorcode = METEOVM2_ERROR_TYPE_CONVERSION;

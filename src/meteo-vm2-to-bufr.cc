@@ -82,9 +82,11 @@ int main(int argc, const char** argv)
               varcode = WR_VAR(0, 5, 1);
           else if (bcode == "rep")
               varcode = WR_VAR(0, 1,194);
+          else if (bcode == "ident")
+              varcode = WR_VAR(0, 1, 11);
           else
               varcode = wreport::descriptor_code(bcode.c_str());
-          if (lua_isnumber(L, -1)) {
+          if (lua_type(L, -1) == LUA_TNUMBER) {
             msg.set(dballe::var(varcode, (int) lua_tointeger(L, -1)), varcode,
                     dballe::Level(257), dballe::Trange());
           } else {
@@ -134,7 +136,7 @@ int main(int argc, const char** argv)
 
         lua_getfield(L, -1, "unit");
         std::string unit = dballe::varinfo(varcode)->unit;
-        if (lua_isstring(L, -1))
+        if (!lua_isnil(L, -1))
             unit = lua_tostring(L, -1);
         lua_pop(L, 1);
 

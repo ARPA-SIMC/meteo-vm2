@@ -1167,7 +1167,7 @@ return {
   [5417]={lon=970554,lat=4506052,rep='regemro',},
   [5418]={lon=999503,lat=4512860,rep='fidupo',},
   [5419]={lon=1175626,lat=4495926,rep='fiduve',},
-  [5420]={lon=1212215,lat=4494290,rep='fidupo',},
+  [5420]={lon=1212215,lat=4494290,rep='rirer',},
   [5421]={lon=862542,lat=4504903,rep='fidupo',},
   [5422]={lon=1052302,lat=4440934,rep='regemro',},
   [5423]={lon=998301,lat=4451048,rep='regemro',},

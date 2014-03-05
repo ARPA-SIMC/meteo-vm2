@@ -4857,7 +4857,7 @@ return {
   [12808]={lon=1124065,lat=4494210,rep='burana',},
   [12809]={lon=921615,lat=4468319,rep='fidupo',},
   [12810]={lon=921943,lat=4468060,rep='fidupo',},
-  [12811]={lon=1040118,lat=4517960,rep='fidupo',},
+  [12811]={lon=914712,lat=4517968,rep='fidupo',},
   [12812]={lon=1005881,lat=4516369,rep='fidupo',},
   [12813]={lon=987160,lat=4625010,rep='fidupo',},
   [12814]={lon=864524,lat=4590921,rep='fidupo',},

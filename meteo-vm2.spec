@@ -1,6 +1,6 @@
 Name:           meteo-vm2
 Version:        0.11
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
@@ -111,6 +111,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Thu Jun 19 2014 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.11-2%{dist}
+- meteo-vm2-to-bufr: fixed error message
+
 * Thu Jun 19 2014 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.11-1%{dist}
 - Updated stations
 

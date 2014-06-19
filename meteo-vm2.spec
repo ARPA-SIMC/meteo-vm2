@@ -1,6 +1,6 @@
 Name:           meteo-vm2
-Version:        0.10
-Release:        2%{?dist}
+Version:        0.11
+Release:        1%{?dist}
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
@@ -111,6 +111,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Thu Jun 19 2014 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.11-1%{dist}
+- Updated stations
+
 * Wed Jan 15 2014 Daniele Branchini <dbranchini@carenza.metarpa> - 0.10-2%{dist}
 - Fixed error in pkg-config
 

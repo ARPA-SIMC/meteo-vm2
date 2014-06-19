@@ -101,8 +101,7 @@ int main(int argc, const char** argv)
         if (lua_isnil(L, -1)) {
           lua_pop(L, 1);
           throw std::runtime_error(
-              wibble::str::fmtf("Variable %d not found",
-                                parser.lineno, value.variable_id));
+              wibble::str::fmtf("Variable %d not found", value.variable_id));
         }
         lua_getfield(L, -1, "bcode");
         wreport::Varcode varcode = wreport::descriptor_code(lua_tostring(L, -1));

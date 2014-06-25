@@ -9,14 +9,13 @@ Source:         %{name}-%{version}.tar.gz
 BuildRequires:  libtool, pkgconfig, lua-devel >= 5.1, libdballe-devel >= 5.19, libwibble-devel >= 1.1
 
 %if 0%{?fedora} < 19
-%define luaver 5.1
+Requires:       lua = 5.1
 %endif
 
 %if 0%{?fedora} == 20
-%define luaver 5.2
+Requires:       lua >= 5.2
+Requires:       lua < 5.3
 %endif
-
-Requires:       lua = %{luaver}
 
 %description
 VM2 decoding/encoding library

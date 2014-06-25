@@ -1,3 +1,9 @@
+/compile
+/meteo-vm2/meteo-vm2-test.log
+/meteo-vm2/meteo-vm2-test.trs
+test-driver
+test-suite.log
+/debian
 stamp-h1
 missing
 ltmain.sh

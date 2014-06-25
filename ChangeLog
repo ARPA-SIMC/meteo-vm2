@@ -1,3 +1,5 @@
+2014-06-25 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
+	* conf/default.lua: updated stations.
 2014-06-23 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
 	* conf/default.lua: updated stations (4217,4222,4240,4247,4344 to
 	idrmec-pub, 13023 to rer).

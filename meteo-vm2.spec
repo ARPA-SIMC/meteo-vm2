@@ -1,5 +1,5 @@
 Name:           meteo-vm2
-Version:        0.12
+Version:        0.13
 Release:        1%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -111,6 +111,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Wed Jun 25 2014 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.13-1%{dist}
+- Updated stations
+
 * Mon Jun 23 2014 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.12-1%{dist}
 - Stations 4217,4222,4240,4247,4344 to idrmec-pub
 - Station 13023 to rer

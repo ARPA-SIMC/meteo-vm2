@@ -1,3 +1,5 @@
+2014-09-03 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
+	* conf/default.lua: new stations 1034, 1035, 1036
 2014-07-07 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
 	* conf/default.lua: fixed coordinates for station 5525
 2014-06-25 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>

@@ -1,3 +1,9 @@
+meteo-vm2 (0.15-1) UNRELEASED; urgency=low
+
+  * New stations 1034, 1035, 1036
+
+ -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Wed, 03 Sep 2014 13:40:28 +0200
+
 meteo-vm2 (0.14-1) UNRELEASED; urgency=low
 
   * Updated stations

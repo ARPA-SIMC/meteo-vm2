@@ -1,3 +1,5 @@
+#include "utils.h"
+
 #include <math.h>
 
 #include <iostream>
@@ -40,7 +42,7 @@ int main(int argc, const char** argv)
       return 0;
     }
     if (argc == 1)
-      source = meteo::vm2::Source::get();
+      source = new meteo::vm2::Source(bufr_path());
     else
       source = new meteo::vm2::Source(argv[1]);
 

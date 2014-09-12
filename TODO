@@ -6,3 +6,7 @@
   [692]={unit='mc',bcode='B13211',tr=254,p1=0,p2=0,lt1=1,},
 - Pollini: per ora, disabilitati
 - Conversione da ottanti a gradi
+- Aggiungere i seguenti bcode alle stations di default.lua (per
+  meteo-vm2-to-bufr):
+  * B01001 e B01002 (wmocode), B01019 (name), B01063 (icaocode), B07030
+    (height), B07031 (heightbaro), B07004 (surface).

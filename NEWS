@@ -1,3 +1,6 @@
+0.17 (2014-09-16)
+- bufr-to-meteo-vm2: optional ident
+
 0.16 (2014-09-16)
 - Updated stations
 - Stations info (dballe-compatible)

@@ -1,3 +1,11 @@
+meteo-vm2 (0.17-1) UNRELEASED; urgency=low
+
+  * Updated stations
+  * Station info for BUFR conversion
+  * bufr-to-meteo-vm2: optional ident
+
+ -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Tue, 16 Sep 2014 13:44:00 +0200
+
 meteo-vm2 (0.14-1) UNRELEASED; urgency=low
 
   * Updated stations

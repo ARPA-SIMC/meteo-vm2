@@ -1,5 +1,6 @@
 2014-09-16 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
 	* conf/default.lua: removed station 5447 & new stations info.
+	* src/bufr-to-meteo-vm2.cc: optional ident
 2014-09-03 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
 	* conf/default.lua: new stations 1034, 1035, 1036
 2014-07-07 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>

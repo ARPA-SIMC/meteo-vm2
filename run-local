@@ -1,4 +1,3 @@
 #!/bin/bash
 export METEO_VM2_SOURCE="$(cd $(dirname $0) && pwd)/conf/default.lua"
-export METEO_VM2_BUFR_SOURCE="$(cd $(dirname $0) && pwd)/conf/bufr.lua"
 exec $@

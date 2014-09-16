@@ -1,5 +1,3 @@
-#include "utils.h"
-
 #include <math.h>
 
 #include <iostream>
@@ -16,6 +14,8 @@
 #include <dballe/msg/msgs.h>
 #include <dballe/msg/msg.h>
 #include <dballe/msg/wr_codec.h>
+
+#include <meteo-vm2/source.h>
 
 static void show_usage(std::ostream& out)
 {
@@ -42,7 +42,7 @@ int main(int argc, const char** argv)
       return 0;
     }
     if (argc == 1)
-      source = new meteo::vm2::Source(bufr_path());
+      source = meteo::vm2::Source::get();
     else
       source = new meteo::vm2::Source(argv[1]);
 

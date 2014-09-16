@@ -6,12 +6,10 @@ AM_CPPFLAGS = -I$(top_builddir) -I$(top_srcdir) $(LUA_CFLAGS)
 sourcedir = $(sharedstatedir)/$(PACKAGE)/source
 
 dist_source_DATA = \
-	      default.lua \
-		  bufr.lua
+	      default.lua
 
 source_DATA = \
-	      default.luac \
-		  bufr.luac
+	      default.luac
 
 check_PROGRAMS = tut-main
 
@@ -26,7 +24,6 @@ TESTS = tut-main
 TESTS_ENVIRONMENT = @srcdir@/run-test
 
 CLEANFILES = \
-	     default.luac \
-		 bufr.luac
+	     default.luac
 
 EXTRA_DIST = run-test

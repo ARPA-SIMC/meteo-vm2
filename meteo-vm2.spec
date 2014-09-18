@@ -102,6 +102,7 @@ Collection of utilities for VM2 files
 %defattr(-,root,root,-)
 %{_bindir}/meteo-vm2-to-bufr
 %{_bindir}/bufr-to-meteo-vm2
+%{_mandir}/*
 
 %post
 /sbin/ldconfig

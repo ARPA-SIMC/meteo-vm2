@@ -1,12 +1,29 @@
 DEVEL_CPPFLAGS = -I$(top_builddir) -I$(top_srcdir) -I$(srcdir) $(LUA_CFLAGS)
 
+bin_PROGRAMS =
+
+man_MANS =
+
+CLEANFILES = 
+
 if DBALLE
 
 DEVEL_CPPFLAGS += $(DBALLE_CFLAGS)
 
-bin_PROGRAMS = \
-	       meteo-vm2-to-bufr \
-	       bufr-to-meteo-vm2
+bin_PROGRAMS += \
+				meteo-vm2-to-bufr \
+				bufr-to-meteo-vm2
+
+man_MANS += \
+			meteo-vm2-to-bufr.1 \
+			bufr-to-meteo-vm2.1
+
+CLEANFILES += \
+			  meteo-vm2-to-bufr.1 \
+			  bufr-to-meteo-vm2.1
+
+%.1: %
+	$(builddir)/$< --manpage= > $@
 
 meteo_vm2_to_bufr_CPPFLAGS = $(DEVEL_CPPFLAGS) $(AM_CPPFLAGS)
 

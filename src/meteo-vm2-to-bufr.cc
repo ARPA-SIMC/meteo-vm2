@@ -19,6 +19,10 @@
  *
  * Author: Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
  */
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include <math.h>
 
 #include <iostream>

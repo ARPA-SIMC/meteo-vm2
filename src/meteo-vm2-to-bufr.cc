@@ -30,6 +30,7 @@
 #include <cstring>
 
 #include <wibble/string.h>
+#include <wibble/commandline/parser.h>
 #include <wreport/varinfo.h>
 #include <wreport/conv.h>
 #include <meteo-vm2/source.h>
@@ -42,13 +43,17 @@
 
 #include <meteo-vm2/source.h>
 
-static void show_usage(std::ostream& out)
-{
-  out << "Usage: meteo-vm2-to-bufr [SOURCEFILE]" << std::endl
-      << std::endl
-      << "Read a VM2 file from stdin and print" << std::endl
-      << "a generic BUFR file to stdout." << std::endl;
-}
+using wibble::commandline::StandardParserWithManpage;
+
+struct Options : public StandardParserWithManpage {
+  Options() : StandardParserWithManpage("meteo-vm2-to-bufr", PACKAGE_VERSION,
+                                        1, PACKAGE_BUGREPORT) {
+    usage = "[SOURCEFILE]";
+    description = "Convert VM2 to generic BUFR.";
+    longDescription = "This program convert VM2 to BUFR.\n"
+        "If SOURCEFILE is given, use this file as conversion table.";
+  }
+};
 
 static inline int convert_qc(const std::string& str)
 {
@@ -61,15 +66,15 @@ int main(int argc, const char** argv)
   try {
     meteo::vm2::Source* source = NULL;
 
-    if (argc > 1 
-        && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0)) {
-      show_usage(std::cerr);
+    Options opts;
+
+    if (opts.parse(argc, argv))
       return 0;
-    }
-    if (argc == 1)
-      source = meteo::vm2::Source::get();
+
+    if (opts.hasNext())
+      source = new meteo::vm2::Source(opts.next());
     else
-      source = new meteo::vm2::Source(argv[1]);
+      source = meteo::vm2::Source::get();
 
     meteo::vm2::Parser parser(std::cin);
 

@@ -81,8 +81,8 @@ int main(int argc, const char** argv)
     lua_State* L = source->L;
     dballe::msg::BufrImporter importer;
 
-    std::auto_ptr<dballe::File> infile = dballe::File::create(dballe::BUFR, 
-                                                              "(stdin)", "r");
+    std::auto_ptr<dballe::File> infile(dballe::File::create(dballe::BUFR, 
+                                                              "(stdin)", "r").release());
 
     dballe::Rawmsg raw;
 

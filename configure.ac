@@ -12,6 +12,9 @@ AC_PROG_FC
 AM_INIT_AUTOMAKE([foreign nostdinc subdir-objects])
 LT_INIT
 
+dnl Use c++11
+AX_CXX_COMPILE_STDCXX_11(noext,optional)
+
 PKG_CHECK_MODULES([WIBBLE], [libwibble],
 		  [
 		   LIBS="$LIBS $WIBBLE_LIBS"

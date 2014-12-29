@@ -40,9 +40,10 @@
 #include <dballe/msg/msgs.h>
 #include <dballe/msg/msg.h>
 #include <dballe/msg/wr_codec.h>
-
 #include <meteo-vm2/source.h>
 
+using namespace std;
+using namespace wreport;
 using wibble::commandline::StandardParserWithManpage;
 
 struct Options : public StandardParserWithManpage {
@@ -180,19 +181,19 @@ int main(int argc, const char** argv)
         wreport::Var var = dballe::var(varcode, val);
         if (value.flags.size() == 9) {
           if (value.flags[0] == '1') {
-            var.seta(dballe::newvar(WR_VAR(0, 33, 196), 1));
+            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 196), 1).release()));
           }
           if (value.flags[0] == '2') {
-            var.seta(dballe::newvar(WR_VAR(0, 33, 197), 1));
+            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 197), 1).release()));
           }
           if (value.flags.substr(1,2) != "00") {
-            var.seta(dballe::newvar(WR_VAR(0, 33, 192), convert_qc(value.flags.substr(1,2))));
+            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 192), convert_qc(value.flags.substr(1,2))).release()));
           }
           if (value.flags.substr(3,2) != "00") {
-            var.seta(dballe::newvar(WR_VAR(0, 33, 193), convert_qc(value.flags.substr(3,2))));
+            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 193), convert_qc(value.flags.substr(3,2))).release()));
           }
           if (value.flags.substr(5,2) != "00") {
-            var.seta(dballe::newvar(WR_VAR(0, 33, 194), convert_qc(value.flags.substr(5,2))));
+            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 194), convert_qc(value.flags.substr(5,2))).release()));
           }
         }
 

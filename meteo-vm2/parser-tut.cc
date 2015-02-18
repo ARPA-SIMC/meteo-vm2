@@ -104,5 +104,46 @@ void to::test<4>()
   ensure_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
   ensure_equals(value.flags, "000000000");
 }
+// Parse two well-formed VM2 message (emulates a line parser)
+template<> template<>
+void to::test<5>()
+{
+  std::string line1 = "20120102030058,123,456,78.9,,,100000000\n";
+  std::string line2 = "20120102030058,123,456,78.9,,,\n";
+  std::string line = line1 + line2;
+
+  std::stringstream in(line);
+  meteo::vm2::Parser parser(in);
+
+  meteo::vm2::Value value;
+  ensure(parser.next(value));
+  ensure_equals(in.tellg(), line1.size());
+  ensure_equals(value.year, 2012);
+  ensure_equals(value.month, 1);
+  ensure_equals(value.mday, 2);
+  ensure_equals(value.hour, 3);
+  ensure_equals(value.min, 0);
+  ensure_equals(value.sec, 58);
+  ensure_equals(value.station_id, 123);
+  ensure_equals(value.variable_id, 456);
+  ensure_equals(value.value1, 78.9);
+  ensure_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
+  ensure_equals(value.flags, "100000000");
+
+  ensure(parser.next(value));
+  ensure_equals(in.tellg(), line1.size() + line2.size());
+  ensure_equals(value.year, 2012);
+  ensure_equals(value.month, 1);
+  ensure_equals(value.mday, 2);
+  ensure_equals(value.hour, 3);
+  ensure_equals(value.min, 0);
+  ensure_equals(value.sec, 58);
+  ensure_equals(value.station_id, 123);
+  ensure_equals(value.variable_id, 456);
+  ensure_equals(value.value1, 78.9);
+  ensure_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
+  ensure_equals(value.flags, "");
+}
+
 
 }

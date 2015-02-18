@@ -1,3 +1,5 @@
+2015-02-18 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
+	* meteo-vm2/parser.cc: fixed parser.
 2014-09-16 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
 	* conf/default.lua: removed station 5447 & new stations info.
 	* src/bufr-to-meteo-vm2.cc: optional ident

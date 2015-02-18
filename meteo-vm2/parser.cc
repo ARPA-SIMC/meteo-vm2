@@ -127,7 +127,9 @@ bool Parser::next(Value& value, std::string& line) {
 
   ++i;
   if (i != splitter.end())
-    value.flags = *i;
+      value.flags = *i;
+  else
+      value.flags.clear();
 
   return true;
 }

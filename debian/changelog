@@ -1,3 +1,9 @@
+meteo-vm2 (0.18.1-1) UNRELEASED; urgency=low
+
+  * Fixed parser
+
+ -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Thu, 19 Feb 2015 10:43:51 +0100
+
 meteo-vm2 (0.18-1) UNRELEASED; urgency=low
 
   * Fixed parser

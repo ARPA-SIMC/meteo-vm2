@@ -210,8 +210,11 @@ int main(int argc, const char** argv)
             std::vector<int> variables = source->lua_find_variables(idx);
             lua_settop(L, idx);
             if (variables.size() == 0) {
-              std::cerr << "cannot find variable " << dballe::format_code(v.code()) << std::endl;
-              continue;
+                std::cerr << "cannot find variable with "
+                    << "bcode=" << dballe::format_code(v.code()) << ", "
+                    << "level=" << c.level << ", "
+                    << "trange=" << c.trange << std::endl;
+                continue;
             }
             if (variables.size() > 1) {
                 std::cerr << variables.size()
@@ -220,7 +223,7 @@ int main(int argc, const char** argv)
                     << wibble::str::join(variables.begin(), variables.end())
                     << ")"
                     << std::endl;
-              continue;
+                continue;
             }
             vm2value.variable_id = variables.at(0);
 

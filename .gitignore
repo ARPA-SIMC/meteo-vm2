@@ -37,7 +37,8 @@ Makefile
 /doc/Doxygen.stamp
 /doc/Doxygen
 /conf/tut-main
-/conf/*.luac
+/conf/default.lua
+/conf/default.luac
 .libs
 .deps
 *.o

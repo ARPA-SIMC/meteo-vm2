@@ -4,7 +4,7 @@ AM_CPPFLAGS = -I$(top_builddir) -I$(top_srcdir) $(LUA_CFLAGS)
 	luac -o $@ $^
 
 default.lua: meteo.json airquality.json
-	python json2lua.py $^ > $@
+	@PYTHON@ json2lua.py $^ > $@
 
 sourcedir = $(sharedstatedir)/$(PACKAGE)/source
 

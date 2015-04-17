@@ -35,6 +35,12 @@ else
 	fi
 fi
 
+AC_PATH_PROG([PYTHON], [python])
+if test x$PYTHON = x
+then
+    AC_MSG_ERROR("Missing python")
+fi
+
 AC_PATH_PROG([DOXYGEN], [doxygen])
 if test x$DOXYGEN = x
 then

@@ -1,12 +1,12 @@
 Name:           meteo-vm2
-Version:        0.18.1
+Version:        0.19
 Release:        1%{?dist}
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
 URL:            http://www.arpa.emr.it/sim
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  libtool, pkgconfig, lua-devel >= 5.1, libdballe-devel >= 5.19, libwibble-devel >= 1.1
+BuildRequires:  libtool, pkgconfig, lua-devel >= 5.1, libdballe-devel >= 5.19, libwibble-devel >= 1.1, python
 
 %if 0%{?fedora} < 19
 Requires:       lua = 5.1
@@ -111,6 +111,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Fri Apr 17 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.19%{dist}
+- New stations
+
 * Thu Feb 19 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.18.1-1%{dist}
 - Error message
 

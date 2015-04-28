@@ -41,6 +41,11 @@ then
     AC_MSG_ERROR("Missing python")
 fi
 
+AM_PATH_PYTHON
+
+PYTHON_CFLAGS=`unset CFLAGS; $PYTHON-config --cflags`
+AC_SUBST(PYTHON_CFLAGS)
+
 AC_PATH_PROG([DOXYGEN], [doxygen])
 if test x$DOXYGEN = x
 then
@@ -71,6 +76,7 @@ AM_CONDITIONAL([DBALLE], [test x"$have_dballe" = x"yes"])
 
 AC_CONFIG_FILES([Makefile
 		 meteo-vm2/Makefile
+         python/Makefile
 		 fortran/Makefile
 		 src/Makefile
 		 meteo-vm2.pc

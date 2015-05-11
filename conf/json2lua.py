@@ -49,5 +49,5 @@ if __name__ == '__main__':
             **v
         ))
 
-    sys.stdout.write(" }\n,")
+    sys.stdout.write(" },\n")
     sys.stdout.write("}\n")

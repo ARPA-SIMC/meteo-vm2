@@ -1,4 +1,4 @@
-pkgpython_PYTHON = __init__.py
+dist_pkgpython_PYTHON = __init__.py
 
 pyexec_LTLIBRARIES = _meteovm2.la
 

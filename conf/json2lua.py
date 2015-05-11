@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     sys.stdout.write("return {\n")
     sys.stdout.write(" stations={\n")
-    for s in stations:
+    for s in sorted(stations, key=lambda s: s["id"]):
         s["vals"] = ",".join([LuaTemplate().format(
             "{0:}={1:lua}", k, s[k]
         ) for k in filter(
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     sys.stdout.write(" },\n")
 
     sys.stdout.write(" variables={\n")
-    for v in variables:
+    for v in sorted(variables, key=lambda v: v["id"]):
         if v.get("unit"):
             v["vals"] = LuaTemplate().format("unit={0:lua}", v["unit"])
         sys.stdout.write(LuaTemplate().format(

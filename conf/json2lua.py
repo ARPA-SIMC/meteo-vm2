@@ -9,7 +9,7 @@ class LuaTemplate(string.Formatter):
         if spec == 'lua':
             spec = ''
             if value is None:
-                value = "'-'"
+                value = "nil"
             elif isinstance(value, int):
                 value = str(value)
             else:
@@ -45,7 +45,7 @@ if __name__ == '__main__':
         if v.get("unit"):
             v["vals"] = LuaTemplate().format("unit={0:lua}", v["unit"])
         sys.stdout.write(LuaTemplate().format(
-            "  [{id}]={{bcode={bcode:lua},tr={tr:lua},p1={p1:lua},p2={p2:lua},lt1={lt1:lua},lv1={lv1:lua},lt2={lt2:lua},lv2={lv2:lua},{vals}}},\n",
+            "  [{id}]={{bcode={bcode:lua},tr={tr:lua},p1={p1:lua},p2={p2:lua},lt1={lt1:lua},l1={l1:lua},lt2={lt2:lua},l2={l2:lua},{vals}}},\n",
             **v
         ))
 

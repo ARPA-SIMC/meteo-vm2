@@ -1,3 +1,5 @@
+2015-05-12 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
+	* conf/*: l1,l2 fixed and missing values as nil.
 2015-02-19 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
 	* src/bufr-to-meteo-vm2: error message
 2015-02-18 Emanuele Di Giacomo <edigiacomo@arpa.emr.it>

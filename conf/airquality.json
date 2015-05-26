@@ -1,100 +1,704 @@
 {
     "stations": [
-        {"id": 2000004, "ident": null, "lon": 1034001, "lat": 4479000, "rep": "airquality"},
-        {"id": 2000005, "ident": null, "lon": 1006000, "lat": 4486000, "rep": "airquality"},
-        {"id": 2000006, "ident": null, "lon": 1006000, "lat": 4487000, "rep": "airquality"},
-        {"id": 2000214, "ident": null, "lon": 1028937, "lat": 4465823, "rep": "airquality"},
-        {"id": 2000219, "ident": null, "lon": 1037191, "lat": 4492596, "rep": "airquality"},
-        {"id": 3000001, "ident": null, "lon": 1073391, "lat": 4451624, "rep": "airquality"},
-        {"id": 3000006, "ident": null, "lon": 1062443, "lat": 4469787, "rep": "airquality"},
-        {"id": 3000007, "ident": null, "lon": 1066359, "lat": 4468904, "rep": "airquality"},
-        {"id": 3000018, "ident": null, "lon": 1043104, "lat": 4430071, "rep": "airquality"},
-        {"id": 3000022, "ident": null, "lon": 1066478, "lat": 4487373, "rep": "airquality"},
-        {"id": 4000001, "ident": null, "lon": 1093161, "lat": 4464526, "rep": "airquality"},
-        {"id": 4000002, "ident": null, "lon": 1090572, "lat": 4463699, "rep": "airquality"},
-        {"id": 4000005, "ident": null, "lon": 1094956, "lat": 4465713, "rep": "airquality"},
-        {"id": 4000006, "ident": null, "lon": 1084892, "lat": 4469146, "rep": "airquality"},
-        {"id": 4000007, "ident": null, "lon": 1104704, "lat": 4459809, "rep": "airquality"},
-        {"id": 4000008, "ident": null, "lon": 1078569, "lat": 4454553, "rep": "airquality"},
-        {"id": 4000009, "ident": null, "lon": 1085396, "lat": 4454086, "rep": "airquality"},
-        {"id": 4000010, "ident": null, "lon": 1084637, "lat": 4453254, "rep": "airquality"},
-        {"id": 4000011, "ident": null, "lon": 1088416, "lat": 4477639, "rep": "airquality"},
-        {"id": 4000012, "ident": null, "lon": 1088426, "lat": 4480038, "rep": "airquality"},
-        {"id": 4000013, "ident": null, "lon": 1083380, "lat": 4433263, "rep": "airquality"},
-        {"id": 4000015, "ident": null, "lon": 1092677, "lat": 4464620, "rep": "airquality"},
-        {"id": 4000016, "ident": null, "lon": 1087234, "lat": 4452767, "rep": "airquality"},
-        {"id": 4000017, "ident": null, "lon": 1089699, "lat": 4465724, "rep": "airquality"},
-        {"id": 4000022, "ident": null, "lon": 1090731, "lat": 4465157, "rep": "airquality"},
-        {"id": 4000110, "ident": null, "lon": 1081988, "lat": 4454215, "rep": "airquality"},
-        {"id": 4000146, "ident": null, "lon": 1100828, "lat": 4448867, "rep": "airquality"},
-        {"id": 4000152, "ident": null, "lon": 1117895, "lat": 4492877, "rep": "airquality"},
-        {"id": 4000155, "ident": null, "lon": 1079236, "lat": 4454038, "rep": "airquality"},
-        {"id": 5000007, "ident": null, "lon": 983037, "lat": 4482389, "rep": "airquality"},
-        {"id": 5000033, "ident": null, "lon": 969327, "lat": 4504884, "rep": "airquality"},
-        {"id": 5000062, "ident": null, "lon": 1001920, "lat": 4498950, "rep": "airquality"},
-        {"id": 5000065, "ident": null, "lon": 966935, "lat": 4503854, "rep": "airquality"},
-        {"id": 5000066, "ident": null, "lon": 936693, "lat": 4473473, "rep": "airquality"},
-        {"id": 6000010, "ident": null, "lon": 1204816, "lat": 4421515, "rep": "airquality"},
-        {"id": 6000011, "ident": null, "lon": 1205750, "lat": 4421597, "rep": "airquality"},
-        {"id": 6000012, "ident": null, "lon": 1224000, "lat": 4414000, "rep": "airquality"},
-        {"id": 6000013, "ident": null, "lon": 1226000, "lat": 4414000, "rep": "airquality"},
-        {"id": 6000014, "ident": null, "lon": 1224474, "lat": 4414138, "rep": "airquality"},
-        {"id": 6000015, "ident": null, "lon": 1202000, "lat": 4412996, "rep": "airquality"},
-        {"id": 6000029, "ident": null, "lon": 1206277, "lat": 4413134, "rep": "airquality"},
-        {"id": 6000031, "ident": null, "lon": 1240333, "lat": 4409687, "rep": "airquality"},
-        {"id": 6000036, "ident": null, "lon": 1222479, "lat": 4392741, "rep": "airquality"},
-        {"id": 7000001, "ident": null, "lon": 1171090, "lat": 4435782, "rep": "airquality"},
-        {"id": 7000002, "ident": null, "lon": 1172067, "lat": 4435542, "rep": "airquality"},
-        {"id": 7000003, "ident": null, "lon": 1169974, "lat": 4435047, "rep": "airquality"},
-        {"id": 7000013, "ident": null, "lon": 1132818, "lat": 4451291, "rep": "airquality"},
-        {"id": 7000014, "ident": null, "lon": 1135504, "lat": 4448363, "rep": "airquality"},
-        {"id": 7000015, "ident": null, "lon": 1132850, "lat": 4450002, "rep": "airquality"},
-        {"id": 7000016, "ident": null, "lon": 1136742, "lat": 4449004, "rep": "airquality"},
-        {"id": 7000017, "ident": null, "lon": 1135836, "lat": 4451193, "rep": "airquality"},
-        {"id": 7000020, "ident": null, "lon": 1127700, "lat": 4448404, "rep": "airquality"},
-        {"id": 7000021, "ident": null, "lon": 1136421, "lat": 4458108, "rep": "airquality"},
-        {"id": 7000022, "ident": null, "lon": 1127293, "lat": 4452174, "rep": "airquality"},
-        {"id": 7000023, "ident": null, "lon": 1132867, "lat": 4446385, "rep": "airquality"},
-        {"id": 7000024, "ident": null, "lon": 1141660, "lat": 4446719, "rep": "airquality"},
-        {"id": 7000025, "ident": null, "lon": 1146534, "lat": 4451200, "rep": "airquality"},
-        {"id": 7000027, "ident": null, "lon": 1162482, "lat": 4465423, "rep": "airquality"},
-        {"id": 7000028, "ident": null, "lon": 1144428, "lat": 4455286, "rep": "airquality"},
-        {"id": 7000036, "ident": null, "lon": 1142194, "lat": 4460671, "rep": "airquality"},
-        {"id": 7000039, "ident": null, "lon": 1170143, "lat": 4434866, "rep": "airquality"},
-        {"id": 7000040, "ident": null, "lon": 1135939, "lat": 4454604, "rep": "airquality"},
-        {"id": 7000041, "ident": null, "lon": 1128607, "lat": 4450009, "rep": "airquality"},
-        {"id": 7000042, "ident": null, "lon": 1092719, "lat": 4415122, "rep": "airquality"},
-        {"id": 8000001, "ident": null, "lon": 1164000, "lat": 4483998, "rep": "airquality"},
-        {"id": 8000002, "ident": null, "lon": 1161314, "lat": 4484249, "rep": "airquality"},
-        {"id": 8000005, "ident": null, "lon": 1160999, "lat": 4482998, "rep": "airquality"},
-        {"id": 8000007, "ident": null, "lon": 1196125, "lat": 4483975, "rep": "airquality"},
-        {"id": 8000008, "ident": null, "lon": 1129000, "lat": 4471999, "rep": "airquality"},
-        {"id": 8000038, "ident": null, "lon": 1129966, "lat": 4473301, "rep": "airquality"},
-        {"id": 8000040, "ident": null, "lon": 1164962, "lat": 4482426, "rep": "airquality"},
-        {"id": 8000041, "ident": null, "lon": 1194194, "lat": 4474090, "rep": "airquality"},
-        {"id": 9000012, "ident": null, "lon": 1219428, "lat": 4440583, "rep": "airquality"},
-        {"id": 9000014, "ident": null, "lon": 1218650, "lat": 4442778, "rep": "airquality"},
-        {"id": 9000016, "ident": null, "lon": 1188877, "lat": 4428945, "rep": "airquality"},
-        {"id": 9000018, "ident": null, "lon": 1187110, "lat": 4429502, "rep": "airquality"},
-        {"id": 9000020, "ident": null, "lon": 1194335, "lat": 4439158, "rep": "airquality"},
-        {"id": 9000021, "ident": null, "lon": 1222539, "lat": 4441926, "rep": "airquality"},
-        {"id": 9000068, "ident": null, "lon": 1198236, "lat": 4452743, "rep": "airquality"},
-        {"id": 9000070, "ident": null, "lon": 1233225, "lat": 4428386, "rep": "airquality"},
-        {"id": 10000001, "ident": null, "lon": 1257568, "lat": 4405210, "rep": "airquality"},
-        {"id": 10000002, "ident": null, "lon": 1255249, "lat": 4406431, "rep": "airquality"},
-        {"id": 10000004, "ident": null, "lon": 1265949, "lat": 4400567, "rep": "airquality"},
-        {"id": 10000059, "ident": null, "lon": 1242096, "lat": 4401388, "rep": "airquality"},
-        {"id": 10000060, "ident": null, "lon": 1262728, "lat": 4393183, "rep": "airquality"},
-        {"id": 10000072, "ident": null, "lon": 1264837, "lat": 4384381, "rep": "airquality"}
-    ],
+        {
+            "id": 2000004, 
+            "ident": null, 
+            "lat": 4479000, 
+            "lon": 1034001, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 2000005, 
+            "ident": null, 
+            "lat": 4486000, 
+            "lon": 1006000, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 2000006, 
+            "ident": null, 
+            "lat": 4487000, 
+            "lon": 1006000, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 2000214, 
+            "ident": null, 
+            "lat": 4465823, 
+            "lon": 1028937, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 2000219, 
+            "ident": null, 
+            "lat": 4492596, 
+            "lon": 1037191, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 3000001, 
+            "ident": null, 
+            "lat": 4451624, 
+            "lon": 1073391, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 3000006, 
+            "ident": null, 
+            "lat": 4469787, 
+            "lon": 1062443, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 3000007, 
+            "ident": null, 
+            "lat": 4468904, 
+            "lon": 1066359, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 3000018, 
+            "ident": null, 
+            "lat": 4430071, 
+            "lon": 1043104, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 3000022, 
+            "ident": null, 
+            "lat": 4487373, 
+            "lon": 1066478, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000001, 
+            "ident": null, 
+            "lat": 4464526, 
+            "lon": 1093161, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000002, 
+            "ident": null, 
+            "lat": 4463699, 
+            "lon": 1090572, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000005, 
+            "ident": null, 
+            "lat": 4465713, 
+            "lon": 1094956, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000006, 
+            "ident": null, 
+            "lat": 4469146, 
+            "lon": 1084892, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000007, 
+            "ident": null, 
+            "lat": 4459809, 
+            "lon": 1104704, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000008, 
+            "ident": null, 
+            "lat": 4454553, 
+            "lon": 1078569, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000009, 
+            "ident": null, 
+            "lat": 4454086, 
+            "lon": 1085396, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000010, 
+            "ident": null, 
+            "lat": 4453254, 
+            "lon": 1084637, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000011, 
+            "ident": null, 
+            "lat": 4477639, 
+            "lon": 1088416, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000012, 
+            "ident": null, 
+            "lat": 4480038, 
+            "lon": 1088426, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000013, 
+            "ident": null, 
+            "lat": 4433263, 
+            "lon": 1083380, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000015, 
+            "ident": null, 
+            "lat": 4464620, 
+            "lon": 1092677, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000016, 
+            "ident": null, 
+            "lat": 4452767, 
+            "lon": 1087234, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000017, 
+            "ident": null, 
+            "lat": 4465724, 
+            "lon": 1089699, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000022, 
+            "ident": null, 
+            "lat": 4465157, 
+            "lon": 1090731, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000110, 
+            "ident": null, 
+            "lat": 4454215, 
+            "lon": 1081988, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000146, 
+            "ident": null, 
+            "lat": 4448867, 
+            "lon": 1100828, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000152, 
+            "ident": null, 
+            "lat": 4492877, 
+            "lon": 1117895, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 4000155, 
+            "ident": null, 
+            "lat": 4454038, 
+            "lon": 1079236, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 5000007, 
+            "ident": null, 
+            "lat": 4482389, 
+            "lon": 983037, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 5000033, 
+            "ident": null, 
+            "lat": 4504884, 
+            "lon": 969327, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 5000062, 
+            "ident": null, 
+            "lat": 4498950, 
+            "lon": 1001920, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 5000065, 
+            "ident": null, 
+            "lat": 4503854, 
+            "lon": 966935, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 5000066, 
+            "ident": null, 
+            "lat": 4473473, 
+            "lon": 936693, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 6000010, 
+            "ident": null, 
+            "lat": 4421515, 
+            "lon": 1204816, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 6000011, 
+            "ident": null, 
+            "lat": 4421597, 
+            "lon": 1205750, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 6000012, 
+            "ident": null, 
+            "lat": 4414000, 
+            "lon": 1224000, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 6000013, 
+            "ident": null, 
+            "lat": 4414000, 
+            "lon": 1226000, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 6000014, 
+            "ident": null, 
+            "lat": 4414138, 
+            "lon": 1224474, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 6000015, 
+            "ident": null, 
+            "lat": 4412996, 
+            "lon": 1202000, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 6000029, 
+            "ident": null, 
+            "lat": 4413134, 
+            "lon": 1206277, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 6000031, 
+            "ident": null, 
+            "lat": 4409687, 
+            "lon": 1240333, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 6000036, 
+            "ident": null, 
+            "lat": 4392741, 
+            "lon": 1222479, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000001, 
+            "ident": null, 
+            "lat": 4435782, 
+            "lon": 1171090, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000002, 
+            "ident": null, 
+            "lat": 4435542, 
+            "lon": 1172067, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000003, 
+            "ident": null, 
+            "lat": 4435047, 
+            "lon": 1169974, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000013, 
+            "ident": null, 
+            "lat": 4451291, 
+            "lon": 1132818, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000014, 
+            "ident": null, 
+            "lat": 4448363, 
+            "lon": 1135504, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000015, 
+            "ident": null, 
+            "lat": 4450002, 
+            "lon": 1132850, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000016, 
+            "ident": null, 
+            "lat": 4449004, 
+            "lon": 1136742, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000017, 
+            "ident": null, 
+            "lat": 4451193, 
+            "lon": 1135836, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000020, 
+            "ident": null, 
+            "lat": 4448404, 
+            "lon": 1127700, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000021, 
+            "ident": null, 
+            "lat": 4458108, 
+            "lon": 1136421, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000022, 
+            "ident": null, 
+            "lat": 4452174, 
+            "lon": 1127293, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000023, 
+            "ident": null, 
+            "lat": 4446385, 
+            "lon": 1132867, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000024, 
+            "ident": null, 
+            "lat": 4446719, 
+            "lon": 1141660, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000025, 
+            "ident": null, 
+            "lat": 4451200, 
+            "lon": 1146534, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000027, 
+            "ident": null, 
+            "lat": 4465423, 
+            "lon": 1162482, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000028, 
+            "ident": null, 
+            "lat": 4455286, 
+            "lon": 1144428, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000036, 
+            "ident": null, 
+            "lat": 4460671, 
+            "lon": 1142194, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000039, 
+            "ident": null, 
+            "lat": 4434866, 
+            "lon": 1170143, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000040, 
+            "ident": null, 
+            "lat": 4454604, 
+            "lon": 1135939, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000041, 
+            "ident": null, 
+            "lat": 4450009, 
+            "lon": 1128607, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 7000042, 
+            "ident": null, 
+            "lat": 4415122, 
+            "lon": 1092719, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 8000001, 
+            "ident": null, 
+            "lat": 4483998, 
+            "lon": 1164000, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 8000002, 
+            "ident": null, 
+            "lat": 4484249, 
+            "lon": 1161314, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 8000005, 
+            "ident": null, 
+            "lat": 4482998, 
+            "lon": 1160999, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 8000007, 
+            "ident": null, 
+            "lat": 4483975, 
+            "lon": 1196125, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 8000008, 
+            "ident": null, 
+            "lat": 4471999, 
+            "lon": 1129000, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 8000038, 
+            "ident": null, 
+            "lat": 4473301, 
+            "lon": 1129966, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 8000040, 
+            "ident": null, 
+            "lat": 4482426, 
+            "lon": 1164962, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 8000041, 
+            "ident": null, 
+            "lat": 4474090, 
+            "lon": 1194194, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 9000012, 
+            "ident": null, 
+            "lat": 4440583, 
+            "lon": 1219428, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 9000014, 
+            "ident": null, 
+            "lat": 4442778, 
+            "lon": 1218650, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 9000016, 
+            "ident": null, 
+            "lat": 4428945, 
+            "lon": 1188877, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 9000018, 
+            "ident": null, 
+            "lat": 4429502, 
+            "lon": 1187110, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 9000020, 
+            "ident": null, 
+            "lat": 4439158, 
+            "lon": 1194335, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 9000021, 
+            "ident": null, 
+            "lat": 4441926, 
+            "lon": 1222539, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 9000068, 
+            "ident": null, 
+            "lat": 4452743, 
+            "lon": 1198236, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 9000070, 
+            "ident": null, 
+            "lat": 4428386, 
+            "lon": 1233225, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 10000001, 
+            "ident": null, 
+            "lat": 4405210, 
+            "lon": 1257568, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 10000002, 
+            "ident": null, 
+            "lat": 4406431, 
+            "lon": 1255249, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 10000004, 
+            "ident": null, 
+            "lat": 4400567, 
+            "lon": 1265949, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 10000059, 
+            "ident": null, 
+            "lat": 4401388, 
+            "lon": 1242096, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 10000060, 
+            "ident": null, 
+            "lat": 4393183, 
+            "lon": 1262728, 
+            "rep": "airquality"
+        }, 
+        {
+            "id": 10000072, 
+            "ident": null, 
+            "lat": 4384381, 
+            "lon": 1264837, 
+            "rep": "airquality"
+        }
+    ], 
     "variables": [
-        {"id": 10001, "unit": "ug/m**3", "bcode": "B15197", "tr": 1, "p1": 0, "p2": 3600, "lt1": 1, "l1": null, "lt2": null, "l2": null},
-        {"id": 10005, "unit": "ug/m**3", "bcode": "B15195", "tr": 1, "p1": 0, "p2": 86400, "lt1": 1, "l1": null, "lt2": null, "l2": null},
-        {"id": 10007, "unit": "ug/m**3", "bcode": "B15194", "tr": 1, "p1": 0, "p2": 3600, "lt1": 1, "l1": null, "lt2": null, "l2": null},
-        {"id": 10008, "unit": "ug/m**3", "bcode": "B15193", "tr": 1, "p1": 0, "p2": 3600, "lt1": 1, "l1": null, "lt2": null, "l2": null},
-        {"id": 10009, "unit": "ug/m**3", "bcode": "B15199", "tr": 1, "p1": 0, "p2": 3600, "lt1": 1, "l1": null, "lt2": null, "l2": null},
-        {"id": 10010, "unit": "ug/m**3", "bcode": "B15196", "tr": 1, "p1": 0, "p2": 3600, "lt1": 1, "l1": null, "lt2": null, "l2": null},
-        {"id": 10020, "unit": "ug/m**3", "bcode": "B15236", "tr": 1, "p1": 0, "p2": 3600, "lt1": 1, "l1": null, "lt2": null, "l2": null},
-        {"id": 10111, "unit": "ug/m**3", "bcode": "B15198", "tr": 1, "p1": 0, "p2": 86400, "lt1": 1, "l1": null, "lt2": null, "l2": null}
+        {
+            "bcode": "B15197", 
+            "id": 10001, 
+            "l1": null, 
+            "l2": null, 
+            "lt1": 1, 
+            "lt2": null, 
+            "p1": 0, 
+            "p2": 3600, 
+            "tr": 1, 
+            "unit": "ug/m**3"
+        }, 
+        {
+            "bcode": "B15195", 
+            "id": 10005, 
+            "l1": null, 
+            "l2": null, 
+            "lt1": 1, 
+            "lt2": null, 
+            "p1": 0, 
+            "p2": 86400, 
+            "tr": 1, 
+            "unit": "ug/m**3"
+        }, 
+        {
+            "bcode": "B15194", 
+            "id": 10007, 
+            "l1": null, 
+            "l2": null, 
+            "lt1": 1, 
+            "lt2": null, 
+            "p1": 0, 
+            "p2": 3600, 
+            "tr": 1, 
+            "unit": "ug/m**3"
+        }, 
+        {
+            "bcode": "B15193", 
+            "id": 10008, 
+            "l1": null, 
+            "l2": null, 
+            "lt1": 1, 
+            "lt2": null, 
+            "p1": 0, 
+            "p2": 3600, 
+            "tr": 1, 
+            "unit": "ug/m**3"
+        }, 
+        {
+            "bcode": "B15199", 
+            "id": 10009, 
+            "l1": null, 
+            "l2": null, 
+            "lt1": 1, 
+            "lt2": null, 
+            "p1": 0, 
+            "p2": 3600, 
+            "tr": 1, 
+            "unit": "ug/m**3"
+        }, 
+        {
+            "bcode": "B15196", 
+            "id": 10010, 
+            "l1": null, 
+            "l2": null, 
+            "lt1": 1, 
+            "lt2": null, 
+            "p1": 0, 
+            "p2": 3600, 
+            "tr": 1, 
+            "unit": "ug/m**3"
+        }, 
+        {
+            "bcode": "B15236", 
+            "id": 10020, 
+            "l1": null, 
+            "l2": null, 
+            "lt1": 1, 
+            "lt2": null, 
+            "p1": 0, 
+            "p2": 3600, 
+            "tr": 1, 
+            "unit": "ug/m**3"
+        }, 
+        {
+            "bcode": "B15198", 
+            "id": 10111, 
+            "l1": null, 
+            "l2": null, 
+            "lt1": 1, 
+            "lt2": null, 
+            "p1": 0, 
+            "p2": 86400, 
+            "tr": 1, 
+            "unit": "ug/m**3"
+        }
     ]
 }

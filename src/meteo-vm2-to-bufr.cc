@@ -91,12 +91,8 @@ int main(int argc, const char** argv)
         dballe::Msgs msgs;
         dballe::Msg msg;
         // date
-        msg.set_year(value.year);
-        msg.set_month(value.month);
-        msg.set_day(value.mday);
-        msg.set_hour(value.hour);
-        msg.set_minute(value.min);
-        msg.set_second(value.sec);
+        msg.set_datetime(dballe::Datetime(value.year, value.month, value.mday,
+                                          value.hour, value.min, value.sec));
         // station
         source->lua_push_station(value.station_id);
         if (lua_isnil(L, -1)) {

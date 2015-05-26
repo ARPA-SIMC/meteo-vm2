@@ -164,16 +164,12 @@ int main(int argc, const char** argv)
           continue;
         }
         vm2value.station_id = stations.at(0);
-        vm2value.year = msg.get_year_var()->enqi();
-        vm2value.month = msg.get_month_var()->enqi();
-        vm2value.mday = msg.get_day_var()->enqi();
-        vm2value.hour = msg.get_hour_var()->enqi();
-        vm2value.min = msg.get_minute_var()->enqi();
-        if (msg.get_second_var()) {
-          vm2value.sec = msg.get_second_var()->enqi();
-        } else {
-          vm2value.sec = 0;
-        }
+        vm2value.year = msg.datetime().date.year;
+        vm2value.month = msg.datetime().date.month;
+        vm2value.mday = msg.datetime().date.day;
+        vm2value.hour = msg.datetime().time.hour;
+        vm2value.min = msg.datetime().time.minute;
+        vm2value.sec = msg.datetime().time.second;
 
         for (std::vector<dballe::msg::Context*>::const_iterator ci = msg.data.begin();
              ci != msg.data.end(); ++ci) {

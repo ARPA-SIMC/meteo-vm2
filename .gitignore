@@ -4,7 +4,6 @@
 .deps
 .libs
 /compile
-/conf/default.lua
 /conf/default.luac
 /conf/tut-main
 /debian

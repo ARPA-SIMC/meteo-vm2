@@ -3,16 +3,11 @@ AM_CPPFLAGS = -I$(top_builddir) -I$(top_srcdir) $(LUA_CFLAGS)
 .lua.luac:
 	luac -o $@ $^
 
-default.lua: meteo.json airquality.json
-	@PYTHON@ json2lua.py $^ > $@
-
 sourcedir = $(sharedstatedir)/$(PACKAGE)/source
 
-dist_source_DATA = \
-	      default.lua
+dist_source_DATA = default.lua bufr.lua
 
-source_DATA = \
-	      default.luac
+source_DATA = default.luac bufr.luac
 
 check_PROGRAMS = tut-main
 
@@ -26,7 +21,6 @@ TESTS = tut-main
 
 TESTS_ENVIRONMENT = @srcdir@/run-test
 
-CLEANFILES = \
-	     default.luac
+CLEANFILES = default.luac bufr.luac
 
-EXTRA_DIST = run-test meteo.json airquality.json json2lua.py
+EXTRA_DIST = run-test

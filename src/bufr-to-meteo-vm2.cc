@@ -76,7 +76,7 @@ int main(int argc, const char** argv)
     if (opts.hasNext())
       source = new meteo::vm2::Source(opts.next());
     else
-      source = meteo::vm2::Source::get();
+      source = new meteo::vm2::Source(METEO_VM2_BUFR_SOURCE);
 
     lua_State* L = source->L;
     dballe::msg::BufrImporter importer;

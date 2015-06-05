@@ -1,5 +1,5 @@
 Name:           meteo-vm2
-Version:        0.24
+Version:        0.25
 Release:        1%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -111,6 +111,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Fri Jun 05 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.25%{dist}
+- default.lua and bufr.lua source files
+
 * Wed Jun 04 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.24%{dist}
 - New stations and variables
 - dballe 7.1-4758 support

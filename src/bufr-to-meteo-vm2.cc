@@ -63,6 +63,14 @@ static inline std::string convert_qc_back(int qc)
   return wibble::str::fmtf("%02d", qcint);
 }
 
+// Wrapper for dballe::format_code
+static inline std::string format_code(wreport::Varcode code)
+{
+    char c[7];
+    dballe::format_code(code, c);
+    return c;
+}
+
 int main(int argc, const char** argv)
 {
   try {
@@ -181,7 +189,7 @@ int main(int argc, const char** argv)
             // variable
             lua_newtable(L);
             idx = lua_gettop(L);
-            lua_pushstring(L, dballe::format_code(v.code()).c_str());
+            lua_pushstring(L, format_code(v.code()).c_str());
             lua_setfield(L, idx, "bcode");
             lua_pushinteger(L, c.trange.pind);
             lua_setfield(L, idx, "tr");
@@ -207,7 +215,7 @@ int main(int argc, const char** argv)
             lua_settop(L, idx);
             if (variables.size() == 0) {
                 std::cerr << "cannot find variable with "
-                    << "bcode=" << dballe::format_code(v.code()) << ", "
+                    << "bcode=" << format_code(v.code()) << ", "
                     << "level=" << c.level << ", "
                     << "trange=" << c.trange << std::endl;
                 continue;

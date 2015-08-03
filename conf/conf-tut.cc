@@ -185,7 +185,7 @@ void to::test<5>()
         get_item_value("bcode", bcode);
         get_item_value("unit", unit);
         lua_pop(L, 1);
-        wreport::Varcode varcode = wreport::descriptor_code(bcode.c_str());
+        wreport::Varcode varcode = wreport::varcode_parse(bcode.c_str());
         wreport::Varinfo varinfo = dballe::varinfo(varcode);
         try {
             wreport::Var var(varinfo);

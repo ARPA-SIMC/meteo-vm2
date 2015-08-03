@@ -88,8 +88,8 @@ int main(int argc, const char** argv)
       int top = lua_gettop(L);
 
       try {
-        dballe::Msgs msgs;
-        dballe::Msg msg;
+        dballe::Messages msgs;
+        dballe::Message msg;
         // date
         msg.set_datetime(dballe::Datetime(value.year, value.month, value.mday,
                                           value.hour, value.min, value.sec));
@@ -114,7 +114,7 @@ int main(int argc, const char** argv)
           else if (bcode == "ident")
               varcode = WR_VAR(0, 1, 11);
           else
-              varcode = wreport::descriptor_code(bcode.c_str());
+              varcode = wreport::varcode_parse(bcode.c_str());
           if (lua_type(L, -1) == LUA_TNUMBER) {
             msg.set(dballe::var(varcode, (int) lua_tointeger(L, -1)), varcode,
                     dballe::Level(257), dballe::Trange());
@@ -133,7 +133,7 @@ int main(int argc, const char** argv)
               wibble::str::fmtf("Variable %d not found", value.variable_id));
         }
         lua_getfield(L, -1, "bcode");
-        wreport::Varcode varcode = wreport::descriptor_code(lua_tostring(L, -1));
+        wreport::Varcode varcode = wreport::varcode_parse(lua_tostring(L, -1));
         dballe::Trange trange;
         lua_pop(L, 1);
         lua_getfield(L, -1, "tr");
@@ -197,8 +197,7 @@ int main(int argc, const char** argv)
 
         msgs.acquire(msg);
 
-        dballe::Rawmsg raw;
-        exporter.to_rawmsg(msgs, raw);
+        dballe::BinaryMessage raw = exporter.to_rawmsg(msgs);
 
         std::cout << raw;
       } catch (std::exception& e) {

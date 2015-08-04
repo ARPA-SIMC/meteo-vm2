@@ -37,7 +37,6 @@
 #include <meteo-vm2/parser.h>
 #include <dballe/core/defs.h>
 #include <dballe/core/var.h>
-#include <dballe/msg/msgs.h>
 #include <dballe/msg/msg.h>
 #include <dballe/msg/wr_codec.h>
 #include <meteo-vm2/source.h>
@@ -62,6 +61,112 @@ static inline int convert_qc(const std::string& str)
   return (int)rint(100.0 - ((qc-48.0) * 100.0 / 6.0));
 }
 
+static inline void set_station(meteo::vm2::Source* source, const meteo::vm2::Value& value, dballe::Msg& msg) {
+    lua_State* L = source->L;
+    source->lua_push_station(value.station_id);
+    if (lua_isnil(L, -1)) {
+        lua_pop(L, 1);
+        throw std::runtime_error(
+                wibble::str::fmtf("Station %d not found", value.station_id));
+    }
+    lua_pushnil(L);
+    while(lua_next(L, -2)) {
+        std::string bcode = lua_tostring(L, -2);
+        wreport::Varcode varcode;
+        // Handle "lon", "lat" and "rep" aliases
+        if (bcode == "lon")
+            varcode = WR_VAR(0, 6, 1);
+        else if (bcode == "lat")
+            varcode = WR_VAR(0, 5, 1);
+        else if (bcode == "rep")
+            varcode = WR_VAR(0, 1,194);
+        else if (bcode == "ident")
+            varcode = WR_VAR(0, 1, 11);
+        else
+            varcode = wreport::varcode_parse(bcode.c_str());
+        if (lua_type(L, -1) == LUA_TNUMBER) {
+            msg.set(dballe::var(varcode, (int) lua_tointeger(L, -1)), varcode,
+                    dballe::Level(257), dballe::Trange());
+        } else {
+            msg.set(dballe::var(varcode, lua_tostring(L, -1)), varcode,
+                    dballe::Level(257), dballe::Trange());
+        }
+        lua_pop(L,1);
+    }
+    lua_pop(L, 1);
+}
+
+static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Value& value, dballe::Msg& msg) {
+    lua_State* L = source->L;
+    source->lua_push_variable(value.variable_id);
+    if (lua_isnil(L, -1)) {
+        lua_pop(L, 1);
+        throw std::runtime_error(
+                wibble::str::fmtf("Variable %d not found", value.variable_id));
+    }
+    lua_getfield(L, -1, "bcode");
+    wreport::Varcode varcode = wreport::varcode_parse(lua_tostring(L, -1));
+    dballe::Trange trange;
+    lua_pop(L, 1);
+    lua_getfield(L, -1, "tr");
+    trange.pind = lua_tointeger(L, -1);
+    lua_pop(L, 1);
+    lua_getfield(L, -1, "p1");
+    trange.p1 = lua_tointeger(L, -1);
+    lua_pop(L, 1);
+    lua_getfield(L, -1, "p2");
+    trange.p2 = lua_tointeger(L, -1);
+    lua_pop(L, 1);
+    dballe::Level level;
+    lua_getfield(L, -1, "lt1");
+    level.ltype1 = lua_tointeger(L, -1);
+    lua_pop(L, 1);
+    lua_getfield(L, -1, "l1");
+    if (!lua_isnil(L, -1))
+        level.l1 = lua_tointeger(L, -1);
+    lua_pop(L, 1);
+    lua_getfield(L, -1, "lt2");
+    if (!lua_isnil(L, -1))
+        level.ltype2 = lua_tointeger(L, -1);
+    lua_pop(L, 1);
+    lua_getfield(L, -1, "l2");
+    if (!lua_isnil(L, -1))
+        level.l2 = lua_tointeger(L, -1);
+    lua_pop(L, 1);
+
+    lua_getfield(L, -1, "unit");
+    std::string unit = dballe::varinfo(varcode)->unit;
+    if (!lua_isnil(L, -1))
+        unit = lua_tostring(L, -1);
+    lua_pop(L, 1);
+
+    if (value.value1 == meteo::vm2::MISSING_DOUBLE)
+        throw std::runtime_error("Cannot convert missing value to BUFR");
+
+    double val = wreport::convert_units(unit.c_str(), 
+            dballe::varinfo(varcode)->unit, 
+            value.value1);
+    wreport::Var var = dballe::var(varcode, val);
+    if (value.flags.size() == 9) {
+        if (value.flags[0] == '1') {
+            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 196), 1).release()));
+        }
+        if (value.flags[0] == '2') {
+            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 197), 1).release()));
+        }
+        if (value.flags.substr(1,2) != "00") {
+            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 192), convert_qc(value.flags.substr(1,2))).release()));
+        }
+        if (value.flags.substr(3,2) != "00") {
+            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 193), convert_qc(value.flags.substr(3,2))).release()));
+        }
+        if (value.flags.substr(5,2) != "00") {
+            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 194), convert_qc(value.flags.substr(5,2))).release()));
+        }
+    }
+    msg.set(var, varcode, level, trange);
+}
+
 int main(int argc, const char** argv)
 {
   try {
@@ -79,127 +184,27 @@ int main(int argc, const char** argv)
 
     meteo::vm2::Parser parser(std::cin);
 
-    lua_State* L = source->L;
     meteo::vm2::Value value;
     dballe::msg::BufrExporter exporter;
 
     std::string line;
+    lua_State* L = source->L;
     while (parser.next(value, line)) {
       int top = lua_gettop(L);
 
       try {
         dballe::Messages msgs;
-        dballe::Message msg;
+        dballe::Msg msg;
         // date
         msg.set_datetime(dballe::Datetime(value.year, value.month, value.mday,
                                           value.hour, value.min, value.sec));
         // station
-        source->lua_push_station(value.station_id);
-        if (lua_isnil(L, -1)) {
-          lua_pop(L, 1);
-          throw std::runtime_error(
-              wibble::str::fmtf("Station %d not found", value.station_id));
-        }
-        lua_pushnil(L);
-        while(lua_next(L, -2)) {
-          std::string bcode = lua_tostring(L, -2);
-          wreport::Varcode varcode;
-          // Handle "lon", "lat" and "rep" aliases
-          if (bcode == "lon")
-              varcode = WR_VAR(0, 6, 1);
-          else if (bcode == "lat")
-              varcode = WR_VAR(0, 5, 1);
-          else if (bcode == "rep")
-              varcode = WR_VAR(0, 1,194);
-          else if (bcode == "ident")
-              varcode = WR_VAR(0, 1, 11);
-          else
-              varcode = wreport::varcode_parse(bcode.c_str());
-          if (lua_type(L, -1) == LUA_TNUMBER) {
-            msg.set(dballe::var(varcode, (int) lua_tointeger(L, -1)), varcode,
-                    dballe::Level(257), dballe::Trange());
-          } else {
-            msg.set(dballe::var(varcode, lua_tostring(L, -1)), varcode,
-                    dballe::Level(257), dballe::Trange());
-          }
-          lua_pop(L,1);
-        }
-        lua_pop(L, 1);
+        set_station(source, value, msg);
         // variable
-        source->lua_push_variable(value.variable_id);
-        if (lua_isnil(L, -1)) {
-          lua_pop(L, 1);
-          throw std::runtime_error(
-              wibble::str::fmtf("Variable %d not found", value.variable_id));
-        }
-        lua_getfield(L, -1, "bcode");
-        wreport::Varcode varcode = wreport::varcode_parse(lua_tostring(L, -1));
-        dballe::Trange trange;
-        lua_pop(L, 1);
-        lua_getfield(L, -1, "tr");
-        trange.pind = lua_tointeger(L, -1);
-        lua_pop(L, 1);
-        lua_getfield(L, -1, "p1");
-        trange.p1 = lua_tointeger(L, -1);
-        lua_pop(L, 1);
-        lua_getfield(L, -1, "p2");
-        trange.p2 = lua_tointeger(L, -1);
-        lua_pop(L, 1);
-        dballe::Level level;
-        lua_getfield(L, -1, "lt1");
-        level.ltype1 = lua_tointeger(L, -1);
-        lua_pop(L, 1);
-        lua_getfield(L, -1, "l1");
-        if (!lua_isnil(L, -1))
-          level.l1 = lua_tointeger(L, -1);
-        lua_pop(L, 1);
-        lua_getfield(L, -1, "lt2");
-        if (!lua_isnil(L, -1))
-          level.ltype2 = lua_tointeger(L, -1);
-        lua_pop(L, 1);
-        lua_getfield(L, -1, "l2");
-        if (!lua_isnil(L, -1))
-          level.l2 = lua_tointeger(L, -1);
-        lua_pop(L, 1);
+        // msgs.append(msg);
 
-        lua_getfield(L, -1, "unit");
-        std::string unit = dballe::varinfo(varcode)->unit;
-        if (!lua_isnil(L, -1))
-            unit = lua_tostring(L, -1);
-        lua_pop(L, 1);
+        std::cout << exporter.to_binary(msgs);
 
-        if (value.value1 == meteo::vm2::MISSING_DOUBLE)
-            throw std::runtime_error("Cannot convert missing value to BUFR");
-
-        double val = wreport::convert_units(unit.c_str(), 
-                                            dballe::varinfo(varcode)->unit, 
-                                            value.value1);
-        wreport::Var var = dballe::var(varcode, val);
-        if (value.flags.size() == 9) {
-          if (value.flags[0] == '1') {
-            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 196), 1).release()));
-          }
-          if (value.flags[0] == '2') {
-            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 197), 1).release()));
-          }
-          if (value.flags.substr(1,2) != "00") {
-            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 192), convert_qc(value.flags.substr(1,2))).release()));
-          }
-          if (value.flags.substr(3,2) != "00") {
-            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 193), convert_qc(value.flags.substr(3,2))).release()));
-          }
-          if (value.flags.substr(5,2) != "00") {
-            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 194), convert_qc(value.flags.substr(5,2))).release()));
-          }
-        }
-
-        msg.set(var, varcode, level, trange);
-
-        msgs.acquire(msg);
-
-        dballe::BinaryMessage raw = exporter.to_rawmsg(msgs);
-
-        std::cout << raw;
       } catch (std::exception& e) {
         std::cerr << parser.lineno << ":[" << line << "] - " << e.what() << std::endl;
       }

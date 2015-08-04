@@ -201,7 +201,9 @@ int main(int argc, const char** argv)
         // station
         set_station(source, value, msg);
         // variable
-        // msgs.append(msg);
+        set_variable(source, value, msg);
+
+        msgs.append(msg);
 
         std::cout << exporter.to_binary(msgs);
 

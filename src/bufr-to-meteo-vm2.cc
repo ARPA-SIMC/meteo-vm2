@@ -48,7 +48,7 @@ using wibble::commandline::StandardParserWithManpage;
 
 struct Options : public StandardParserWithManpage {
     Options() : StandardParserWithManpage("bufr-to-meteo-vm2", PACKAGE_VERSION,
-            1, PACKAGE_BUGREPORT) {
+                                          1, PACKAGE_BUGREPORT) {
         usage = "[SOURCEFILE]";
         description = "Convert BUFR to VM2.";
         longDescription = "This program convert BUFR to VM2.\n"
@@ -98,9 +98,9 @@ int main(int argc, const char** argv)
                 meteo::vm2::Value vm2value;
                 const dballe::msg::Context* sta_ctx = msg.find_station_context();
                 if (!sta_ctx) {
-                        std::cerr << "Cannot find station context" << std::endl;
-                        return true;
-                    }
+                    std::cerr << "Cannot find station context" << std::endl;
+                    return true;
+                }
                 // station
                 lua_newtable(L);
                 idx = lua_gettop(L);
@@ -143,7 +143,7 @@ int main(int argc, const char** argv)
                         << wibble::str::join(stations.begin(), stations.end())
                         << ")"
                         << std::endl;
-                        return true;
+                    return true;
                 }
                 vm2value.station_id = stations.at(0);
                 vm2value.year = msg.get_datetime().date().year;
@@ -221,7 +221,7 @@ int main(int argc, const char** argv)
                         } else {
                             vm2value.flags = "000000000";
                             for (vattr = v.next_attr(); vattr != NULL; 
-                                vattr = vattr->next_attr()) {
+                                 vattr = vattr->next_attr()) {
                                 if (vattr->code() == WR_VAR(0,33,196) && vattr->enqi() == 1)
                                     vm2value.flags[0] = '1';
                                 if (vattr->code() == WR_VAR(0,33,197) && vattr->enqi() == 1)
@@ -248,9 +248,11 @@ int main(int argc, const char** argv)
                 }
                 return true;
             });
-        } catch (const std::exception& e) {
-            std::cerr << e.what() << std::endl;
-            return 1;
-        }
-        return 0;
+        });
+        return true;
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
+        return 1;
     }
+    return 0;
+}

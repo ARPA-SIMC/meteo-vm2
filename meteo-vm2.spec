@@ -1,5 +1,5 @@
 Name:           meteo-vm2
-Version:        0.27
+Version:        0.28
 Release:        1%{?dist}
 Summary:        C++ library for VM2 data 
 

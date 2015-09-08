@@ -55,13 +55,13 @@ struct simc_conf_shar {
         lua_getfield(L, -1, name);
         switch (lua_type(L, -1)) {
             case LUA_TSTRING:
-                record[key].setc(lua_tostring(L, -1));
+                record.setc(key, lua_tostring(L, -1));
                 break;
             case LUA_TNUMBER:
-                record[key].seti(lua_tointeger(L, -1));
+                record.seti(key, lua_tointeger(L, -1));
                 break;
             case LUA_TNIL:
-                record[key].setc("");
+                record.setc(key, "");
                 break;
         }
         lua_pop(L, 1);
@@ -102,11 +102,11 @@ void to::test<1>()
     std::vector<int> ids = get_all_stations();
     for (std::vector<int>::const_iterator i = ids.begin();
          i != ids.end(); ++i) {
-        dballe::Record record;
-        get_station_unique_keys(*i, record);
-        ensure(record.key_peek(dballe::DBA_KEY_LON));
-        ensure(record.key_peek(dballe::DBA_KEY_LAT));
-        ensure(record.key_peek(dballe::DBA_KEY_REP_MEMO));
+        std::unique_ptr<dballe::Record> record = dballe::Record::create();
+        get_station_unique_keys(*i, *record.get());
+        ensure(record->isset("lon"));
+        ensure(record->isset("lat"));
+        ensure(record->isset("rep_memo"));
         // DBA_KEY_IDENT is an optional workaround
     }
 }
@@ -118,13 +118,15 @@ void to::test<2>()
     std::map<std::string, int> keys;
     for (std::vector<int>::const_iterator i = ids.begin();
          i != ids.end(); ++i) {
-        dballe::Record record;
-        get_station_unique_keys(*i, record);
-        std::string key = wibble::str::fmtf("/%d,%d/%s/%s",
-                                            record.key(dballe::DBA_KEY_LON).enqi(),
-                                            record.key(dballe::DBA_KEY_LAT).enqi(),
-                                            record.key(dballe::DBA_KEY_REP_MEMO).enqc(),
-                                            record.key(dballe::DBA_KEY_IDENT).enqc());
+        std::unique_ptr<dballe::Record> record = dballe::Record::create();
+        get_station_unique_keys(*i, *record.get());
+        std::string key = wibble::str::fmtf(
+            "/%d,%d/%s/%s",
+            (*record)["lon"].enqi(),
+            (*record)["lat"].enqi(),
+            record->enq("rep_memo", "-"),
+            record->enq("ident", "-")
+        );
         ensure(keys.find(key) == keys.end());
         keys[key] = *i;
     }
@@ -137,13 +139,13 @@ void to::test<3>()
     std::vector<int> ids = get_all_variables();
     for (std::vector<int>::const_iterator i = ids.begin();
          i != ids.end(); ++i) {
-        dballe::Record record;
-        get_variable_unique_keys(*i, record);
-        ensure(record.key_peek(dballe::DBA_KEY_VAR));
-        ensure(record.key_peek(dballe::DBA_KEY_PINDICATOR));
-        ensure(record.key_peek(dballe::DBA_KEY_P1));
-        ensure(record.key_peek(dballe::DBA_KEY_P2));
-        ensure(record.key_peek(dballe::DBA_KEY_LEVELTYPE1));
+        std::unique_ptr<dballe::Record> record = dballe::Record::create();
+        get_variable_unique_keys(*i, *record.get());
+        ensure(record->isset("var"));
+        ensure(record->isset("pindicator"));
+        ensure(record->isset("p1"));
+        ensure(record->isset("p2"));
+        ensure(record->isset("leveltype1"));
     }
 }
 // Check variables are unique
@@ -154,17 +156,17 @@ void to::test<4>()
     std::map<std::string, int> keys;
     for (std::vector<int>::const_iterator i = ids.begin();
          i != ids.end(); ++i) {
-        dballe::Record record;
-        get_variable_unique_keys(*i, record);
+        std::unique_ptr<dballe::Record> record = dballe::Record::create();
+        get_variable_unique_keys(*i, *record.get());
         std::stringstream ss;
-        ss  << record.get(dballe::DBA_KEY_VAR, "-") << ","
-            << record.get(dballe::DBA_KEY_PINDICATOR, "-") << ","
-            << record.get(dballe::DBA_KEY_P1, "-") << ","
-            << record.get(dballe::DBA_KEY_P2, "-") << ","
-            << record.get(dballe::DBA_KEY_LEVELTYPE1, "-") << ","
-            << record.get(dballe::DBA_KEY_L1, "-") << ","
-            << record.get(dballe::DBA_KEY_LEVELTYPE2, "-") << ","
-            << record.get(dballe::DBA_KEY_L2, "-");
+        ss  << record->enq("var", "-") << ","
+            << record->enq("pindicator", "-") << ","
+            << record->enq("p1", "-") << ","
+            << record->enq("p2", "-") << ","
+            << record->enq("leveltype1", "-") << ","
+            << record->enq("l1", "-") << ","
+            << record->enq("leveltype2", "-") << ","
+            << record->enq("l2", "-");
         std::string key = ss.str();
         ensure(keys.find(key) == keys.end());
         keys[key] = *i;

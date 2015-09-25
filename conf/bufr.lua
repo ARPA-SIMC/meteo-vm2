@@ -531,6 +531,8 @@ return {
         [4188]={ident=nil,lon=1261667,lat=4403333,rep='pollini',B01019='Rimini',B07030='70',},
         [4189]={ident=nil,lon=1119489,lat=4463290,rep='pollini',B01019='San Giovanni Persiceto',B07030='380',},
         [4190]={ident=nil,lon=1161667,lat=4465000,rep='pollini',B01019='San Pietro Capofiume',B07030='100',},
+        [4205]={ident=nil,lon=1202167,lat=4412500,rep='idrmec',B01019='Vitignano',B07030='2580',B07031='2580',},
+        [4294]={ident=nil,lon=1217778,lat=4394167,rep='idrmec',B01019='Montecastello',B07030='1850',B07031='1850',},
         [4759]={ident=nil,lon=1096055,lat=4405659,rep='idrost',B01019='Stabiazzoni',B07030='7530',B07031='7550',},
         [4760]={ident=nil,lon=1188022,lat=4402090,rep='idrost',B01019='Strada San Zeno',B07030='2860',B07031='3070',},
         [4761]={ident=nil,lon=1210518,lat=4408519,rep='idrost',B01019='Teodorano',B07030='3250',B07031='3380',},

@@ -531,6 +531,8 @@ return {
         [4188]={ident=nil,lon=1261667,lat=4403333,rep='pollini',},
         [4189]={ident=nil,lon=1119489,lat=4463290,rep='pollini',},
         [4190]={ident=nil,lon=1161667,lat=4465000,rep='pollini',},
+        [4205]={ident=nil,lon=1202167,lat=4412500,rep='idrmec',},
+        [4294]={ident=nil,lon=1217778,lat=4394167,rep='idrmec',},
         [4759]={ident=nil,lon=1096055,lat=4405659,rep='idrost',},
         [4760]={ident=nil,lon=1188022,lat=4402090,rep='idrost',},
         [4761]={ident=nil,lon=1210518,lat=4408519,rep='idrost',},

@@ -3087,6 +3087,7 @@ return {
         [14029]={ident='14029',lon=1003110,lat=4502030,rep='simnpr',},
         [14030]={ident=nil,lon=1024220,lat=4439490,rep='simnpr',},
         [14101]={ident=nil,lon=1134611,lat=4449972,rep='simnbo',},
+        [14115]={ident=nil,lon=1000494,lat=4500253,rep='idrmec',},
         [53010]={ident=nil,lon=1038070,lat=4488547,rep='agrmet',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',},
     },

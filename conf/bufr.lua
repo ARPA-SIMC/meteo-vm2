@@ -3087,6 +3087,7 @@ return {
         [14029]={ident='14029',lon=1003110,lat=4502030,rep='simnpr',B01019='Ongina Po',B07030='350',B07031='350',},
         [14030]={ident=nil,lon=1024220,lat=4439490,rep='simnpr',B01019='Termina',B07030='1250',B07031='1250',},
         [14101]={ident=nil,lon=1134611,lat=4449972,rep='simnbo',B01019='Bologna idrografico',B07030='840',B07031='840',},
+        [14115]={ident=nil,lon=1000494,lat=4500253,rep='idrmec',B01019='Castellazzo di Villanova d\'Arda',B07030='410',B07031='410',},
         [53010]={ident=nil,lon=1038070,lat=4488547,rep='agrmet',B01019='Gainago',B07030='280',B07031='280',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },

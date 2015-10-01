@@ -15,9 +15,13 @@ bin_PROGRAMS += \
 				meteo-vm2-to-bufr \
 				bufr-to-meteo-vm2
 
+if HELP2MAN
+
 man_MANS += \
 			meteo-vm2-to-bufr.1 \
 			bufr-to-meteo-vm2.1
+
+endif
 
 CLEANFILES += \
 			  meteo-vm2-to-bufr.1 \

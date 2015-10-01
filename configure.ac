@@ -74,6 +74,9 @@ else
 fi
 AM_CONDITIONAL([DBALLE], [test x"$have_dballe" = x"yes"])
 
+AC_CHECK_PROG([have_help2man], [help2man], [yes])
+AM_CONDITIONAL([HELP2MAN], [test x"$have_help2man" = x"yes"])
+
 AC_CONFIG_FILES([Makefile
 		 meteo-vm2/Makefile
          python/Makefile

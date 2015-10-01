@@ -24,7 +24,7 @@ CLEANFILES += \
 			  bufr-to-meteo-vm2.1
 
 %.1: %
-	$(builddir)/$< --manpage= > $@
+	help2man -N $(builddir)/$< > $@
 
 meteo_vm2_to_bufr_CPPFLAGS = $(DEVEL_CPPFLAGS) $(AM_CPPFLAGS)
 

@@ -15,12 +15,6 @@ LT_INIT
 dnl Use c++11
 AX_CXX_COMPILE_STDCXX_11(noext,optional)
 
-PKG_CHECK_MODULES([WIBBLE], [libwibble],
-		  [
-		   LIBS="$LIBS $WIBBLE_LIBS"
-		   CFLAGS="$CFLAGS $WIBBLE_CFLAGS"
-		  ])
-
 PKG_CHECK_EXISTS([lua5.2], [have_lua=yes], [have_lua=no])
 if test x$have_lua = xyes
 then

@@ -29,31 +29,17 @@
 #include <fstream>
 #include <cstring>
 
-#include <wibble/string.h>
-#include <wibble/commandline/parser.h>
-#include <wreport/varinfo.h>
-#include <wreport/conv.h>
 #include <meteo-vm2/source.h>
 #include <meteo-vm2/parser.h>
+
+#include <wreport/varinfo.h>
+#include <wreport/var.h>
+#include <wreport/conv.h>
 #include <dballe/core/defs.h>
 #include <dballe/core/var.h>
 #include <dballe/msg/msg.h>
 #include <dballe/msg/wr_codec.h>
-#include <meteo-vm2/source.h>
 
-using namespace std;
-using namespace wreport;
-using wibble::commandline::StandardParserWithManpage;
-
-struct Options : public StandardParserWithManpage {
-  Options() : StandardParserWithManpage("meteo-vm2-to-bufr", PACKAGE_VERSION,
-                                        1, PACKAGE_BUGREPORT) {
-    usage = "[SOURCEFILE]";
-    description = "Convert VM2 to generic BUFR.";
-    longDescription = "This program convert VM2 to BUFR.\n"
-        "If SOURCEFILE is given, use this file as conversion table.";
-  }
-};
 
 static inline int convert_qc(const std::string& str)
 {
@@ -66,8 +52,7 @@ static inline void set_station(meteo::vm2::Source* source, const meteo::vm2::Val
     source->lua_push_station(value.station_id);
     if (lua_isnil(L, -1)) {
         lua_pop(L, 1);
-        throw std::runtime_error(
-                wibble::str::fmtf("Station %d not found", value.station_id));
+        throw std::runtime_error("Station " + std::to_string(value.variable_id) + " not found");
     }
     lua_pushnil(L);
     while(lua_next(L, -2)) {
@@ -101,8 +86,7 @@ static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Va
     source->lua_push_variable(value.variable_id);
     if (lua_isnil(L, -1)) {
         lua_pop(L, 1);
-        throw std::runtime_error(
-                wibble::str::fmtf("Variable %d not found", value.variable_id));
+        throw std::runtime_error("Variable " + std::to_string(value.variable_id) + " not found");
     }
     lua_getfield(L, -1, "bcode");
     wreport::Varcode varcode = wreport::varcode_parse(lua_tostring(L, -1));
@@ -146,41 +130,62 @@ static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Va
     double val = wreport::convert_units(unit.c_str(), 
             dballe::varinfo(varcode)->unit, 
             value.value1);
+
     wreport::Var var = dballe::var(varcode, val);
     if (value.flags.size() == 9) {
         if (value.flags[0] == '1') {
-            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 196), 1).release()));
+            var.seta(std::auto_ptr<wreport::Var>(dballe::newvar(WR_VAR(0, 33, 196), 1).release()));
         }
         if (value.flags[0] == '2') {
-            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 197), 1).release()));
+            var.seta(std::auto_ptr<wreport::Var>(dballe::newvar(WR_VAR(0, 33, 197), 1).release()));
         }
         if (value.flags.substr(1,2) != "00") {
-            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 192), convert_qc(value.flags.substr(1,2))).release()));
+            var.seta(std::auto_ptr<wreport::Var>(dballe::newvar(WR_VAR(0, 33, 192), convert_qc(value.flags.substr(1,2))).release()));
         }
         if (value.flags.substr(3,2) != "00") {
-            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 193), convert_qc(value.flags.substr(3,2))).release()));
+            var.seta(std::auto_ptr<wreport::Var>(dballe::newvar(WR_VAR(0, 33, 193), convert_qc(value.flags.substr(3,2))).release()));
         }
         if (value.flags.substr(5,2) != "00") {
-            var.seta(auto_ptr<Var>(dballe::newvar(WR_VAR(0, 33, 194), convert_qc(value.flags.substr(5,2))).release()));
+            var.seta(std::auto_ptr<wreport::Var>(dballe::newvar(WR_VAR(0, 33, 194), convert_qc(value.flags.substr(5,2))).release()));
         }
     }
     msg.set(var, varcode, level, trange);
 }
 
+void print_usage()
+{
+    std::cout
+        << "Usage: meteo-vm2-to-bufr [options] [SOURCEFILE]" << std::endl
+        << std::endl
+        << "Convert VM2 from stdin to generic BUFR to stdout." << std::endl
+        << "Options:" << std::endl
+        << "-h, --help      show this help and exit" << std::endl
+        << "--version   show version and exit" << std::endl;
+}
+
 int main(int argc, const char** argv)
 {
+  std::string sourcefile;
+
+  if (argc > 1) {
+    if (std::string(argv[1]) == "-h" or std::string(argv[1]) == "--help") {
+        print_usage();
+        return 0;
+    }
+    else if (std::string(argv[1]) == "--version") {
+        std::cout << "meteo-vm2-to-bufr " PACKAGE_VERSION << std::endl;
+        return 0;
+    }
+    else
+      sourcefile = argv[1];
+  }
   try {
     meteo::vm2::Source* source = NULL;
 
-    Options opts;
-
-    if (opts.parse(argc, argv))
-      return 0;
-
-    if (opts.hasNext())
-      source = new meteo::vm2::Source(opts.next());
-    else
+    if (sourcefile.empty())
       source = new meteo::vm2::Source(METEO_VM2_BUFR_SOURCE);
+    else
+      source = new meteo::vm2::Source(sourcefile);
 
     meteo::vm2::Parser parser(std::cin);
 

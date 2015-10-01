@@ -41,8 +41,6 @@ namespace vm2 {
  * Parser for the VM2 value files
  */
 struct Parser {
-  /// Pattern of a VM2 value
-  static std::string regexp_str;
   /// Input stream
   std::istream& in;
   /// Number of the last line parsed

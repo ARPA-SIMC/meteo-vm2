@@ -21,18 +21,21 @@
  */
 #include <meteo-vm2/parser.h>
 
-#include <stdlib.h>
+#include <cstdlib>
+#include <iomanip>
+#include <regex>
 
-#include <wibble/exception.h>
-#include <wibble/string.h>
-#include <wibble/regexp.h>
 
 namespace meteo {
 namespace vm2 {
 
-std::string Parser::regexp_str = "^[0-9]{12}([0-9][0-9])?,[0-9]+,[0-9]+,[+-]?[0-9.]*,[+-]?[0-9.]*,[^,\n\r]*,[^,\n\r]*[\r\n]*$";
 
-static wibble::Regexp regexp(Parser::regexp_str, 0, REG_EXTENDED);
+class PatternException : public std::runtime_error {
+public:
+    PatternException(int lineno, const std::string& msg) : std::runtime_error("line " + std::to_string(lineno) + ": " + msg) {}
+};
+
+static std::regex regexp("^([0-9]{12}([0-9][0-9])?),([0-9]+),([0-9]+),([+-]?[0-9.]*),([+-]?[0-9.]*),([^,\n\r]*),([^,\n\r]*[\r\n]*)$");
 
 Parser::Parser(std::istream& in) : in(in), lineno(0) {}
 Parser::~Parser() {}
@@ -44,6 +47,8 @@ bool Parser::next(Value& value) {
 
 bool Parser::next(Value& value, std::string& line) {
   char c;
+  std::smatch match;
+
   line.clear();
   while (true) {
     in.get(c);
@@ -60,92 +65,49 @@ bool Parser::next(Value& value, std::string& line) {
   }
   ++lineno;
 
-  if (!regexp.match(line))
-    throw wibble::exception::Consistency(
-        wibble::str::fmtf("reading line %d", lineno),
-        "pattern mismatch");
+  if (not regex_match(line, match, regexp))
+    throw PatternException(lineno, "pattern mismatch");
 
-  wibble::str::Split splitter(",", line);
-  wibble::str::Split::const_iterator i = splitter.begin();
-  if (i == splitter.end())
-    throw wibble::exception::Consistency(
-        wibble::str::fmtf("reading line %d", lineno),
-        "line does not contain a date field");
+  // match[0]: line
+  // match[1]: datetime
+  // match[2]: seconds (optional)
+  // match[3]: station id
+  // match[4]: variable id
+  // match[5]: value1
+  // match[6]: value2
+  // match[7]: value3
+  // match[8]: flags
 
   value.sec = 0;
-  if (sscanf(i->c_str(),
-             "%04d%02d%02d%02d%02d%02d",
-             &value.year, &value.month, &value.mday,
-             &value.hour, &value.min, &value.sec) < 5) {
-    throw wibble::exception::Consistency(
-        wibble::str::fmtf("reading line %d", lineno),
-        "invalid date format");
-  }
-
-  ++i;
-  if (i == splitter.end())
-    throw wibble::exception::Consistency(
-        wibble::str::fmtf("reading line %d", lineno),
-        "line does not contain a station id field");
-  value.station_id = strtoul(i->c_str(), NULL, 10);
-
-  ++i;
-  if (i == splitter.end())
-    throw wibble::exception::Consistency(
-        wibble::str::fmtf("reading line %d", lineno),
-        "line does not contain a variable id field");
-  value.variable_id = strtoul(i->c_str(), NULL, 10);
-  
-  ++i;
-  if (i == splitter.end())
-    throw wibble::exception::Consistency(
-        wibble::str::fmtf("reading line %d", lineno),
-        "line does not contain a value1 field");
-  if (i->empty()) {
-    value.value1 = vm2::MISSING_DOUBLE;
-  } else {
-    value.value1 = strtod(i->c_str(), NULL);
-  }
-
-  ++i;
-  if (i == splitter.end())
-    throw wibble::exception::Consistency(
-        wibble::str::fmtf("reading line %d", lineno),
-        "line does not contain a value2 field");
-  if (i->empty()) {
-    value.value2 = vm2::MISSING_DOUBLE;
-  } else {
-    value.value2 = strtod(i->c_str(), NULL);
-  }
-
-  ++i;
-  if (i == splitter.end())
-    throw wibble::exception::Consistency(
-        wibble::str::fmtf("reading line %d", lineno),
-        "line does not contain a value3 field");
-  value.value3 = *i;
-
-  ++i;
-  if (i != splitter.end())
-      value.flags = *i;
-  else
-      value.flags.clear();
+  sscanf(match.str(1).c_str(), "%04d%02d%02d%02d%02d%02d",
+         &value.year, &value.month, &value.mday,
+         &value.hour, &value.min, &value.sec);
+  value.station_id = strtoul(match.str(3).c_str(), NULL, 10);
+  value.variable_id = strtoul(match.str(4).c_str(), NULL, 10);
+  value.value1 = (match.str(5).empty() ? vm2::MISSING_DOUBLE : strtod(match.str(5).c_str(), NULL));
+  value.value2 = (match.str(6).empty() ? vm2::MISSING_DOUBLE : strtod(match.str(6).c_str(), NULL));
+  value.value3 = match.str(7);
+  value.flags = match.str(8);
 
   return true;
 }
 
 void Parser::serialize(std::ostream& out, const Value& value) {
-  out << wibble::str::fmtf("%04d%02d%02d%02d%02d%02d,",
-                           value.year, value.month, value.mday,
-                           value.hour, value.min, value.sec)
-      << value.station_id << ","
-      << value.variable_id << ",";
-  if (value.value1 != vm2::MISSING_DOUBLE)
-    out << value.value1;
-  out << ",";
-  if (value.value2 != vm2::MISSING_DOUBLE)
-    out << value.value2;
-  out << ","
+  out << std::setfill('0') << std::setw(4) << value.year
+      << std::setfill('0') << std::setw(2) << value.month
+      << std::setfill('0') << std::setw(2) << value.mday
+      << std::setfill('0') << std::setw(2) << value.hour
+      << std::setfill('0') << std::setw(2) << value.min
+      << std::setfill('0') << std::setw(2) << value.sec
+      << ","
+      << value.station_id
+      << ","
+      << value.variable_id
+      << ","
+      << (value.value1 != vm2::MISSING_DOUBLE ? std::to_string(value.value1) : "")
+      << ","
+      << (value.value2 != vm2::MISSING_DOUBLE ? std::to_string(value.value2) : "")
+      << ","
       << value.value3 << ","
       << value.flags << std::endl;
 }

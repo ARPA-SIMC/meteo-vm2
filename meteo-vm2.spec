@@ -1,5 +1,5 @@
 Name:           meteo-vm2
-Version:        0.28
+Version:        0.29
 Release:        1%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -112,6 +112,10 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Thu Oct 01 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.29-1%{dist}
+- Removed wibble
+- C++11
+
 * Mon Aug 03 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.27-1%{dist}
 - Back to old reports
 

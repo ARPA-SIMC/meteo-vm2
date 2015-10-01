@@ -5,6 +5,7 @@
 .libs
 /compile
 /conf/default.luac
+/conf/bufr.luac
 /conf/tut-main
 /debian
 /doc/Doxygen

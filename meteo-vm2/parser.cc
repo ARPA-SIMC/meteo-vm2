@@ -19,11 +19,18 @@
  *
  * Author: Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
  */
+#define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
+
 #include <meteo-vm2/parser.h>
 
+#include <stdexcept>
 #include <cstdlib>
 #include <iomanip>
+#if GCC_VERSION >= 40900
 #include <regex>
+#else
+#include <regex.h>
+#endif
 
 
 namespace meteo {
@@ -35,7 +42,51 @@ public:
     PatternException(int lineno, const std::string& msg) : std::runtime_error("line " + std::to_string(lineno) + ": " + msg) {}
 };
 
-static std::regex regexp("^([0-9]{12}([0-9][0-9])?),([0-9]+),([0-9]+),([+-]?[0-9.]*),([+-]?[0-9.]*),([^,\n\r]*),([^,\n\r]*[\r\n]*)$");
+#define REGEXP "^([0-9]{12}([0-9][0-9])?),([0-9]+),([0-9]+),([+-]?[0-9.]*),([+-]?[0-9.]*),([^,\n\r]*),([^,\n\r]*[\r\n]*)$"
+
+#if GCC_VERSION >= 40900
+static std::regex regexp(REGEXP);
+#else
+struct Regexp {
+    regex_t reg;
+
+    Regexp(const std::string& re) {
+        if (int i = regcomp(&reg, re.c_str(), REG_EXTENDED) != 0) {
+            char b[1024];
+            regerror(i, &reg, b, sizeof(b));
+            std::runtime_error("Regex error: " + std::string(b));
+        }
+    }
+    ~Regexp() {
+        regfree(&reg);
+    }
+};
+
+struct RegexpMatch {
+    int nmatch;
+    regmatch_t* regmatch;
+    std::string val;
+
+    RegexpMatch(int nmatch) : nmatch(nmatch), regmatch(new regmatch_t[nmatch]) {}
+    ~RegexpMatch() {
+        delete[] regmatch;
+    }
+    std::string str(int i) {
+        if (i >= nmatch)
+            throw std::out_of_range("out of range: " + std::to_string(i));
+        return val.substr(regmatch[i].rm_so, regmatch[i].rm_eo - regmatch[i].rm_so);
+    }
+};
+
+bool regex_match(const std::string& s, RegexpMatch& match, const Regexp& re) {
+    int r = regexec(&re.reg, s.c_str(), match.nmatch, match.regmatch, 0);
+    if (r != 0)
+        return false;
+    match.val = s;
+}
+
+Regexp regexp(REGEXP);
+#endif
 
 Parser::Parser(std::istream& in) : in(in), lineno(0) {}
 Parser::~Parser() {}
@@ -47,7 +98,6 @@ bool Parser::next(Value& value) {
 
 bool Parser::next(Value& value, std::string& line) {
   char c;
-  std::smatch match;
 
   line.clear();
   while (true) {
@@ -65,6 +115,11 @@ bool Parser::next(Value& value, std::string& line) {
   }
   ++lineno;
 
+#if GCC_VERSION >= 40900
+  std::smatch match;
+#else
+  RegexpMatch match(9);
+#endif
   if (not regex_match(line, match, regexp))
     throw PatternException(lineno, "pattern mismatch");
 

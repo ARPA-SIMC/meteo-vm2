@@ -83,9 +83,10 @@ bool regex_match(const std::string& s, RegexpMatch& match, const Regexp& re) {
     if (r != 0)
         return false;
     match.val = s;
+    return true;
 }
 
-Regexp regexp(REGEXP);
+static Regexp regexp(REGEXP);
 #endif
 
 Parser::Parser(std::istream& in) : in(in), lineno(0) {}

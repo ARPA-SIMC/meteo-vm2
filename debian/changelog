@@ -1,3 +1,11 @@
+meteo-vm2 (0.33-1) UNRELEASED; urgency=low
+
+  * gcc < 4.9 support
+  * Updated stations and variables
+  * Parser::regexp_str public again
+
+ -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Tue, 13 Oct 2015 13:04:26 +0200
+
 meteo-vm2 (0.29-1) UNRELEASED; urgency=low
 
   * Removed wibble dependency

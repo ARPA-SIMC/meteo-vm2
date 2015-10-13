@@ -52,7 +52,7 @@ static inline void set_station(meteo::vm2::Source* source, const meteo::vm2::Val
     source->lua_push_station(value.station_id);
     if (lua_isnil(L, -1)) {
         lua_pop(L, 1);
-        throw std::runtime_error("Station " + std::to_string(value.variable_id) + " not found");
+        throw std::runtime_error("Station " + std::to_string(value.station_id) + " not found");
     }
     lua_pushnil(L);
     while(lua_next(L, -2)) {

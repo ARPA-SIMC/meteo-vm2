@@ -42,10 +42,10 @@ public:
     PatternException(int lineno, const std::string& msg) : std::runtime_error("line " + std::to_string(lineno) + ": " + msg) {}
 };
 
-#define REGEXP "^([0-9]{12}([0-9][0-9])?),([0-9]+),([0-9]+),([+-]?[0-9.]*),([+-]?[0-9.]*),([^,\n\r]*),([^,\n\r]*[\r\n]*)$"
+std::string Parser::regexp_str = "^([0-9]{12}([0-9][0-9])?),([0-9]+),([0-9]+),([+-]?[0-9.]*),([+-]?[0-9.]*),([^,\n\r]*),([^,\n\r]*[\r\n]*)$";
 
 #if GCC_VERSION >= 40900
-static std::regex regexp(REGEXP);
+static std::regex regexp(Parser::regexp_str);
 #else
 struct Regexp {
     regex_t reg;
@@ -86,7 +86,7 @@ bool regex_match(const std::string& s, RegexpMatch& match, const Regexp& re) {
     return true;
 }
 
-static Regexp regexp(REGEXP);
+static Regexp regexp(Parser::regexp_str);
 #endif
 
 Parser::Parser(std::istream& in) : in(in), lineno(0) {}

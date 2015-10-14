@@ -23,8 +23,7 @@
 #include <meteo-vm2/source.h>
 
 #include <iostream>
-
-#include <wibble/exception.h>
+#include <stdexcept>
 
 #define METEO_VM2_SOURCE_FILTER \
                             "return function(q, l) " \
@@ -61,15 +60,11 @@ CoreSource::CoreSource(const std::string& path, lua_State* L) : path(path), L(L)
   if (luaL_dofile(L, path.c_str()) != 0) {
     std::string msg = lua_tostring(L, -1);
     lua_pop(L, 1);
-    throw wibble::exception::Consistency(
-        "while loading " + path,
-        msg);
+    throw std::runtime_error("Lua error while loading " + path + ": " + msg);
   }
 
   if (!lua_istable(L, -1))
-    throw wibble::exception::Consistency(
-        "while loading " + path,
-        "source file doesn't return a table");
+    throw std::runtime_error("Source file " + path + " doesn't return a table");
 
   lua_pushstring(L, "stations");
   lua_gettable(L, -2);
@@ -81,9 +76,7 @@ CoreSource::CoreSource(const std::string& path, lua_State* L) : path(path), L(L)
   if (luaL_dostring(L, METEO_VM2_SOURCE_FILTER) != 0) {
     std::string msg = lua_tostring(L, -1);
     lua_pop(L, 1);
-    throw wibble::exception::Consistency(
-        "while compiling filter",
-        msg);
+    throw std::runtime_error("Lua error while compiling filter: " + msg);
   }
   filter_ref = luaL_ref(L, LUA_REGISTRYINDEX);
   lua_pop(L, 1);
@@ -117,9 +110,7 @@ std::vector<int> CoreSource::lua_find_stations(int idx) {
   if (lua_pcall(L, 2, 1, 0) != 0) {
     std::string msg = lua_tostring(L, -1);
     lua_pop(L,1);
-    throw wibble::exception::Consistency(
-        "while filtering stations",
-        msg);
+    throw std::runtime_error("Lua error while filtering stations: " + msg);
   }
   lua_pushnil(L);
   while (lua_next(L, -2)) {
@@ -138,9 +129,7 @@ std::vector<int> CoreSource::lua_find_variables(int idx) {
   if (lua_pcall(L, 2, 1, 0) != 0) {
     std::string msg = lua_tostring(L, -1);
     lua_pop(L,1);
-    throw wibble::exception::Consistency(
-        "while filtering variables",
-        msg);
+    throw std::runtime_error("Lua error while filtering variables: " + msg);
   }
   lua_pushnil(L);
   while (lua_next(L, -2)) {

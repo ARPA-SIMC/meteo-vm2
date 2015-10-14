@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.68])
-AC_INIT([meteo-vm2], [0.28], [edigiacomo@arpa.emr.it])
+AC_INIT([meteo-vm2], [0.35], [edigiacomo@arpa.emr.it])
 AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
@@ -14,12 +14,6 @@ LT_INIT
 
 dnl Use c++11
 AX_CXX_COMPILE_STDCXX_11(noext,optional)
-
-PKG_CHECK_MODULES([WIBBLE], [libwibble],
-		  [
-		   LIBS="$LIBS $WIBBLE_LIBS"
-		   CFLAGS="$CFLAGS $WIBBLE_CFLAGS"
-		  ])
 
 PKG_CHECK_EXISTS([lua5.2], [have_lua=yes], [have_lua=no])
 if test x$have_lua = xyes
@@ -73,6 +67,9 @@ else
 	have_dballe=no
 fi
 AM_CONDITIONAL([DBALLE], [test x"$have_dballe" = x"yes"])
+
+AC_CHECK_PROG([have_help2man], [help2man], [yes])
+AM_CONDITIONAL([HELP2MAN], [test x"$have_help2man" = x"yes"])
 
 AC_CONFIG_FILES([Makefile
 		 meteo-vm2/Makefile

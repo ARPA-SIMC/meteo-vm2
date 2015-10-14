@@ -17,11 +17,11 @@ tut_main_LDADD = @top_builddir@/meteo-vm2/libmeteo-vm2.la $(DBALLE_LIBS) $(LUA_L
 
 if DBALLE
 
-check_PROGRAMS = tut-main
-
-TESTS = tut-main
-
-TESTS_ENVIRONMENT = @srcdir@/run-test
+# check_PROGRAMS = tut-main
+# 
+# TESTS = tut-main
+# 
+# TESTS_ENVIRONMENT = @srcdir@/run-test
 
 endif
 

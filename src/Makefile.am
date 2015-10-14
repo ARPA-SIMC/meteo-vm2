@@ -15,16 +15,20 @@ bin_PROGRAMS += \
 				meteo-vm2-to-bufr \
 				bufr-to-meteo-vm2
 
+if HELP2MAN
+
 man_MANS += \
 			meteo-vm2-to-bufr.1 \
 			bufr-to-meteo-vm2.1
+
+endif
 
 CLEANFILES += \
 			  meteo-vm2-to-bufr.1 \
 			  bufr-to-meteo-vm2.1
 
 %.1: %
-	$(builddir)/$< --manpage= > $@
+	help2man -N $(builddir)/$< > $@
 
 meteo_vm2_to_bufr_CPPFLAGS = $(DEVEL_CPPFLAGS) $(AM_CPPFLAGS)
 

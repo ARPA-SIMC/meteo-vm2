@@ -28,13 +28,14 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <sstream>
+#include <iomanip>
 
-#include <wibble/string.h>
-#include <wibble/commandline/parser.h>
-#include <wreport/varinfo.h>
-#include <wreport/conv.h>
 #include <meteo-vm2/source.h>
 #include <meteo-vm2/parser.h>
+
+#include <wreport/varinfo.h>
+#include <wreport/conv.h>
 #include <dballe/core/defs.h>
 #include <dballe/core/var.h>
 #include <dballe/core/file.h>
@@ -44,22 +45,23 @@
 
 #include <meteo-vm2/source.h>
 
-using wibble::commandline::StandardParserWithManpage;
-
-struct Options : public StandardParserWithManpage {
-    Options() : StandardParserWithManpage("bufr-to-meteo-vm2", PACKAGE_VERSION,
-                                          1, PACKAGE_BUGREPORT) {
-        usage = "[SOURCEFILE]";
-        description = "Convert BUFR to VM2.";
-        longDescription = "This program convert BUFR to VM2.\n"
-            "If SOURCEFILE is given, use this file as conversion table.";
-    }
-};
+template<typename T>
+static std::string join(std::vector<T> l)
+{
+    std::stringstream ss;
+    std::string s;
+    std::copy(l.begin(), l.end(), std::ostream_iterator<T>(ss, ","));
+    s = ss.str();
+    s.pop_back();
+    return s;
+}
 
 static inline std::string convert_qc_back(int qc)
 {
     int qcint = (int)rint((100.0 - qc) * 6.0 / 100.0 + 48);
-    return wibble::str::fmtf("%02d", qcint);
+    std::stringstream ss;
+    ss << std::setfill('0') << std::setw(2) << qcint;
+    return ss.str();
 }
 
 // Wrapper for dballe::format_code
@@ -70,21 +72,40 @@ static inline std::string format_code(wreport::Varcode code)
     return c;
 }
 
+void print_usage()
+{
+    std::cout
+        << "Usage: bufr-to-meteo-vm2 [options] [SOURCEFILE]" << std::endl
+        << std::endl
+        << "Convert BUFR from stdin to generic VM2 to stdout." << std::endl
+        << "Options:" << std::endl
+        << "-h, --help      show this help and exit" << std::endl
+        << "--version   show version and exit" << std::endl;
+}
+
 int main(int argc, const char** argv)
 {
+    std::string sourcefile;
+
+    if (argc > 1) {
+        if (std::string(argv[1]) == "-h" or std::string(argv[1]) == "--help") {
+            print_usage();
+            return 0;
+        }
+        else if (std::string(argv[1]) == "--version") {
+            std::cout << "meteo-vm2-to-bufr " PACKAGE_VERSION << std::endl;
+            return 0;
+        }
+        else
+            sourcefile = argv[1];
+    }
     try {
         meteo::vm2::Source* source = NULL;
 
-        Options opts;
-
-        if (opts.parse(argc, argv))
-            return 0;
-
-        if (opts.hasNext())
-            source = new meteo::vm2::Source(opts.next());
-        else
+        if (sourcefile.empty())
             source = new meteo::vm2::Source(METEO_VM2_BUFR_SOURCE);
-
+        else
+            source = new meteo::vm2::Source(sourcefile);
 
         std::auto_ptr<dballe::File> infile(dballe::File::create(stdin, false, "stdin").release());
 
@@ -140,7 +161,7 @@ int main(int argc, const char** argv)
                     std::cerr << stations.size()
                         << " stations with same attributes"
                         << " ("
-                        << wibble::str::join(stations.begin(), stations.end())
+                        << join(stations)
                         << ")"
                         << std::endl;
                     return true;
@@ -196,7 +217,7 @@ int main(int argc, const char** argv)
                             std::cerr << variables.size()
                                 << " variables with same attributes"
                                 << " ("
-                                << wibble::str::join(variables.begin(), variables.end())
+                                << join(variables)
                                 << ")"
                                 << std::endl;
                             continue;
@@ -249,7 +270,6 @@ int main(int argc, const char** argv)
                 return true;
             });
         });
-        return true;
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;
         return 1;

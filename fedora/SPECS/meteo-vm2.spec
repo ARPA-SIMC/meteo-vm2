@@ -1,12 +1,12 @@
 Name:           meteo-vm2
-Version:        0.28
+Version:        0.35
 Release:        1%{?dist}
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
 URL:            http://www.arpa.emr.it/sim
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  libtool, pkgconfig, lua-devel >= 5.1, libdballe-devel >= 5.19, libwibble-devel >= 1.1, python
+BuildRequires:  libtool, pkgconfig, lua-devel >= 5.1, libdballe-devel >= 5.19, help2man
 
 %if 0%{?fedora} < 19
 Requires:       lua = 5.1
@@ -112,6 +112,29 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Wed Oct 14 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.35-1%{dist}
+- Fixed bufr-to-meteo-vm2 exit status
+
+* Wed Oct 14 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.34-1%{dist}
+- Pollen unit
+
+* Tue Oct 13 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.33-1%{dist}
+- Fixed error message
+- Parser::regexp_str public again
+
+* Mon Oct 12 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.32-1%{dist}
+- Fixed bug in gcc-4.8 regex parser
+
+* Mon Oct 12 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.31-1%{dist}
+- Source updated
+
+* Fri Oct 09 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.30-1%{dist}
+- gcc 4.8.3 support
+
+* Thu Oct 01 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.29-1%{dist}
+- Removed wibble
+- C++11
+
 * Mon Aug 03 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.27-1%{dist}
 - Back to old reports
 

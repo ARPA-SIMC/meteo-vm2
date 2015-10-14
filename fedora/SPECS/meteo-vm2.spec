@@ -1,11 +1,11 @@
 Name:           meteo-vm2
 Version:        0.35
-Release:        1%{?dist}
+Release:        1
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
-URL:            http://www.arpa.emr.it/sim
-Source:         %{name}-%{version}.tar.gz
+URL:            https://github.com/arpa-simc/%{name}
+Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{name}-%{version}-%{release}.tar.gz
 BuildRequires:  libtool, pkgconfig, lua-devel >= 5.1, libdballe-devel >= 5.19, help2man
 
 %if 0%{?fedora} < 19
@@ -21,9 +21,10 @@ Requires:       lua < 5.3
 VM2 decoding/encoding library
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-%{release}
 
 %build
+sh autogen.sh
 %configure
 make %{?_smp_mflags}
 
@@ -112,7 +113,7 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
-* Wed Oct 14 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.35-1%{dist}
+* Wed Oct 14 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.35-1
 - Fixed bufr-to-meteo-vm2 exit status
 
 * Wed Oct 14 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.34-1%{dist}
@@ -150,7 +151,7 @@ Collection of utilities for VM2 files
 * Fri Jun 05 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.25%{dist}
 - default.lua and bufr.lua source files
 
-* Wed Jun 04 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.24%{dist}
+* Thu Jun 04 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.24%{dist}
 - New stations and variables
 - dballe 7.1-4758 support
 

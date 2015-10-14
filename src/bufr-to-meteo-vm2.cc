@@ -270,7 +270,6 @@ int main(int argc, const char** argv)
                 return true;
             });
         });
-        return true;
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;
         return 1;

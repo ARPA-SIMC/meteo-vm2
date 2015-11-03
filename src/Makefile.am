@@ -23,6 +23,12 @@ man_MANS += \
 
 endif
 
+if YAJL
+
+DEVEL_CPPFLAGS += $(YAJL_CFLAGS)
+
+endif
+
 CLEANFILES += \
 			  meteo-vm2-to-bufr.1 \
 			  bufr-to-meteo-vm2.1
@@ -32,13 +38,13 @@ CLEANFILES += \
 
 meteo_vm2_to_bufr_CPPFLAGS = $(DEVEL_CPPFLAGS) $(AM_CPPFLAGS)
 
-meteo_vm2_to_bufr_LDADD = $(top_builddir)/meteo-vm2/libmeteo-vm2.la $(DBALLE_LIBS)
+meteo_vm2_to_bufr_LDADD = $(top_builddir)/meteo-vm2/libmeteo-vm2.la $(DBALLE_LIBS) $(YAJL_LIBS)
 
 meteo_vm2_to_bufr_SOURCES = meteo-vm2-to-bufr.cc
 
 bufr_to_meteo_vm2_CPPFLAGS = $(DEVEL_CPPFLAGS) $(AM_CPPFLAGS)
 
-bufr_to_meteo_vm2_LDADD = $(top_builddir)/meteo-vm2/libmeteo-vm2.la $(DBALLE_LIBS)
+bufr_to_meteo_vm2_LDADD = $(top_builddir)/meteo-vm2/libmeteo-vm2.la $(DBALLE_LIBS) $(YAJL_LIBS)
 
 bufr_to_meteo_vm2_SOURCES = bufr-to-meteo-vm2.cc
 

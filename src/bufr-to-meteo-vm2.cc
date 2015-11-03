@@ -42,8 +42,31 @@
 #include <dballe/msg/msg.h>
 #include <dballe/msg/context.h>
 #include <dballe/msg/wr_codec.h>
+#include <yajl/yajl_gen.h>
 
 #include <meteo-vm2/source.h>
+
+std::string attrs2json(const wreport::Var& var)
+{
+    const unsigned char* buf;
+    size_t buflen;
+    yajl_gen g;
+
+    g = yajl_gen_alloc(NULL);
+    yajl_gen_map_open(g);
+
+    for (const wreport::Var* a = var.next_attr(); a != NULL; a = a->next_attr()) {
+        std::string k = wreport::varcode_format(a->code());
+        std::string v = a->format();
+        yajl_gen_string(g, (const unsigned char*)k.c_str(), k.size());
+        yajl_gen_string(g, (const unsigned char*)v.c_str(), v.size());
+    }
+    yajl_gen_map_close(g);
+    yajl_gen_get_buf(g, &buf, &buflen);
+    std::string s((const char*)buf, buflen);
+    yajl_gen_free(g);
+    return s;
+}
 
 template<typename T>
 static std::string join(std::vector<T> l)
@@ -235,35 +258,7 @@ int main(int argc, const char** argv)
 
                         vm2value.value2 = meteo::vm2::MISSING_DOUBLE;
                         vm2value.value3 = "";
-                        // TODO: flags
-                        const wreport::Var* vattr = v.next_attr();
-                        if (vattr == NULL) {
-                            vm2value.flags = "";
-                        } else {
-                            vm2value.flags = "000000000";
-                            for (vattr = v.next_attr(); vattr != NULL; 
-                                 vattr = vattr->next_attr()) {
-                                if (vattr->code() == WR_VAR(0,33,196) && vattr->enqi() == 1)
-                                    vm2value.flags[0] = '1';
-                                if (vattr->code() == WR_VAR(0,33,197) && vattr->enqi() == 1)
-                                    vm2value.flags[0] = '2';
-                                if (vattr->code() == WR_VAR(0,33,192)) {
-                                    std::string qc = convert_qc_back(vattr->enqi());
-                                    vm2value.flags[1] = qc.at(0);
-                                    vm2value.flags[2] = qc.at(1);
-                                }
-                                if (vattr->code() == WR_VAR(0,33,193)) {
-                                    std::string qc = convert_qc_back(vattr->enqi());
-                                    vm2value.flags[3] = qc.at(0);
-                                    vm2value.flags[4] = qc.at(1);
-                                }
-                                if (vattr->code() == WR_VAR(0,33,194)) {
-                                    std::string qc = convert_qc_back(vattr->enqi());
-                                    vm2value.flags[5] = qc.at(0);
-                                    vm2value.flags[6] = qc.at(1);
-                                }
-                            }
-                        }
+                        vm2value.flags = attrs2json(v);
                         meteo::vm2::Parser::serialize(std::cout, vm2value);
                     }
                 }

@@ -28,6 +28,8 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <algorithm>
+#include <cctype>
 
 #include <meteo-vm2/source.h>
 #include <meteo-vm2/parser.h>
@@ -137,7 +139,10 @@ static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Va
             var.seta(dballe::var(i.first, i.second));
         }
     } catch(const std::exception& e) {
-        if (value.flags.size() == 9) {
+        if (value.flags.size() == 9
+            and std::all_of(value.flags.begin(), value.flags.end(), [](int ch) {
+                return std::isdigit(ch);
+            })) {
             if (value.flags[0] == '1')
                 var.seta(dballe::var(WR_VAR(0, 33, 196), 1));
             if (value.flags[0] == '2')

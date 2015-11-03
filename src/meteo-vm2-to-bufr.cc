@@ -136,7 +136,9 @@ static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Va
     wreport::Var var = dballe::var(varcode, val);
     try {
         for (const auto& i : value.jsonflags()) {
-            var.seta(dballe::var(i.first, i.second));
+            wreport::Var a(dballe::varinfo(i.first));
+            a.setf(i.second.c_str());
+            var.seta(a);
         }
     } catch(const std::exception& e) {
         if (value.flags.size() == 9

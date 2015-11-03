@@ -29,6 +29,16 @@ else
 	fi
 fi
 
+PKG_CHECK_EXISTS([yajl >= 2.1.0], [have_yajl=yes], [have_yajl=no])
+if test $have_yajl = yes
+then
+    AC_DEFINE([HAVE_YAJL], 1, [yajl functions are available])
+    PKG_CHECK_MODULES(YAJL,[yajl])
+else
+    AC_MSG_WARN([compiling without yajl: JSON flags support will be disabled])
+fi
+AM_CONDITIONAL([YAJL], [test x"$have_yajl" = x"yes"])
+
 AC_PATH_PROG([PYTHON], [python])
 if test x$PYTHON = x
 then

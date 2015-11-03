@@ -132,17 +132,23 @@ static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Va
             value.value1);
 
     wreport::Var var = dballe::var(varcode, val);
-    if (value.flags.size() == 9) {
-        if (value.flags[0] == '1')
-            var.seta(dballe::var(WR_VAR(0, 33, 196), 1));
-        if (value.flags[0] == '2')
-            var.seta(dballe::var(WR_VAR(0, 33, 197), 1));
-        if (value.flags.substr(1,2) != "00")
-            var.seta(dballe::var(WR_VAR(0, 33, 192), convert_qc(value.flags.substr(1,2))));
-        if (value.flags.substr(3,2) != "00")
-            var.seta(dballe::var(WR_VAR(0, 33, 193), convert_qc(value.flags.substr(3,2))));
-        if (value.flags.substr(5,2) != "00")
-            var.seta(dballe::var(WR_VAR(0, 33, 194), convert_qc(value.flags.substr(5,2))));
+    try {
+        for (const auto& i : value.jsonflags()) {
+            var.seta(dballe::var(i.first, i.second));
+        }
+    } catch(const std::exception& e) {
+        if (value.flags.size() == 9) {
+            if (value.flags[0] == '1')
+                var.seta(dballe::var(WR_VAR(0, 33, 196), 1));
+            if (value.flags[0] == '2')
+                var.seta(dballe::var(WR_VAR(0, 33, 197), 1));
+            if (value.flags.substr(1,2) != "00")
+                var.seta(dballe::var(WR_VAR(0, 33, 192), convert_qc(value.flags.substr(1,2))));
+            if (value.flags.substr(3,2) != "00")
+                var.seta(dballe::var(WR_VAR(0, 33, 193), convert_qc(value.flags.substr(3,2))));
+            if (value.flags.substr(5,2) != "00")
+                var.seta(dballe::var(WR_VAR(0, 33, 194), convert_qc(value.flags.substr(5,2))));
+        }
     }
     msg.set(var, varcode, level, trange);
 }

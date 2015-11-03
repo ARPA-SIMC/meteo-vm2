@@ -1,3 +1,12 @@
+DEVEL_CPPFLAGS = \
+				 -I$(top_srcdir) -I$(top_builddir) $(LUA_CFLAGS) \
+				 -DMETEO_VM2_DEFAULT_SOURCE='"$(sharedstatedir)/$(PACKAGE)/source/default.luac"' \
+				 $(YAJL_FLAGS)
+
+if YAJL
+LIBS += $(YAJL_LIBS)
+endif
+
 pkgincludedir = $(includedir)/meteo-vm2
 
 dist_pkginclude_HEADERS = \
@@ -16,7 +25,8 @@ libmeteo_vm2_la_LIBADD = $(LUA_LIBS)
 
 libmeteo_vm2_la_SOURCES = \
 			  source.cc \
-			  parser.cc
+			  parser.cc \
+			  value.cc
 
 # check_PROGRAMS = meteo-vm2-test
 # 

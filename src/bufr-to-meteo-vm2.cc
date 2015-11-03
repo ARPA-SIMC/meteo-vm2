@@ -52,9 +52,12 @@ std::string attrs2json(const wreport::Var& var)
     size_t buflen;
     yajl_gen g;
 
+    const wreport::Var* a = var.next_attr();
+    if (a == nullptr)
+        return "";
+
     g = yajl_gen_alloc(NULL);
     yajl_gen_map_open(g);
-
     for (const wreport::Var* a = var.next_attr(); a != NULL; a = a->next_attr()) {
         std::string k = wreport::varcode_format(a->code());
         std::string v = a->format();

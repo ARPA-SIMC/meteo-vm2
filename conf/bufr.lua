@@ -3676,6 +3676,7 @@ return {
         [663]={bcode='B13226',tr=0,p1=0,p2=86400,lt1=1,l1=nil,lt2=nil,l2=nil,unit='M**3/S',},
         [664]={bcode='B48060',tr=0,p1=0,p2=86400,lt1=103,l1=15000,lt2=nil,l2=nil,unit='POLLEN/M**3',},
         [665]={bcode='B48187',tr=1,p1=0,p2=86400,lt1=103,l1=15000,lt2=nil,l2=nil,unit='NUMERIC',},
+        [667]={bcode='B23198',tr=1,p1=0,p2=86400,lt1=1,l1=nil,lt2=nil,l2=nil,unit='KG/S',},
         [670]={bcode='B13194',tr=254,p1=0,p2=0,lt1=1,l1=nil,lt2=nil,l2=nil,unit='M',},
         [671]={bcode='B13012',tr=1,p1=0,p2=86400,lt1=1,l1=nil,lt2=nil,l2=nil,unit='cm',},
         [673]={bcode='B13229',tr=254,p1=0,p2=0,lt1=1,l1=nil,lt2=nil,l2=nil,unit='KG/M**3',},

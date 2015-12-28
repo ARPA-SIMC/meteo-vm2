@@ -1,5 +1,5 @@
 Name:           meteo-vm2
-Version:        0.35
+Version:        0.36
 Release:        1
 Summary:        C++ library for VM2 data 
 
@@ -113,6 +113,10 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Mon Dec 28 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.36-1
+- Stations from fidutn network 
+- Updated stations and variables
+
 * Wed Oct 14 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.35-1
 - Fixed bufr-to-meteo-vm2 exit status
 

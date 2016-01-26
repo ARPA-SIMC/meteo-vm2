@@ -1,5 +1,5 @@
 Name:           meteo-vm2
-Version:        0.36
+Version:        0.37
 Release:        1
 Summary:        C++ library for VM2 data 
 
@@ -113,6 +113,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Tue Jan 26 2016 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.37-1
+- New stations
+
 * Mon Dec 28 2015 Emanuele Di Giacomo <edigiacomo@arpa.emr.it> - 0.36-1
 - Stations from fidutn network 
 - Updated stations and variables

@@ -6,7 +6,7 @@ Summary:        C++ library for VM2 data
 License:        GPLv2+
 URL:            https://github.com/arpa-simc/%{name}
 Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{name}-%{version}-%{release}.tar.gz
-BuildRequires:  libtool, pkgconfig, lua-devel >= 5.1, libdballe-devel >= 5.19, help2man
+BuildRequires:  libtool, pkgconfig, lua-devel >= 5.1, libdballe-devel >= 7, help2man
 
 %if 0%{?fedora} < 19
 Requires:       lua = 5.1
@@ -70,7 +70,7 @@ VM2 decoding/encoding library - documentation
 
 %package utils
 Summary:        meteo-vm2 utilities
-Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}, libdballe6 >= 6.0
+Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}, libdballe7
 
 %description utils
 Collection of utilities for VM2 files

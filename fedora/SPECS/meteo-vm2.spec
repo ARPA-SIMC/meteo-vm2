@@ -68,31 +68,6 @@ VM2 decoding/encoding library - documentation
 %doc %{_docdir}/%{name}
 %defattr(-,root,root,-)
 
-%package fortran
-Summary:        meteo-vm2 Fortran library
-Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}, cnf-devel
-
-%description fortran
-VM2 decoding/encoding library - Fortran bindings
-
-%files fortran
-%defattr(-,root,root,-)
-%{_libdir}/lib%{name}-fortran.so.*
-
-%package fortran-devel
-Summary:        meteo-vm2 Fortran development library
-Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}, %{name}-fortran = %{?epoch:%epoch:}%{version}-%{release}
-
-%description fortran-devel
-VM2 decoding/encoding library - Fortran development files
-
-%files fortran-devel
-%defattr(-,root,root,-)
-%{_includedir}/meteo-vm2-fortran.h
-%{_libdir}/lib%{name}-fortran.a
-%{_libdir}/lib%{name}-fortran.la
-%{_libdir}/lib%{name}-fortran.so
-
 %package utils
 Summary:        meteo-vm2 utilities
 Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}, libdballe6 >= 6.0

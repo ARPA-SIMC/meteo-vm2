@@ -74,7 +74,6 @@ AM_CONDITIONAL([HELP2MAN], [test x"$have_help2man" = x"yes"])
 AC_CONFIG_FILES([Makefile
 		 meteo-vm2/Makefile
          python/Makefile
-		 fortran/Makefile
 		 src/Makefile
 		 meteo-vm2.pc
 		 meteo-vm2f.pc

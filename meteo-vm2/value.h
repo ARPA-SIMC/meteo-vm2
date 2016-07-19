@@ -27,6 +27,7 @@
  * @brief Value class
  * @see @ref VM2ValueFile
  */
+#include <map>
 #include <string>
 #include <limits>
 
@@ -56,6 +57,8 @@ struct Value {
   double value2;
   std::string value3;
   std::string flags;
+
+  std::map<std::string, std::string> jsonflags() const;
 };
 
 }

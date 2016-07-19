@@ -108,7 +108,7 @@ int main(int argc, const char** argv)
         else
             source = new meteo::vm2::Source(sourcefile);
 
-        std::auto_ptr<dballe::File> infile(dballe::File::create(stdin, false, "stdin").release());
+        std::unique_ptr<dballe::File> infile(dballe::File::create(stdin, false, "stdin").release());
 
         infile->foreach([&source](const dballe::BinaryMessage& bmsg) {
             dballe::msg::BufrImporter importer;

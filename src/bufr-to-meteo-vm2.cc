@@ -42,6 +42,7 @@
 #include <dballe/msg/msg.h>
 #include <dballe/msg/context.h>
 #include <dballe/msg/wr_codec.h>
+#include <dballe/core/ostream.h>
 
 #include <meteo-vm2/source.h>
 

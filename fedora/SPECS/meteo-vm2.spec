@@ -1,6 +1,6 @@
 Name:           meteo-vm2
 Version:        0.38
-Release:        2
+Release:        3
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
@@ -67,7 +67,7 @@ VM2 decoding/encoding library - documentation
 
 %package utils
 Summary:        meteo-vm2 utilities
-Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}, libdballe7
+Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}
 
 %description utils
 Collection of utilities for VM2 files

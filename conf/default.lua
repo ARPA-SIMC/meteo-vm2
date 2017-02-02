@@ -3812,6 +3812,7 @@ return {
         [704]={bcode='B13227',tr=0,p1=0,p2=86400,lt1=106,l1=300,lt2=nil,l2=nil,unit='RATIO',},
         [705]={bcode='B13227',tr=0,p1=0,p2=86400,lt1=106,l1=600,lt2=nil,l2=nil,unit='RATIO',},
         [706]={bcode='B14198',tr=0,p1=0,p2=86400,lt1=1,l1=nil,lt2=nil,l2=nil,unit='W/m**2',},
+        [707]={bcode='B22037',tr=254,p1=0,p2=0,lt1=1,l1=0,lt2=nil,l2=nil,unit='M',},
         [1360]={bcode='B48001',tr=0,p1=604800,p2=86400,lt1=103,l1=15000,lt2=nil,l2=nil,unit='POLLEN/M**3',},
         [1361]={bcode='B48002',tr=0,p1=604800,p2=86400,lt1=103,l1=15000,lt2=nil,l2=nil,unit='POLLEN/M**3',},
         [1362]={bcode='B48003',tr=0,p1=604800,p2=86400,lt1=103,l1=15000,lt2=nil,l2=nil,unit='POLLEN/M**3',},

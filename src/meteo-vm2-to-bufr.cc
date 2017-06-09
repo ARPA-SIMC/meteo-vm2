@@ -185,7 +185,6 @@ int main(int argc, const char** argv)
     meteo::vm2::Parser parser(std::cin);
 
     meteo::vm2::Value value;
-    dballe::msg::BufrExporter exporter;
 
     std::string line;
     lua_State* L = source->L;
@@ -205,6 +204,7 @@ int main(int argc, const char** argv)
 
         msgs.append(msg);
 
+        dballe::msg::BufrExporter exporter;
         std::cout << exporter.to_binary(msgs);
 
       } catch (std::exception& e) {

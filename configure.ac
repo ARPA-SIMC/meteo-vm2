@@ -29,17 +29,6 @@ else
 	fi
 fi
 
-AC_PATH_PROG([PYTHON], [python])
-if test x$PYTHON = x
-then
-    AC_MSG_ERROR("Missing python")
-fi
-
-AM_PATH_PYTHON
-
-PYTHON_CFLAGS=`unset CFLAGS; $PYTHON-config --cflags`
-AC_SUBST(PYTHON_CFLAGS)
-
 AC_PATH_PROG([DOXYGEN], [doxygen])
 if test x$DOXYGEN = x
 then
@@ -73,7 +62,6 @@ AM_CONDITIONAL([HELP2MAN], [test x"$have_help2man" = x"yes"])
 
 AC_CONFIG_FILES([Makefile
 		 meteo-vm2/Makefile
-         python/Makefile
 		 src/Makefile
 		 meteo-vm2.pc
 		 meteo-vm2f.pc

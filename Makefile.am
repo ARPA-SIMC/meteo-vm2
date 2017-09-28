@@ -1,6 +1,6 @@
 ACLOCAL_AMFLAGS = -Im4
 
-SUBDIRS = meteo-vm2 src conf doc python
+SUBDIRS = meteo-vm2 src conf doc
 
 pkgconfigdir = $(libdir)/pkgconfig
 

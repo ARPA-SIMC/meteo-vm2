@@ -103,15 +103,19 @@ bool Parser::next(Value& value, std::string& line) {
   line.clear();
   while (true) {
     in.get(c);
-    if (!in.good())
-      if (line.size() == 0)
+    if (!in.good()) {
+      if (line.size() == 0) {
         return false;
-      else
+      } else {
         break;
-    if (c == '\r')
+      }
+    }
+    if (c == '\r') {
       continue;
-    if (c == '\n')
+    }
+    if (c == '\n') {
       break;
+    }
     line.append(1, c);
   }
   ++lineno;

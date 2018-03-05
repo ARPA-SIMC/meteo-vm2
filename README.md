@@ -1,5 +1,17 @@
 # meteo-vm2
 
+## Build status
+
+| Environment | Status |
+| ----------- | ------ |
+| CentOS 7    | [![Build Status](https://badges.herokuapp.com/travis/ARPA-SIMC/meteo-vm2?branch=master&env=DOCKER_IMAGE=centos:7&label=centos7)](https://travis-ci.org/ARPA-SIMC/meteo-vm2) |
+| Fedora 24   | [![Build Status](https://badges.herokuapp.com/travis/ARPA-SIMC/meteo-vm2?branch=master&env=DOCKER_IMAGE=fedora:24&label=fedora24)](https://travis-ci.org/ARPA-SIMC/meteo-vm2) |
+| Fedora 25   | [![Build Status](https://badges.herokuapp.com/travis/ARPA-SIMC/meteo-vm2?branch=master&env=DOCKER_IMAGE=fedora:25&label=fedora25)](https://travis-ci.org/ARPA-SIMC/meteo-vm2) |
+| Fedora 26   | [![Build Status](https://badges.herokuapp.com/travis/ARPA-SIMC/meteo-vm2?branch=master&env=DOCKER_IMAGE=fedora:26&label=fedora26)](https://travis-ci.org/ARPA-SIMC/meteo-vm2) |
+| Fedora 27   | [![Build Status](https://badges.herokuapp.com/travis/ARPA-SIMC/meteo-vm2?branch=master&env=DOCKER_IMAGE=fedora:27&label=fedora27)](https://travis-ci.org/ARPA-SIMC/meteo-vm2) |
+
+## Introduction
+
 Simple C++ library for `VM2` data.
 
 `VM2` is a simple format used at ARPA-SIMC to store observations data. It's a

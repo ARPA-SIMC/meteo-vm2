@@ -85,6 +85,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Wed Mar 14 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.54-2
+- Fixed variabile 351
+
 * Tue Mar  6 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.53-2
 - Updated stations
 

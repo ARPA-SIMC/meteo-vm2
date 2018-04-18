@@ -6,7 +6,7 @@ Summary:        C++ library for VM2 data
 License:        GPLv2+
 URL:            https://github.com/arpa-simc/%{name}
 Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{name}-%{version}-%{release}.tar.gz
-BuildRequires:  libtool, pkgconfig, libdballe-devel >= 7, help2man, popt-devel, gcc-gfortran
+BuildRequires:  libtool, pkgconfig, libdballe-devel >= 7.30, help2man, popt-devel, gcc-gfortran
 
 %if 0%{?fedora} < 19
 BuildRequires:  lua = 5.1

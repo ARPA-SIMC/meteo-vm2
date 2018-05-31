@@ -85,6 +85,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Thu May 31 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.57-1
+- Updated variables (pollen)
+
 * Thu May  3 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.56-1
 - Updated stations (fidubz)
 

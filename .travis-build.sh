@@ -13,7 +13,7 @@ then
     yum install -y yum-utils
     yum install -y yum-plugin-copr
     yum install -y git
-    yum copr enable -y simc/stable
+    yum copr enable -y simc/stable epel-7
 elif [[ $image =~ ^fedora: ]]
 then
     pkgcmd="dnf"
@@ -34,8 +34,6 @@ then
     cp fedora/SPECS/meteo-vm2.spec ~/rpmbuild/SPECS/meteo-vm2.spec
     git archive --prefix=$pkgname/ --format=tar HEAD | gzip -c > ~/rpmbuild/SOURCES/$pkgname.tar.gz
     rpmbuild -ba ~/rpmbuild/SPECS/meteo-vm2.spec
-    find ~/rpmbuild/{RPMS,SRPMS}/ -name "${pkgname}*rpm" -exec cp -v {} . \;
-    # TODO upload ${pkgname}*.rpm to github release on deploy stage
 else
     autoreconf -ifv
     ./configure

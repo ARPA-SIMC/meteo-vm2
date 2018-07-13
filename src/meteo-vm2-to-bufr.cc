@@ -28,6 +28,10 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <cstdio>
+#include <cstdlib>
+
+#include <getopt.h>
 
 #include <meteo-vm2/source.h>
 #include <meteo-vm2/parser.h>
@@ -154,26 +158,46 @@ void print_usage()
         << std::endl
         << "Convert VM2 from stdin to generic BUFR to stdout." << std::endl
         << "Options:" << std::endl
-        << "-h, --help      show this help and exit" << std::endl
-        << "--version   show version and exit" << std::endl;
+        << "--help                 show this help and exit" << std::endl
+        << "--version              show version and exit" << std::endl
+        << "--conversion-error     exit with status != 0 if at least one record conversion fails" << std::endl
+        << "--no-conversion-error  no conversion error" << std::endl;
 }
 
-int main(int argc, const char** argv)
+int main(int argc, char** argv)
 {
-  std::string sourcefile;
+    int show_help = 0;
+    int show_version = 0;
+    int conversion_error = 0;
+    int exit_status = 0;
 
-  if (argc > 1) {
-    if (std::string(argv[1]) == "-h" or std::string(argv[1]) == "--help") {
+  while (1) {
+      static struct option long_options[] = {
+          {"help", no_argument, &show_help, true},
+          {"version", no_argument, &show_version, true},
+          {"conversion-error", no_argument, &conversion_error, true},
+          {"no-conversion-error", no_argument, &conversion_error, false},
+      };
+      int option_index = 0;
+      int c = getopt_long(argc, argv, "", long_options, &option_index);
+      if (c == -1) {
+          break;
+      }
+  }
+
+  std::string sourcefile;
+  if (show_help) {
         print_usage();
         return 0;
-    }
-    else if (std::string(argv[1]) == "--version") {
-        std::cout << "meteo-vm2-to-bufr " PACKAGE_VERSION << std::endl;
-        return 0;
-    }
-    else
-      sourcefile = argv[1];
   }
+  if (show_version) {
+    std::cout << "meteo-vm2-to-bufr " PACKAGE_VERSION << std::endl;
+    return 0;
+  }
+  if (optind < argc) {
+      sourcefile = argv[optind];
+  }
+
   try {
     meteo::vm2::Source* source = NULL;
 
@@ -209,6 +233,9 @@ int main(int argc, const char** argv)
 
       } catch (std::exception& e) {
         std::cerr << parser.lineno << ":[" << line << "] - " << e.what() << std::endl;
+        if (conversion_error) {
+            exit_status = 2;
+        }
       }
 
       lua_settop(L, top);
@@ -218,5 +245,5 @@ int main(int argc, const char** argv)
     return 1;
   }
 
-  return 0;
+  return exit_status;
 }

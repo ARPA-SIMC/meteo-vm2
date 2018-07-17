@@ -73,6 +73,7 @@ VM2 decoding/encoding library - documentation
 %package utils
 Summary:        meteo-vm2 utilities
 Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}
+Requires:       libdballe6 >= 7.34
 
 %description utils
 Collection of utilities for VM2 files

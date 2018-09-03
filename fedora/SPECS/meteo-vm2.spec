@@ -1,6 +1,6 @@
 Name:           meteo-vm2
 Version:        0.61
-Release:        2
+Release:        1
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+

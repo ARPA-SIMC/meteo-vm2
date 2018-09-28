@@ -1,7 +1,7 @@
 /*
  * source - Reader for VM2 attributes file
  *
- * Copyright (C) 2012,2013 ARPA-SIM <urpsim@smr.arpa.emr.it>
+ * Copyright (C) 2012,2013 Arpae-SIMC <simc-urp@arpae.it>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
- * Author: Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
+ * Author: Emanuele Di Giacomo <edigiacomo@arpae.it>
  */
 #ifndef METEO_VM2_SOURCE_H
 #define METEO_VM2_SOURCE_H

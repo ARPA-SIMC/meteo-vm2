@@ -2,13 +2,13 @@ meteo-vm2 (0.35-1) UNRELEASED; urgency=low
 
   * Fixed bufr-to-meteo-vm2 exit status
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Tue, 14 Oct 2015 11:36:00 +0200
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Tue, 14 Oct 2015 11:36:00 +0200
 
 meteo-vm2 (0.34-1) UNRELEASED; urgency=low
 
   * Pollen unit
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Tue, 14 Oct 2015 08:58:00 +0200
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Tue, 14 Oct 2015 08:58:00 +0200
 
 meteo-vm2 (0.33-1) UNRELEASED; urgency=low
 
@@ -16,44 +16,44 @@ meteo-vm2 (0.33-1) UNRELEASED; urgency=low
   * Updated stations and variables
   * Parser::regexp_str public again
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Tue, 13 Oct 2015 13:04:26 +0200
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Tue, 13 Oct 2015 13:04:26 +0200
 
 meteo-vm2 (0.29-1) UNRELEASED; urgency=low
 
   * Removed wibble dependency
   * C++11
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Thu, 01 Oct 2015 16:56:46 +0200
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Thu, 01 Oct 2015 16:56:46 +0200
 
 meteo-vm2 (0.28-1) UNRELEASED; urgency=low
 
   * Updated stations
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Thu, 06 Aug 2015 11:04:43 +0200
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Thu, 06 Aug 2015 11:04:43 +0200
 
 meteo-vm2 (0.27-1) UNRELEASED; urgency=low
 
   * Updated stations
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Wed, 05 Aug 2015 20:58:15 +0200
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Wed, 05 Aug 2015 20:58:15 +0200
 
 meteo-vm2 (0.19-1) UNRELEASED; urgency=low
 
   * Updated stations
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Fri, 17 Apr 2015 09:45:39 +0200
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Fri, 17 Apr 2015 09:45:39 +0200
 
 meteo-vm2 (0.18.1-1) UNRELEASED; urgency=low
 
   * Fixed parser
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Thu, 19 Feb 2015 10:43:51 +0100
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Thu, 19 Feb 2015 10:43:51 +0100
 
 meteo-vm2 (0.18-1) UNRELEASED; urgency=low
 
   * Fixed parser
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Wed, 18 Feb 2015 15:21:15 +0100
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Wed, 18 Feb 2015 15:21:15 +0100
 
 meteo-vm2 (0.17-1) UNRELEASED; urgency=low
 
@@ -61,25 +61,25 @@ meteo-vm2 (0.17-1) UNRELEASED; urgency=low
   * Station info for BUFR conversion
   * bufr-to-meteo-vm2: optional ident
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Tue, 16 Sep 2014 13:44:00 +0200
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Tue, 16 Sep 2014 13:44:00 +0200
 
 meteo-vm2 (0.14-1) UNRELEASED; urgency=low
 
   * Updated stations
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Sat, 28 Jun 2014 08:07:57 +0200
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Sat, 28 Jun 2014 08:07:57 +0200
 
 meteo-vm2 (0.12-1) UNRELEASED; urgency=low
 
   * New version
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Tue, 24 Jun 2014 14:33:45 +0200
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Tue, 24 Jun 2014 14:33:45 +0200
 
 meteo-vm2 (0.9-1) UNRELEASED; urgency=low
 
   * New version
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Wed, 18 Dec 2013 16:57:00 +0100
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Wed, 18 Dec 2013 16:57:00 +0100
 
 meteo-vm2 (0.3-1) UNRELEASED; urgency=low
 
@@ -87,19 +87,19 @@ meteo-vm2 (0.3-1) UNRELEASED; urgency=low
   * Default source updated
   * Source type checked on startup
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Fri, 10 May 2013 09:42:00 +0200
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Fri, 10 May 2013 09:42:00 +0200
 
 meteo-vm2 (0.2.1-1) UNRELEASED; urgency=low
 
   * Default source updated
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Fri, 08 Feb 2013 15:50:00 +0100
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Fri, 08 Feb 2013 15:50:00 +0100
 
 meteo-vm2 (0.2-1) UNRELEASED; urgency=low
 
   * Tools for VM2
 
- -- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>  Fri, 08 Feb 2013 15:50:00 +0100
+ -- Emanuele Di Giacomo <edigiacomo@arpae.it>  Fri, 08 Feb 2013 15:50:00 +0100
 
 meteo-vm2 (0.1-1) UNRELEASED; urgency=low
 

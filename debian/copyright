@@ -1,11 +1,11 @@
 Format-Specification: http://wiki.debian.org/Proposals/CopyrightFormat?action=recall&rev=196
 Upstream-Name: meteo-vm2
 Upstream-Maintainer: 
- Emanuele Di Giacomo <edigiacomo@arpa.emr.it>
-Upstream-Source: http://www.arpa.emr.it
+ Emanuele Di Giacomo <edigiacomo@arpae.it>
+Upstream-Source: http://arpae.it
 
 Files: *
-Copyright: Copyright (C) 2012,2013 ARPA-SIM <urpsim@smr.arpa.emr.it>
+Copyright: Copyright (C) 2012,2013 Arpae-SIMC <simc-urp@arpae.it>
 License: GPL-2.0+
 
 Files:

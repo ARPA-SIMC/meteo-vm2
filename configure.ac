@@ -15,17 +15,23 @@ LT_INIT
 dnl Use c++11
 AX_CXX_COMPILE_STDCXX_11(noext,optional)
 
+PKGCONFIG_REQUIRES=""
+AC_SUBST(PKGCONFIG_REQUIRES)
+
 PKG_CHECK_EXISTS([lua5.2], [have_lua=yes], [have_lua=no])
 if test x$have_lua = xyes
 then
         PKG_CHECK_MODULES(LUA,lua5.2,,[have_lua=no])
+        PKGCONFIG_REQUIRES="lua5.2"
 else
 	PKG_CHECK_EXISTS([lua5.1], [have_lua=yes], [have_lua=no])
 	if test x$have_lua = xyes
 	then
 		PKG_CHECK_MODULES([LUA],[lua5.1])
+        PKGCONFIG_REQUIRES="lua5.1 >= 5.1.1"
 	else
 		PKG_CHECK_MODULES([LUA],[lua])
+        PKGCONFIG_REQUIRES="lua >= 5.1.1"
 	fi
 fi
 

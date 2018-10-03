@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012,2013 Arpae-SIMC <simc-urp@arpae.it>
+ * Copyright (C) 2012-2018 Arpae-SIMC <simc-urp@arpae.it>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,133 +17,126 @@
  *
  * Author: Emanuele Di Giacomo <edigiacomo@arpae.it>
  */
-
-#include <wibble/tests.h>
-#include <wibble/exception.h>
+#include "meteo-vm2/utils/tests.h"
+#include "meteo-vm2/parser.h"
 #include "parser.h"
 
 #define ensure_throws(x) do { try { x; ensure(false); } catch (wibble::exception::Generic& e) { } } while (0)
+#define wassert_equals(x, y) do { wassert_true(x == y); } while (0)
+using namespace meteo::vm2::utils::tests;
 
-namespace tut {
-
-struct meteo_vm2_parser_shar {
-};
-TESTGRP(meteo_vm2_parser);
-
-// Parse a well-formed VM2 message
-template<> template<>
-void to::test<1>()
+namespace {
+class Tests : public TestCase
 {
-  std::string line("201201020300,123,456,78.9,,,000000000\n");
-  std::stringstream in(line);
-  meteo::vm2::Parser parser(in);
+    using TestCase::TestCase;
+    // Parse a well-formed VM2 message
+    void register_tests() override
+    {
+        add_method("parse-well-formed-VM2", []() {
+            std::string line("201201020300,123,456,78.9,,,000000000\n");
+            std::stringstream in(line);
+            meteo::vm2::Parser parser(in);
 
-  meteo::vm2::Value value;
-  std::string l;
-  ensure(parser.next(value, l));
-  ensure_equals(in.tellg(), line.size());
-  ensure_equals(l.size(), line.substr(0, 37).size());
-  ensure_equals(value.year, 2012);
-  ensure_equals(value.month, 1);
-  ensure_equals(value.mday, 2);
-  ensure_equals(value.hour, 3);
-  ensure_equals(value.min, 0);
-  ensure_equals(value.sec, 0);
-  ensure_equals(value.station_id, 123);
-  ensure_equals(value.variable_id, 456);
-  ensure_equals(value.value1, 78.9);
-  ensure_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
-  ensure_equals(value.flags, "000000000");
-}
-// Parse a malformed VM2 message
-template<> template<>
-void to::test<2>()
-{
-  std::string line("201201020300,123,456,78.9,,");
-  std::stringstream in(line);
-  meteo::vm2::Parser parser(in);
+            meteo::vm2::Value value;
+            std::string l;
+            wassert(parser.next(value, l));
+            wassert_equals(in.tellg(), line.size());
+            wassert_equals(l.size(), line.substr(0, 37).size());
+            wassert_equals(value.year, 2012);
+            wassert_equals(value.month, 1);
+            wassert_equals(value.mday, 2);
+            wassert_equals(value.hour, 3);
+            wassert_equals(value.min, 0);
+            wassert_equals(value.sec, 0);
+            wassert_equals(value.station_id, 123);
+            wassert_equals(value.variable_id, 456);
+            wassert_equals(value.value1, 78.9);
+            wassert_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
+            wassert_equals(value.flags, "000000000");
+        });
+        // Parse a malformed VM2 message
+        add_method("parse-malformed-VM2", []() {
+            std::string line("201201020300,123,456,78.9,,");
+            std::stringstream in(line);
+            meteo::vm2::Parser parser(in);
 
-  meteo::vm2::Value value;
-  ensure_throws(parser.next(value));
-}
-// Serializer
-template<> template<>
-void to::test<3>()
-{
-  std::string line("20120102030000,123,456,78.9,-5.3,,\n");
-  std::stringstream in(line);
-  meteo::vm2::Parser parser(in);
+            meteo::vm2::Value value;
+            wassert_throws(meteo::vm2::ParserException, parser.next(value));
+        });
+        // Serializer
+        add_method("serializer", []() {
+            std::string line("20120102030000,123,456,78.9,-5.3,,\n");
+            std::stringstream in(line);
+            meteo::vm2::Parser parser(in);
 
-  meteo::vm2::Value value;
-  ensure(parser.next(value));
+            meteo::vm2::Value value;
+            wassert(parser.next(value));
 
-  std::stringstream out;
-  meteo::vm2::Parser::serialize(out, value);
-  ensure_equals(out.str().substr(0,out.str().size()-1),line.substr(0,line.size()-1));
-}
-// Parse a well-formed VM2 message (with seconds)
-template<> template<>
-void to::test<4>()
-{
-  std::string line("20120102030058,123,456,78.9,,,000000000\n");
-  std::stringstream in(line);
-  meteo::vm2::Parser parser(in);
+            std::stringstream out;
+            meteo::vm2::Parser::serialize(out, value);
+            //wassert_equals(value.with_sec, meteo::vm2::ValueWithSeconds::yes);
+            wassert_equals(out.str().substr(0, out.str().size()-1), line.substr(0, line.size()-1));
+        });
+        // Parse a well-formed VM2 message (with seconds)
+        add_method("parse-well-formed-VM2-with-secs", []() {
+            std::string line("20120102030058,123,456,78.9,,,000000000\n");
+            std::stringstream in(line);
+            meteo::vm2::Parser parser(in);
 
-  meteo::vm2::Value value;
-  ensure(parser.next(value));
-  ensure_equals(in.tellg(), line.size());
-  ensure_equals(value.year, 2012);
-  ensure_equals(value.month, 1);
-  ensure_equals(value.mday, 2);
-  ensure_equals(value.hour, 3);
-  ensure_equals(value.min, 0);
-  ensure_equals(value.sec, 58);
-  ensure_equals(value.station_id, 123);
-  ensure_equals(value.variable_id, 456);
-  ensure_equals(value.value1, 78.9);
-  ensure_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
-  ensure_equals(value.flags, "000000000");
-}
-// Parse two well-formed VM2 message (emulates a line parser)
-template<> template<>
-void to::test<5>()
-{
-  std::string line1 = "20120102030058,123,456,78.9,,,100000000\n";
-  std::string line2 = "20120102030058,123,456,78.9,,,\n";
-  std::string line = line1 + line2;
+            meteo::vm2::Value value;
+            wassert(parser.next(value));
+            wassert_equals(in.tellg(), line.size());
+            wassert_equals(value.year, 2012);
+            wassert_equals(value.month, 1);
+            wassert_equals(value.mday, 2);
+            wassert_equals(value.hour, 3);
+            wassert_equals(value.min, 0);
+            wassert_equals(value.sec, 58);
+            wassert_equals(value.station_id, 123);
+            wassert_equals(value.variable_id, 456);
+            wassert_equals(value.value1, 78.9);
+            wassert_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
+            wassert_equals(value.flags, "000000000");
+        });
+        // Parse two well-formed VM2 message (emulates a line parser)
+        add_method("parse-two-well-formed-VM2", []() {
+            std::string line1 = "20120102030058,123,456,78.9,,,100000000\n";
+            std::string line2 = "20120102030058,123,456,78.9,,,\n";
+            std::string line = line1 + line2;
 
-  std::stringstream in(line);
-  meteo::vm2::Parser parser(in);
+            std::stringstream in(line);
+            meteo::vm2::Parser parser(in);
 
-  meteo::vm2::Value value;
-  ensure(parser.next(value));
-  ensure_equals(in.tellg(), line1.size());
-  ensure_equals(value.year, 2012);
-  ensure_equals(value.month, 1);
-  ensure_equals(value.mday, 2);
-  ensure_equals(value.hour, 3);
-  ensure_equals(value.min, 0);
-  ensure_equals(value.sec, 58);
-  ensure_equals(value.station_id, 123);
-  ensure_equals(value.variable_id, 456);
-  ensure_equals(value.value1, 78.9);
-  ensure_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
-  ensure_equals(value.flags, "100000000");
+            meteo::vm2::Value value;
+            wassert(parser.next(value));
+            wassert_equals(in.tellg(), line1.size());
+            wassert_equals(value.year, 2012);
+            wassert_equals(value.month, 1);
+            wassert_equals(value.mday, 2);
+            wassert_equals(value.hour, 3);
+            wassert_equals(value.min, 0);
+            wassert_equals(value.sec, 58);
+            wassert_equals(value.station_id, 123);
+            wassert_equals(value.variable_id, 456);
+            wassert_equals(value.value1, 78.9);
+            wassert_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
+            wassert_equals(value.flags, "100000000");
 
-  ensure(parser.next(value));
-  ensure_equals(in.tellg(), line1.size() + line2.size());
-  ensure_equals(value.year, 2012);
-  ensure_equals(value.month, 1);
-  ensure_equals(value.mday, 2);
-  ensure_equals(value.hour, 3);
-  ensure_equals(value.min, 0);
-  ensure_equals(value.sec, 58);
-  ensure_equals(value.station_id, 123);
-  ensure_equals(value.variable_id, 456);
-  ensure_equals(value.value1, 78.9);
-  ensure_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
-  ensure_equals(value.flags, "");
-}
-
+            wassert(parser.next(value));
+            wassert_equals(in.tellg(), line1.size() + line2.size());
+            wassert_equals(value.year, 2012);
+            wassert_equals(value.month, 1);
+            wassert_equals(value.mday, 2);
+            wassert_equals(value.hour, 3);
+            wassert_equals(value.min, 0);
+            wassert_equals(value.sec, 58);
+            wassert_equals(value.station_id, 123);
+            wassert_equals(value.variable_id, 456);
+            wassert_equals(value.value1, 78.9);
+            wassert_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
+            wassert_equals(value.flags, "");
+        });
+    }
+} tests("parser");
 
 }

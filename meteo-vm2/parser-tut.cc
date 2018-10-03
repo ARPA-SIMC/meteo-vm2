@@ -63,20 +63,6 @@ class Tests : public TestCase
             meteo::vm2::Value value;
             wassert_throws(meteo::vm2::ParserException, parser.next(value));
         });
-        // Serializer
-        add_method("serializer", []() {
-            std::string line("20120102030000,123,456,78.9,-5.3,,\n");
-            std::stringstream in(line);
-            meteo::vm2::Parser parser(in);
-
-            meteo::vm2::Value value;
-            wassert(parser.next(value));
-
-            std::stringstream out;
-            meteo::vm2::Parser::serialize(out, value);
-            //wassert_equals(value.with_sec, meteo::vm2::ValueWithSeconds::yes);
-            wassert_equals(out.str().substr(0, out.str().size()-1), line.substr(0, line.size()-1));
-        });
         // Parse a well-formed VM2 message (with seconds)
         add_method("parse-well-formed-VM2-with-secs", []() {
             std::string line("20120102030058,123,456,78.9,,,000000000\n");

@@ -8,16 +8,9 @@ URL:            https://github.com/arpa-simc/%{name}
 Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{name}-%{version}-%{release}.tar.gz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  libdballe-devel >= 7.34
+BuildRequires:  pkgconfig(libdballe) >= 7.34
+BuildRequires:  pkgconfig(lua) >= 5.1.1
 BuildRequires:  help2man
-BuildRequires:  popt-devel
-BuildRequires:  gcc-gfortran
-
-%if 0%{?fedora} < 19
-BuildRequires:  lua = 5.1
-%else
-Requires:       lua > 5.1
-%endif
 
 %description
 VM2 decoding/encoding library

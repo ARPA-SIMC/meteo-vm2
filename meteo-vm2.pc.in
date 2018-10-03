@@ -6,5 +6,6 @@ includedir=@includedir@
 Name: meteo-vm2
 Description: VM2 library
 Version: @VERSION@
-Cflags: -I${includedir} @LUA_CFLAGS@
-Libs: -L${libdir} @LUA_LIBS@ @LIBS@ -lmeteo-vm2
+Requires: @PKGCONFIG_REQUIRES@
+Cflags: -I${includedir}
+Libs: -L${libdir} -lmeteo-vm2

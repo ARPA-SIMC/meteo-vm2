@@ -124,12 +124,12 @@ static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Va
         unit = lua_tostring(L, -1);
     lua_pop(L, 1);
 
-    if (value.value1 == meteo::vm2::MISSING_DOUBLE)
+    if (value.value1 == "")
         throw std::runtime_error("Cannot convert missing value to BUFR");
 
     double val = wreport::convert_units(unit.c_str(), 
             dballe::varinfo(varcode)->unit, 
-            value.value1);
+            strtod(value.value1.c_str(), NULL));
 
     wreport::Var var = dballe::var(varcode, val);
     if (value.flags.size() == 9) {

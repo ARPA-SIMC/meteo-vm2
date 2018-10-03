@@ -35,6 +35,12 @@ namespace vm2 {
 
 static double MISSING_DOUBLE = std::numeric_limits<double>::max();
 
+enum ValueWithSeconds {
+    yes,
+    no,
+    maybe
+};
+
 /**
  * VM2 value. 
  *
@@ -48,6 +54,8 @@ struct Value {
   int hour;
   int min;
   int sec;
+
+  enum ValueWithSeconds with_sec = ValueWithSeconds::maybe;
 
   unsigned int station_id;
   unsigned int variable_id;

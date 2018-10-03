@@ -149,6 +149,11 @@ bool Parser::next(Value& value, std::string& line) {
   value.value3 = match.str(7);
   value.flags = match.str(8);
 
+  if (match.str(1).size() == 12)
+      value.with_sec = ValueWithSeconds::no;
+  else
+      value.with_sec = ValueWithSeconds::yes;
+
   return true;
 }
 
@@ -157,9 +162,12 @@ void Parser::serialize(std::ostream& out, const Value& value) {
       << std::setfill('0') << std::setw(2) << value.month
       << std::setfill('0') << std::setw(2) << value.mday
       << std::setfill('0') << std::setw(2) << value.hour
-      << std::setfill('0') << std::setw(2) << value.min
-      << std::setfill('0') << std::setw(2) << value.sec
-      << ","
+      << std::setfill('0') << std::setw(2) << value.min;
+  if (value.with_sec == ValueWithSeconds::yes ||
+      (value.with_sec == ValueWithSeconds::maybe && value.sec != 0)) {
+      out << std::setfill('0') << std::setw(2) << value.sec;
+  }
+  out << ","
       << value.station_id
       << ","
       << value.variable_id

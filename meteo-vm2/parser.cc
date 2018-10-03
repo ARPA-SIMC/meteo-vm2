@@ -140,8 +140,8 @@ bool Parser::next(Value& value, std::string& line) {
          &value.hour, &value.min, &value.sec);
   value.station_id = strtoul(match.str(3).c_str(), NULL, 10);
   value.variable_id = strtoul(match.str(4).c_str(), NULL, 10);
-  value.value1 = (match.str(5).empty() ? vm2::MISSING_DOUBLE : strtod(match.str(5).c_str(), NULL));
-  value.value2 = (match.str(6).empty() ? vm2::MISSING_DOUBLE : strtod(match.str(6).c_str(), NULL));
+  value.value1 = match.str(5);
+  value.value2 = match.str(6);
   value.value3 = match.str(7);
   value.flags = match.str(8);
 
@@ -160,9 +160,9 @@ void Parser::serialize(std::ostream& out, const Value& value) {
       << ","
       << value.variable_id
       << ","
-      << (value.value1 != vm2::MISSING_DOUBLE ? std::to_string(value.value1) : "")
+      << value.value1
       << ","
-      << (value.value2 != vm2::MISSING_DOUBLE ? std::to_string(value.value2) : "")
+      << value.value2
       << ","
       << value.value3 << ","
       << value.flags << std::endl;

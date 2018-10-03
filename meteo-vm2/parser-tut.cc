@@ -50,8 +50,8 @@ class Tests : public TestCase
             wassert_equals(value.sec, 0);
             wassert_equals(value.station_id, 123);
             wassert_equals(value.variable_id, 456);
-            wassert_equals(value.value1, 78.9);
-            wassert_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
+            wassert_equals(value.value1, "78.9");
+            wassert_equals(value.value2, "");
             wassert_equals(value.flags, "000000000");
         });
         // Parse a malformed VM2 message
@@ -80,8 +80,8 @@ class Tests : public TestCase
             wassert_equals(value.sec, 58);
             wassert_equals(value.station_id, 123);
             wassert_equals(value.variable_id, 456);
-            wassert_equals(value.value1, 78.9);
-            wassert_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
+            wassert_equals(value.value1, "78.9");
+            wassert_equals(value.value2, "");
             wassert_equals(value.flags, "000000000");
         });
         // Parse two well-formed VM2 message (emulates a line parser)
@@ -104,8 +104,8 @@ class Tests : public TestCase
             wassert_equals(value.sec, 58);
             wassert_equals(value.station_id, 123);
             wassert_equals(value.variable_id, 456);
-            wassert_equals(value.value1, 78.9);
-            wassert_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
+            wassert_equals(value.value1, "78.9");
+            wassert_equals(value.value2, "");
             wassert_equals(value.flags, "100000000");
 
             wassert(parser.next(value));
@@ -118,8 +118,8 @@ class Tests : public TestCase
             wassert_equals(value.sec, 58);
             wassert_equals(value.station_id, 123);
             wassert_equals(value.variable_id, 456);
-            wassert_equals(value.value1, 78.9);
-            wassert_equals(value.value2, meteo::vm2::MISSING_DOUBLE);
+            wassert_equals(value.value1, "78.9");
+            wassert_equals(value.value2, "");
             wassert_equals(value.flags, "");
         });
     }

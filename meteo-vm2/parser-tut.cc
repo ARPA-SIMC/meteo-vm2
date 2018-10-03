@@ -122,6 +122,20 @@ class Tests : public TestCase
             wassert_equals(value.value2, "");
             wassert_equals(value.flags, "");
         });
+        // Serialization of a parsed record should return the same record.
+        add_method("invertible-serialization", []() {
+            std::string line("20120102030058,123,456,78.9,,,000000000\n");
+            std::stringstream in(line);
+            meteo::vm2::Parser parser(in);
+
+            meteo::vm2::Value value;
+            wassert(parser.next(value));
+
+            std::stringstream out;
+            wassert(meteo::vm2::Parser::serialize(out, value));
+
+            wassert_equals(line, out.str());
+        });
     }
 } tests("parser");
 

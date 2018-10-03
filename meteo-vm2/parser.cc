@@ -37,10 +37,7 @@ namespace meteo {
 namespace vm2 {
 
 
-class PatternException : public std::runtime_error {
-public:
-    PatternException(int lineno, const std::string& msg) : std::runtime_error("line " + std::to_string(lineno) + ": " + msg) {}
-};
+ParserException::ParserException(int lineno, const std::string& msg) : std::runtime_error("line " + std::to_string(lineno) + ": " + msg) {}
 
 std::string Parser::regexp_str = "^([0-9]{12}([0-9][0-9])?),([0-9]+),([0-9]+),([+-]?[0-9.]*),([+-]?[0-9.]*),([^,\n\r]*),([^,\n\r]*[\r\n]*)$";
 
@@ -126,7 +123,7 @@ bool Parser::next(Value& value, std::string& line) {
   RegexpMatch match(9);
 #endif
   if (not regex_match(line, match, regexp))
-    throw PatternException(lineno, "pattern mismatch");
+    throw ParserException(lineno, "pattern mismatch");
 
   // match[0]: line
   // match[1]: datetime

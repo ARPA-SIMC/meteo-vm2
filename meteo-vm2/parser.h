@@ -37,6 +37,16 @@
 namespace meteo {
 namespace vm2 {
 
+
+/**
+ * Parser exception raised by VM2 parser
+ */
+class ParserException : public std::runtime_error {
+public:
+    ParserException(int lineno, const std::string& msg);
+};
+
+
 /**
  * Parser for the VM2 value files
  */

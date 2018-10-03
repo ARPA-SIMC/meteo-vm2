@@ -52,8 +52,8 @@ struct Value {
   unsigned int station_id;
   unsigned int variable_id;
 
-  double value1;
-  double value2;
+  std::string value1;
+  std::string value2;
   std::string value3;
   std::string flags;
 };

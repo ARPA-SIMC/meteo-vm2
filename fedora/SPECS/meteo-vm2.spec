@@ -8,7 +8,7 @@ URL:            https://github.com/arpa-simc/%{name}
 Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{name}-%{version}-%{release}.tar.gz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(dballe) >= 7.34
+BuildRequires:  pkgconfig(libdballe) >= 7.34
 BuildRequires:  pkgconfig(lua) >= 5.1.1
 BuildRequires:  help2man
 

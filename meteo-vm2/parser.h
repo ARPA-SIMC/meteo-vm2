@@ -31,6 +31,7 @@
 #include <vector>
 #include <istream>
 #include <ostream>
+#include <stdexcept>
 
 #include <meteo-vm2/value.h>
 

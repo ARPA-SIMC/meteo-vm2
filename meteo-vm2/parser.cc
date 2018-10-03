@@ -23,7 +23,6 @@
 
 #include <meteo-vm2/parser.h>
 
-#include <stdexcept>
 #include <cstdlib>
 #include <iomanip>
 #if GCC_VERSION >= 40900

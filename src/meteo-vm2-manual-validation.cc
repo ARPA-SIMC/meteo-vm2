@@ -61,6 +61,7 @@ struct ValidationRecord {
     }
 };
 
+// VALIDATION_FLAG,STATION_ID,VARIABLE_ID,START_DATE,END_DATE
 std::regex ValidationRecord::regexp("^([01]),([0-9]+),([0-9]+),([0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}),([0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2})?$");
 
 struct ValidationTable {

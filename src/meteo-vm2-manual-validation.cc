@@ -100,6 +100,36 @@ struct ValidationTable {
     }
 
     void set_validation_flag(meteo::vm2::Value& value, const ValidationRecord& record) {
+        if (value.flags.empty())
+            value.flags = "000000000";
+        char flag = value.flags.at(0);
+        // If the right flag is already set, do nothing
+        if ((record.is_invalid and flag == '1') or
+            (not record.is_invalid and flag == '0')) {
+            return;
+        }
+        // Revalidation can be applied to invalid data only
+        else if (not record.is_invalid and flag != '1') {
+            return;
+        }
+        // Revalidation of this kind of value means that the flag must be set to 2
+        else if (not record.is_invalid and flag == '1' and value.value2 !=  meteo::vm2::MISSING_DOUBLE and
+                 (value.value3.empty() or value.value3 == "S" or value.value3 == "R")) {
+            value.flags[0] = '2';
+        }
+        // In this case, value3 is the level of the measure: the flag can be updated
+        else if (not record.is_invalid and not value.value3.empty() and
+                 value.variable_id >= 522 and value.variable_id <= 535) {
+            value.flags[0] = (record.is_invalid? '1': '0');
+        }
+        // The last case is the precipitation over more than one period: the flag is not updated
+        else if (not record.is_invalid and flag == '1' and not value.value3.empty()) {
+            return;
+        }
+        // Finally
+        else {
+            value.flags[0] = (record.is_invalid? '1': '0');
+        }
     }
 };
 
@@ -143,8 +173,8 @@ int main(int argc, const char** argv)
         meteo::vm2::Value value;
         std::string line;
         while (parser.next(value, line)) {
-            std::cerr << "Inspecting " << line << std::endl;
             table.modify_validation_flag(value);
+            meteo::vm2::Parser::serialize(std::cout, value);
         }
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;

@@ -24,6 +24,8 @@
 /src/bufr-to-meteo-vm2.1
 /src/meteo-vm2-to-bufr
 /src/meteo-vm2-to-bufr.1
+/src/meteo-vm2-manual-validation
+/src/meteo-vm2-manual-validation.1
 Makefile
 Makefile.in
 aclocal.m4

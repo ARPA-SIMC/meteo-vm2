@@ -79,7 +79,7 @@ struct ValidationTable {
         return table;
     }
 
-    void modify_value(meteo::vm2::Value& value) {
+    void modify_validation_flag(meteo::vm2::Value& value) {
         auto records = table.find(value.station_id);
         if (records != table.end()) {
             for (auto iter = (*records).second.rbegin();
@@ -93,12 +93,13 @@ struct ValidationTable {
                 if ((record.variable_id == 999 ||
                      record.variable_id == value.variable_id) &&
                     (record.from_time <= reftime_str && (record.until_time >= reftime_str || record.until_time == ""))) {
-                    std::cerr << "Found" << std::endl;
-                    return;
+                    set_validation_flag(value, record);
                 }
             }
         }
-        std::cerr << "Not found" << std::endl;
+    }
+
+    void set_validation_flag(meteo::vm2::Value& value, const ValidationRecord& record) {
     }
 };
 
@@ -143,7 +144,7 @@ int main(int argc, const char** argv)
         std::string line;
         while (parser.next(value, line)) {
             std::cerr << "Inspecting " << line << std::endl;
-            table.modify_value(value);
+            table.modify_validation_flag(value);
         }
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;

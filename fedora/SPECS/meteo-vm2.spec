@@ -20,7 +20,7 @@ VM2 decoding/encoding library
 
 %build
 sh autogen.sh
-%configure
+%configure --disable-static
 make %{?_smp_mflags}
 
 %check
@@ -48,8 +48,7 @@ VM2 decoding/encoding library - development files
 %defattr(-,root,root,-)
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/*
-%{_libdir}/lib%{name}.a
-%{_libdir}/lib%{name}.la
+%exclude %{_libdir}/lib%{name}.la
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/meteo-vm2.pc
 

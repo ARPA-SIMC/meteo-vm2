@@ -160,6 +160,8 @@ int main(int argc, const char** argv)
                 vm2value.sec = msg->get_datetime().time().second;
 
                 msg->foreach_var([&L, &vm2value](const dballe::Level& level, const dballe::Trange& trange, const wreport::Var& var) {
+                    int idx;
+
                     if (level.is_missing() and trange.is_missing()) {
                         return true;
                     }

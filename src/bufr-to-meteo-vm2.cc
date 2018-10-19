@@ -111,28 +111,28 @@ int main(int argc, const char** argv)
                 lua_newtable(L);
                 idx = lua_gettop(L);
                 // Station lookup by lon, lat, rep_memo
-                if (wreport::Var* v = msg->get("lon")) {
+                if (const wreport::Var* v = msg->get("lon")) {
                     lua_pushnumber(L, v->enqi());
                     lua_setfield(L, idx, "lon");
                 } else {
                     std::cerr << "Missing longitude" << std::endl;
                     return true;
                 }
-                if (wreport::Var* v = msg->get("lat")) {
+                if (const wreport::Var* v = msg->get("lat")) {
                     lua_pushnumber(L, v->enqi());
                     lua_setfield(L, idx, "lat");
                 } else {
                     std::cerr << "Missing latitude" << std::endl;
                     return true;
                 }
-                if (wreport::Var* v = msg->get("rep_memo")) {
+                if (const wreport::Var* v = msg->get("rep_memo")) {
                     lua_pushstring(L, v->enqc());
                     lua_setfield(L, idx, "rep");
                 } else {
                     std::cerr << "Missing rep_memo" << std::endl;
                     return true;
                 }
-                if (wreport::Var* v = msg->get("ident")) {
+                if (const wreport::Var* v = msg->get("ident")) {
                     lua_pushstring(L, v->enqc());
                     lua_setfield(L, idx, "ident");
                 }

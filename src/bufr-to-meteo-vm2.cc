@@ -30,6 +30,7 @@
 #include <cstring>
 #include <sstream>
 #include <iomanip>
+#include <iterator>
 
 #include <meteo-vm2/source.h>
 #include <meteo-vm2/parser.h>

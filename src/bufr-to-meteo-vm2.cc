@@ -37,6 +37,7 @@
 
 #include <wreport/varinfo.h>
 #include <wreport/conv.h>
+#include <dballe/file.h>
 #include <dballe/var.h>
 #include <dballe/message.h>
 #include <dballe/types.h>

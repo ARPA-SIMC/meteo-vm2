@@ -37,15 +37,10 @@
 
 #include <wreport/varinfo.h>
 #include <wreport/conv.h>
-#include <dballe/core/defs.h>
-#include <dballe/core/var.h>
 #include <dballe/core/file.h>
-#include <dballe/msg/msg.h>
-#include <dballe/msg/context.h>
-#include <dballe/msg/wr_codec.h>
+#include <dballe/message.h>
 #include <dballe/types.h>
 
-#include <meteo-vm2/source.h>
 
 template<typename T>
 static std::string join(std::vector<T> l)

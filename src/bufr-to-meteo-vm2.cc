@@ -41,6 +41,7 @@
 #include <dballe/var.h>
 #include <dballe/message.h>
 #include <dballe/types.h>
+#include <dballe/importer.h>
 
 
 template<typename T>

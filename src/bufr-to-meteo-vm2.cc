@@ -159,8 +159,9 @@ int main(int argc, const char** argv)
                 vm2value.min = msg->get_datetime().time().minute;
                 vm2value.sec = msg->get_datetime().time().second;
 
-                msg->foreach_var([&L, &vm2value](const dballe::Level& level, const dballe::Trange& trange, const wreport::Var& var) {
+                msg->foreach_var([&source, &vm2value](const dballe::Level& level, const dballe::Trange& trange, const wreport::Var& var) {
                     int idx;
+                    lua_State* L = source->L;
 
                     if (level.is_missing() and trange.is_missing()) {
                         return true;
@@ -197,7 +198,7 @@ int main(int argc, const char** argv)
                             << "bcode=" << wreport::varcode_format(var.code()) << ", "
                             << "level=" << level << ", "
                             << "trange=" << trange << std::endl;
-                        continue;
+                        return true;
                     }
                     if (variables.size() > 1) {
                         std::cerr << variables.size()
@@ -206,7 +207,7 @@ int main(int argc, const char** argv)
                             << join(variables)
                             << ")"
                             << std::endl;
-                        continue;
+                        return true;
                     }
                     vm2value.variable_id = variables.at(0);
 

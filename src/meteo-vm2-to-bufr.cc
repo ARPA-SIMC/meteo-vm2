@@ -36,6 +36,7 @@
 #include <wreport/var.h>
 #include <wreport/conv.h>
 #include <dballe/message.h>
+#include <dballe/var.h>
 
 
 static inline int convert_qc(const std::string& str)

@@ -204,7 +204,7 @@ int main(int argc, const char** argv)
 
         msgs.push_back(std::move(msg));
 
-        dballe::msg::BufrExporter exporter;
+        std::unique_ptr<dballe::Exporter> exporter = dballe::Exporter::create(dballe::Encoding::BUFR);
         std::cout << exporter.to_binary(msgs);
 
       } catch (std::exception& e) {

@@ -254,7 +254,9 @@ int main(int argc, const char** argv)
                     meteo::vm2::Parser::serialize(std::cout, vm2value);
                     return true;
                 });
+                return true;
             });
+            return true;
         });
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;

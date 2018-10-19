@@ -216,7 +216,7 @@ int main(int argc, const char** argv)
                     if (!lua_isnil(L, -1)) {
                         vm2value.value1 = wreport::convert_units(var.info()->unit, lua_tostring(L, -1), var.enqd());
                     } else {
-                        vm2value.value1 = v.enqd();
+                        vm2value.value1 = var.enqd();
                     }
                     lua_pop(L, 1);
 

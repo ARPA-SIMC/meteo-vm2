@@ -159,7 +159,7 @@ int main(int argc, const char** argv)
                 vm2value.min = msg->get_datetime().time().minute;
                 vm2value.sec = msg->get_datetime().time().second;
 
-                msg.foreach_var([](const Level& level, const Trange& trange, const wreport::Var& var) {
+                msg->foreach_var([](const Level& level, const Trange& trange, const wreport::Var& var) {
                     if (level.is_missing() and trange.is_missing()) {
                         return true;
                     }

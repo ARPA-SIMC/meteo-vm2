@@ -188,21 +188,21 @@ int main(int argc, const char** argv)
       int top = lua_gettop(L);
 
       try {
-        std::vector<std::shared_ptr<dballe::Message> msgs;
+        std::vector<std::shared_ptr<dballe::Message>> msgs;
         std::unique_ptr<dballe::Message> msg = dballe::Message::create(dballe::MessageType::GENERIC);
         // date
-        msg.set("year", value.year);
-        msg.set("year", value.month);
-        msg.set("year", value.mday);
-        msg.set("year", value.hour);
-        msg.set("year", value.min);
-        msg.set("year", value.sec);
+        msg->set("year", value.year);
+        msg->set("year", value.month);
+        msg->set("year", value.mday);
+        msg->set("year", value.hour);
+        msg->set("year", value.min);
+        msg->set("year", value.sec);
         // station
-        set_station(source, value, msg);
+        set_station(source, value, *msg);
         // variable
-        set_variable(source, value, msg);
+        set_variable(source, value, *msg);
 
-        msgs.append(msg);
+        msgs.push_back(msg);
 
         dballe::msg::BufrExporter exporter;
         std::cout << exporter.to_binary(msgs);

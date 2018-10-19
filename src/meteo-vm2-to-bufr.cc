@@ -205,7 +205,7 @@ int main(int argc, const char** argv)
         msgs.push_back(std::move(msg));
 
         std::unique_ptr<dballe::Exporter> exporter = dballe::Exporter::create(dballe::Encoding::BUFR);
-        std::cout << exporter.to_binary(msgs);
+        std::cout << exporter->to_binary(msgs);
 
       } catch (std::exception& e) {
         std::cerr << parser.lineno << ":[" << line << "] - " << e.what() << std::endl;

@@ -35,10 +35,7 @@
 #include <wreport/varinfo.h>
 #include <wreport/var.h>
 #include <wreport/conv.h>
-#include <dballe/core/defs.h>
-#include <dballe/core/var.h>
-#include <dballe/msg/msg.h>
-#include <dballe/msg/wr_codec.h>
+#include <dballe/message.h>
 
 
 static inline int convert_qc(const std::string& str)
@@ -47,7 +44,7 @@ static inline int convert_qc(const std::string& str)
   return (int)rint(100.0 - ((qc-48.0) * 100.0 / 6.0));
 }
 
-static inline void set_station(meteo::vm2::Source* source, const meteo::vm2::Value& value, dballe::Msg& msg) {
+static inline void set_station(meteo::vm2::Source* source, const meteo::vm2::Value& value, dballe::Message& msg) {
     lua_State* L = source->L;
     source->lua_push_station(value.station_id);
     if (lua_isnil(L, -1)) {
@@ -73,15 +70,14 @@ static inline void set_station(meteo::vm2::Source* source, const meteo::vm2::Val
             msg.set(dballe::var(varcode, (int) lua_tointeger(L, -1)), varcode,
                     dballe::Level(257), dballe::Trange());
         } else {
-            msg.set(dballe::var(varcode, lua_tostring(L, -1)), varcode,
-                    dballe::Level(257), dballe::Trange());
+            msg.set(dballe::Level(257), dballe::Trange(), dballe::var(varcode, lua_tostring(L, -1)));
         }
         lua_pop(L,1);
     }
     lua_pop(L, 1);
 }
 
-static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Value& value, dballe::Msg& msg) {
+static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Value& value, dballe::Message& msg) {
     lua_State* L = source->L;
     source->lua_push_variable(value.variable_id);
     if (lua_isnil(L, -1)) {
@@ -144,7 +140,7 @@ static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Va
         if (value.flags.substr(5,2) != "00")
             var.seta(dballe::var(WR_VAR(0, 33, 194), convert_qc(value.flags.substr(5,2))));
     }
-    msg.set(var, varcode, level, trange);
+    msg.set(level, trange, var);
 }
 
 void print_usage()
@@ -193,10 +189,14 @@ int main(int argc, const char** argv)
 
       try {
         dballe::Messages msgs;
-        dballe::Msg msg;
+        std::uniqe_ptr<dballe::Message> msg = dballe::Message::create(dballe::MessageType::GENERIC);
         // date
-        msg.set_datetime(dballe::Datetime(value.year, value.month, value.mday,
-                                          value.hour, value.min, value.sec));
+        msg.set("year", value.year);
+        msg.set("year", value.month);
+        msg.set("year", value.mday);
+        msg.set("year", value.hour);
+        msg.set("year", value.min);
+        msg.set("year", value.sec);
         // station
         set_station(source, value, msg);
         // variable

@@ -188,7 +188,7 @@ int main(int argc, const char** argv)
       int top = lua_gettop(L);
 
       try {
-        std::vector<std::shared_ptr<Message> msgs;
+        std::vector<std::shared_ptr<dballe::Message> msgs;
         std::unique_ptr<dballe::Message> msg = dballe::Message::create(dballe::MessageType::GENERIC);
         // date
         msg.set("year", value.year);

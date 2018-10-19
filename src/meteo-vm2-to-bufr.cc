@@ -202,7 +202,7 @@ int main(int argc, const char** argv)
         // variable
         set_variable(source, value, *msg);
 
-        msgs.push_back(msg.release());
+        msgs.push_back(std::move(msg));
 
         dballe::msg::BufrExporter exporter;
         std::cout << exporter.to_binary(msgs);

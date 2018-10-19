@@ -152,12 +152,12 @@ int main(int argc, const char** argv)
                     return true;
                 }
                 vm2value.station_id = stations.at(0);
-                vm2value.year = msg.get_datetime().date().year;
-                vm2value.month = msg.get_datetime().date().month;
-                vm2value.mday = msg.get_datetime().date().day;
-                vm2value.hour = msg.get_datetime().time().hour;
-                vm2value.min = msg.get_datetime().time().minute;
-                vm2value.sec = msg.get_datetime().time().second;
+                vm2value.year = msg->get_datetime().date().year;
+                vm2value.month = msg->get_datetime().date().month;
+                vm2value.mday = msg->get_datetime().date().day;
+                vm2value.hour = msg->get_datetime().time().hour;
+                vm2value.min = msg->get_datetime().time().minute;
+                vm2value.sec = msg->get_datetime().time().second;
 
                 msg.foreach_var([](const Level& level, const Trange& trange, const wreport::Var& var) {
                     if (level.is_missing() and trange.is_missing()) {

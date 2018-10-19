@@ -68,8 +68,7 @@ static inline void set_station(meteo::vm2::Source* source, const meteo::vm2::Val
         else
             varcode = wreport::varcode_parse(bcode.c_str());
         if (lua_type(L, -1) == LUA_TNUMBER) {
-            msg.set(dballe::var(varcode, (int) lua_tointeger(L, -1)), varcode,
-                    dballe::Level(257), dballe::Trange());
+            msg.set(dballe::Level(257), dballe::Trange(), dballe::var(varcode, (int) lua_tointeger(L, -1)));
         } else {
             msg.set(dballe::Level(257), dballe::Trange(), dballe::var(varcode, lua_tostring(L, -1)));
         }

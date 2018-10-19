@@ -191,18 +191,18 @@ int main(int argc, const char** argv)
         std::vector<std::shared_ptr<dballe::Message>> msgs;
         std::unique_ptr<dballe::Message> msg = dballe::Message::create(dballe::MessageType::GENERIC);
         // date
-        msg->set("year", value.year);
-        msg->set("year", value.month);
-        msg->set("year", value.mday);
-        msg->set("year", value.hour);
-        msg->set("year", value.min);
-        msg->set("year", value.sec);
+        msg->set("year", dballe::var("B04001", value.year));
+        msg->set("month", dballe::var("B04002", value.month));
+        msg->set("day", dballe::var("B04003", value.mday));
+        msg->set("hour", dballe::var("B04004", value.hour));
+        msg->set("minute", dballe::var("B04005", value.min));
+        msg->set("second", dballe::var("B04006", value.sec));
         // station
         set_station(source, value, *msg);
         // variable
         set_variable(source, value, *msg);
 
-        msgs.push_back(msg);
+        msgs.push_back(msg.release());
 
         dballe::msg::BufrExporter exporter;
         std::cout << exporter.to_binary(msgs);

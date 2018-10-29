@@ -50,11 +50,11 @@ AC_ARG_ENABLE([bufr],
 	      [enable_bufr=yes])
 if test $enable_bufr = yes
 then
-	PKG_CHECK_EXISTS([libdballe >= 5.19], [have_dballe=yes], [have_dballe=no])
+	PKG_CHECK_EXISTS([libdballe >= 8], [have_dballe=yes], [have_dballe=no])
 	if test $have_dballe = yes
 	then
 		AC_DEFINE([HAVE_DBALLE], 1, [dballe functions are available])
-		PKG_CHECK_MODULES(DBALLE,[libdballe >= 5.19])
+		PKG_CHECK_MODULES(DBALLE,[libdballe >= 8])
 	else
 		AC_MSG_WARN([compiling without DB-All.e: BUFR support will be disabled])
 	fi

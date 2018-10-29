@@ -5,6 +5,8 @@ bin_PROGRAMS =
 
 man_MANS =
 
+check_SCRIPTS = tests.sh
+
 CLEANFILES = 
 
 if DBALLE
@@ -14,6 +16,10 @@ DEVEL_CPPFLAGS += $(DBALLE_CFLAGS)
 bin_PROGRAMS += \
 				meteo-vm2-to-bufr \
 				bufr-to-meteo-vm2
+
+TESTS = tests.sh
+
+TESTS_ENVIRONMENT = builddir=$(builddir)
 
 if HELP2MAN
 

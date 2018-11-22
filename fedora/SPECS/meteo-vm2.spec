@@ -13,6 +13,7 @@ Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{relea
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libdballe) >= 8
+BuildRequires:  dballe
 BuildRequires:  pkgconfig(lua) >= 5.1.1
 BuildRequires:  help2man
 

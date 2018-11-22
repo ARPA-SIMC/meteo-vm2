@@ -28,7 +28,7 @@ sh autogen.sh
 make %{?_smp_mflags}
 
 %check
-make check || find . -name "test-suite.log" -print0 | xargs -0 cat
+make check || { find . -name "test-suite.log" -print0 | xargs -0 cat ; false; }
 
 %install
 rm -rf $RPM_BUILD_ROOT

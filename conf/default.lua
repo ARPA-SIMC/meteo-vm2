@@ -3689,6 +3689,8 @@ return {
         [14824]={ident=nil,lon=1175333,lat=4681083,rep='fidubz',},
         [14825]={ident=nil,lon=1084917,lat=4673556,rep='fidubz',},
         [14826]={ident=nil,lon=1082222,lat=4674111,rep='fidubz',},
+        [14827]={ident=nil,lon=1011111,lat=4278548,rep='fiduto',},
+        [14828]={ident=nil,lon=1069504,lat=4389652,rep='fiduto',},
         [53010]={ident=nil,lon=1038070,lat=4488547,rep='agrmet',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',},
     },

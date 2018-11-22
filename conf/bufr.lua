@@ -3689,6 +3689,8 @@ return {
         [14824]={ident=nil,lon=1175333,lat=4681083,rep='fidubz',B01019='Vandoies di Sopra',B07030='7460',B07031='7460',},
         [14825]={ident=nil,lon=1084917,lat=4673556,rep='fidubz',B01019='Vernago',B07030='17000',B07031='17000',},
         [14826]={ident=nil,lon=1082222,lat=4674111,rep='fidubz',B01019='Vernago Finale',B07030='19500',B07031='19500',},
+        [14827]={ident=nil,lon=1011111,lat=4278548,rep='fiduto',B01019='Patresi Mortigliano',B07030='1100',B07031='1100',},
+        [14828]={ident=nil,lon=1069504,lat=4389652,rep='fiduto',B01019='Pescia',B07030='780',B07031='780',},
         [53010]={ident=nil,lon=1038070,lat=4488547,rep='agrmet',B01019='Gainago',B07030='280',B07031='280',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },

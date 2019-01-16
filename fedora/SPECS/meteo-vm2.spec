@@ -83,7 +83,7 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
-* Wed Jan 16 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.69-1
+* Wed Jan 16 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.69-1
 - Updated fidufv networks
 
 * Wed Dec  5 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.68-1

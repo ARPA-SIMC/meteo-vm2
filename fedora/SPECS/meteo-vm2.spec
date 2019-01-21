@@ -1,5 +1,5 @@
 Name:           meteo-vm2
-Version:        0.69
+Version:        0.70
 Release:        1
 Summary:        C++ library for VM2 data 
 
@@ -83,8 +83,11 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Mon Jan 21 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.70-1
+- Updated fiduli network
+
 * Wed Jan 16 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.69-1
-- Updated fidufv networks
+- Updated fidufv network
 
 * Wed Dec  5 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.68-1
 - Updated fiduto and fidufv networks

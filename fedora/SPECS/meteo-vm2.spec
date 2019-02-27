@@ -1,14 +1,20 @@
+%global releaseno 1
+# Note: define _srcarchivename in Travis build only.
+%{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
+
 Name:           meteo-vm2
-Version:        0.71
+Version:        1.0.0
 Release:        1
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
 URL:            https://github.com/arpa-simc/%{name}
-Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{name}-%{version}-%{release}.tar.gz
+Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{srcarchivename}.tar.gz
+BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libdballe) >= 7.34
+BuildRequires:  pkgconfig(libdballe) >= 8
+BuildRequires:  dballe
 BuildRequires:  pkgconfig(lua) >= 5.1.1
 BuildRequires:  help2man
 
@@ -16,7 +22,7 @@ BuildRequires:  help2man
 VM2 decoding/encoding library
 
 %prep
-%setup -q -n %{name}-%{version}-%{release}
+%setup -q -n %{srcarchivename}
 
 %build
 sh autogen.sh
@@ -24,7 +30,7 @@ sh autogen.sh
 make %{?_smp_mflags}
 
 %check
-make check
+make check || { find . -name "test-suite.log" -print0 | xargs -0 cat ; false; }
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -65,7 +71,6 @@ VM2 decoding/encoding library - documentation
 %package utils
 Summary:        meteo-vm2 utilities
 Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}
-Requires:       libdballe6 >= 7.34
 
 %description utils
 Collection of utilities for VM2 files
@@ -83,6 +88,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Wed Feb 27 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.0-1
+- Support dballe8
+
 * Mon Jan 21 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.71-1
 - Updated stations with non-null ident
 

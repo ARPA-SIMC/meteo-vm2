@@ -14,6 +14,7 @@ then
     yum install -y yum-plugin-copr
     yum install -y git
     yum copr enable -y simc/stable epel-7
+    [[ "$SIMC_TEST_COPR" = "yes" ]] && yum copr enable -q -y simc/test epel-7
 elif [[ $image =~ ^fedora: ]]
 then
     pkgcmd="dnf"
@@ -23,17 +24,18 @@ then
     dnf install -y 'dnf-command(builddep)'
     dnf install -y git
     dnf copr enable -y simc/stable
+    [[ "$SIMC_TEST_COPR" = "yes" ]] && dnf copr enable -q -y simc/test
 fi
 
 $builddep -y fedora/SPECS/meteo-vm2.spec
 
 if [[ $image =~ ^fedora: || $image =~ ^centos: ]]
 then
-    pkgname="$(rpmspec -q --qf="meteo-vm2-%{version}-%{release}\n" fedora/SPECS/meteo-vm2.spec | head -n1)"
+    pkgname=meteo-vm2-master
     mkdir -p ~/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
     cp fedora/SPECS/meteo-vm2.spec ~/rpmbuild/SPECS/meteo-vm2.spec
     git archive --prefix=$pkgname/ --format=tar HEAD | gzip -c > ~/rpmbuild/SOURCES/$pkgname.tar.gz
-    rpmbuild -ba ~/rpmbuild/SPECS/meteo-vm2.spec
+    rpmbuild -ba --define "srcarchivename $pkgname" ~/rpmbuild/SPECS/meteo-vm2.spec
 else
     autoreconf -ifv
     ./configure

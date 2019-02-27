@@ -35,10 +35,9 @@
 #include <wreport/varinfo.h>
 #include <wreport/var.h>
 #include <wreport/conv.h>
-#include <dballe/core/defs.h>
-#include <dballe/core/var.h>
-#include <dballe/msg/msg.h>
-#include <dballe/msg/wr_codec.h>
+#include <dballe/message.h>
+#include <dballe/var.h>
+#include <dballe/exporter.h>
 
 
 static inline int convert_qc(const std::string& str)
@@ -47,7 +46,7 @@ static inline int convert_qc(const std::string& str)
   return (int)rint(100.0 - ((qc-48.0) * 100.0 / 6.0));
 }
 
-static inline void set_station(meteo::vm2::Source* source, const meteo::vm2::Value& value, dballe::Msg& msg) {
+static inline void set_station(meteo::vm2::Source* source, const meteo::vm2::Value& value, dballe::Message& msg) {
     lua_State* L = source->L;
     source->lua_push_station(value.station_id);
     if (lua_isnil(L, -1)) {
@@ -70,18 +69,16 @@ static inline void set_station(meteo::vm2::Source* source, const meteo::vm2::Val
         else
             varcode = wreport::varcode_parse(bcode.c_str());
         if (lua_type(L, -1) == LUA_TNUMBER) {
-            msg.set(dballe::var(varcode, (int) lua_tointeger(L, -1)), varcode,
-                    dballe::Level(257), dballe::Trange());
+            msg.set(dballe::Level(257), dballe::Trange(), dballe::var(varcode, (int) lua_tointeger(L, -1)));
         } else {
-            msg.set(dballe::var(varcode, lua_tostring(L, -1)), varcode,
-                    dballe::Level(257), dballe::Trange());
+            msg.set(dballe::Level(257), dballe::Trange(), dballe::var(varcode, lua_tostring(L, -1)));
         }
         lua_pop(L,1);
     }
     lua_pop(L, 1);
 }
 
-static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Value& value, dballe::Msg& msg) {
+static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Value& value, dballe::Message& msg) {
     lua_State* L = source->L;
     source->lua_push_variable(value.variable_id);
     if (lua_isnil(L, -1)) {
@@ -144,7 +141,7 @@ static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Va
         if (value.flags.substr(5,2) != "00")
             var.seta(dballe::var(WR_VAR(0, 33, 194), convert_qc(value.flags.substr(5,2))));
     }
-    msg.set(var, varcode, level, trange);
+    msg.set(level, trange, var);
 }
 
 void print_usage()
@@ -192,20 +189,24 @@ int main(int argc, const char** argv)
       int top = lua_gettop(L);
 
       try {
-        dballe::Messages msgs;
-        dballe::Msg msg;
+        std::vector<std::shared_ptr<dballe::Message>> msgs;
+        std::unique_ptr<dballe::Message> msg = dballe::Message::create(dballe::MessageType::GENERIC);
         // date
-        msg.set_datetime(dballe::Datetime(value.year, value.month, value.mday,
-                                          value.hour, value.min, value.sec));
+        msg->set("year", dballe::var("B04001", value.year));
+        msg->set("month", dballe::var("B04002", value.month));
+        msg->set("day", dballe::var("B04003", value.mday));
+        msg->set("hour", dballe::var("B04004", value.hour));
+        msg->set("minute", dballe::var("B04005", value.min));
+        msg->set("second", dballe::var("B04006", value.sec));
         // station
-        set_station(source, value, msg);
+        set_station(source, value, *msg);
         // variable
-        set_variable(source, value, msg);
+        set_variable(source, value, *msg);
 
-        msgs.append(msg);
+        msgs.push_back(std::move(msg));
 
-        dballe::msg::BufrExporter exporter;
-        std::cout << exporter.to_binary(msgs);
+        std::unique_ptr<dballe::Exporter> exporter = dballe::Exporter::create(dballe::Encoding::BUFR);
+        std::cout << exporter->to_binary(msgs);
 
       } catch (std::exception& e) {
         std::cerr << parser.lineno << ":[" << line << "] - " << e.what() << std::endl;

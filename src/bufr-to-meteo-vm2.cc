@@ -30,21 +30,19 @@
 #include <cstring>
 #include <sstream>
 #include <iomanip>
+#include <iterator>
 
 #include <meteo-vm2/source.h>
 #include <meteo-vm2/parser.h>
 
 #include <wreport/varinfo.h>
 #include <wreport/conv.h>
-#include <dballe/core/defs.h>
-#include <dballe/core/var.h>
-#include <dballe/core/file.h>
-#include <dballe/msg/msg.h>
-#include <dballe/msg/context.h>
-#include <dballe/msg/wr_codec.h>
+#include <dballe/file.h>
+#include <dballe/var.h>
+#include <dballe/message.h>
 #include <dballe/types.h>
+#include <dballe/importer.h>
 
-#include <meteo-vm2/source.h>
 
 template<typename T>
 static std::string join(std::vector<T> l)
@@ -63,14 +61,6 @@ static inline std::string convert_qc_back(int qc)
     std::stringstream ss;
     ss << std::setfill('0') << std::setw(2) << qcint;
     return ss.str();
-}
-
-// Wrapper for dballe::format_code
-static inline std::string format_code(wreport::Varcode code)
-{
-    char c[7];
-    dballe::format_code(code, c);
-    return c;
 }
 
 void print_usage()
@@ -108,47 +98,41 @@ int main(int argc, const char** argv)
         else
             source = new meteo::vm2::Source(sourcefile);
 
-        std::unique_ptr<dballe::File> infile(dballe::File::create(stdin, false, "stdin").release());
+        std::unique_ptr<dballe::File> infile = dballe::File::create(stdin, false, "stdin");
 
         infile->foreach([&source](const dballe::BinaryMessage& bmsg) {
-            dballe::msg::BufrImporter importer;
-            return importer.foreach_decoded(bmsg, [&source](std::unique_ptr<dballe::Message>&& msgptr) {
-                const dballe::Msg& msg = dballe::Msg::downcast(*msgptr);
+            std::unique_ptr<dballe::Importer> importer = dballe::Importer::create(dballe::Encoding::BUFR);
+            return importer->foreach_decoded(bmsg, [&source](std::unique_ptr<dballe::Message>&& msg) {
                 lua_State* L = source->L;
 
                 int idx;
                 meteo::vm2::Value vm2value;
-                const dballe::msg::Context* sta_ctx = msg.find_station_context();
-                if (!sta_ctx) {
-                    std::cerr << "Cannot find station context" << std::endl;
-                    return true;
-                }
                 // station
                 lua_newtable(L);
                 idx = lua_gettop(L);
                 // Station lookup by lon, lat, rep_memo
-                if (const wreport::Var *v = sta_ctx->find(WR_VAR(0, 6, 1))) {
+                if (const wreport::Var* v = msg->get("longitude")) {
                     lua_pushnumber(L, v->enqi());
                     lua_setfield(L, idx, "lon");
                 } else {
                     std::cerr << "Missing longitude" << std::endl;
                     return true;
                 }
-                if (const wreport::Var *v = sta_ctx->find(WR_VAR(0, 5, 1))) {
+                if (const wreport::Var* v = msg->get("latitude")) {
                     lua_pushnumber(L, v->enqi());
                     lua_setfield(L, idx, "lat");
                 } else {
                     std::cerr << "Missing latitude" << std::endl;
                     return true;
                 }
-                if (const wreport::Var *v = sta_ctx->find(WR_VAR(0, 1,194))) {
+                if (const wreport::Var* v = msg->get("rep_memo")) {
                     lua_pushstring(L, v->enqc());
                     lua_setfield(L, idx, "rep");
                 } else {
                     std::cerr << "Missing rep_memo" << std::endl;
                     return true;
                 }
-                if (const wreport::Var *v = sta_ctx->find(WR_VAR(0, 1, 11))) {
+                if (const wreport::Var* v = msg->get("ident")) {
                     lua_pushstring(L, v->enqc());
                     lua_setfield(L, idx, "ident");
                 }
@@ -168,108 +152,111 @@ int main(int argc, const char** argv)
                     return true;
                 }
                 vm2value.station_id = stations.at(0);
-                vm2value.year = msg.get_datetime().date().year;
-                vm2value.month = msg.get_datetime().date().month;
-                vm2value.mday = msg.get_datetime().date().day;
-                vm2value.hour = msg.get_datetime().time().hour;
-                vm2value.min = msg.get_datetime().time().minute;
-                vm2value.sec = msg.get_datetime().time().second;
+                vm2value.year = msg->get_datetime().date().year;
+                vm2value.month = msg->get_datetime().date().month;
+                vm2value.mday = msg->get_datetime().date().day;
+                vm2value.hour = msg->get_datetime().time().hour;
+                vm2value.min = msg->get_datetime().time().minute;
+                vm2value.sec = msg->get_datetime().time().second;
 
-                for (std::vector<dballe::msg::Context*>::const_iterator ci = msg.data.begin(); ci != msg.data.end(); ++ci) {
-                    if (msg.find_station_context() == *ci) continue;
-                    dballe::msg::Context& c = **ci;
-                    for (std::vector<wreport::Var*>::const_iterator vi = c.data.begin(); vi != c.data.end(); ++vi) {
-                        wreport::Var& v = **vi;
-                        // variable
-                        lua_newtable(L);
-                        idx = lua_gettop(L);
-                        lua_pushstring(L, format_code(v.code()).c_str());
-                        lua_setfield(L, idx, "bcode");
-                        lua_pushinteger(L, c.trange.pind);
-                        lua_setfield(L, idx, "tr");
-                        lua_pushinteger(L, c.trange.p1);
-                        lua_setfield(L, idx, "p1");
-                        lua_pushinteger(L, c.trange.p2);
-                        lua_setfield(L, idx, "p2");
-                        lua_pushinteger(L, c.level.ltype1);
-                        lua_setfield(L, idx, "lt1");
-                        if (c.level.l1 != dballe::MISSING_INT) {
-                            lua_pushinteger(L, c.level.l1);
-                            lua_setfield(L, idx, "l1");
-                        }
-                        if (c.level.ltype2 != dballe::MISSING_INT) {
-                            lua_pushinteger(L, c.level.ltype2);
-                            lua_setfield(L, idx, "lt2");
-                        }
-                        if (c.level.l2 != dballe::MISSING_INT) {
-                            lua_pushinteger(L, c.level.l2);
-                            lua_setfield(L, idx, "l2");
-                        }
-                        std::vector<int> variables = source->lua_find_variables(idx);
-                        lua_settop(L, idx);
-                        if (variables.size() == 0) {
-                            std::cerr << "cannot find variable with "
-                                << "bcode=" << format_code(v.code()) << ", "
-                                << "level=" << c.level << ", "
-                                << "trange=" << c.trange << std::endl;
-                            continue;
-                        }
-                        if (variables.size() > 1) {
-                            std::cerr << variables.size()
-                                << " variables with same attributes"
-                                << " ("
-                                << join(variables)
-                                << ")"
-                                << std::endl;
-                            continue;
-                        }
-                        vm2value.variable_id = variables.at(0);
+                msg->foreach_var([&source, &vm2value](const dballe::Level& level, const dballe::Trange& trange, const wreport::Var& var) {
+                    int idx;
+                    lua_State* L = source->L;
 
-                        source->lua_push_variable(vm2value.variable_id);
-                        lua_getfield(L, -1, "unit");
-                        if (!lua_isnil(L, -1)) {
-                            vm2value.value1 = wreport::convert_units(v.info()->unit, lua_tostring(L, -1), v.enqd());
-                        } else {
-                            vm2value.value1 = v.enqd();
-                        }
-                        lua_pop(L, 1);
+                    if (level.is_missing() and trange.is_missing()) {
+                        return true;
+                    }
+                    // variable
+                    lua_newtable(L);
+                    idx = lua_gettop(L);
+                    lua_pushstring(L, wreport::varcode_format(var.code()).c_str());
+                    lua_setfield(L, idx, "bcode");
+                    lua_pushinteger(L, trange.pind);
+                    lua_setfield(L, idx, "tr");
+                    lua_pushinteger(L, trange.p1);
+                    lua_setfield(L, idx, "p1");
+                    lua_pushinteger(L, trange.p2);
+                    lua_setfield(L, idx, "p2");
+                    lua_pushinteger(L, level.ltype1);
+                    lua_setfield(L, idx, "lt1");
+                    if (level.l1 != dballe::MISSING_INT) {
+                        lua_pushinteger(L, level.l1);
+                        lua_setfield(L, idx, "l1");
+                    }
+                    if (level.ltype2 != dballe::MISSING_INT) {
+                        lua_pushinteger(L, level.ltype2);
+                        lua_setfield(L, idx, "lt2");
+                    }
+                    if (level.l2 != dballe::MISSING_INT) {
+                        lua_pushinteger(L, level.l2);
+                        lua_setfield(L, idx, "l2");
+                    }
+                    std::vector<int> variables = source->lua_find_variables(idx);
+                    lua_settop(L, idx);
+                    if (variables.size() == 0) {
+                        std::cerr << "cannot find variable with "
+                            << "bcode=" << wreport::varcode_format(var.code()) << ", "
+                            << "level=" << level << ", "
+                            << "trange=" << trange << std::endl;
+                        return true;
+                    }
+                    if (variables.size() > 1) {
+                        std::cerr << variables.size()
+                            << " variables with same attributes"
+                            << " ("
+                            << join(variables)
+                            << ")"
+                            << std::endl;
+                        return true;
+                    }
+                    vm2value.variable_id = variables.at(0);
 
-                        vm2value.value2 = meteo::vm2::MISSING_DOUBLE;
-                        vm2value.value3 = "";
-                        // TODO: flags
-                        const wreport::Var* vattr = v.next_attr();
-                        if (vattr == NULL) {
-                            vm2value.flags = "";
-                        } else {
-                            vm2value.flags = "000000000";
-                            for (vattr = v.next_attr(); vattr != NULL; 
-                                 vattr = vattr->next_attr()) {
-                                if (vattr->code() == WR_VAR(0,33,196) && vattr->enqi() == 1)
-                                    vm2value.flags[0] = '1';
-                                if (vattr->code() == WR_VAR(0,33,197) && vattr->enqi() == 1)
-                                    vm2value.flags[0] = '2';
-                                if (vattr->code() == WR_VAR(0,33,192)) {
-                                    std::string qc = convert_qc_back(vattr->enqi());
-                                    vm2value.flags[1] = qc.at(0);
-                                    vm2value.flags[2] = qc.at(1);
-                                }
-                                if (vattr->code() == WR_VAR(0,33,193)) {
-                                    std::string qc = convert_qc_back(vattr->enqi());
-                                    vm2value.flags[3] = qc.at(0);
-                                    vm2value.flags[4] = qc.at(1);
-                                }
-                                if (vattr->code() == WR_VAR(0,33,194)) {
-                                    std::string qc = convert_qc_back(vattr->enqi());
-                                    vm2value.flags[5] = qc.at(0);
-                                    vm2value.flags[6] = qc.at(1);
-                                }
+                    source->lua_push_variable(vm2value.variable_id);
+                    lua_getfield(L, -1, "unit");
+                    if (!lua_isnil(L, -1)) {
+                        vm2value.value1 = wreport::convert_units(var.info()->unit, lua_tostring(L, -1), var.enqd());
+                    } else {
+                        vm2value.value1 = var.enqd();
+                    }
+                    lua_pop(L, 1);
+
+                    vm2value.value2 = meteo::vm2::MISSING_DOUBLE;
+                    vm2value.value3 = "";
+                    // TODO: flags
+                    const wreport::Var* vattr = var.next_attr();
+                    if (vattr == NULL) {
+                        vm2value.flags = "";
+                    } else {
+                        vm2value.flags = "000000000";
+                        for (vattr = var.next_attr(); vattr != NULL;
+                             vattr = vattr->next_attr()) {
+                            if (vattr->code() == WR_VAR(0,33,196) && vattr->enqi() == 1)
+                                vm2value.flags[0] = '1';
+                            if (vattr->code() == WR_VAR(0,33,197) && vattr->enqi() == 1)
+                                vm2value.flags[0] = '2';
+                            if (vattr->code() == WR_VAR(0,33,192)) {
+                                std::string qc = convert_qc_back(vattr->enqi());
+                                vm2value.flags[1] = qc.at(0);
+                                vm2value.flags[2] = qc.at(1);
+                            }
+                            if (vattr->code() == WR_VAR(0,33,193)) {
+                                std::string qc = convert_qc_back(vattr->enqi());
+                                vm2value.flags[3] = qc.at(0);
+                                vm2value.flags[4] = qc.at(1);
+                            }
+                            if (vattr->code() == WR_VAR(0,33,194)) {
+                                std::string qc = convert_qc_back(vattr->enqi());
+                                vm2value.flags[5] = qc.at(0);
+                                vm2value.flags[6] = qc.at(1);
                             }
                         }
-                        meteo::vm2::Parser::serialize(std::cout, vm2value);
                     }
-                }
+                    meteo::vm2::Parser::serialize(std::cout, vm2value);
+                    return true;
+                });
                 return true;
             });
+            return true;
         });
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;

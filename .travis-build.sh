@@ -14,7 +14,6 @@ then
     yum install -y yum-plugin-copr
     yum install -y git
     yum copr enable -y simc/stable epel-7
-    [[ "$SIMC_TEST_COPR" = "yes" ]] && yum copr enable -q -y simc/test epel-7
 elif [[ $image =~ ^fedora: ]]
 then
     pkgcmd="dnf"
@@ -24,7 +23,6 @@ then
     dnf install -y 'dnf-command(builddep)'
     dnf install -y git
     dnf copr enable -y simc/stable
-    [[ "$SIMC_TEST_COPR" = "yes" ]] && dnf copr enable -q -y simc/test
 fi
 
 $builddep -y fedora/SPECS/meteo-vm2.spec

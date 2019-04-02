@@ -124,11 +124,22 @@ static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Va
     if (value.value1 == meteo::vm2::MISSING_DOUBLE)
         throw std::runtime_error("Cannot convert missing value to BUFR");
 
-    double val = wreport::convert_units(unit.c_str(), 
-            dballe::varinfo(varcode)->unit, 
-            value.value1);
+    wreport::Var var = dballe::var(varcode);
 
-    wreport::Var var = dballe::var(varcode, val);
+    double val = wreport::convert_units(unit.c_str(),
+                                        dballe::varinfo(varcode)->unit,
+                                        value.value1);
+    std::cerr << val << ", " << var.info()->dmin << ", " << var.info()->dmax << std::endl;
+    if (val > var.info()->dmax) {
+        var.set(var.info()->dmax);
+        var.seta(dballe::var(WR_VAR(0, 33, 196), 1));
+    } else if (val < var.info()->dmin) {
+        var.set(var.info()->dmin);
+        var.seta(dballe::var(WR_VAR(0, 33, 196), 1));
+    } else {
+        var.set(val);
+    }
+
     if (value.flags.size() == 9) {
         if (value.flags[0] == '1')
             var.seta(dballe::var(WR_VAR(0, 33, 196), 1));

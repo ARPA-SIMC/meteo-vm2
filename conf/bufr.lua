@@ -3844,6 +3844,11 @@ return {
         [14991]={ident=nil,lon=1033888,lat=4617250,rep='fidupo',B01019='Edolo (IP radio)',B07030='6590',B07031='6590',},
         [14992]={ident=nil,lon=1069833,lat=4544028,rep='fidupo',B01019='Peschiera Del Garda',B07030='660',B07031='660',},
         [53010]={ident=nil,lon=1038070,lat=4488547,rep='agrmet',B01019='Gainago',B07030='280',B07031='280',},
+        [53011]={ident=nil,lon=1181862,lat=4434086,rep='cro',B01019='SS3',B07030='280',B07031='280',},
+        [53012]={ident=nil,lon=1178403,lat=4438750,rep='cro',B01019='Passo Cavallo',B07030='200',B07031='200',},
+        [53013]={ident=nil,lon=1193530,lat=4437292,rep='cro',B01019='Centrale S. Severo',B07030='160',B07031='160',},
+        [53014]={ident=nil,lon=1191240,lat=4434393,rep='cro',B01019='Centrale Cassanigo',B07030='170',B07031='170',},
+        [53015]={ident=nil,lon=1189948,lat=4432744,rep='cro',B01019='Centrale S. Silvestro',B07030='210',B07031='210',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

@@ -629,7 +629,6 @@ return {
         [5392]={ident=nil,lon=1067311,lat=4419013,rep='simnpr',B01019='Doccia di Fiumalbo',B07030='13710',B07031='13710',},
         [5393]={ident=nil,lon=1160807,lat=4488830,rep='simnpr',B01019='Pontelagoscuro',B07030='80',B07031='70',},
         [5394]={ident=nil,lon=864959,lat=4569224,rep='simnpr',B01019='Miorina',B07030='2180',B07031='2180',},
-        [5395]={ident=nil,lon=943513,lat=4578408,rep='simnpr',B01019='Santa Maria Lavello',B07030='1980',B07031='1980',},
         [5396]={ident=nil,lon=991848,lat=4563741,rep='simnpr',B01019='Capriolo',B07030='2240',B07031='2240',},
         [5398]={ident=nil,lon=1010208,lat=4436949,rep='simnpr',B01019='Lago Ballano',B07030='13390',B07031='13390',},
         [5399]={ident=nil,lon=1207329,lat=4490842,rep='idrost',B01019='Seminiato',B07030='-100',B07031='0',},

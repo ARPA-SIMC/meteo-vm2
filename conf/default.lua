@@ -629,7 +629,6 @@ return {
         [5392]={ident=nil,lon=1067311,lat=4419013,rep='simnpr',},
         [5393]={ident=nil,lon=1160807,lat=4488830,rep='simnpr',},
         [5394]={ident=nil,lon=864959,lat=4569224,rep='simnpr',},
-        [5395]={ident=nil,lon=943513,lat=4578408,rep='simnpr',},
         [5396]={ident=nil,lon=991848,lat=4563741,rep='simnpr',},
         [5398]={ident=nil,lon=1010208,lat=4436949,rep='simnpr',},
         [5399]={ident=nil,lon=1207329,lat=4490842,rep='idrost',},

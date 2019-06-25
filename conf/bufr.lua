@@ -3581,7 +3581,7 @@ return {
         [14694]={ident=nil,lon=982144,lat=4306258,rep='fiduto',B01019='Capraia Isola',B07030='2740',B07031='2740',},
         [14695]={ident=nil,lon=1130421,lat=4361182,rep='fiduto',B01019='Greve in Chianti',B07030='2540',B07031='2540',},
         [14696]={ident=nil,lon=1117989,lat=4320851,rep='fiduto',B01019='Pentolina',B07030='4500',B07031='4500',},
-        [14697]={ident=nil,lon=1125810,lat=4321465,rep='fiduto',B01019='Ponte Orgia',B07030='-99990',B07031='-99990',},
+        [14697]={ident=nil,lon=1125810,lat=4321465,rep='fiduto',B01019='Ponte Orgia',},
         [14698]={ident=nil,lon=1131258,lat=4332045,rep='fiduto',B01019='Siena Poggio al Vento',B07030='3480',B07031='3480',},
         [14699]={ident=nil,lon=1026917,lat=4278222,rep='fiduto',B01019='S. Martino',B07030='3200',B07031='3200',},
         [14700]={ident=nil,lon=1010335,lat=4409102,rep='fiduto',B01019='Torano',B07030='1420',B07031='1420',},

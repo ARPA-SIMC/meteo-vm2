@@ -44,6 +44,15 @@ else
 fi
 AM_CONDITIONAL([HAVE_DOXYGEN], [test x$have_doxygen = xyes])
 
+AC_PATH_PROG([CURL], [curl])
+if test x$CURL = x
+then
+	have_curl=no
+else
+	have_curl=yes
+fi
+AM_CONDITIONAL([HAVE_CURL], [test x$have_curl = xyes])
+
 AC_ARG_ENABLE([bufr],
 	      [AS_HELP_STRING([--enable-bufr], [build BUFR support])],
 	      [],

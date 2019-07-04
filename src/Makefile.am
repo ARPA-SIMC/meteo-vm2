@@ -2,12 +2,15 @@ DEVEL_CPPFLAGS = -I$(top_builddir) -I$(top_srcdir) -I$(srcdir) $(LUA_CFLAGS) \
 				 -DMETEO_VM2_BUFR_SOURCE='"$(sharedstatedir)/$(PACKAGE)/source/bufr.luac"'
 
 bin_PROGRAMS =
+bin_SCRIPTS =
 
 man_MANS =
 
 check_SCRIPTS = tests.sh
 
-CLEANFILES = 
+CLEANFILES =
+
+EXTRA_DIST = meteo-vm2-update-source
 
 if DBALLE
 
@@ -47,5 +50,11 @@ bufr_to_meteo_vm2_CPPFLAGS = $(DEVEL_CPPFLAGS) $(AM_CPPFLAGS)
 bufr_to_meteo_vm2_LDADD = $(top_builddir)/meteo-vm2/libmeteo-vm2.la $(DBALLE_LIBS)
 
 bufr_to_meteo_vm2_SOURCES = bufr-to-meteo-vm2.cc
+
+endif
+
+if HAVE_CURL
+
+bin_SCRIPTS += meteo-vm2-update-source
 
 endif

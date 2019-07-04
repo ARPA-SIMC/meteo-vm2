@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.0.2
+Version:        1.0.3
 Release:        1
 Summary:        C++ library for VM2 data 
 
@@ -88,6 +88,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Tue Jul  4 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.3-1
+- meteo-vm2-update-source
+
 * Tue Jun 25 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.2-1
 - Removed station Santa Maria Lavello
 - Removed Ponte Orgia height

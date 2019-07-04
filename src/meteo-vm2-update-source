@@ -1,17 +1,23 @@
 #!/bin/bash
-set -e
+set -ue
 
 sourcedir="$1"
 url="$2"
 workdir=$(mktemp -d)
 pushd $workdir
 
-trap "popd; rm -f $workdir" EXIT
+cleanup()
+{
+    popd &> /dev/null
+    rm -rf $workdir
+}
+
+trap "cleanup" EXIT
 
 for f in bufr default
 do
     curl -sS $url/$f.lua > $f.lua
-    luac -o $f.lua $f
+    luac -o $f.luac $f.lua
 done
 
 mv {bufr,default}.lua{,c} $sourcedir/

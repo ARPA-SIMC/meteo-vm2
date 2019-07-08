@@ -4,7 +4,7 @@
 
 Name:           meteo-vm2
 Version:        1.0.3
-Release:        1
+Release:        2
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+
@@ -79,6 +79,7 @@ Collection of utilities for VM2 files
 %defattr(-,root,root,-)
 %{_bindir}/meteo-vm2-to-bufr
 %{_bindir}/bufr-to-meteo-vm2
+%{_bindir}/meteo-vm2-update-source
 %{_mandir}/*
 
 %post
@@ -88,6 +89,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Mon Jul  8 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.3-2
+- Fixed files section
+
 * Tue Jul  4 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.3-1
 - meteo-vm2-update-source
 

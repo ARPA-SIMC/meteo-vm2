@@ -4,8 +4,8 @@
 .deps
 .libs
 /compile
-/conf/default.luac
 /conf/bufr.luac
+/conf/default.luac
 /conf/tut-main
 /debian
 /doc/Doxygen
@@ -26,6 +26,7 @@
 /src/meteo-vm2-to-bufr.1
 Makefile
 Makefile.in
+__pycache__
 aclocal.m4
 autom4te.cache
 autoscan.log

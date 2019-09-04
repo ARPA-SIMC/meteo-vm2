@@ -1,20 +1,18 @@
 import unittest
 
-from meteovm2.table import create_station_table
+from meteovm2.table import create_table
 
 
-class TestStationTable(unittest.TestCase):
-    def test_create(self):
-        st = create_station_table("tests/stations.json")
+class TestTable(unittest.TestCase):
+    def setUp(self):
+        self.table = create_table("tests/table.json")
 
     def test_get_vm2id(self):
-        st = create_station_table("tests/stations.json")
-        s = st.get_by_vm2id(5591)
+        s = self.table.station.get_by_vm2id(5591)
         self.assertEqual(s.__class__, dict)
 
     def test_find_by_attrs(self):
-        st = create_station_table("tests/stations.json")
-        s = st.find_by_attrs({
+        s = self.table.station.find_by_attrs({
             "ident": None,
             "lon": 1083529,
             "lat": 4400469,
@@ -23,8 +21,7 @@ class TestStationTable(unittest.TestCase):
         self.assertEqual(len(s), 1)
 
     def test_get_by_attrs(self):
-        st = create_station_table("tests/stations.json")
-        s = st.get_by_attrs({
+        s = self.table.station.get_by_attrs({
             "ident": None,
             "lon": 1083529,
             "lat": 4400469,
@@ -34,6 +31,6 @@ class TestStationTable(unittest.TestCase):
         self.assertEqual(s[0], 5591)
 
         with self.assertRaises(Exception):
-            s = st.get_by_attrs({
+            s = self.table.station.get_by_attrs({
                 "ident": "ciccioriccio"
             })

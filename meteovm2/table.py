@@ -1,12 +1,12 @@
 import json
 
 
-def create_station_table(path):
+def create_table(path):
     with open(path) as fp:
-        return StationTable(json.load(fp))
+        return Table(json.load(fp))
 
 
-class StationTable:
+class ItemTable:
     def __init__(self, json_cfg):
         self.cfg = json_cfg
 
@@ -26,3 +26,10 @@ class StationTable:
         return [(int(k), s)
                 for (k, s) in self.cfg.items()
                 if all((s[qk] == qv) for qk, qv in query.items())]
+
+
+class Table:
+    def __init__(self, json_cfg):
+        self.cfg = json_cfg
+        self.station = ItemTable(json_cfg["stations"])
+        self.variable = ItemTable(json_cfg["variables"])

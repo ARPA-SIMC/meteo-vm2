@@ -27,6 +27,6 @@ class TestUtils(TestCase):
 
         self.assertEqual(len(data), 1)
         self.assertEqual(data[0].get("ident"), None)
-        self.assertEqual(data[0]["B12101"], 3.5)
+        self.assertEqual(data[0]["B12101"], 3.5 + 273.15)
         self.assertEqual(data[0]["level"], dballe.Level(103, 2000))
         self.assertEqual(data[0]["trange"], dballe.Trange(254, 0, 0))

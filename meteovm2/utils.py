@@ -72,8 +72,9 @@ def meteovm2_to_bufr(fp_input, fp_output, tablepath):
             variable["p2"],
         )
         # TODO convert unit
-        var = dballe.var(variable["bcode"], record.value1)
+        var = dballe.var(variable["bcode"], float(record.value1))
         msg.set(level, trange, var)
+        # TODO parse attributes
 
         for k, v in station.items():
             if bcode_re.match(k):

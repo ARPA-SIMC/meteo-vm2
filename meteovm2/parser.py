@@ -20,7 +20,8 @@ def parse_list(items):
 
 
 class Record:
-    def __init__(self, reftime, station_id, variable_id, value1, value2, value3, flags):
+    def __init__(self, reftime, station_id, variable_id,
+                 value1, value2, value3, flags):
         self.reftime = reftime
         self.station_id = station_id
         self.variable_id = variable_id
@@ -30,6 +31,12 @@ class Record:
         self.flags = flags
 
     def to_line(self):
-        datefmt = "{:%Y%m%d%H%M}" if self.reftime.second == 0 else "{:%Y%m%d%H%M%S}"
+        if self.reftime.second == 0:
+            datefmt = "{:%Y%m%d%H%M}"
+        else:
+            datefmt = "{:%Y%m%d%H%M%S}"
+
         d = datefmt.format(self.reftime)
-        return ",".join(map(str, (d, self.station_id, self.variable_id, self.value1, self.value2, self.value3, self.flags)))
+        return ",".join(map(str, (d, self.station_id, self.variable_id,
+                                  self.value1, self.value2, self.value3,
+                                  self.flags)))

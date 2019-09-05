@@ -1,5 +1,6 @@
 from . import parser
 from .table import create_table
+from .parser import Record
 import re
 
 import requests
@@ -86,32 +87,36 @@ def meteovm2_to_bufr(fp_input, fp_output, tablepath):
 def bufr_to_meteovm2(fp_input, fp_output, tablepath):
     table = create_table(tablepath)
     importer = dballe.Importer("BUFR")
-    with importer.from_file(infile) as msgfile:
+    with importer.from_file(fp_input) as msgfile:
         for msgs in msgfile:
             for msg in msgs:
                 for data in msg.query_data():
                     d = data.data_dict
                     station_id, _ = table.station.get_by_attrs({
-                        "ident": d["ident"],
-                        "lon": d["lon"],
-                        "lat": d["lat"],
-                        "rep_memo": d["rep"],
+                        "ident": d.get("ident"),
+                        "lon": data.enqi("lon"),
+                        "lat": data.enqi("lat"),
+                        "rep": d["report"],
                     })
-                    variable_id, _ = table.station.get_by_attrs({
+                    variable_id, _ = table.variable.get_by_attrs({
                         "bcode": data["variable"].code,
-                        "lt1": d["level"][0],
-                        "lv1": d["level"][1],
-                        "lt2": d["level"][2],
-                        "lv2": d["level"][3],
+                        "lt1": d["level"].ltype1,
+                        "lv1": d["level"].l1,
+                        "lt2": d["level"].ltype2,
+                        "lv2": d["level"].l2,
+                        "tr": d["trange"].pind,
+                        "p1": d["trange"].p1,
+                        "p2": d["trange"].p2,
                     })
                     record = Record(
                         d["datetime"],
                         station_id,
                         variable_id,
                         # TODO convert unit
-                        d["variable"].enqd(),
+                        data["variable"].enqd(),
                         "",
                         "",
                         # TODO parse attributes
                         "",
                     )
+                    fp_output.write(record.to_line() + "\n")

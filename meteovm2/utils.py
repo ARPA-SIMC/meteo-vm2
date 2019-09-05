@@ -81,3 +81,37 @@ def meteovm2_to_bufr(fp_input, fp_output, tablepath):
                 msg.set(None, None, dballe.var(k, v))
 
         fp_output.write(exporter.to_binary(msg))
+
+
+def bufr_to_meteovm2(fp_input, fp_output, tablepath):
+    table = create_table(tablepath)
+    importer = dballe.Importer("BUFR")
+    with importer.from_file(infile) as msgfile:
+        for msgs in msgfile:
+            for msg in msgs:
+                for data in msg.query_data():
+                    d = data.data_dict
+                    station_id, _ = table.station.get_by_attrs({
+                        "ident": d["ident"],
+                        "lon": d["lon"],
+                        "lat": d["lat"],
+                        "rep_memo": d["rep"],
+                    })
+                    variable_id, _ = table.station.get_by_attrs({
+                        "bcode": data["variable"].code,
+                        "lt1": d["level"][0],
+                        "lv1": d["level"][1],
+                        "lt2": d["level"][2],
+                        "lv2": d["level"][3],
+                    })
+                    record = Record(
+                        d["datetime"],
+                        station_id,
+                        variable_id,
+                        # TODO convert unit
+                        d["variable"].enqd(),
+                        "",
+                        "",
+                        # TODO parse attributes
+                        "",
+                    )

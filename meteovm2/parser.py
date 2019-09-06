@@ -1,8 +1,38 @@
 from datetime import datetime
+import re
+
+
+LINE_RE = re.compile((
+    r'^(?P<date>\d{12}(\d{2})?),'
+    r'(?P<station>\d+),'
+    r'(?P<variable>\d+),'
+    r'(?P<value1>[+-]?[\d.]*),'
+    r'(?P<value2>[+-]?[\d.]*),'
+    r'(?P<value3>[^,\n\r]*),'
+    r'(?P<flags>\d{9}?)$'
+))
+
+
+def parse_file(fileobj, raise_on_invalid=True):
+    for line in fileobj:
+        if not line.strip():
+            continue
+        else:
+            try:
+                yield parse_line(line)
+            except InvalidRecordException:
+                if raise_on_invalid:
+                    raise
 
 
 def parse_line(line):
-    items = line.strip().split(",")
+    m = LINE_RE.match(line)
+    if not m:
+        raise InvalidRecordException("Invalid record: {}".format(line))
+
+    g = m.groupdict()
+    items = [g["date"], g["station"], g["variable"],
+             g["value1"], g["value2"], g["value3"], g["flags"]]
     return parse_list(items)
 
 
@@ -17,6 +47,10 @@ def parse_list(items):
         items[5],
         items[6],
     )
+
+
+class InvalidRecordException(Exception):
+    pass
 
 
 class Record:

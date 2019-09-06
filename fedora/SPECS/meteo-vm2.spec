@@ -13,21 +13,22 @@ Summary:        Python library for VM2 data
 License:        GPLv2+
 URL:            https://github.com/arpa-simc/%{name}
 Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{srcarchivename}.tar.gz
-BuildArch:      noarch
 
+BuildArch:      noarch
+BuildRequires:  %{python3_vers}-devel
+BuildRequires:  %{python3_vers}-setuptools
+BuildRequires:  %{python3_vers}-dballe >= 8
 
 %description
 Python library for VM2 data
 
 %package -n %{python3_vers}-meteovm2
 Summary:        %{summary}
-BuildRequires:  %{python3_vers}-devel
-BuildRequires:  %{python3_vers}-setuptools
-BuildRequires:  %{python3_vers}-dballe >= 8
 Obsoletes:      meteo-vm2
 Obsoletes:      meteo-vm2-devel
 Obsoletes:      meteo-vm2-doc
-Obsoletes:      meteo-vm2-utils
+Obsoletes:      meteo-vm2-utils < 2.0.0
+Provides:       meteo-vm2-utils = %{version}-%{release}
 %{?python_provide:%python_provide %{python3_vers}-%{srcname}}
 
 %description -n %{python3_vers}-meteovm2
@@ -35,7 +36,6 @@ Python3 library for VM2 data
 
 %prep
 %setup -q -n %{srcarchivename}
-
 
 %build
 %py3_build

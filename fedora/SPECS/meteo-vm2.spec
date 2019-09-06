@@ -29,7 +29,7 @@ Obsoletes:      meteo-vm2-devel
 Obsoletes:      meteo-vm2-doc
 Obsoletes:      meteo-vm2-utils < 2.0.0
 Provides:       meteo-vm2-utils = %{version}-%{release}
-%{?python_provide:%python_provide %{python3_vers}-%{srcname}}
+%{?python_provide:%python_provide %{python3_vers}-meteovm2}
 
 %description -n %{python3_vers}-meteovm2
 Python3 library for VM2 data

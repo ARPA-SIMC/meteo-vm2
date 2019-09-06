@@ -45,4 +45,10 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
+    entry_points={
+        'console_scripts': [
+            'meteo-vm2-to-bufr = meteovm2.cli:meteovm2_to_bufr',
+            'bufr-to-meteo-vm2 = meteovm2.cli:bufr_to_meteovm2',
+        ],
+    },
 )

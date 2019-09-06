@@ -22,7 +22,7 @@ def read_md(path):
 version = get_version('meteovm2')
 
 setup(
-    name="meteo-vm",
+    name="meteovm2",
     version=version,
     packages=find_packages(include=["meteovm2"]),
     include_package_data=True,

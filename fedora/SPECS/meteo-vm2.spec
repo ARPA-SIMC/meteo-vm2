@@ -1,92 +1,53 @@
-%global releaseno 1
+%global releaseno 0.1
 # Note: define _srcarchivename in Travis build only.
-%{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
+%{!?srcarchivename: %global srcarchivename meteovm2-%{version}-%{releaseno}}
+# Python 3 package names
+%{?el7:%global python3_vers python36}
+%{?fedora:%global python3_vers python3}
 
-Name:           meteo-vm2
-Version:        1.0.3
-Release:        2
-Summary:        C++ library for VM2 data 
 
+Name:           python-meteovm2
+Version:        2.0.0
+Release:        %{releaseno}
+Summary:        Python library for VM2 data
 License:        GPLv2+
 URL:            https://github.com/arpa-simc/%{name}
 Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{srcarchivename}.tar.gz
-BuildRequires:  gcc-c++
-BuildRequires:  libtool
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libdballe) >= 8
-BuildRequires:  dballe
-BuildRequires:  pkgconfig(lua) >= 5.1.1
-BuildRequires:  help2man
+BuildArch:      noarch
+
 
 %description
-VM2 decoding/encoding library
+Python library for VM2 data
+
+%package -n %{python3_vers}-meteovm2
+Summary:        %{summary}
+BuildRequires:  %{python3_vers}-devel
+BuildRequires:  %{python3_vers}-dballe >= 8
+%{?python_provide:%python_provide %{python3_vers}-%{srcname}}
+
+%description -n %{python3_vers}-meteovm2
+Python3 library for VM2 data
 
 %prep
 %setup -q -n %{srcarchivename}
 
+
 %build
-sh autogen.sh
-%configure --disable-static
-make %{?_smp_mflags}
+%py3_build
+
 
 %check
-make check || { find . -name "test-suite.log" -print0 | xargs -0 cat ; false; }
+# %%py3_check
 
 %install
-rm -rf $RPM_BUILD_ROOT
-%make_install
+%py3_install
 
-%files
-%defattr(-,root,root,-)
-%{_libdir}/lib%{name}.so.*
-%dir %{_sharedstatedir}/%{name}
-%{_sharedstatedir}/%{name}/source/default.lua*
-%{_sharedstatedir}/%{name}/source/bufr.lua*
-
-%package devel
-Summary:        C++ library for VM2 data - development files
-Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}
-
-%description devel
-VM2 decoding/encoding library - development files
-
-%files devel
-%defattr(-,root,root,-)
-%dir %{_includedir}/%{name}
-%{_includedir}/%{name}/*
-%exclude %{_libdir}/lib%{name}.la
-%{_libdir}/lib%{name}.so
-%{_libdir}/pkgconfig/meteo-vm2.pc
-
-%package doc
-Summary:        C++ library for VM2 data - documentation
-
-%description doc
-VM2 decoding/encoding library - documentation
-
-%files doc
-%doc %{_docdir}/%{name}
-%defattr(-,root,root,-)
-
-%package utils
-Summary:        meteo-vm2 utilities
-Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}
-
-%description utils
-Collection of utilities for VM2 files
-
-%files utils
+%files -n %{python3_vers}-meteovm2
 %defattr(-,root,root,-)
 %{_bindir}/meteo-vm2-to-bufr
 %{_bindir}/bufr-to-meteo-vm2
-%{_bindir}/meteo-vm2-update-source
-%{_mandir}/*
+%{python3_sitelib}/meteovm2*
 
-%post
-/sbin/ldconfig
-
-%postun
-/sbin/ldconfig
 
 %changelog
 * Mon Jul  8 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.3-2

@@ -24,10 +24,10 @@ class TestParser(TestCase):
         with self.assertRaises(parser.InvalidRecordException):
             for line in (
                 "201901,1,2,3.5,3.6,BAU,123",  # invalid date
-                "201901020300,a,2,3.5,3.6,BAU,123",  # invalid station
-                "201901020300,1,b,3.5,3.6,BAU,123",  # invalid variable
-                "201901020300,1,2,xxx,3.6,BAU,123",  # invalid value1
-                "201901020300,1,2,3.5,xxx,BAU,123",  # invalid value2
+                "201901020300,a,2,3.5,3.6,BAU,000000000",  # invalid station
+                "201901020300,1,b,3.5,3.6,BAU,000000000",  # invalid variable
+                "201901020300,1,2,xxx,3.6,BAU,000000000",  # invalid value1
+                "201901020300,1,2,3.5,xxx,BAU,000000000",  # invalid value2
                 "201901020300,1,2,3.5,3.6,BAU,123",  # invalid flag
                 "dkasjdkdjk",  # invalid line
                 "",            # empty line

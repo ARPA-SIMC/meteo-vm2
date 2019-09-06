@@ -24,6 +24,8 @@ Python library for VM2 data
 
 %package -n %{python3_vers}-meteovm2
 Summary:        %{summary}
+Requires:       python3-dballe
+# TODO add Requires against a wreport version with unit conversion
 Obsoletes:      meteo-vm2
 Obsoletes:      meteo-vm2-devel
 Obsoletes:      meteo-vm2-doc

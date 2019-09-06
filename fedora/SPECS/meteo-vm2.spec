@@ -1,6 +1,6 @@
 %global releaseno 0.1
 # Note: define _srcarchivename in Travis build only.
-%{!?srcarchivename: %global srcarchivename meteovm2-%{version}-%{releaseno}}
+%{!?srcarchivename: %global srcarchivename meteo-vm2-%{version}-%{releaseno}}
 # Python 3 package names
 %{?el7:%global python3_vers python36}
 %{?fedora:%global python3_vers python3}
@@ -23,6 +23,10 @@ Python library for VM2 data
 Summary:        %{summary}
 BuildRequires:  %{python3_vers}-devel
 BuildRequires:  %{python3_vers}-dballe >= 8
+Obsoletes:      meteo-vm2
+Obsoletes:      meteo-vm2-devel
+Obsoletes:      meteo-vm2-doc
+Obsoletes:      meteo-vm2-utils
 %{?python_provide:%python_provide %{python3_vers}-%{srcname}}
 
 %description -n %{python3_vers}-meteovm2

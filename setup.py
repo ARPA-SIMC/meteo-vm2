@@ -49,6 +49,7 @@ setup(
         'console_scripts': [
             'meteo-vm2-to-bufr = meteovm2.cli:meteovm2_to_bufr',
             'bufr-to-meteo-vm2 = meteovm2.cli:bufr_to_meteovm2',
+            'meteo-vm2-table-dump = meteovm2.cli:meteovm2_table_dump',
         ],
     },
 )

@@ -53,6 +53,7 @@ Python3 library for VM2 data
 %defattr(-,root,root,-)
 %{_bindir}/meteo-vm2-to-bufr
 %{_bindir}/bufr-to-meteo-vm2
+%{_bindir}/meteo-vm2-table-dump
 %{python3_sitelib}/meteovm2*
 
 

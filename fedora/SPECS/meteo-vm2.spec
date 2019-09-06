@@ -22,6 +22,7 @@ Python library for VM2 data
 %package -n %{python3_vers}-meteovm2
 Summary:        %{summary}
 BuildRequires:  %{python3_vers}-devel
+BuildRequires:  %{python3_vers}-setuptools
 BuildRequires:  %{python3_vers}-dballe >= 8
 Obsoletes:      meteo-vm2
 Obsoletes:      meteo-vm2-devel

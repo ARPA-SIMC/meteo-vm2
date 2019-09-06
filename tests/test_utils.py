@@ -1,4 +1,5 @@
 from unittest import TestCase
+from io import StringIO, BytesIO
 
 from meteovm2 import utils
 
@@ -7,7 +8,6 @@ import dballe
 
 class TestUtils(TestCase):
     def test_meteovm2_to_bufr(self):
-        from io import StringIO, BytesIO
         inputstring = StringIO("201901020300,1,158,3.5,,,")
         outputstring = BytesIO()
 
@@ -31,8 +31,14 @@ class TestUtils(TestCase):
         self.assertEqual(data[0]["level"], dballe.Level(103, 2000))
         self.assertEqual(data[0]["trange"], dballe.Trange(254, 0, 0))
 
+    def test_meteovm2_to_bufr_invalid(self):
+        # Handle invalid station
+        inputstring = StringIO("201901020300,9999,158,3.5,,,")
+        outputstring = BytesIO()
+        utils.meteovm2_to_bufr(inputstring, outputstring, "tests/table.json")
+
+
     def test_bufr_to_meteovm2(self):
-        from io import StringIO, BytesIO
         outputstring = StringIO()
         with open("tests/1-158.bufr", "rb") as fp:
             utils.bufr_to_meteovm2(fp, outputstring, "tests/table.json")

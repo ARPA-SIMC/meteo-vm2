@@ -44,7 +44,7 @@ Python3 library for VM2 data
 
 
 %check
-# %%py3_check
+%{__python3} setup.py test
 
 %install
 %py3_install

@@ -9,7 +9,7 @@ LINE_RE = re.compile((
     r'(?P<value1>[+-]?[\d.]*),'
     r'(?P<value2>[+-]?[\d.]*),'
     r'(?P<value3>[^,\n\r]*),'
-    r'(?P<flags>\d{9}?)$'
+    r'(?P<flags>\d{9})?$'
 ))
 
 

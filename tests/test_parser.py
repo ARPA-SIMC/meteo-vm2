@@ -34,6 +34,12 @@ class TestParser(TestCase):
             ):
                 parser.parse_line(line)
 
+    def test_parse_line_valid(self):
+            for line in (
+                "201901020300,1,2,3.5,3.6,BAU,",
+            ):
+                parser.parse_line(line)
+
     def test_record_to_line(self):
         line = "201901020300,1,2,3.5,3.6,BAU,000000000"
         record = parser.parse_line(line)

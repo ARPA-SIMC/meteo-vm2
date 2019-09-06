@@ -32,11 +32,15 @@ class TestUtils(TestCase):
         self.assertEqual(data[0]["trange"], dballe.Trange(254, 0, 0))
 
     def test_meteovm2_to_bufr_invalid(self):
-        # Handle invalid station
-        inputstring = StringIO("201901020300,9999,158,3.5,,,")
-        outputstring = BytesIO()
-        utils.meteovm2_to_bufr(inputstring, outputstring, "tests/table.json")
-
+        for line in (
+            "201901020300,9999,158,3.5,,,",  # invalid station
+            "201901020300,1,9999,3.5,,,",  # invalid variable
+        ):
+            inputstring = StringIO(line)
+            outputstring = BytesIO()
+            utils.meteovm2_to_bufr(inputstring, outputstring, "tests/table.json")
+            outputstring.seek(0)
+            self.assertEqual(outputstring.getvalue(), b'')
 
     def test_bufr_to_meteovm2(self):
         outputstring = StringIO()

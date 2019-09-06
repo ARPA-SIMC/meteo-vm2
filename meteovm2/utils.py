@@ -48,40 +48,44 @@ def meteovm2_to_bufr(fp_input, fp_output, tablepath):
     exporter = dballe.Exporter(encoding="BUFR")
 
     for line in fp_input:
-        record = parser.parse_line(line)
-        station = table.station.get_by_vm2id(record.station_id)
-        variable = table.variable.get_by_vm2id(record.variable_id)
-        msg = dballe.Message("generic")
-        msg.set_named("year", dballe.var("B04001", record.reftime.year))
-        msg.set_named("month", dballe.var("B04002", record.reftime.month))
-        msg.set_named("day", dballe.var("B04003", record.reftime.day))
-        msg.set_named("hour", dballe.var("B04004", record.reftime.hour))
-        msg.set_named("minute", dballe.var("B04005", record.reftime.minute))
-        msg.set_named("second", dballe.var("B04006", record.reftime.second))
-        msg.set_named("longitude", dballe.var("B06001", station["lon"]))
-        msg.set_named("latitude", dballe.var("B05001", station["lat"]))
-        msg.set_named("rep_memo", dballe.var("B01194", station["rep"]))
-        level = (
-            variable["lt1"],
-            variable["lv1"],
-            variable["lt2"],
-            variable["lv2"],
-        )
-        trange = (
-            variable["tr"],
-            variable["p1"],
-            variable["p2"],
-        )
-        # TODO convert unit
-        var = dballe.var(variable["bcode"], float(record.value1))
-        msg.set(level, trange, var)
-        # TODO parse attributes
+        try:
+            record = parser.parse_line(line)
+            station = table.station.get_by_vm2id(record.station_id)
+            variable = table.variable.get_by_vm2id(record.variable_id)
+            msg = dballe.Message("generic")
+            msg.set_named("year", dballe.var("B04001", record.reftime.year))
+            msg.set_named("month", dballe.var("B04002", record.reftime.month))
+            msg.set_named("day", dballe.var("B04003", record.reftime.day))
+            msg.set_named("hour", dballe.var("B04004", record.reftime.hour))
+            msg.set_named("minute", dballe.var("B04005", record.reftime.minute))
+            msg.set_named("second", dballe.var("B04006", record.reftime.second))
+            msg.set_named("longitude", dballe.var("B06001", station["lon"]))
+            msg.set_named("latitude", dballe.var("B05001", station["lat"]))
+            msg.set_named("rep_memo", dballe.var("B01194", station["rep"]))
+            level = (
+                variable["lt1"],
+                variable["lv1"],
+                variable["lt2"],
+                variable["lv2"],
+            )
+            trange = (
+                variable["tr"],
+                variable["p1"],
+                variable["p2"],
+            )
+            # TODO convert unit
+            var = dballe.var(variable["bcode"], float(record.value1))
+            msg.set(level, trange, var)
+            # TODO parse attributes
 
-        for k, v in station.items():
-            if bcode_re.match(k):
-                msg.set(None, None, dballe.var(k, v))
+            for k, v in station.items():
+                if bcode_re.match(k):
+                    msg.set(None, None, dballe.var(k, v))
 
-        fp_output.write(exporter.to_binary(msg))
+            fp_output.write(exporter.to_binary(msg))
+        except:
+            # TODO log error
+            pass
 
 
 def bufr_to_meteovm2(fp_input, fp_output, tablepath):
@@ -91,32 +95,36 @@ def bufr_to_meteovm2(fp_input, fp_output, tablepath):
         for msgs in msgfile:
             for msg in msgs:
                 for data in msg.query_data():
-                    d = data.data_dict
-                    station_id, _ = table.station.get_by_attrs({
-                        "ident": d.get("ident"),
-                        "lon": data.enqi("lon"),
-                        "lat": data.enqi("lat"),
-                        "rep": d["report"],
-                    })
-                    variable_id, _ = table.variable.get_by_attrs({
-                        "bcode": data["variable"].code,
-                        "lt1": d["level"].ltype1,
-                        "lv1": d["level"].l1,
-                        "lt2": d["level"].ltype2,
-                        "lv2": d["level"].l2,
-                        "tr": d["trange"].pind,
-                        "p1": d["trange"].p1,
-                        "p2": d["trange"].p2,
-                    })
-                    record = Record(
-                        d["datetime"],
-                        station_id,
-                        variable_id,
-                        # TODO convert unit
-                        data["variable"].enqd(),
-                        "",
-                        "",
-                        # TODO parse attributes
-                        "",
-                    )
-                    fp_output.write(record.to_line() + "\n")
+                    try:
+                        d = data.data_dict
+                        station_id, _ = table.station.get_by_attrs({
+                            "ident": d.get("ident"),
+                            "lon": data.enqi("lon"),
+                            "lat": data.enqi("lat"),
+                            "rep": d["report"],
+                        })
+                        variable_id, _ = table.variable.get_by_attrs({
+                            "bcode": data["variable"].code,
+                            "lt1": d["level"].ltype1,
+                            "lv1": d["level"].l1,
+                            "lt2": d["level"].ltype2,
+                            "lv2": d["level"].l2,
+                            "tr": d["trange"].pind,
+                            "p1": d["trange"].p1,
+                            "p2": d["trange"].p2,
+                        })
+                        record = Record(
+                            d["datetime"],
+                            station_id,
+                            variable_id,
+                            # TODO convert unit
+                            data["variable"].enqd(),
+                            "",
+                            "",
+                            # TODO parse attributes
+                            "",
+                        )
+                        fp_output.write(record.to_line() + "\n")
+                    except:
+                        # TODO log error
+                        pass

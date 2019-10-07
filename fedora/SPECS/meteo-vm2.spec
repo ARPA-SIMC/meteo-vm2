@@ -1,10 +1,10 @@
-%global releaseno 1
+%global releaseno 2
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
 Version:        1.0.3
-Release:        2
+Release:        %{releaseno}%{dist}
 Summary:        C++ library for VM2 data 
 
 License:        GPLv2+

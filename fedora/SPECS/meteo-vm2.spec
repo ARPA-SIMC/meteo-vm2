@@ -9,7 +9,8 @@ Summary:        C++ library for VM2 data
 
 License:        GPLv2+
 URL:            https://github.com/arpa-simc/%{name}
-Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{srcarchivename}.tar.gz
+Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{releaseno}.tar.gz#/%{srcarchivename}.tar.gz
+
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -92,7 +93,7 @@ Collection of utilities for VM2 files
 * Mon Jul  8 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.3-2
 - Fixed files section
 
-* Tue Jul  4 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.3-1
+* Thu Jul  4 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.3-1
 - meteo-vm2-update-source
 
 * Tue Jun 25 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.2-1
@@ -119,7 +120,7 @@ Collection of utilities for VM2 files
 * Wed Dec  5 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.68-1
 - Updated fiduto and fidufv networks
 
-* Tue Nov 22 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.67-1
+* Thu Nov 22 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.67-1
 - Updated stations (fiduto)
 - Removed variable 258
 
@@ -146,7 +147,7 @@ Collection of utilities for VM2 files
 * Tue Jul 17 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.60-2
 - Update dballe dependency
 
-* Tue Jun 14 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.60-1
+* Thu Jun 14 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.60-1
 - Updated sea variables
 
 * Tue Jun 12 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 0.59-1

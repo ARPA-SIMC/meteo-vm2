@@ -19,14 +19,16 @@ BuildArch:      noarch
 BuildRequires:  %{python3_vers}-devel
 BuildRequires:  %{python3_vers}-setuptools
 BuildRequires:  %{python3_vers}-dballe >= 8
+BuildRequires:  %{python3_vers}-requests
 
 %description
 Python library for VM2 data
 
 %package -n %{python3_vers}-meteovm2
 Summary:        %{summary}
-Requires:       python3-dballe
-Requires:       python3-wreport >= 3.24
+Requires:       %{python3_vers}-dballe
+Requires:       %{python3_vers}-wreport >= 3.24
+Requires:       %{python3_vers}-requests
 
 Obsoletes:      meteo-vm2 < 2.0.0
 Obsoletes:      meteo-vm2-devel < 2.0.0

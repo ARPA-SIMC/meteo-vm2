@@ -43,8 +43,11 @@ class TestUtils(TestCase):
             self.assertEqual(outputstring.getvalue(), b'')
 
     def test_bufr_to_meteovm2(self):
+        from meteovm2 import parser
         outputstring = StringIO()
         with open("tests/1-158.bufr", "rb") as fp:
             utils.bufr_to_meteovm2(fp, outputstring, "tests/table.json")
             outputstring.seek(0)
-            self.assertEqual(outputstring.getvalue(), "201901020300,1,158,3.5,,,")
+            record = parser.parse_line(outputstring.getvalue())
+            self.assertEqual(outputstring.getvalue(),
+                             "201901020300,1,158,{},,,\n".format(record.value1))

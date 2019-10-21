@@ -5,6 +5,7 @@ import re
 
 import requests
 import dballe
+import wreport
 
 
 def get_table_from_meteozen(user, password):
@@ -73,8 +74,11 @@ def meteovm2_to_bufr(fp_input, fp_output, tablepath):
                 variable["p1"],
                 variable["p2"],
             )
-            # TODO convert unit
-            var = dballe.var(variable["bcode"], float(record.value1))
+            # TODO check missing value
+            val = wreport.convert_units(variable["unit"],
+                                        dballe.varinfo(variable["bcode"]).unit,
+                                        float(record.value1))
+            var = dballe.var(variable["bcode"], val)
             msg.set(level, trange, var)
             # TODO parse attributes
 
@@ -103,7 +107,7 @@ def bufr_to_meteovm2(fp_input, fp_output, tablepath):
                             "lat": data.enqi("lat"),
                             "rep": d["report"],
                         })
-                        variable_id, _ = table.variable.get_by_attrs({
+                        variable_id, variable = table.variable.get_by_attrs({
                             "bcode": data["variable"].code,
                             "lt1": d["level"].ltype1,
                             "lv1": d["level"].l1,
@@ -113,12 +117,15 @@ def bufr_to_meteovm2(fp_input, fp_output, tablepath):
                             "p1": d["trange"].p1,
                             "p2": d["trange"].p2,
                         })
+                        val = wreport.convert_units(data["variable"].info.unit,
+                                                    variable["unit"],
+                                                    data["variable"].enqd())
                         record = Record(
                             d["datetime"],
                             station_id,
                             variable_id,
                             # TODO convert unit
-                            data["variable"].enqd(),
+                            val,
                             "",
                             "",
                             # TODO parse attributes

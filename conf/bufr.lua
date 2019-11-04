@@ -3849,6 +3849,7 @@ return {
         [53013]={ident=nil,lon=1193530,lat=4437292,rep='cro',B01019='Centrale S. Severo',B07030='160',B07031='160',},
         [53014]={ident=nil,lon=1191240,lat=4434393,rep='cro',B01019='Centrale Cassanigo',B07030='170',B07031='170',},
         [53015]={ident=nil,lon=1189948,lat=4432744,rep='cro',B01019='Centrale S. Silvestro',B07030='210',B07031='210',},
+        [53016]={ident=nil,lon=1265516,lat=4400035,rep='rmap',B01019='Riccione Urbana',B07030='220',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

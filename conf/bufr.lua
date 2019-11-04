@@ -34,7 +34,7 @@ return {
         [2301]={ident=nil,lon=1114493,lat=4469500,rep='agrmet',B01019='Sant\'Agata Bolognese',B07030='180',B07031='180',},
         [2302]={ident=nil,lon=1029630,lat=4468290,rep='agrmet',B01019='Panocchia',B07030='180',B07031='180',},
         [2303]={ident=nil,lon=1182130,lat=4491630,rep='agrmet',B01019='Copparo',B07030='10',B07031='20',},
-        [2304]={ident=nil,lon=1124958,lat=4458960,rep='agrmet',B01019='Sant\'Agata sul Santerno',B07030='250',B07031='250',},
+        [2304]={ident=nil,lon=1124958,lat=4458960,rep='agrmet',B01019='Sala Bolognese',B07030='250',B07031='250',},
         [2305]={ident=nil,lon=1077293,lat=4474325,rep='agrmet',B01019='Correggio',B07030='330',B07031='330',},
         [2306]={ident=nil,lon=1051062,lat=4468953,rep='agrmet',B01019='Cavriago',B07030='950',B07031='950',},
         [2307]={ident=nil,lon=1227459,lat=4408903,rep='agrmet',B01019='Carpineta',B07030='1130',B07031='1130',},

@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.0.4
+Version:        1.0.5
 Release:        %{releaseno}%{dist}
 Summary:        C++ library for VM2 data 
 
@@ -90,6 +90,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Thu Nov 14 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.5-1
+- New stations (fidutn)
+
 * Mon Nov  4 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.4-1
 - Renamed station 2304
 - New station Riccione Urbana

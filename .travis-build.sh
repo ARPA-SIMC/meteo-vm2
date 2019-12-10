@@ -14,6 +14,7 @@ then
     yum install -y yum-plugin-copr
     yum install -y git
     yum copr enable -y simc/stable epel-7
+    yum update -y
 elif [[ $image =~ ^centos:8 ]]
 then
     pkgcmd="dnf"
@@ -27,6 +28,7 @@ then
     dnf install -q -y git
     dnf install -q -y rpmdevtools
     dnf copr enable -y simc/stable
+    dnf update -y
 elif [[ $image =~ ^fedora: ]]
 then
     pkgcmd="dnf"
@@ -36,6 +38,7 @@ then
     dnf install -y 'dnf-command(builddep)'
     dnf install -y git
     dnf copr enable -y simc/stable
+    dnf update -y
 fi
 
 $builddep -y fedora/SPECS/meteo-vm2.spec

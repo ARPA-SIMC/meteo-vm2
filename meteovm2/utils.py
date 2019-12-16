@@ -74,13 +74,30 @@ def meteovm2_to_bufr(fp_input, fp_output, tablepath):
                 variable["p1"],
                 variable["p2"],
             )
+
+            value = record.value1
+            attrs = []
+
+            if record.flags:
+                if record.flags[0] == "1" and record.value2 == "":
+                    attrs.append(dballe.var("B33196", 1))
+
+                if record.flags[0] == "2" and record.value2 != "":
+                    attrs.append(dballe.var("B33197", 1))
+                    value = record.value2
+
+                if record.flags[1:3] == "54" and record.value2 == "":
+                    attrs.append(dballe.var("B33192", 0))
+
             # TODO check missing value
             val = wreport.convert_units(variable["unit"],
                                         dballe.varinfo(variable["bcode"]).unit,
-                                        float(record.value1))
+                                        float(value))
             var = dballe.var(variable["bcode"], val)
+            for a in attrs:
+                var.seta(a)
+
             msg.set(level, trange, var)
-            # TODO parse attributes
 
             for k, v in station.items():
                 if bcode_re.match(k):

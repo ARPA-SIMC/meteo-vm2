@@ -1,5 +1,6 @@
 from unittest import TestCase
 from io import StringIO, BytesIO
+from decimal import Decimal
 
 from meteovm2 import utils
 
@@ -20,6 +21,8 @@ class TestUtils(TestCase):
             "201901020300,1,158,3.5,,,154000000\n"
             # Manual replacement
             "201901020300,1,158,3.5,3.6,,200000000\n"
+            # Manual replacement (and invalid original value)
+            "201901020300,1,158,3.5,3.6,,100000000\n"
         ))
         outputstring = BytesIO()
 
@@ -39,14 +42,71 @@ class TestUtils(TestCase):
                         data.append(d.data_dict)
                         attrs.append(d["variable"].get_attrs())
 
-        self.assertEqual(len(data), 2)
+        self.assertEqual(len(data), 7)
 
         self.assertEqual(data[0].get("ident"), None)
+        self.assertEqual(data[0].get("lon"), Decimal("12.07738"))
+        self.assertEqual(data[0].get("lat"), Decimal("44.60016"))
+        self.assertEqual(data[0].get("report"), "locali")
         self.assertEqual(data[0]["B12101"], 3.5 + 273.15)
         self.assertEqual(data[0]["level"], dballe.Level(103, 2000))
         self.assertEqual(data[0]["trange"], dballe.Trange(254, 0, 0))
+        self.assertEqual(attrs[0], [])
 
-        self.assertEqual(attrs[1], [dballe.var("B33196", 1)])
+        self.assertEqual(data[1].get("ident"), None)
+        self.assertEqual(data[1].get("lon"), Decimal("12.07738"))
+        self.assertEqual(data[1].get("lat"), Decimal("44.60016"))
+        self.assertEqual(data[1].get("report"), "locali")
+        self.assertEqual(data[1]["B12101"], 3.5 + 273.15)
+        self.assertEqual(data[1]["level"], dballe.Level(103, 2000))
+        self.assertEqual(data[1]["trange"], dballe.Trange(254, 0, 0))
+        self.assertEqual(attrs[1], [])
+
+        self.assertEqual(data[2].get("ident"), None)
+        self.assertEqual(data[2].get("lon"), Decimal("12.07738"))
+        self.assertEqual(data[2].get("lat"), Decimal("44.60016"))
+        self.assertEqual(data[2].get("report"), "locali")
+        self.assertEqual(data[2]["B12101"], 3.5 + 273.15)
+        self.assertEqual(data[2]["level"], dballe.Level(103, 2000))
+        self.assertEqual(data[2]["trange"], dballe.Trange(254, 0, 0))
+        self.assertEqual(attrs[2], [dballe.var("B33196", 1)])
+
+        self.assertEqual(data[3].get("ident"), None)
+        self.assertEqual(data[3].get("lon"), Decimal("12.07738"))
+        self.assertEqual(data[3].get("lat"), Decimal("44.60016"))
+        self.assertEqual(data[3].get("report"), "locali")
+        self.assertEqual(data[3]["B12101"], 3.5 + 273.15)
+        self.assertEqual(data[3]["level"], dballe.Level(103, 2000))
+        self.assertEqual(data[3]["trange"], dballe.Trange(254, 0, 0))
+        self.assertEqual(attrs[3], [dballe.var("B33192", 0)])
+
+        self.assertEqual(data[4].get("ident"), None)
+        self.assertEqual(data[4].get("lon"), Decimal("12.07738"))
+        self.assertEqual(data[4].get("lat"), Decimal("44.60016"))
+        self.assertEqual(data[4].get("report"), "locali")
+        self.assertEqual(data[4]["B12101"], 3.5 + 273.15)
+        self.assertEqual(data[4]["level"], dballe.Level(103, 2000))
+        self.assertEqual(data[4]["trange"], dballe.Trange(254, 0, 0))
+        self.assertEqual(attrs[4], [dballe.var("B33192", 0),
+                                    dballe.var("B33196", 1)])
+
+        self.assertEqual(data[5].get("ident"), None)
+        self.assertEqual(data[5].get("lon"), Decimal("12.07738"))
+        self.assertEqual(data[5].get("lat"), Decimal("44.60016"))
+        self.assertEqual(data[5].get("report"), "locali")
+        self.assertEqual(data[5]["B12101"], 3.6 + 273.15)
+        self.assertEqual(data[5]["level"], dballe.Level(103, 2000))
+        self.assertEqual(data[5]["trange"], dballe.Trange(254, 0, 0))
+        self.assertEqual(attrs[5], [dballe.var("B33197", 1)])
+
+        self.assertEqual(data[6].get("ident"), None)
+        self.assertEqual(data[6].get("lon"), Decimal("12.07738"))
+        self.assertEqual(data[6].get("lat"), Decimal("44.60016"))
+        self.assertEqual(data[6].get("report"), "locali")
+        self.assertEqual(data[6]["B12101"], 3.6 + 273.15)
+        self.assertEqual(data[6]["level"], dballe.Level(103, 2000))
+        self.assertEqual(data[6]["trange"], dballe.Trange(254, 0, 0))
+        self.assertEqual(attrs[6], [dballe.var("B33197", 1)])
 
     def test_meteovm2_to_bufr_invalid(self):
         for line in (

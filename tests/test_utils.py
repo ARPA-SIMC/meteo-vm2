@@ -106,7 +106,8 @@ class TestUtils(TestCase):
         self.assertEqual(data[6]["B12101"], 3.6 + 273.15)
         self.assertEqual(data[6]["level"], dballe.Level(103, 2000))
         self.assertEqual(data[6]["trange"], dballe.Trange(254, 0, 0))
-        self.assertEqual(attrs[6], [dballe.var("B33197", 1)])
+        self.assertEqual(attrs[6], [dballe.var("B33196", 1),
+                                    dballe.var("B33197", 1)])
 
     def test_meteovm2_to_bufr_invalid(self):
         for line in (

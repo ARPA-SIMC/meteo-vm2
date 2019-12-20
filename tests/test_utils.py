@@ -126,5 +126,7 @@ class TestUtils(TestCase):
             utils.bufr_to_meteovm2(fp, outputstring, "tests/table.json")
             outputstring.seek(0)
             record = parser.parse_line(outputstring.getvalue())
-            self.assertEqual(outputstring.getvalue(),
-                             "201901020300,1,158,{},,,\n".format(record.value1))
+            self.assertEqual(
+                outputstring.getvalue(),
+                "201901020300,1,158,{},,,000000000\n".format(record.value1)
+            )

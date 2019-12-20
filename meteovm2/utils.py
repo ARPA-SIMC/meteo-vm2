@@ -115,7 +115,7 @@ def bufr_to_meteovm2(fp_input, fp_output, tablepath):
     with importer.from_file(fp_input) as msgfile:
         for msgs in msgfile:
             for msg in msgs:
-                for data in msg.query_data():
+                for data in msg.query_data({"query": "attrs"}):
                     try:
                         d = data.data_dict
                         station_id, _ = table.station.get_by_attrs({
@@ -134,19 +134,35 @@ def bufr_to_meteovm2(fp_input, fp_output, tablepath):
                             "p1": d["trange"].p1,
                             "p2": d["trange"].p2,
                         })
-                        val = wreport.convert_units(data["variable"].info.unit,
-                                                    variable["unit"],
-                                                    data["variable"].enqd())
+                        var = data["variable"]
+                        val1 = wreport.convert_units(data["variable"].info.unit,
+                                                     variable["unit"],
+                                                     var.enqd())
+                        val2 = ""
+                        flags = "000000000"
+
+                        for attr in var.get_attrs():
+                            if attr.code == "B33196":
+                                if attr.enqi() == 0:
+                                    flags[0] = "0"
+                                else:
+                                    flags[0] = "1"
+                            elif attr.code == "B33192" and attr.enqi() == 0:
+                                flags[1] = "5"
+                                flags[2] = "4"
+                            elif attr.code == "B33197" and attr.enqi() == 1:
+                                val2 = val1
+
                         record = Record(
                             d["datetime"],
                             station_id,
                             variable_id,
                             # TODO convert unit
-                            val,
-                            "",
+                            val1,
+                            val2,
                             "",
                             # TODO parse attributes
-                            "",
+                            flags,
                         )
                         fp_output.write(record.to_line() + "\n")
                     except:

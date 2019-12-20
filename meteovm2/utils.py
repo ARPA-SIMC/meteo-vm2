@@ -106,7 +106,8 @@ def meteovm2_to_bufr(fp_input, fp_output, tablepath):
             fp_output.write(exporter.to_binary(msg))
         except:
             # TODO log error
-            pass
+            import traceback
+            traceback.print_exc()
 
 
 def bufr_to_meteovm2(fp_input, fp_output, tablepath):
@@ -167,4 +168,5 @@ def bufr_to_meteovm2(fp_input, fp_output, tablepath):
                         fp_output.write(record.to_line() + "\n")
                     except:
                         # TODO log error
-                        pass
+                        import traceback
+                        traceback.print_exc()

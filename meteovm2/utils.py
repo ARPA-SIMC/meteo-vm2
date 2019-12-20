@@ -136,11 +136,13 @@ def bufr_to_meteovm2(fp_input, fp_output, tablepath):
                             "p2": d["trange"].p2,
                         })
                         var = data["variable"]
-                        val1 = wreport.convert_units(data["variable"].info.unit,
-                                                     variable["unit"],
-                                                     var.enqd())
+                        val1 = "{:f}".format(
+                            wreport.convert_units(data["variable"].info.unit,
+                                                  variable["unit"],
+                                                  var.enqd())
+                        )
                         val2 = ""
-                        flags = "000000000"
+                        flags = ["0"]*9
 
                         for attr in var.get_attrs():
                             if attr.code == "B33196":
@@ -163,7 +165,7 @@ def bufr_to_meteovm2(fp_input, fp_output, tablepath):
                             val2,
                             "",
                             # TODO parse attributes
-                            flags,
+                            "".join(flags),
                         )
                         fp_output.write(record.to_line() + "\n")
                     except:

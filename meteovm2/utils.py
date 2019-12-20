@@ -79,10 +79,10 @@ def meteovm2_to_bufr(fp_input, fp_output, tablepath):
             attrs = []
 
             if record.flags:
-                if record.flags[0] == "1" and record.value2 == "":
+                if record.flags[0] == "1":
                     attrs.append(dballe.var("B33196", 1))
 
-                if record.flags[0] == "2" and record.value2 != "":
+                if record.flags[0] in ("1", "2") and record.value2 != "":
                     attrs.append(dballe.var("B33197", 1))
                     value = record.value2
 

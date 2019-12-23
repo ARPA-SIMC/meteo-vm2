@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename meteo-vm2-%{version}-%{releaseno}}
 # Python 3 package names
 %{?el7:%global python3_vers python36}
-%{?el8:%global python3_vers python}
+%{?el8:%global python3_vers python3}
 %{?fedora:%global python3_vers python3}
 
 

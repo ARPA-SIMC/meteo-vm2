@@ -12,8 +12,8 @@ Version:        2.0.0
 Release:        %{releaseno}
 Summary:        Python library for VM2 data
 License:        GPLv2+
-URL:            https://github.com/arpa-simc/%{name}
-Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{release}.tar.gz#/%{srcarchivename}.tar.gz
+URL:            https://github.com/arpa-simc/meteo-vm2
+Source0:        https://github.com/arpa-simc/meteo-vm2/archive/v%{version}-%{release}.tar.gz#/%{srcarchivename}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  %{python3_vers}-devel

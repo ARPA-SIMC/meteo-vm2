@@ -1,7 +1,13 @@
 import json
 
 
-def create_table(path):
+DEFAULT_TABLE_PATH = "/var/lib/meteo-vm2/table.json"
+
+
+def create_table(path=None):
+    if path is None:
+        path = DEFAULT_TABLE_PATH
+
     with open(path) as fp:
         return Table(json.load(fp))
 

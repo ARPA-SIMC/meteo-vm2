@@ -9,37 +9,47 @@ import wreport
 
 
 def get_table_from_meteozen(user, password):
+    meteozen_baseurl = "http://meteozen.metarpa/simcstations/api/v1/"
+
     table = {
-        "stations": {
-            str(s["id"]): {
-                "ident": s["ident"],
-                "lon": s["lon"],
-                "lat": s["lat"],
-                "rep": s["network"],
-            }
-            for s in requests.get(
-                "http://meteozen.metarpa/simcstations/api/v1/stations",
-                auth=(user, password)
-            ).json()
-        },
-        "variables": {
-            str(v["id"]): {
-                "bcode": v["bcode"],
-                "tr": v["trange_pind"],
-                "p1": v["trange_p1"],
-                "p2": v["trange_p2"],
-                "lt1": v["level_t1"],
-                "lv1": v["level_v1"],
-                "lt2": v["level_t2"],
-                "lv2": v["level_v2"],
-                "unit": v["vm2unit"],
-            }
-            for v in requests.get(
-                "http://meteozen.metarpa/simcstations/api/v1/variables",
-                auth=(user, password),
-            ).json()
-        },
+        "stations": {},
     }
+
+    for s in requests.get(meteozen_baseurl + "stations",
+                          auth=(user, password)).json():
+        item = {
+            "ident": s["ident"],
+            "lon": s["lon"],
+            "lat": s["lat"],
+            "rep": s["network"],
+        }
+
+        for key, bcode, transform in (
+            ("name", "B01019", lambda v: v),
+            ("height", "B07030", lambda h: str(int(h*10))),
+            ("height_barometer", "B07031", lambda h: str(int(h*10))),
+        ):
+            if key in s and s[key] is not None:
+                item[bcode] = transform(s[key])
+
+        table["stations"][str(s["id"])] = item
+
+    table["variables"] = {
+        str(v["id"]): {
+            "bcode": v["bcode"],
+            "tr": v["trange_pind"],
+            "p1": v["trange_p1"],
+            "p2": v["trange_p2"],
+            "lt1": v["level_t1"],
+            "lv1": v["level_v1"],
+            "lt2": v["level_t2"],
+            "lv2": v["level_v2"],
+            "unit": v["vm2unit"],
+        }
+        for v in requests.get(meteozen_baseurl + "variables",
+                              auth=(user, password)).json()
+    }
+
     return table
 
 

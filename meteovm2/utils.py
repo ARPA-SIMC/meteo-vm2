@@ -9,14 +9,17 @@ import wreport
 
 
 def get_table_from_meteozen(user, password):
+    auth = (user, password) if user is not None else None
+
     meteozen_baseurl = "http://meteozen.metarpa/simcstations/api/v1/"
 
     table = {
         "stations": {},
     }
 
-    for s in requests.get(meteozen_baseurl + "stations",
-                          auth=(user, password)).json():
+    r = requests.get(meteozen_baseurl + "stations", auth=auth)
+    r.raise_for_status()
+    for s in r.json():
         item = {
             "ident": s["ident"],
             "lon": s["lon"],
@@ -34,6 +37,8 @@ def get_table_from_meteozen(user, password):
 
         table["stations"][str(s["id"])] = item
 
+    r = requests.get(meteozen_baseurl + "variables", auth=auth)
+    r.raise_for_status()
     table["variables"] = {
         str(v["id"]): {
             "bcode": v["bcode"],
@@ -46,8 +51,7 @@ def get_table_from_meteozen(user, password):
             "lv2": v["level_v2"],
             "unit": v["vm2unit"],
         }
-        for v in requests.get(meteozen_baseurl + "variables",
-                              auth=(user, password)).json()
+        for v in r.json()
     }
 
     return table

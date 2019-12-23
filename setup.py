@@ -24,7 +24,7 @@ version = get_version('meteovm2')
 setup(
     name="meteovm2",
     version=version,
-    packages=find_packages(include=["meteovm2"]),
+    packages=find_packages(include=["meteovm2", "meteovm2.*"]),
     include_package_data=True,
     license='GPLv2+',
     description='Python library for VM2 data',
@@ -32,7 +32,7 @@ setup(
     url='http://github.com/arpa-simc/meteo-vm2',
     author='Emanuele Di Giacomo',
     author_email="edigiacomo@arpae.it",
-    install_requires=[],
+    install_requires=["requests"],
     test_suite="tests",
     classifiers=[
         'Development Status :: 4 - Beta',

@@ -1,4 +1,4 @@
-%global releaseno 0.1.beta.1
+%global releaseno 0.1.beta.2
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename meteo-vm2-%{version}-%{releaseno}}
 # Python 3 package names

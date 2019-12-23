@@ -9,7 +9,7 @@
 
 ## Introduction
 
-Simple C++ library for `VM2` data.
+Simple Python library for `VM2` data.
 
 `VM2` is a simple format used at ARPA-SIMC to store observations data. It's a
 `CSV` format with the following columns:
@@ -22,16 +22,42 @@ Simple C++ library for `VM2` data.
 - Value 3 (string)
 - Flags
 
-Stations and variables metadata are stored in a file as a Lua table:
+Stations and variables metadata are stored in a JSON file (default path: `/var/lib/meteo-vm2/table.json`):
 
 ```
-return {
-    stations={
-        [1]={name="Camse"},
-        ...
+{
+  "stations": {
+    "12675": {
+      "ident": null,
+      "lon": 911081,
+      "lat": 4609161,
+      "rep": "fidupo",
+      "B01019": "Cavargna",
+      "B07030": "11000",
+      "B07031": "11000"
     },
-    variables={
-        ...
-    },
+    "5591": {
+      "ident": null,
+      "lon": 1083529,
+      "lat": 4400469,
+      "rep": "idrost",
+      "B01019": "Piastre",
+      "B07030": "7410",
+      "B07031": "7410"
+    }
+ },
+  "variables": {
+    "167": {
+      "bcode": "B10004",
+      "tr": 254,
+      "p1": 0,
+      "p2": 0,
+      "lt1": 1,
+      "lv1": null,
+      "lt2": null,
+      "lv2": null,
+      "unit": "hPa"
+    }
+ }
 }
 ```

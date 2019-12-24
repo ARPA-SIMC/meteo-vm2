@@ -1,4 +1,4 @@
-%global releaseno 0.1.beta.2
+%global releaseno 0.2.beta.2
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename meteo-vm2-%{version}-%{releaseno}}
 # Python 3 package names
@@ -27,7 +27,7 @@ Python library for VM2 data
 %package -n %{python3_vers}-meteovm2
 Summary:        %{summary}
 Requires:       %{python3_vers}-dballe
-Requires:       %{python3_vers}-wreport >= 3.24
+Requires:       %{python3_vers}-wreport3 >= 3.24
 Requires:       %{python3_vers}-requests
 
 Obsoletes:      meteo-vm2 < 2.0.0

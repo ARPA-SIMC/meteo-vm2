@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.68])
-AC_INIT([meteo-vm2], [1.0.6], [edigiacomo@arpae.it])
+AC_INIT([meteo-vm2], [1.0.7], [edigiacomo@arpae.it])
 AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])

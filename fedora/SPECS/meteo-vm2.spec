@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.0.8
+Version:        1.0.9
 Release:        %{releaseno}%{dist}
 Summary:        C++ library for VM2 data 
 
@@ -90,6 +90,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Wed Jan 22 2020 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.9-1
+- Updated stations
+
 * Wed Jan  8 2020 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.8-1
 - Fixed Parma S. Siro coordinates
 

@@ -256,7 +256,7 @@ return {
         [3727]={ident=nil,lon=1185792,lat=4486898,rep='icirfe',},
         [3728]={ident=nil,lon=1189685,lat=4493223,rep='icirfe',},
         [3729]={ident=nil,lon=1187623,lat=4493099,rep='icirfe',},
-        [3730]={ident=nil,lon=1224842,lat=4481420,rep='icirfe',},
+        [3730]={ident=nil,lon=1224834,lat=4481376,rep='icirfe',},
         [3731]={ident=nil,lon=1149623,lat=4491465,rep='icirfe',},
         [3732]={ident=nil,lon=1207514,lat=4489849,rep='icirfe',},
         [3733]={ident=nil,lon=1218599,lat=4492295,rep='icirfe',},
@@ -3870,6 +3870,7 @@ return {
         [53035]={ident=nil,lon=1081750,lat=4411916,rep='simnpr',},
         [53036]={ident=nil,lon=1097622,lat=4462376,rep='simnpr',},
         [53037]={ident=nil,lon=1129003,lat=4448884,rep='simnpr',},
+        [53038]={ident=nil,lon=1240512,lat=4398289,rep='simnbo',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',},
     },
     variables={

@@ -256,7 +256,7 @@ return {
         [3727]={ident=nil,lon=1185792,lat=4486898,rep='icirfe',B01019='Chiavica Ruffa',B07030='10',},
         [3728]={ident=nil,lon=1189685,lat=4493223,rep='icirfe',B01019='Cipriano',B07030='10',},
         [3729]={ident=nil,lon=1187623,lat=4493099,rep='icirfe',B01019='Coccanile',B07030='20',},
-        [3730]={ident=nil,lon=1224842,lat=4481420,rep='icirfe',B01019='Giralda',B07030='30',},
+        [3730]={ident=nil,lon=1224834,lat=4481376,rep='icirfe',B01019='Giralda',B07030='30',},
         [3731]={ident=nil,lon=1149623,lat=4491465,rep='icirfe',B01019='La Valletta',B07030='60',},
         [3732]={ident=nil,lon=1207514,lat=4489849,rep='icirfe',B01019='Mezzogoro',B07030='10',},
         [3733]={ident=nil,lon=1218599,lat=4492295,rep='icirfe',B01019='Monticelli',B07030='10',},
@@ -3870,6 +3870,7 @@ return {
         [53035]={ident=nil,lon=1081750,lat=4411916,rep='simnpr',B01019='Lago Scaffaiolo Nivo',B07030='16620',B07031='16620',},
         [53036]={ident=nil,lon=1097622,lat=4462376,rep='simnpr',B01019='Fossalta',B07030='360',B07031='360',},
         [53037]={ident=nil,lon=1129003,lat=4448884,rep='simnpr',B01019='Canonica Valle',B07030='540',B07031='540',},
+        [53038]={ident=nil,lon=1240512,lat=4398289,rep='simnbo',B01019='Ponte Verucchio Sussidiario',B07030='1160',B07031='1160',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

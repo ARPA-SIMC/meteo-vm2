@@ -3871,6 +3871,8 @@ return {
         [53036]={ident=nil,lon=1097622,lat=4462376,rep='simnpr',B01019='Fossalta',B07030='360',B07031='360',},
         [53037]={ident=nil,lon=1129003,lat=4448884,rep='simnpr',B01019='Canonica Valle',B07030='540',B07031='540',},
         [53038]={ident=nil,lon=1240512,lat=4398289,rep='simnbo',B01019='Ponte Verucchio Sussidiario',B07030='1160',B07031='1160',},
+        [53039]={ident=nil,lon=1123758,lat=4462196,rep='idrtl9',B01019='Forcelli',B07030='240',B07031='240',},
+        [53040]={ident=nil,lon=1143921,lat=4444913,rep='idrtl9',B01019='Pizzocalvo',B07030='640',B07031='640',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.0.9
+Version:        1.0.10
 Release:        %{releaseno}%{dist}
 Summary:        C++ library for VM2 data 
 
@@ -90,6 +90,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Thu Feb 13 2020 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.10-1
+- New stations and variables
+
 * Wed Jan 22 2020 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.9-1
 - Updated stations
 

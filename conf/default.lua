@@ -4318,6 +4318,7 @@ return {
         [784]={bcode='B48210',tr=1,p1=0,p2=86400,lt1=103,l1=15000,lt2=nil,l2=nil,unit='NUMERIC',},
         [785]={bcode='B48211',tr=1,p1=0,p2=86400,lt1=103,l1=15000,lt2=nil,l2=nil,unit='NUMERIC',},
         [786]={bcode='B22037',tr=0,p1=0,p2=600,lt1=101,l1=nil,lt2=nil,l2=nil,unit='M',},
+        [787]={bcode='B22037',tr=0,p1=0,p2=900,lt1=101,l1=nil,lt2=nil,l2=nil,unit='M',},
         [1360]={bcode='B48001',tr=0,p1=604800,p2=86400,lt1=103,l1=15000,lt2=nil,l2=nil,unit='POLLEN/M**3',},
         [1361]={bcode='B48002',tr=0,p1=604800,p2=86400,lt1=103,l1=15000,lt2=nil,l2=nil,unit='POLLEN/M**3',},
         [1362]={bcode='B48003',tr=0,p1=604800,p2=86400,lt1=103,l1=15000,lt2=nil,l2=nil,unit='POLLEN/M**3',},

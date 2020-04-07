@@ -3334,6 +3334,7 @@ return {
         [14432]={ident=nil,lon=1055572,lat=4305248,rep='fiduto',},
         [14433]={ident=nil,lon=1165262,lat=4361898,rep='fiduto',},
         [14434]={ident=nil,lon=769528,lat=4505833,rep='fidupo',},
+        [14437]={ident=nil,lon=1190515,lat=4394133,rep='idrtl9',},
         [14438]={ident=nil,lon=1290944,lat=4201472,rep='fiduum',},
         [14439]={ident=nil,lon=1202139,lat=4289583,rep='fiduum',},
         [14440]={ident=nil,lon=1196889,lat=4293167,rep='fiduum',},

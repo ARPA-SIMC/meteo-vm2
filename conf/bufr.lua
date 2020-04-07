@@ -3334,6 +3334,7 @@ return {
         [14432]={ident=nil,lon=1055572,lat=4305248,rep='fiduto',B01019='S. Vincenzo',B07030='140',B07031='140',},
         [14433]={ident=nil,lon=1165262,lat=4361898,rep='fiduto',B01019='Trappola',B07030='8690',B07031='8690',},
         [14434]={ident=nil,lon=769528,lat=4505833,rep='fidupo',B01019='Torino Murazzi Po ',B07030='2390',B07031='2390',},
+        [14437]={ident=nil,lon=1190515,lat=4394133,rep='idrtl9',B01019='Santa Sofia',B07030='2580',B07031='2500',},
         [14438]={ident=nil,lon=1290944,lat=4201472,rep='fiduum',B01019='S.Cosimato-Mandela',B07030='5200',B07031='5200',},
         [14439]={ident=nil,lon=1202139,lat=4289583,rep='fiduum',B01019='Ponte S.Maria',B07030='2500',B07031='2500',},
         [14440]={ident=nil,lon=1196889,lat=4293167,rep='fiduum',B01019='Ponticelli',B07030='2480',B07031='2480',},

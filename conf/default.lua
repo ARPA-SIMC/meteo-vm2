@@ -3616,6 +3616,7 @@ return {
         [14747]={ident=nil,lon=1218604,lat=4473040,rep='profe',},
         [14749]={ident=nil,lon=1180657,lat=4472326,rep='profe',},
         [14751]={ident=nil,lon=1008311,lat=4489347,rep='idrost',},
+        [14752]={ident=nil,lon=1035510,lat=4453261,rep='idrtl9',},
         [14753]={ident=nil,lon=830205,lat=4419573,rep='fiduli',},
         [14754]={ident=nil,lon=817306,lat=4473611,rep='fidupo',},
         [14755]={ident=nil,lon=1160500,lat=4488701,rep='simnpr',},

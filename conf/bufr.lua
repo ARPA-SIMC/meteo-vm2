@@ -3616,6 +3616,7 @@ return {
         [14747]={ident=nil,lon=1218604,lat=4473040,rep='profe',B01019='San Giuseppe',B07030='-50',},
         [14749]={ident=nil,lon=1180657,lat=4472326,rep='profe',B01019='Sandolo',B07030='-10',},
         [14751]={ident=nil,lon=1008311,lat=4489347,rep='idrost',B01019='Fidenza Idro',B07030='580',B07031='590',},
+        [14752]={ident=nil,lon=1035510,lat=4453261,rep='idrtl9',B01019='Cedogno',B07030='2730',B07031='2730',},
         [14753]={ident=nil,lon=830205,lat=4419573,rep='fiduli',B01019='Calice Ligure - Ca rosse',B07030='500',B07031='500',},
         [14754]={ident=nil,lon=817306,lat=4473611,rep='fidupo',B01019='Castagnole Lanze 1',B07030='3830',B07031='3830',},
         [14755]={ident=nil,lon=1160500,lat=4488701,rep='simnpr',B01019='Pontelagoscuro Conca',B07030='50',B07031='50',},

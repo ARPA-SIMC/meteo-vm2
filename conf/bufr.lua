@@ -3950,6 +3950,7 @@ return {
         [53062]={ident=nil,lon=1400230,lat=4593950,rep='fidusl',B01019='ZADLOG',B07030='7160',B07031='7160',},
         [53063]={ident=nil,lon=1402850,lat=4622210,rep='fidusl',B01019='ZGORNJA SORICA',B07030='8460',B07031='8460',},
         [53064]={ident=nil,lon=1155204,lat=4463157,rep='profe',B01019='Minerbio',B07030='60',B07031='60',},
+        [53065]={ident=nil,lon=1129002,lat=4448883,rep='simnbo',B01019='Casalecchio Canonica Valle',B07030='540',B07031='540',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

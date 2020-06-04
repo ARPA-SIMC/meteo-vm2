@@ -90,7 +90,7 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
-* Tue May  25 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.18-1
+* Tue Jun 4 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.18-1
 - Stazione idrometro Casalecchio Canonica valle
 
 * Tue May  25 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.17-1

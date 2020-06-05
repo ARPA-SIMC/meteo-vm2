@@ -16,16 +16,18 @@ simcstations-update:
 	git pull && \
 	for f in bufr.lua default.lua; \
 	    do curl http://meteozen.metarpa/simcstations/meteo-vm2/$$f > conf/$$f; \
-	done
-
-version-update:
+	done && \
+	echo "### AGGIORNAMENTI ###" && \
+	git diff && \
+	read -p "Creo un nuovo pacchetto? (Ctrl-D per fermare) " procedo && \
+	echo "### VERSIONE ATTUALE ###" && \
 	grep ^AC_INIT configure.ac && \
-	echo 'nuova versione?' && \
-	read versione && \
+	read -p "Nuova versione? (Ctrl-D per fermare) " nuova_versione && \
 	vim configure.ac fedora/SPECS/meteo-vm2.spec && \
-	echo 'procedo col commit (Ctrl-D per fermare)?' && \
-	read procedo && \
-	git commit -a -m v$${versione} && \
-	git tag v$${versione}-1 && \
+	echo "### AGGIORNAMENTI ###" && \
+	git diff && \
+	read -p "Procedo col commit? (Ctrl-D per fermare) " procedo && \
+	git commit -a -m "v$${nuova_versione}" && \
+	git tag "v$${nuova_versione}-1" && \
 	git push && \
 	git push --tags

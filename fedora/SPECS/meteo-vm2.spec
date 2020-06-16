@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.0.21
+Version:        1.0.22
 Release:        %{releaseno}%{dist}
 Summary:        C++ library for VM2 data 
 
@@ -90,7 +90,10 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
-* Tue Jun 15 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.21-1
+* Tue Jun 16 2020 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.22-1
+- Stazioni Cantina Valtidone
+
+* Mon Jun 15 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.21-1
 - Nuove variabili vento a 5 m dal suolo
 
 * Tue Jun 15 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.20-1

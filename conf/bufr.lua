@@ -3950,6 +3950,11 @@ return {
         [53062]={ident=nil,lon=1400230,lat=4593950,rep='fidusl',B01019='ZADLOG',B07030='7160',B07031='7160',},
         [53063]={ident=nil,lon=1402850,lat=4622210,rep='fidusl',B01019='ZGORNJA SORICA',B07030='8460',B07031='8460',},
         [53064]={ident=nil,lon=1155204,lat=4463157,rep='profe',B01019='Minerbio',B07030='60',B07031='60',},
+        [53065]={ident=nil,lon=943506,lat=4496816,rep='rmap',B01019='Vaie',B07030='1640',B07031='1640',},
+        [53066]={ident=nil,lon=938482,lat=4498058,rep='rmap',B01019='Vicomarino',B07030='2340',B07031='2340',},
+        [53067]={ident=nil,lon=940037,lat=4496295,rep='rmap',B01019='Verago',B07030='3200',B07031='3200',},
+        [53068]={ident=nil,lon=944281,lat=4495427,rep='rmap',B01019='Arcello',B07030='2420',B07031='2420',},
+        [53069]={ident=nil,lon=941685,lat=4497999,rep='rmap',B01019='Croce',B07030='2540',B07031='2540',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

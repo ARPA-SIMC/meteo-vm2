@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.0.22
+Version:        1.0.23
 Release:        %{releaseno}%{dist}
 Summary:        C++ library for VM2 data 
 
@@ -90,6 +90,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Mon Jun 29 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.23-1
+- Stazioni Romagna Acque
+
 * Tue Jun 16 2020 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.22-1
 - Stazioni Cantina Valtidone
 

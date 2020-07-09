@@ -140,6 +140,7 @@ int main(int argc, const char** argv)
                 lua_settop(L, idx);
                 if (stations.size() == 0) {
                     std::cerr << "cannot find station" << std::endl;
+                    lua_pop(L, 1);
                     return true;
                 }
                 if (stations.size() > 1) {
@@ -149,6 +150,7 @@ int main(int argc, const char** argv)
                         << join(stations)
                         << ")"
                         << std::endl;
+                    lua_pop(L, 1);
                     return true;
                 }
                 vm2value.station_id = stations.at(0);
@@ -158,6 +160,8 @@ int main(int argc, const char** argv)
                 vm2value.hour = msg->get_datetime().time().hour;
                 vm2value.min = msg->get_datetime().time().minute;
                 vm2value.sec = msg->get_datetime().time().second;
+
+                lua_pop(L, 1);
 
                 msg->foreach_var([&source, &vm2value](const dballe::Level& level, const dballe::Trange& trange, const wreport::Var& var) {
                     int idx;

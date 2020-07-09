@@ -109,15 +109,15 @@ std::vector<int> CoreSource::lua_find_stations(int idx) {
   lua_rawgeti(L, LUA_REGISTRYINDEX, stations_ref);
   if (lua_pcall(L, 2, 1, 0) != 0) {
     std::string msg = lua_tostring(L, -1);
-    lua_pop(L,1);
+    lua_pop(L, 1);
     throw std::runtime_error("Lua error while filtering stations: " + msg);
   }
   lua_pushnil(L);
   while (lua_next(L, -2)) {
     res.push_back(lua_tointeger(L, -1));
-    lua_pop(L,1);
+    lua_pop(L, 1);
   }
-  lua_pop(L,1);
+  lua_pop(L, 1);
   return res;
 }
 std::vector<int> CoreSource::lua_find_variables(int idx) {
@@ -128,15 +128,15 @@ std::vector<int> CoreSource::lua_find_variables(int idx) {
   lua_rawgeti(L, LUA_REGISTRYINDEX, variables_ref);
   if (lua_pcall(L, 2, 1, 0) != 0) {
     std::string msg = lua_tostring(L, -1);
-    lua_pop(L,1);
+    lua_pop(L, 1);
     throw std::runtime_error("Lua error while filtering variables: " + msg);
   }
   lua_pushnil(L);
   while (lua_next(L, -2)) {
     res.push_back(lua_tointeger(L, -1));
-    lua_pop(L,1);
+    lua_pop(L, 1);
   }
-  lua_pop(L,1);
+  lua_pop(L, 1);
   return res;
 }
 

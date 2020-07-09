@@ -198,6 +198,7 @@ int main(int argc, const char** argv)
                             << "bcode=" << wreport::varcode_format(var.code()) << ", "
                             << "level=" << level << ", "
                             << "trange=" << trange << std::endl;
+                        lua_pop(L, 1);
                         return true;
                     }
                     if (variables.size() > 1) {
@@ -207,8 +208,10 @@ int main(int argc, const char** argv)
                             << join(variables)
                             << ")"
                             << std::endl;
+                        lua_pop(L, 1);
                         return true;
                     }
+                    lua_pop(L, 1);
                     vm2value.variable_id = variables.at(0);
 
                     source->lua_push_variable(vm2value.variable_id);
@@ -218,7 +221,7 @@ int main(int argc, const char** argv)
                     } else {
                         vm2value.value1 = var.enqd();
                     }
-                    lua_pop(L, 1);
+                    lua_pop(L, 2);
 
                     vm2value.value2 = meteo::vm2::MISSING_DOUBLE;
                     vm2value.value3 = "";

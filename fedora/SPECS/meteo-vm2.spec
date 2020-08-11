@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.0.24
+Version:        1.0.25
 Release:        %{releaseno}%{dist}
 Summary:        C++ library for VM2 data 
 
@@ -90,7 +90,10 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
-* Tue Ago 11 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.24-1
+* Tue Aug 11 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.25-1
+- Fix changelog
+
+* Tue Aug 11 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.24-1
 - Idrometro S. Ilario d'Enza
 
 * Mon Jun 29 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.23-1

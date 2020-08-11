@@ -3960,6 +3960,7 @@ return {
         [53072]={ident=nil,lon=1270026,lat=4395818,rep='spdsra',},
         [53073]={ident=nil,lon=1270027,lat=4395820,rep='spdsra',},
         [53074]={ident=nil,lon=1270029,lat=4395818,rep='spdsra',},
+        [53075]={ident=nil,lon=1042692,lat=4476993,rep='simnpr',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',},
     },
     variables={

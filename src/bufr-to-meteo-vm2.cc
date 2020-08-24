@@ -140,6 +140,7 @@ int main(int argc, const char** argv)
                 lua_settop(L, idx);
                 if (stations.size() == 0) {
                     std::cerr << "cannot find station" << std::endl;
+                    lua_pop(L, 1);
                     return true;
                 }
                 if (stations.size() > 1) {
@@ -149,6 +150,7 @@ int main(int argc, const char** argv)
                         << join(stations)
                         << ")"
                         << std::endl;
+                    lua_pop(L, 1);
                     return true;
                 }
                 vm2value.station_id = stations.at(0);
@@ -158,6 +160,8 @@ int main(int argc, const char** argv)
                 vm2value.hour = msg->get_datetime().time().hour;
                 vm2value.min = msg->get_datetime().time().minute;
                 vm2value.sec = msg->get_datetime().time().second;
+
+                lua_pop(L, 1);
 
                 msg->foreach_var([&source, &vm2value](const dballe::Level& level, const dballe::Trange& trange, const wreport::Var& var) {
                     int idx;
@@ -198,6 +202,7 @@ int main(int argc, const char** argv)
                             << "bcode=" << wreport::varcode_format(var.code()) << ", "
                             << "level=" << level << ", "
                             << "trange=" << trange << std::endl;
+                        lua_pop(L, 1);
                         return true;
                     }
                     if (variables.size() > 1) {
@@ -207,8 +212,10 @@ int main(int argc, const char** argv)
                             << join(variables)
                             << ")"
                             << std::endl;
+                        lua_pop(L, 1);
                         return true;
                     }
+                    lua_pop(L, 1);
                     vm2value.variable_id = variables.at(0);
 
                     source->lua_push_variable(vm2value.variable_id);
@@ -218,7 +225,7 @@ int main(int argc, const char** argv)
                     } else {
                         vm2value.value1 = var.enqd();
                     }
-                    lua_pop(L, 1);
+                    lua_pop(L, 2);
 
                     vm2value.value2 = meteo::vm2::MISSING_DOUBLE;
                     vm2value.value3 = "";

@@ -3961,6 +3961,7 @@ return {
         [53073]={ident=nil,lon=1270027,lat=4395820,rep='spdsra',B01019='Conca derivazione',B07030='190',B07031='190',},
         [53074]={ident=nil,lon=1270029,lat=4395818,rep='spdsra',B01019='Conca scarico',B07030='190',B07031='190',},
         [53075]={ident=nil,lon=1042692,lat=4476993,rep='simnpr',B01019='S. Ilario d\'Enza',B07030='580',B07031='580',},
+        [53076]={ident=nil,lon=1209277,lat=4377666,rep='fiduum',B01019='Verghereto Le Balze',B07030='10740',B07031='10740',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

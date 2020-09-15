@@ -3962,6 +3962,9 @@ return {
         [53074]={ident=nil,lon=1270029,lat=4395818,rep='spdsra',B01019='Conca scarico',B07030='190',B07031='190',},
         [53075]={ident=nil,lon=1042692,lat=4476993,rep='simnpr',B01019='S. Ilario d\'Enza',B07030='580',B07031='580',},
         [53076]={ident=nil,lon=1209277,lat=4377666,rep='fiduum',B01019='Verghereto Le Balze',B07030='10740',B07031='10740',},
+        [53079]={ident=nil,lon=1248626,lat=4545871,rep='fiduve',B01019='Cavallino Treponti',B07030='10',B07031='10',},
+        [53080]={ident=nil,lon=1129382,lat=4553646,rep='fiduve',B01019='Chiampo',B07030='1510',B07031='1510',},
+        [53081]={ident=nil,lon=1157662,lat=4503150,rep='fiduve',B01019='San Bellino',B07030='60',B07031='60',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

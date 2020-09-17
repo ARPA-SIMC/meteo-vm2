@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.0.27
+Version:        1.0.28
 Release:        %{releaseno}%{dist}
 Summary:        C++ library for VM2 data 
 
@@ -90,6 +90,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Thu Sep 17 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.28-1
+- Correzioni nome stazioni rmap
+
 * Tue Sep 15 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.27-1
 - Nuove stazioni FIDUVE
 

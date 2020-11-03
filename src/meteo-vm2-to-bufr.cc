@@ -190,7 +190,7 @@ int main(int argc, const char** argv)
 
       try {
         std::vector<std::shared_ptr<dballe::Message>> msgs;
-        std::unique_ptr<dballe::Message> msg = dballe::Message::create(dballe::MessageType::GENERIC);
+        auto msg = dballe::Message::create(dballe::MessageType::GENERIC);
         // date
         msg->set("year", dballe::var("B04001", value.year));
         msg->set("month", dballe::var("B04002", value.month));

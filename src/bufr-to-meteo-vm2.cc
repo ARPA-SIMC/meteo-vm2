@@ -102,7 +102,7 @@ int main(int argc, const char** argv)
 
         infile->foreach([&source](const dballe::BinaryMessage& bmsg) {
             std::unique_ptr<dballe::Importer> importer = dballe::Importer::create(dballe::Encoding::BUFR);
-            return importer->foreach_decoded(bmsg, [&source](std::unique_ptr<dballe::Message>&& msg) {
+            return importer->foreach_decoded(bmsg, [&source](std::shared_ptr<dballe::Message> msg) {
                 lua_State* L = source->L;
 
                 int idx;

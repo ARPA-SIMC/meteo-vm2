@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.0.29
+Version:        1.0.30
 Release:        %{releaseno}%{dist}
 Summary:        C++ library for VM2 data 
 
@@ -90,6 +90,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Tue Nov 10 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.30-1
+- Aggiornamento anagrafica stazioni
+
 * Wed Sep 23 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.29-1
 - Aggiornamento anagrafica stazioni
 

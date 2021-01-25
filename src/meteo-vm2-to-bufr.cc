@@ -38,6 +38,23 @@
 #include <dballe/message.h>
 #include <dballe/var.h>
 #include <dballe/exporter.h>
+#include <wreport/options.h>
+
+
+class TagDomainErrors : public wreport::options::DomainErrorHook
+{
+    void handle_domain_error_int(wreport::Var& var, int32_t val) override
+    {
+        var.set(val < var.info()->imin ? var.info()->imin : var.info()->imax);
+        var.seta(dballe::newvar(WR_VAR(0, 33, 192), 0));
+    }
+
+    void handle_domain_error_double(wreport::Var& var, double val) override
+    {
+        var.set(val < var.info()->dmin ? var.info()->dmin : var.info()->dmax);
+        var.seta(dballe::newvar(WR_VAR(0, 33, 192), 0));
+    }
+} domain_errors_tag;
 
 
 static inline int convert_qc(const std::string& str)
@@ -171,6 +188,9 @@ int main(int argc, const char** argv)
     else
       sourcefile = argv[1];
   }
+
+  wreport::options::var_hook_domain_errors = &domain_errors_tag;
+
   try {
     meteo::vm2::Source* source = NULL;
 

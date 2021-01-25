@@ -1,4 +1,4 @@
-%global releaseno 1
+%global releaseno 2
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
@@ -72,6 +72,7 @@ VM2 decoding/encoding library - documentation
 %package utils
 Summary:        meteo-vm2 utilities
 Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}
+Requires:       pkgconfig(libdballe) >= 8.17
 
 %description utils
 Collection of utilities for VM2 files
@@ -90,6 +91,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Mon Jan 25 2021 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.1.0-2
+- Explicit requires libdballe >= 8.17
+
 * Mon Jan 25 2021 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.1.0-1
 - Clamp e B33192=0 per valori fuori range (#241)
 

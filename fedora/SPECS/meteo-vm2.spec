@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.0.31
+Version:        1.1.0
 Release:        %{releaseno}%{dist}
 Summary:        C++ library for VM2 data 
 
@@ -14,7 +14,7 @@ Source0:        https://github.com/arpa-simc/%{name}/archive/v%{version}-%{relea
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libdballe) >= 8
+BuildRequires:  pkgconfig(libdballe) >= 8.17
 BuildRequires:  dballe
 BuildRequires:  pkgconfig(lua) >= 5.1.1
 BuildRequires:  help2man
@@ -90,7 +90,10 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
-* Thu Jan 7 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.0.31-1
+* Mon Jan 25 2021 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.1.0-1
+- Clamp e B33192=0 per valori fuori range (#241)
+
+* Thu Jan  7 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.0.31-1
 - Nuove LOCALI e variabili
 
 * Tue Nov 10 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.30-1

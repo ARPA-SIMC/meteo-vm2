@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.68])
-AC_INIT([meteo-vm2], [1.0.31], [edigiacomo@arpae.it])
+AC_INIT([meteo-vm2], [1.1.0], [edigiacomo@arpae.it])
 AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
@@ -59,11 +59,11 @@ AC_ARG_ENABLE([bufr],
 	      [enable_bufr=yes])
 if test $enable_bufr = yes
 then
-	PKG_CHECK_EXISTS([libdballe >= 8], [have_dballe=yes], [have_dballe=no])
+	PKG_CHECK_EXISTS([libdballe >= 8.17], [have_dballe=yes], [have_dballe=no])
 	if test $have_dballe = yes
 	then
 		AC_DEFINE([HAVE_DBALLE], 1, [dballe functions are available])
-		PKG_CHECK_MODULES(DBALLE,[libdballe >= 8])
+		PKG_CHECK_MODULES(DBALLE,[libdballe >= 8.17])
 	else
 		AC_MSG_WARN([compiling without DB-All.e: BUFR support will be disabled])
 	fi

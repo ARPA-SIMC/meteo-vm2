@@ -35,26 +35,11 @@
 #include <wreport/varinfo.h>
 #include <wreport/var.h>
 #include <wreport/conv.h>
+#include <wreport/options.h>
 #include <dballe/message.h>
 #include <dballe/var.h>
 #include <dballe/exporter.h>
-#include <wreport/options.h>
-
-
-class TagDomainErrors : public wreport::options::DomainErrorHook
-{
-    void handle_domain_error_int(wreport::Var& var, int32_t val) override
-    {
-        var.set(val < var.info()->imin ? var.info()->imin : var.info()->imax);
-        var.seta(dballe::newvar(WR_VAR(0, 33, 192), 0));
-    }
-
-    void handle_domain_error_double(wreport::Var& var, double val) override
-    {
-        var.set(val < var.info()->dmin ? var.info()->dmin : var.info()->dmax);
-        var.seta(dballe::newvar(WR_VAR(0, 33, 192), 0));
-    }
-} domain_errors_tag;
+#include <dballe/msg/domain_errors.h>
 
 
 static inline int convert_qc(const std::string& str)
@@ -189,6 +174,7 @@ int main(int argc, const char** argv)
       sourcefile = argv[1];
   }
 
+  dballe::impl::msg::TagDomainErrors domain_errors_tag;
   wreport::options::var_hook_domain_errors = &domain_errors_tag;
 
   try {

@@ -126,9 +126,10 @@ static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Va
     if (value.value1 == meteo::vm2::MISSING_DOUBLE)
         throw std::runtime_error("Cannot convert missing value to BUFR");
 
+    double vm2val = value.value2 == vm2::MISSING_DOUBLE ? value.value1 : value.value2;
     double val = wreport::convert_units(unit.c_str(), 
             dballe::varinfo(varcode)->unit, 
-            value.value1);
+            vm2val);
 
     wreport::Var var = dballe::var(varcode, val);
     if (value.flags.size() == 9) {

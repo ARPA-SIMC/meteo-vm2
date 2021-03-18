@@ -3553,7 +3553,7 @@ return {
         [14605]={ident=nil,lon=1104278,lat=4413417,rep='claster',B01019='Diga di Suviana',B07030='4780',B07031='4780',},
         [14606]={ident=nil,lon=1226505,lat=4435313,rep='claster',B01019='Fosso Ghiaia',B07030='-20',B07031='-20',},
         [14607]={ident=nil,lon=1209812,lat=4483519,rep='claster',B01019='Codigoro',B07030='10',B07031='10',},
-        [14608]={ident=nil,lon=1127361,lat=4427648,rep='claster',B01019='Monzuno',B07030='5890',B07031='5890',},
+        [14608]={ident=nil,lon=1127361,lat=4427649,rep='claster',B01019='Monzuno',B07030='5890',B07031='5890',},
         [14609]={ident=nil,lon=1208611,lat=4389056,rep='claster',B01019='Diga di Quarto',B07030='3360',B07031='3360',},
         [14610]={ident=nil,lon=1132544,lat=4447600,rep='claster',B01019='Villa Ghigi',B07030='2030',B07031='2030',},
         [14612]={ident=nil,lon=1131225,lat=4446750,rep='claster',B01019='Ravone Torretta',B07030='1020',B07031='1020',},

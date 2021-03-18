@@ -3553,7 +3553,7 @@ return {
         [14605]={ident=nil,lon=1104278,lat=4413417,rep='claster',},
         [14606]={ident=nil,lon=1226505,lat=4435313,rep='claster',},
         [14607]={ident=nil,lon=1209812,lat=4483519,rep='claster',},
-        [14608]={ident=nil,lon=1127361,lat=4427648,rep='claster',},
+        [14608]={ident=nil,lon=1127361,lat=4427649,rep='claster',},
         [14609]={ident=nil,lon=1208611,lat=4389056,rep='claster',},
         [14610]={ident=nil,lon=1132544,lat=4447600,rep='claster',},
         [14612]={ident=nil,lon=1131225,lat=4446750,rep='claster',},

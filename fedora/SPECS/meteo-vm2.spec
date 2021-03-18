@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.1.1
+Version:        1.1.2
 Release:        %{releaseno}%{dist}
 Summary:        C++ library for VM2 data 
 
@@ -91,6 +91,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Thu Mar 18 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.1.2-1
+- Fix coordinate Monzugno
+
 * Thu Mar 18 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.1.1-1
 - Aggiornamenti vari da anagrafica meteozen
 

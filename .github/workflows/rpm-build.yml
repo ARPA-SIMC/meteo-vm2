@@ -2,8 +2,7 @@ name: RPM build
 
 on:
   push:
-    branches: [master, ghci]
-
+    tags: ["v*.*.*"]
 
 jobs:
   rpm-build:

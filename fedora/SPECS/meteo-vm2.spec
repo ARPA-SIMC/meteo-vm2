@@ -142,7 +142,7 @@ Collection of utilities for VM2 files
 * Thu Jun 4 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.18-1
 - Stazione idrometro Casalecchio Canonica valle
 
-* Tue Mon 25 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.17-1
+* Mon May 25 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.17-1
 - Stazioni FIDUVE parte I
 
 * Fri May 22 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.16-1

@@ -133,25 +133,25 @@ Collection of utilities for VM2 files
 * Mon Jun 15 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.21-1
 - Nuove variabili vento a 5 m dal suolo
 
-* Tue Jun 15 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.20-1
+* Mon Jun 15 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.20-1
 - Correzione variabili raffica
 
-* Tue Jun 5 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.19-1
+* Fri Jun 5 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.19-1
 - Rimossa Stazione Casalecchio Canonica valle duplicata
 
-* Tue Jun 4 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.18-1
+* Thu Jun 4 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.18-1
 - Stazione idrometro Casalecchio Canonica valle
 
-* Tue May  25 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.17-1
+* Tue Mon 25 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.17-1
 - Stazioni FIDUVE parte I
 
-* Tue May  22 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.16-1
+* Fri May 22 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.16-1
 - New station Cedogno IDRTL9
 
-* Tue Apr  7 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.15-1
+* Tue Apr 7 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.15-1
 - New station Minerbio PROFE
 
-* Tue Apr  7 2020 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.14-1
+* Tue Apr 7 2020 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.14-1
 - New station 14437
 
 * Thu Apr 2 2020 Marcello Nuccio <mnuccio@arpae.it> - 1.0.13-1
@@ -160,7 +160,7 @@ Collection of utilities for VM2 files
 * Fri Mar 27 2020 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.12-1
 - New variable 787
 
-* Thu Mar 10 2020 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.11-1
+* Tue Mar 10 2020 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.11-1
 - New stations and variables
 
 * Thu Feb 13 2020 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.0.10-1

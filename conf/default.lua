@@ -3967,6 +3967,8 @@ return {
         [53083]={ident=nil,lon=1224834,lat=4481376,rep='locali',},
         [53084]={ident=nil,lon=1210134,lat=4457337,rep='locali',},
         [53085]={ident=nil,lon=1188483,lat=4471096,rep='locali',},
+        [53086]={ident=nil,lon=999531,lat=4502029,rep='provpc',},
+        [53087]={ident=nil,lon=999545,lat=4502139,rep='provpc',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',},
     },
     variables={

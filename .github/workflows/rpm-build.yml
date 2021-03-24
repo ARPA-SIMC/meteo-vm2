@@ -1,9 +1,8 @@
 name: RPM build
 
 on:
-  # Build only on pushes into master branch
   push:
-    branches: [master]
+    branches: [master, ghci]
 
 
 jobs:

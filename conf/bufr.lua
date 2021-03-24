@@ -3969,6 +3969,7 @@ return {
         [53085]={ident=nil,lon=1188483,lat=4471096,rep='locali',B01019='MARTINELLA',B07030='-30',B07031='-30',},
         [53086]={ident=nil,lon=999531,lat=4502029,rep='provpc',B01019='Villanova',B07030='430',B07031='430',},
         [53087]={ident=nil,lon=999545,lat=4502139,rep='provpc',B01019='C.A.A.A.',B07030='420',B07031='420',},
+        [53088]={ident=nil,lon=984224,lat=4487817,rep='simnpr',B01019='Vigolo Marchese',B07030='1270',B07031='1270',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

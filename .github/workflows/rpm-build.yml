@@ -6,8 +6,6 @@ on:
 
 
 jobs:
-  # Set the job key. The key is displayed as the job name
-  # when a job name is not provided
   rpm-build:
     container: fedora:32
     runs-on: ubuntu-latest
@@ -17,5 +15,5 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run build script
-        run: ./.travis-build.sh
+        run: ./.travis-build.sh fedora:32
         shell: bash

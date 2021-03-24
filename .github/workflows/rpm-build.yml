@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install git
+        run: dnf install -y git
+        
       - name: Checkout code
         uses: actions/checkout@v2
 

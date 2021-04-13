@@ -704,7 +704,7 @@ return {
         [5422]={ident=nil,lon=1052302,lat=4440934,rep='simnpr',B01019='Ponte Cavola',B07030='3670',B07031='3670',},
         [5423]={ident=nil,lon=998301,lat=4451048,rep='simnpr',B01019='Berceto',B07030='7580',B07031='7580',},
         [5424]={ident=nil,lon=1046004,lat=4436252,rep='simnpr',B01019='Villa Minozzo',B07030='7040',B07031='7040',},
-        [5425]={ident=nil,lon=1033880,lat=4472164,rep='simnpr',B01019='Casse Espansione Parma SIAP',B07030='1100',B07031='900',},
+        [5425]={ident=nil,lon=1033880,lat=4472164,rep='simnpr',B01019='Parma Cassa briglia monte',B07030='1100',B07031='900',},
         [5426]={ident=nil,lon=998598,lat=4461558,rep='simnpr',B01019='Solignano',B07030='2350',B07031='2460',},
         [5427]={ident=nil,lon=973315,lat=4462076,rep='simnpr',B01019='Bardi idro',B07030='3810',B07031='4180',},
         [5429]={ident=nil,lon=1213623,lat=4369223,rep='simnbo',B01019='Badia Tedalda',B07030='8500',B07031='8500',},

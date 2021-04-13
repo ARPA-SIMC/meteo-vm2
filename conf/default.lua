@@ -3970,6 +3970,11 @@ return {
         [53086]={ident=nil,lon=999531,lat=4502029,rep='provpc',},
         [53087]={ident=nil,lon=999545,lat=4502139,rep='provpc',},
         [53088]={ident=nil,lon=984224,lat=4487817,rep='simnpr',},
+        [53089]={ident=nil,lon=1008306,lat=4489361,rep='simnpr',},
+        [53090]={ident=nil,lon=1022583,lat=4487722,rep='simnpr',},
+        [53091]={ident=nil,lon=1034972,lat=4494389,rep='simnpr',},
+        [53092]={ident=nil,lon=1025944,lat=4495222,rep='simnpr',},
+        [53093]={ident=nil,lon=1014806,lat=4491806,rep='simnpr',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',},
     },
     variables={

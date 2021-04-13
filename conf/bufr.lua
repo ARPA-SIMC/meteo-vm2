@@ -3970,6 +3970,11 @@ return {
         [53086]={ident=nil,lon=999531,lat=4502029,rep='provpc',B01019='Villanova',B07030='430',B07031='430',},
         [53087]={ident=nil,lon=999545,lat=4502139,rep='provpc',B01019='C.A.A.A.',B07030='420',B07031='420',},
         [53088]={ident=nil,lon=984224,lat=4487817,rep='simnpr',B01019='Vigolo Marchese',B07030='1270',B07031='1270',},
+        [53089]={ident=nil,lon=1008306,lat=4489361,rep='simnpr',B01019='FIDENZA',B07030='590',B07031='590',},
+        [53090]={ident=nil,lon=1022583,lat=4487722,rep='simnpr',B01019='GRUGNO PG4i',B07030='420',B07031='420',},
+        [53091]={ident=nil,lon=1034972,lat=4494389,rep='simnpr',B01019='COLORNO PG4i',B07030='290',B07031='290',},
+        [53092]={ident=nil,lon=1025944,lat=4495222,rep='simnpr',B01019='SISSA PG4i',B07030='320',B07031='320',},
+        [53093]={ident=nil,lon=1014806,lat=4491806,rep='simnpr',B01019='CAVETTO DI SORAGNA PG4i',B07030='450',B07031='450',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

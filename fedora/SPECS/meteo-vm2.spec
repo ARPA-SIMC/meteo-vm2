@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.1.6
+Version:        1.1.7
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -92,6 +92,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Tue Apr 13 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.1.7-1
+- Aggiornamento anagrafica
+
 * Tue Apr 13 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.1.6-1
 - Aggiornamento anagrafica
 

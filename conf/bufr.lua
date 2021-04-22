@@ -4514,5 +4514,6 @@ return {
         [1759]={bcode='B11214',tr=9,p1=0,p2=900,lt1=103,l1=10000,lt2=nil,l2=nil,unit='%',},
         [1760]={bcode='B11215',tr=9,p1=0,p2=900,lt1=103,l1=10000,lt2=nil,l2=nil,unit='%',},
         [1761]={bcode='B11216',tr=9,p1=0,p2=900,lt1=103,l1=10000,lt2=nil,l2=nil,unit='%',},
+        [1762]={bcode='B22038',tr=0,p1=0,p2=600,lt1=101,l1=nil,lt2=nil,l2=nil,unit='M',},
     },
 }

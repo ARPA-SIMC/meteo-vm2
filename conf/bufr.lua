@@ -3975,6 +3975,7 @@ return {
         [53091]={ident=nil,lon=1034972,lat=4494389,rep='simnpr',B01019='COLORNO PG4i',B07030='290',B07031='290',},
         [53092]={ident=nil,lon=1025944,lat=4495222,rep='simnpr',B01019='SISSA PG4i',B07030='320',B07031='320',},
         [53093]={ident=nil,lon=1014806,lat=4491806,rep='simnpr',B01019='CAVETTO DI SORAGNA PG4i',B07030='450',B07031='450',},
+        [53094]={ident=nil,lon=1095670,lat=4470214,rep='idrost',B01019='Albareto ARPA',B07030='280',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

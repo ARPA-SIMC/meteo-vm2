@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.1.8
+Version:        1.1.9
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -92,6 +92,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Wed May 12 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.1.9-1
+- Aggiornamento anagrafica
+
 * Thu Apr 22 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.1.8-1
 - Variabile 1762 - Livello del mare media sugli ultimi 10 minuti
 

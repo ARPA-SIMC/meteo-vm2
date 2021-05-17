@@ -1,9 +1,9 @@
-%global releaseno 2
+%global releaseno 1
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.1.10
+Version:        1.2.0
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -92,6 +92,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Mon May 17 2021 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.2.0-1
+- Fixed compatibility with dballe 8 and 9
+
 * Mon May 17 2021 Daniele Branchini <dbranchini@arpae.it> - 1.1.10-2
 - Bogus release for dballe 9.0 update
 

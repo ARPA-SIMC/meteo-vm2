@@ -1,4 +1,4 @@
-%global releaseno 1
+%global releaseno 2
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
@@ -92,6 +92,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Mon May 17 2021 Daniele Branchini <dbranchini@arpae.it> - 1.1.10-2
+- Bogus release for dballe 9.0 update
+
 * Thu May 13 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.1.10-1
 - Aggiornamento anagrafica
 

@@ -64,6 +64,7 @@ then
 	then
 		AC_DEFINE([HAVE_DBALLE], 1, [dballe functions are available])
 		PKG_CHECK_MODULES(DBALLE,[libdballe >= 8.17])
+        PKG_CHECK_EXISTS([libdballe >= 9.0], AC_DEFINE([DBALLE_VERSION_GTE_9], 1, [dballe >= 9.0]))
 	else
 		AC_MSG_WARN([compiling without DB-All.e: BUFR support will be disabled])
 	fi

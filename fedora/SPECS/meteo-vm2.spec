@@ -70,7 +70,7 @@ VM2 decoding/encoding library - documentation
 Summary:        C++ library for VM2 data - utilities
 Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}
 Requires:       pkgconfig(libdballe) >= 8.17
-Recommends:     meteo-vm2-data-simc
+Requires:       meteo-vm2-data-simc
 
 %description utils
 Collection of utilities for VM2 files

@@ -2597,7 +2597,7 @@ return {
         [12551]={ident=nil,lon=1207533,lat=4379384,rep='cofor',B01019='Passo della Biancarda',B07030='13400',},
         [12618]={ident=nil,lon=1165107,lat=4424762,rep='locali',B01019='Valsenio',B07030='1640',},
         [12619]={ident=nil,lon=1171961,lat=4423305,rep='locali',B01019='Vespignano',B07030='2080',},
-        [12622]={ident=nil,lon=1087400,lat=4488481,rep='idrost',B01019='Rolo Tele',B07030='220',B07031='240',},
+        [12622]={ident=nil,lon=1087400,lat=4488481,rep='idrost',B01019='Rolo Tele',B07030='200',B07031='240',},
         [12623]={ident=nil,lon=1199295,lat=4426279,rep='idrtl9',B01019='Ponte Braldo',B07030='260',B07031='240',},
         [12624]={ident=nil,lon=1194530,lat=4399349,rep='idrost',B01019='Civitella di Romagna Tele',B07030='4600',B07031='4600',},
         [12626]={ident=nil,lon=1251139,lat=4452250,rep='boa',B01019='Garibaldi A.',B07030='100',},
@@ -3977,6 +3977,7 @@ return {
         [53093]={ident=nil,lon=1014806,lat=4491806,rep='simnpr',B01019='CAVETTO DI SORAGNA PG4i',B07030='450',B07031='450',},
         [53094]={ident=nil,lon=1095670,lat=4470214,rep='idrost',B01019='Albareto ARPA',B07030='280',},
         [53095]={ident=nil,lon=1000494,lat=4500253,rep='idrost',B01019='Castellazzo Villanova d\'Arda',B07030='410',},
+        [53096]={ident=nil,lon=1101028,lat=4447472,rep='simnpr',B01019='Vignola SIAP',B07030='1100',B07031='1100',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

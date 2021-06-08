@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.2.0
+Version:        1.2.1
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -92,6 +92,9 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
+* Tue Jun 8 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.1-1
+- Aggiornamento anagrafica
+
 * Mon May 17 2021 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.2.0-1
 - Fixed compatibility with dballe 8 and 9
 

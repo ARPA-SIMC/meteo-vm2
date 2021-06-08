@@ -1,4 +1,4 @@
-%global releaseno 1
+%global releaseno 2
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
@@ -40,9 +40,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %{_libdir}/lib%{name}.so.*
-%dir %{_sharedstatedir}/%{name}
-%{_sharedstatedir}/%{name}/source/default.lua*
-%{_sharedstatedir}/%{name}/source/bufr.lua*
 
 %package devel
 Summary:        C++ library for VM2 data - development files
@@ -73,6 +70,7 @@ VM2 decoding/encoding library - documentation
 Summary:        C++ library for VM2 data - utilities
 Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}
 Requires:       pkgconfig(libdballe) >= 8.17
+Recommends:     meteo-vm2-data-simc
 
 %description utils
 Collection of utilities for VM2 files
@@ -85,6 +83,18 @@ Collection of utilities for VM2 files
 %{_mandir}/man1/bufr-to-meteo-vm2.1.gz
 %{_mandir}/man1/meteo-vm2-to-bufr.1.gz
 
+%package data-simc
+Summary:        C++ library for VM2 data - SIMC config files
+
+%description data-simc
+VM2 decoding/encoding library - SIMC config files
+
+%files data-simc
+%defattr(-,root,root,-)
+%dir %{_sharedstatedir}/%{name}
+%{_sharedstatedir}/%{name}/source/default.lua*
+%{_sharedstatedir}/%{name}/source/bufr.lua*
+
 %post
 /sbin/ldconfig
 
@@ -92,7 +102,10 @@ Collection of utilities for VM2 files
 /sbin/ldconfig
 
 %changelog
-* Tue Jun 8 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.1-1
+* Tue Jun  8 2021 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.2.1-2
+- Package meteo-vm2-data-simc
+
+* Tue Jun  8 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.1-1
 - Aggiornamento anagrafica
 
 * Mon May 17 2021 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.2.0-1

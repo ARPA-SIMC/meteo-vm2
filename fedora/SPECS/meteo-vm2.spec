@@ -1,9 +1,9 @@
-%global releaseno 2
+%global releaseno 1
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.2.1
+Version:        1.2.2
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Mon Jun 14 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.2-1
+- Package meteo-vm2-data-simc
+
 * Tue Jun  8 2021 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.2.1-2
 - Package meteo-vm2-data-simc
 

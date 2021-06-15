@@ -102,6 +102,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Tue Jun 15 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.3-1
+- Aggiornamento variabili
+
 * Mon Jun 14 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.2-1
 - Package meteo-vm2-data-simc
 

@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.2.2
+Version:        1.2.4
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Wed Jun 16 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.4-1
+- Fix versione pacchetto
+
 * Tue Jun 15 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.3-1
 - Aggiornamento variabili
 

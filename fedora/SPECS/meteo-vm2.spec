@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.2.4
+Version:        1.2.5
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,11 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Tue Jul  6 2021 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.2.5-1
+- Eliminate stazioni doppie: Bondanello e Rubiera
+- Aggiornamento pindicator della variabile 1754
+- Correzione nome stazioni 3008 e 4064
+
 * Wed Jun 16 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.4-1
 - Fix versione pacchetto
 

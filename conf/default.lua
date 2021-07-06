@@ -4506,7 +4506,7 @@ return {
         [1751]={bcode='B11002',tr=254,p1=0,p2=0,lt1=103,l1=5000,lt2=nil,l2=nil,unit='M/S',},
         [1752]={bcode='B11001',tr=254,p1=0,p2=0,lt1=103,l1=5000,lt2=nil,l2=nil,unit='gsess',},
         [1753]={bcode='B12161',tr=254,p1=0,p2=0,lt1=1,l1=nil,lt2=nil,l2=nil,unit='C',},
-        [1754]={bcode='B14198',tr=1,p1=0,p2=900,lt1=103,l1=2000,lt2=nil,l2=nil,unit='W/m**2',},
+        [1754]={bcode='B14198',tr=0,p1=0,p2=900,lt1=103,l1=2000,lt2=nil,l2=nil,unit='W/m**2',},
         [1755]={bcode='B11210',tr=205,p1=0,p2=900,lt1=103,l1=10000,lt2=nil,l2=nil,unit='gsess',},
         [1756]={bcode='B11211',tr=9,p1=0,p2=900,lt1=103,l1=10000,lt2=nil,l2=nil,unit='%',},
         [1757]={bcode='B11212',tr=9,p1=0,p2=900,lt1=103,l1=10000,lt2=nil,l2=nil,unit='%',},

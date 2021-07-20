@@ -67,7 +67,7 @@ return {
         [2283]={ident=nil,lon=968196,lat=4496674,rep='locali',B01019='Gariga',B07030='1020',B07031='900',},
         [2284]={ident=nil,lon=997087,lat=4508050,rep='locali',B01019='Monticelli Arpa',B07030='370',B07031='450',},
         [2285]={ident=nil,lon=937872,lat=4499154,rep='locali',B01019='Vicobarone',B07030='2630',B07031='2890',},
-        [2286]={ident=nil,lon=1027244,lat=4480806,rep='locali',B01019='SAN PANCRAZIO',B07030='560',B07031='560',},
+        [2286]={ident=nil,lon=1027245,lat=4480806,rep='locali',B01019='SAN PANCRAZIO',B07030='560',B07031='560',},
         [2287]={ident=nil,lon=1000566,lat=4502683,rep='agrmet',B01019='Villanova sull\'Arda',B07030='400',B07031='410',},
         [2288]={ident=nil,lon=1106581,lat=4474430,rep='agrmet',B01019='Ravarino',B07030='230',B07031='230',},
         [2289]={ident=nil,lon=1095670,lat=4470214,rep='agrmet',B01019='Albareto',B07030='280',B07031='280',},

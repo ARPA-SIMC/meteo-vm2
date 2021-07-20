@@ -67,7 +67,7 @@ return {
         [2283]={ident=nil,lon=968196,lat=4496674,rep='locali',},
         [2284]={ident=nil,lon=997087,lat=4508050,rep='locali',},
         [2285]={ident=nil,lon=937872,lat=4499154,rep='locali',},
-        [2286]={ident=nil,lon=1027244,lat=4480806,rep='locali',},
+        [2286]={ident=nil,lon=1027245,lat=4480806,rep='locali',},
         [2287]={ident=nil,lon=1000566,lat=4502683,rep='agrmet',},
         [2288]={ident=nil,lon=1106581,lat=4474430,rep='agrmet',},
         [2289]={ident=nil,lon=1095670,lat=4470214,rep='agrmet',},

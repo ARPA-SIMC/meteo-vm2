@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.2.7
+Version:        1.2.8
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,7 +102,10 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
-* Tue Jul 20 2021 manuele Di Giacomo <edigiacomo@arpae.it> - 1.2.7-1
+* Tue Aug 17 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.8-1
+- Canonica Valle da simnpr a simnbo
+
+* Tue Jul 20 2021 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.2.7-1
 - Correzione San Pancrazio
 
 * Wed Jul 14 2021 Emanuele Di Giacomo <edigiacomo@arpae.it> - 1.2.6-1

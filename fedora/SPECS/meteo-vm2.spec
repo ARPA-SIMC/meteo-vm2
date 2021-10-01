@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.2.8
+Version:        1.2.9
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Fri Oct  1 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.9-1
+- Nuove variabili per San Pietro Capofiume
+
 * Tue Aug 17 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.8-1
 - Canonica Valle da simnpr a simnbo
 

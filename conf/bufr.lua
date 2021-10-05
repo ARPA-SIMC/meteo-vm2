@@ -3915,7 +3915,7 @@ return {
         [53033]={ident=nil,lon=921045,lat=4433620,rep='fiduli',B01019='Santa Margherita Ligure',B07030='200',},
         [53034]={ident=nil,lon=1032777,lat=4489388,rep='simnpr',B01019='Parma S. Siro',B07030='420',B07031='420',},
         [53035]={ident=nil,lon=1081750,lat=4411916,rep='simnpr',B01019='Lago Scaffaiolo Nivo',B07030='16620',B07031='16620',},
-        [53036]={ident=nil,lon=1097622,lat=4462376,rep='simnpr',B01019='Fossalta',B07030='360',B07031='360',},
+        [53036]={ident=nil,lon=1097722,lat=4462483,rep='simnpr',B01019='Fossalta',B07030='360',B07031='360',},
         [53037]={ident=nil,lon=1129003,lat=4448884,rep='simnbo',B01019='Canonica Valle',B07030='540',B07031='540',},
         [53038]={ident=nil,lon=1240512,lat=4398289,rep='simnbo',B01019='Ponte Verucchio Sussidiario',B07030='1160',B07031='1160',},
         [53039]={ident=nil,lon=1123758,lat=4462196,rep='idrtl9',B01019='Forcelli',B07030='240',B07031='240',},

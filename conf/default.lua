@@ -4520,5 +4520,6 @@ return {
         [1765]={bcode='B14201',tr=0,p1=0,p2=900,lt1=1,l1=nil,lt2=nil,l2=nil,unit='W/m**2',},
         [1766]={bcode='B10004',tr=3,p1=0,p2=900,lt1=1,l1=nil,lt2=nil,l2=nil,unit='hPa',},
         [1767]={bcode='B10004',tr=2,p1=0,p2=900,lt1=1,l1=nil,lt2=nil,l2=nil,unit='hPa',},
+        [1768]={bcode='B11209',tr=2,p1=0,p2=3600,lt1=103,l1=10000,lt2=nil,l2=nil,unit='M/S',},
     },
 }

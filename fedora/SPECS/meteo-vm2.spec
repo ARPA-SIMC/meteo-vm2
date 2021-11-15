@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.2.12
+Version:        1.2.13
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Mon Nov 15 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.13-1
+- Sostituiti "San*" con "S." nei nomi delle stazioni (Valentina)
+
 * Fri Oct  1 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.9-1
 - Nuove variabili per San Pietro Capofiume
 

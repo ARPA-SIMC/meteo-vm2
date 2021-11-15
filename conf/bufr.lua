@@ -3663,7 +3663,7 @@ return {
         [14745]={ident=nil,lon=1187134,lat=4459456,rep='profe',B01019='San Biagio',B07030='0',},
         [14747]={ident=nil,lon=1218604,lat=4473040,rep='profe',B01019='San Giuseppe',B07030='-50',},
         [14749]={ident=nil,lon=1180657,lat=4472326,rep='profe',B01019='Sandolo',B07030='-10',},
-        [14751]={ident=nil,lon=1008311,lat=4489347,rep='idrost',B01019='Fidenza Idro',B07030='580',B07031='590',},
+        [14751]={ident=nil,lon=1008311,lat=4489347,rep='idrost',B01019='Fidenza Agro',B07030='580',B07031='590',},
         [14752]={ident=nil,lon=1035510,lat=4453261,rep='idrtl9',B01019='Cedogno',B07030='2730',B07031='2730',},
         [14753]={ident=nil,lon=830205,lat=4419573,rep='fiduli',B01019='Calice Ligure - Ca rosse',B07030='500',B07031='500',},
         [14754]={ident=nil,lon=817306,lat=4473611,rep='fidupo',B01019='Castagnole Lanze 1',B07030='3830',B07031='3830',},
@@ -3976,6 +3976,7 @@ return {
         [53094]={ident=nil,lon=1095670,lat=4470214,rep='idrost',B01019='Albareto ARPA',B07030='280',},
         [53095]={ident=nil,lon=1000494,lat=4500253,rep='idrost',B01019='Castellazzo Villanova d\'Arda',B07030='410',},
         [53096]={ident=nil,lon=1101028,lat=4447472,rep='simnpr',B01019='Vignola SIAP',B07030='1100',B07031='1100',},
+        [53097]={ident=nil,lon=1188026,lat=4402110,rep='spdsra',B01019='San Zeno',B07030='2800',B07031='2800',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

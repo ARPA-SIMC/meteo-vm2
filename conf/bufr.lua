@@ -4002,6 +4002,7 @@ return {
         [53120]={ident=nil,lon=1095500,lat=4496139,rep='idrtl9',B01019='Bondanello',B07030='210',},
         [53121]={ident=nil,lon=1098334,lat=4491082,rep='idrtl9',B01019='Concordia sulla Secchia',B07030='300',},
         [53122]={ident=nil,lon=1141434,lat=4488300,rep='idrtl9',B01019='Bondeno Panaro',B07030='130',B07031='120',},
+        [53123]={ident=nil,lon=1118632,lat=4424686,rep='simnbo',B01019='Ponte Locatello',B07030='2580',B07031='2580',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

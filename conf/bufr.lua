@@ -456,7 +456,7 @@ return {
         [4060]={ident=nil,lon=827611,lat=4509417,rep='fidupo',B01019='Crea',B07030='4430',B07031='4430',},
         [4061]={ident=nil,lon=783278,lat=4422000,rep='fidupo',B01019='Borello Tanaro',B07030='9740',B07031='9740',},
         [4063]={ident=nil,lon=833722,lat=4456500,rep='fidupo',B01019='Mombaldone Bormida Q.A.',B07030='1870',B07031='1870',},
-        [4064]={ident=nil,lon=868028,lat=4494278,rep='fidupo',B01019='Montecastello Tanaro ',B07030='900',B07031='900',},
+        [4064]={ident=nil,lon=868028,lat=4494278,rep='fidupo',B01019='Montecastello Tanaro',B07030='900',B07031='900',},
         [4065]={ident=nil,lon=853974,lat=4528431,rep='fidupo',B01019='Palestro Sesia Q.A. 1',B07030='1210',B07031='1210',},
         [4066]={ident=nil,lon=769421,lat=4505734,rep='fidupo',B01019='Torino Murazzi Po Q.A.',B07030='2390',B07031='2390',},
         [4067]={ident=nil,lon=888417,lat=4468194,rep='fidupo',B01019='Arquata Scrivia',B07030='2400',B07031='2400',},
@@ -4003,6 +4003,7 @@ return {
         [53121]={ident=nil,lon=1098334,lat=4491082,rep='idrtl9',B01019='Concordia sulla Secchia',B07030='300',},
         [53122]={ident=nil,lon=1141434,lat=4488300,rep='idrtl9',B01019='Bondeno Panaro',B07030='130',B07031='120',},
         [53123]={ident=nil,lon=1118632,lat=4424686,rep='simnbo',B01019='Ponte Locatello',B07030='2580',B07031='2580',},
+        [53124]={ident=nil,lon=1195860,lat=4436013,rep='locali',B01019='Granarolo Faentino 0',B07030='150',B07031='150',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

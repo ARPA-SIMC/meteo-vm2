@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.2.16
+Version:        1.2.17
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 

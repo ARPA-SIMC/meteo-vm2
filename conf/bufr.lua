@@ -4007,6 +4007,9 @@ return {
         [53125]={ident=nil,lon=1166134,lat=4485799,rep='locali',B01019='Malborghetto 0',B07030='40',B07031='40',},
         [53126]={ident=nil,lon=1127361,lat=4427649,rep='claster',B01019='Monzuno 0',B07030='5890',B07031='5890',},
         [53127]={ident=nil,lon=1105542,lat=4422722,rep='claster',B01019='Riola di Vergato 0',B07030='2870',B07031='2870',},
+        [53128]={ident=nil,lon=1228611,lat=4390111,rep='simnbo',B01019='Novafeltria',B07030='3310',B07031='3310',},
+        [53129]={ident=nil,lon=1266972,lat=4387389,rep='simnbo',B01019='Saludecio',B07030='3280',B07031='3280',},
+        [53130]={ident=nil,lon=1235667,lat=4387417,rep='simnbo',B01019='Rancaliccio',B07030='7900',B07031='7900',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

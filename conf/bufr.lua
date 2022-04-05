@@ -4011,6 +4011,7 @@ return {
         [53129]={ident=nil,lon=1266972,lat=4387389,rep='simnbo',B01019='Saludecio',B07030='3280',B07031='3280',},
         [53130]={ident=nil,lon=987258,lat=4485120,rep='simnpr',B01019='Castell\'Arquato Canale',B07030='1590',B07031='1590',},
         [53131]={ident=nil,lon=987170,lat=4485147,rep='simnpr',B01019='Castell\'Arquato',B07030='1590',B07031='1590',},
+        [53132]={ident=nil,lon=1111359,lat=4428778,rep='simnbo',B01019='Vergato DX',B07030='1930',B07031='1930',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

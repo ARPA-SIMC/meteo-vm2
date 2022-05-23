@@ -4012,6 +4012,7 @@ return {
         [53130]={ident=nil,lon=987258,lat=4485120,rep='simnpr',},
         [53131]={ident=nil,lon=987170,lat=4485147,rep='simnpr',},
         [53132]={ident=nil,lon=1111359,lat=4428778,rep='simnbo',},
+        [53133]={ident=nil,lon=1174533,lat=4408200,rep='simnbo',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',},
     },
     variables={

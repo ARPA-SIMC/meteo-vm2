@@ -4014,6 +4014,9 @@ return {
         [53132]={ident=nil,lon=1111359,lat=4428778,rep='simnbo',B01019='Vergato DX',B07030='1930',B07031='1930',},
         [53133]={ident=nil,lon=1174533,lat=4408200,rep='simnbo',B01019='Tredozio',B07030='3300',B07031='3300',},
         [53134]={ident=nil,lon=1178709,lat=4398494,rep='simnbo',B01019='Premilcuore',B07030='4270',B07031='4270',},
+        [53135]={ident=nil,lon=1133462,lat=4452053,rep='simnbo',B01019='Battiferro Bypass',B07030='320',B07031='320',},
+        [53136]={ident=nil,lon=1133463,lat=4452052,rep='simnbo',B01019='Battiferro Monte',B07030='320',B07031='320',},
+        [53137]={ident=nil,lon=1133472,lat=4452066,rep='simnbo',B01019='Battiferro Valle',B07030='320',B07031='320',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

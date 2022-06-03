@@ -2,8 +2,8 @@
 
 [![Build Status](https://simc.arpae.it/moncic-ci/meteo-vm2/centos7.png)](https://simc.arpae.it/moncic-ci/meteo-vm2/)
 [![Build Status](https://simc.arpae.it/moncic-ci/meteo-vm2/centos8.png)](https://simc.arpae.it/moncic-ci/meteo-vm2/)
-[![Build Status](https://simc.arpae.it/moncic-ci/meteo-vm2/fedora32.png)](https://simc.arpae.it/moncic-ci/meteo-vm2/)
 [![Build Status](https://simc.arpae.it/moncic-ci/meteo-vm2/fedora34.png)](https://simc.arpae.it/moncic-ci/meteo-vm2/)
+[![Build Status](https://simc.arpae.it/moncic-ci/meteo-vm2/fedora36.png)](https://simc.arpae.it/moncic-ci/meteo-vm2/)
 [![Build Status](https://copr.fedorainfracloud.org/coprs/simc/stable/package/meteo-vm2/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/simc/stable/package/meteo-vm2/)
 
 ## Introduction

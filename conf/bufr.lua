@@ -4017,6 +4017,7 @@ return {
         [53135]={ident=nil,lon=1133462,lat=4452053,rep='simnbo',B01019='Battiferro Bypass',B07030='320',B07031='320',},
         [53136]={ident=nil,lon=1133463,lat=4452052,rep='simnbo',B01019='Battiferro Monte',B07030='320',B07031='320',},
         [53137]={ident=nil,lon=1133472,lat=4452066,rep='simnbo',B01019='Battiferro Valle',B07030='320',B07031='320',},
+        [53138]={ident=nil,lon=1200472,lat=4379417,rep='simnbo',B01019='Verghereto',B07030='8050',B07031='8050',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

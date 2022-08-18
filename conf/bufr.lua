@@ -4022,6 +4022,9 @@ return {
         [53140]={ident=nil,lon=1070333,lat=4419917,rep='cofor',B01019='Pian Cavallaro',B07030='18400',B07031='18400',},
         [53141]={ident=nil,lon=1030167,lat=4428583,rep='cofor',B01019='Passo Pradarena',B07030='15850',B07031='15850',},
         [53142]={ident=nil,lon=1042667,lat=4429722,rep='cofor',B01019='Monte Cusna',B07030='11640',B07031='11640',},
+        [53143]={ident=nil,lon=1228889,lat=4481472,rep='marefe',B01019='Punta Volano',B07030='0',B07031='0',},
+        [53144]={ident=nil,lon=1232449,lat=4481531,rep='marefe',B01019='Gorino 2',B07030='0',B07031='0',},
+        [53145]={ident=nil,lon=1232313,lat=4479669,rep='marefe',B01019='Bocca Scanno',B07030='0',B07031='0',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

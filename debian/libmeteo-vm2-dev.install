@@ -1,4 +1,4 @@
 usr/include/meteo-vm2/*.h
-usr/lib/libmeteo-vm2.so
-usr/lib/*.a
-usr/lib/pkgconfig
+usr/lib/*/libmeteo-vm2.so
+usr/lib/*/libmeteo-vm2.a
+usr/lib/*/pkgconfig

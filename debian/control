@@ -2,8 +2,11 @@ Source: meteo-vm2
 Section: science
 Priority: optional
 Maintainer: Enrico Zini <enrico@debian.org>
-Build-Depends: debhelper (>= 7.0.50~), dh-buildinfo, libdballe-dev, liblua5.1-dev, lua5.1, help2man
-Standards-Version: 3.9.3.0
+Build-Depends: debhelper (>= 13), dh-buildinfo, pkg-config, dballe, libdballe-dev, liblua5.1-dev, lua5.1, curl, doxygen, help2man
+Standards-Version: 4.5.1
+Homepage: https://github.com/ARPA-SIMC/meteo-vm2
+Vcs-Git: https://github.com/ARPA-SIMC/meteo-vm2.git
+Vcs-Browser: https://github.com/ARPA-SIMC/meteo-vm2
 
 Package: libmeteo-vm2-0
 Section: libs
@@ -13,16 +16,6 @@ Description: Library to work with VM2 weather samples (shared)
  Library to work with VM2 weather samples.
  .
  This package contains the shared library and the source tables.
-
-Package: libmeteo-vm2-0-dbg
-Section: debug
-Priority: extra
-Architecture: any
-Depends: libmeteo-vm2-0 (= ${binary:Version}), ${misc:Depends}
-Description: Debugging symbols for libmeteo-vm2-0
- Library to work with VM2 weather samples.
- .
- This package contains the debugging symbols.
 
 Package: libmeteo-vm2-dev
 Section: libdevel

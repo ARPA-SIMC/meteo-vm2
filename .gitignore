@@ -7,7 +7,15 @@
 /conf/default.luac
 /conf/bufr.luac
 /conf/tut-main
-/debian
+/debian/.debhelper
+/debian/files
+/debian/tmp
+/debian/*.log
+/debian/*.substvars
+/debian/libmeteo-vm2-0/
+/debian/libmeteo-vm2-dev/
+/debian/libmeteo-vm2-doc/
+/debian/libmeteo-vm2-tools/
 /doc/Doxygen
 /doc/Doxygen.stamp
 /doc/doxygen

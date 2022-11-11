@@ -4025,6 +4025,9 @@ return {
         [53143]={ident=nil,lon=1228889,lat=4481472,rep='marefe',B01019='Punta Volano',B07030='0',B07031='0',},
         [53144]={ident=nil,lon=1232449,lat=4481531,rep='marefe',B01019='Gorino 2',B07030='0',B07031='0',},
         [53145]={ident=nil,lon=1232313,lat=4479669,rep='marefe',B01019='Bocca Scanno',B07030='0',B07031='0',},
+        [53146]={ident=nil,lon=1247587,lat=4421458,rep='boa',B01019='Nausicaa 2',B07030='0',B07031='0',},
+        [53147]={ident=nil,lon=1136633,lat=4455741,rep='idrtl9',B01019='Castelmaggiore',B07030='250',B07031='280',},
+        [53148]={ident=nil,lon=1132544,lat=4447600,rep='simnbo',B01019='Villa Ghigi',B07030='2030',B07031='2030',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={
@@ -4573,5 +4576,7 @@ return {
         [1769]={bcode='B13085',tr=254,p1=0,p2=0,lt1=160,l1=1000,lt2=nil,l2=nil,unit='mV',},
         [1770]={bcode='B13084',tr=254,p1=0,p2=0,lt1=160,l1=1000,lt2=nil,l2=nil,unit='NTU',},
         [1771]={bcode='B13081',tr=254,p1=0,p2=0,lt1=160,l1=1000,lt2=nil,l2=nil,unit='mS/cm',},
+        [1772]={bcode='B22005',tr=254,p1=0,p2=0,lt1=1,l1=nil,lt2=nil,l2=nil,unit='gsess',},
+        [1773]={bcode='B22032',tr=254,p1=0,p2=0,lt1=1,l1=nil,lt2=nil,l2=nil,unit='m/s',},
     },
 }

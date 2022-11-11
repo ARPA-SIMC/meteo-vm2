@@ -3555,7 +3555,7 @@ return {
         [14607]={ident=nil,lon=1209812,lat=4483519,rep='claster',B01019='Codigoro',B07030='10',B07031='10',},
         [14608]={ident=nil,lon=1126172,lat=4428002,rep='claster',B01019='Monzuno',B07030='6130',B07031='5890',},
         [14609]={ident=nil,lon=1208611,lat=4389056,rep='claster',B01019='Diga di Quarto',B07030='3360',B07031='3360',},
-        [14610]={ident=nil,lon=1132544,lat=4447600,rep='claster',B01019='Villa Ghigi',B07030='2030',B07031='2030',},
+        [14610]={ident=nil,lon=1132556,lat=4447611,rep='claster',B01019='Villa Ghigi',B07030='2030',B07031='2030',},
         [14612]={ident=nil,lon=1131225,lat=4446750,rep='claster',B01019='Ravone Torretta',B07030='1020',B07031='1020',},
         [14613]={ident=nil,lon=1031192,lat=4482764,rep='simnpr',B01019='Abbeveratoia',B07030='570',B07031='570',},
         [14615]={ident=nil,lon=1012847,lat=4498553,rep='simnpr',B01019='Cantonale',B07030='330',B07031='330',},
@@ -4027,7 +4027,7 @@ return {
         [53145]={ident=nil,lon=1232313,lat=4479669,rep='marefe',B01019='Bocca Scanno',B07030='0',B07031='0',},
         [53146]={ident=nil,lon=1247587,lat=4421458,rep='boa',B01019='Nausicaa 2',B07030='0',B07031='0',},
         [53147]={ident=nil,lon=1136633,lat=4455741,rep='idrtl9',B01019='Castelmaggiore',B07030='250',B07031='280',},
-        [53148]={ident=nil,lon=1132544,lat=4447600,rep='simnbo',B01019='Villa Ghigi',B07030='2030',B07031='2030',},
+        [53148]={ident=nil,lon=1132556,lat=4447611,rep='simnbo',B01019='Villa Ghigi',B07030='2030',B07031='2030',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

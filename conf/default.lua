@@ -3555,7 +3555,7 @@ return {
         [14607]={ident=nil,lon=1209812,lat=4483519,rep='claster',},
         [14608]={ident=nil,lon=1126172,lat=4428002,rep='claster',},
         [14609]={ident=nil,lon=1208611,lat=4389056,rep='claster',},
-        [14610]={ident=nil,lon=1132544,lat=4447600,rep='claster',},
+        [14610]={ident=nil,lon=1132556,lat=4447611,rep='claster',},
         [14612]={ident=nil,lon=1131225,lat=4446750,rep='claster',},
         [14613]={ident=nil,lon=1031192,lat=4482764,rep='simnpr',},
         [14615]={ident=nil,lon=1012847,lat=4498553,rep='simnpr',},
@@ -4027,7 +4027,7 @@ return {
         [53145]={ident=nil,lon=1232313,lat=4479669,rep='marefe',},
         [53146]={ident=nil,lon=1247587,lat=4421458,rep='boa',},
         [53147]={ident=nil,lon=1136633,lat=4455741,rep='idrtl9',},
-        [53148]={ident=nil,lon=1132544,lat=4447600,rep='simnbo',},
+        [53148]={ident=nil,lon=1132556,lat=4447611,rep='simnbo',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',},
     },
     variables={

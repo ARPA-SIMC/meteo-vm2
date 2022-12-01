@@ -128,7 +128,7 @@ return {
         [3015]={ident=nil,lon=973284,lat=4463379,rep='simnpr',B01019='Bardi',B07030='5970',B07031='5970',},
         [3016]={ident=nil,lon=962675,lat=4450745,rep='simnpr',B01019='Bedonia',B07030='5210',B07031='5210',},
         [3017]={ident=nil,lon=1039470,lat=4443487,rep='simnpr',B01019='Castelnovo ne\' Monti',B07030='7290',B07031='7290',},
-        [3018]={ident=nil,lon=1057566,lat=4429575,rep='simnpr',B01019='Frassinoro',B07030='10910',B07031='10910',},
+        [3018]={ident=nil,lon=1057566,lat=4429575,rep='simnpr',B01019='Frassinoro 0',B07030='10910',B07031='10910',},
         [3019]={ident=nil,lon=1019253,lat=4436343,rep='simnpr',B01019='Succiso',B07030='9980',B07031='9980',},
         [3020]={ident=nil,lon=1016217,lat=4442836,rep='simnpr',B01019='Isola Palanzano',B07030='5970',B07031='5970',},
         [3021]={ident=nil,lon=1000854,lat=4441229,rep='simnpr',B01019='Lagdei',B07030='12520',B07031='12520',},
@@ -4028,6 +4028,7 @@ return {
         [53146]={ident=nil,lon=1247587,lat=4421458,rep='boa',B01019='Nausicaa 2',B07030='0',B07031='0',},
         [53147]={ident=nil,lon=1136633,lat=4455741,rep='idrtl9',B01019='Castelmaggiore',B07030='250',B07031='280',},
         [53148]={ident=nil,lon=1132556,lat=4447611,rep='simnbo',B01019='Villa Ghigi',B07030='2030',B07031='2030',},
+        [53149]={ident=nil,lon=1057483,lat=4429467,rep='simnpr',B01019='Frassinoro',B07030='11050',B07031='11050',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

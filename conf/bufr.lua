@@ -4028,7 +4028,7 @@ return {
         [53146]={ident=nil,lon=1247587,lat=4421458,rep='boa',B01019='Nausicaa 2',B07030='0',B07031='0',},
         [53147]={ident=nil,lon=1136633,lat=4455741,rep='idrtl9',B01019='Castelmaggiore',B07030='250',B07031='280',},
         [53148]={ident=nil,lon=1132556,lat=4447611,rep='simnbo',B01019='Villa Ghigi',B07030='2030',B07031='2030',},
-        [53149]={ident=nil,lon=1057483,lat=4429467,rep='simnpr',B01019='Frassinoro',B07030='11050',B07031='11050',},
+        [53149]={ident=nil,lon=1057472,lat=4429472,rep='simnpr',B01019='Frassinoro',B07030='11050',B07031='11050',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

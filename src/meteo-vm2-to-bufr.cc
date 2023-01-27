@@ -123,11 +123,7 @@ static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Va
         unit = lua_tostring(L, -1);
     lua_pop(L, 1);
 
-    double vm2val = value.value1;
-    if (value.flags.size() == 9) {
-        if (value.flags[0] == '2')
-            vm2val = value.value2;
-    }
+    const double vm2val = value.flags.size() == 9 && value.flags[0] == '2' ? value.value2 : value.value1;
     if (vm2val == meteo::vm2::MISSING_DOUBLE)
         throw std::runtime_error("Cannot convert missing value to BUFR");
 
@@ -139,8 +135,6 @@ static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Va
     if (value.flags.size() == 9) {
         if (value.flags[0] == '1')
             var.seta(dballe::var(WR_VAR(0, 33, 196), 1));
-        if (value.flags[0] == '2')
-            var.seta(dballe::var(WR_VAR(0, 33, 197), 1));
         if (value.flags.substr(1,2) != "00")
             var.seta(dballe::var(WR_VAR(0, 33, 192), convert_qc(value.flags.substr(1,2))));
         if (value.flags.substr(3,2) != "00")

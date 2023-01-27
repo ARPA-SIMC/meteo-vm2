@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        1.2.36
+Version:        2.0.0
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,10 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Fri Jan 27 2023 Marcello Nuccio <mnuccio@arpae.it> - 2.0.0-1
+- Breaking change: meteo-vm2-to-bufr exit status=2 in caso di errori
+- Breaking change: meteo-vm2-to-bufr mette flag A=0 quando A=2 perché manca valore2
+
 * Mon Nov 15 2021 Marcello Nuccio <mnuccio@arpae.it> - 1.2.13-1
 - Sostituiti "San*" con "S." nei nomi delle stazioni (Valentina)
 

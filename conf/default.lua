@@ -128,7 +128,7 @@ return {
         [3015]={ident=nil,lon=973284,lat=4463379,rep='simnpr',},
         [3016]={ident=nil,lon=962675,lat=4450745,rep='simnpr',},
         [3017]={ident=nil,lon=1039470,lat=4443487,rep='simnpr',},
-        [3018]={ident=nil,lon=1057566,lat=4429575,rep='simnpr',},
+        [3018]={ident=nil,lon=1057483,lat=4429467,rep='simnpr',},
         [3019]={ident=nil,lon=1019253,lat=4436343,rep='simnpr',},
         [3020]={ident=nil,lon=1016217,lat=4442836,rep='simnpr',},
         [3021]={ident=nil,lon=1000854,lat=4441229,rep='simnpr',},

@@ -4031,6 +4031,7 @@ return {
         [53149]={ident=nil,lon=1057472,lat=4429472,rep='simnpr',B01019='Frassinoro',B07030='11050',B07031='11050',},
         [53150]={ident=nil,lon=1141222,lat=4461944,rep='simnbo',B01019='Cassa Bentivoglio',B07030='190',B07031='190',},
         [53151]={ident=nil,lon=1141202,lat=4462021,rep='simnbo',B01019='Cassa Bentivoglio Navile',B07030='190',B07031='190',},
+        [53152]={ident=nil,lon=959813,lat=4466135,rep='idrost',B01019='Mangiarosto',B07030='7610',B07031='7610',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

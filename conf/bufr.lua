@@ -971,7 +971,7 @@ return {
         [5721]={ident=nil,lon=1097366,lat=4421438,rep='idrost',B01019='Bombiana',B07030='8040',B07031='8040',},
         [5722]={ident=nil,lon=1157899,lat=4427466,rep='idrost',B01019='Borgo Tossignano',B07030='980',B07031='970',},
         [5723]={ident=nil,lon=1204944,lat=4429167,rep='idrost',B01019='Branzolino',B07030='160',B07031='160',},
-        [5724]={ident=nil,lon=1177167,lat=4422306,rep='idrost',B01019='Brisighella',B07030='1150',B07031='1150',},
+        [5724]={ident=nil,lon=1177167,lat=4422306,rep='idrost',B01019='Rontana',B07030='1150',B07031='1150',},
         [5726]={ident=nil,lon=1111889,lat=4419611,rep='idrost',B01019='Burzanella',B07030='5460',B07031='5460',},
         [5727]={ident=nil,lon=1060134,lat=4416677,rep='idrost',B01019='Tagliole',B07030='11500',B07031='11500',},
         [5728]={ident=nil,lon=961802,lat=4444668,rep='idrost',B01019='Tarsogno',B07030='8520',B07031='9000',},
@@ -4032,6 +4032,8 @@ return {
         [53150]={ident=nil,lon=1141222,lat=4461944,rep='simnbo',B01019='Cassa Bentivoglio',B07030='190',B07031='190',},
         [53151]={ident=nil,lon=1141202,lat=4462021,rep='simnbo',B01019='Cassa Bentivoglio Navile',B07030='190',B07031='190',},
         [53152]={ident=nil,lon=959813,lat=4466135,rep='idrost',B01019='Mangiarosto',B07030='7610',B07031='7610',},
+        [53153]={ident=nil,lon=984224,lat=4487817,rep='idrost',B01019='Vigolo Marchese',B07030='1270',B07031='1270',},
+        [53154]={ident=nil,lon=1039828,lat=4426102,rep='idrost',B01019='Rifugio Bargetana',B07030='17290',B07031='17290',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

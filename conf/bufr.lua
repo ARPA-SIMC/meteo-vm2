@@ -4034,6 +4034,8 @@ return {
         [53152]={ident=nil,lon=959813,lat=4466135,rep='idrost',B01019='Mangiarosto',B07030='7610',B07031='7610',},
         [53153]={ident=nil,lon=984224,lat=4487817,rep='idrost',B01019='Vigolo Marchese',B07030='1270',B07031='1270',},
         [53154]={ident=nil,lon=1039828,lat=4426102,rep='idrost',B01019='Rifugio Bargetana',B07030='17290',B07031='17290',},
+        [53155]={ident=nil,lon=1235751,lat=4426714,rep='boa',B01019='Cervia Mareografica',B07030='0',B07031='0',},
+        [53156]={ident=nil,lon=1275067,lat=4397027,rep='boa',B01019='Cattolica Mareografica',B07030='0',B07031='0',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

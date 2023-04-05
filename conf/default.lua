@@ -4038,6 +4038,7 @@ return {
         [53156]={ident=nil,lon=1275067,lat=4397027,rep='boa',},
         [53157]={ident=nil,lon=1235752,lat=4426714,rep='boa',},
         [53158]={ident=nil,lon=1275068,lat=4397027,rep='boa',},
+        [53159]={ident=nil,lon=4483593,lat=1234395,rep='marefe',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',},
     },
     variables={
@@ -4587,5 +4588,6 @@ return {
         [1770]={bcode='B13084',tr=254,p1=0,p2=0,lt1=160,l1=1000,lt2=nil,l2=nil,unit='NTU',},
         [1771]={bcode='B13081',tr=254,p1=0,p2=0,lt1=160,l1=1000,lt2=nil,l2=nil,unit='mS/cm',},
         [1773]={bcode='B22032',tr=254,p1=0,p2=0,lt1=1,l1=nil,lt2=nil,l2=nil,unit='M/S',},
+        [1774]={bcode='B22196',tr=205,p1=0,p2=1800,lt1=1,l1=nil,lt2=nil,l2=nil,unit='s',},
     },
 }

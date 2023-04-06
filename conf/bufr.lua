@@ -4038,7 +4038,7 @@ return {
         [53156]={ident=nil,lon=1275067,lat=4397027,rep='boa',B01019='Cattolica Porto',B07030='0',B07031='0',},
         [53157]={ident=nil,lon=1235752,lat=4426714,rep='boa',B01019='Cervia Porto radar',B07030='0',B07031='0',},
         [53158]={ident=nil,lon=1275068,lat=4397027,rep='boa',B01019='Cattolica Porto radar',B07030='0',B07031='0',},
-        [53159]={ident=nil,lon=4483593,lat=1234395,rep='marefe',B01019='Po di Goro',B07030='0',B07031='0',},
+        [53159]={ident=nil,lon=1234395,lat=4483593,rep='marefe',B01019='Po di Goro',B07030='0',B07031='0',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

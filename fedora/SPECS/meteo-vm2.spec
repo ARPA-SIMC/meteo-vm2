@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        2.0.10
+Version:        2.0.11
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Mon May  8 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.11-1
+- Nuova stazione "S. Antonio Arpa 0" (53160)
+
 * Fri Jan 27 2023 Marcello Nuccio <mnuccio@arpae.it> - 2.0.0-1
 - Breaking change: meteo-vm2-to-bufr exit status=2 in caso di errori
 - Breaking change: meteo-vm2-to-bufr mette flag A=0 quando A=2 perché manca valore2

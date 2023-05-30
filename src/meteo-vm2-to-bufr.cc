@@ -123,19 +123,18 @@ static inline void set_variable(meteo::vm2::Source* source, const meteo::vm2::Va
         unit = lua_tostring(L, -1);
     lua_pop(L, 1);
 
-    if (value.value1 == meteo::vm2::MISSING_DOUBLE)
+    const double vm2val = value.flags.size() == 9 && value.flags[0] == '2' ? value.value2 : value.value1;
+    if (vm2val == meteo::vm2::MISSING_DOUBLE)
         throw std::runtime_error("Cannot convert missing value to BUFR");
 
     double val = wreport::convert_units(unit.c_str(), 
             dballe::varinfo(varcode)->unit, 
-            value.value1);
+            vm2val);
 
     wreport::Var var = dballe::var(varcode, val);
     if (value.flags.size() == 9) {
         if (value.flags[0] == '1')
             var.seta(dballe::var(WR_VAR(0, 33, 196), 1));
-        if (value.flags[0] == '2')
-            var.seta(dballe::var(WR_VAR(0, 33, 197), 1));
         if (value.flags.substr(1,2) != "00")
             var.seta(dballe::var(WR_VAR(0, 33, 192), convert_qc(value.flags.substr(1,2))));
         if (value.flags.substr(3,2) != "00")
@@ -153,42 +152,32 @@ void print_usage()
         << std::endl
         << "Convert VM2 from stdin to generic BUFR to stdout." << std::endl
         << "Options:" << std::endl
-        << "-h, --help      show this help and exit" << std::endl
-        << "--version   show version and exit" << std::endl;
+        << "  --help     show this help and exit" << std::endl
+        << "  --version  show version and exit" << std::endl;
 }
 
 int main(int argc, const char** argv)
 {
-  std::string sourcefile;
-
+  std::string sourcefile = METEO_VM2_BUFR_SOURCE;
   if (argc > 1) {
-    if (std::string(argv[1]) == "-h" or std::string(argv[1]) == "--help") {
+    if (std::string(argv[1]) == "--help") {
         print_usage();
         return 0;
     }
-    else if (std::string(argv[1]) == "--version") {
+    if (std::string(argv[1]) == "--version") {
         std::cout << "meteo-vm2-to-bufr " PACKAGE_VERSION << std::endl;
         return 0;
     }
-    else
-      sourcefile = argv[1];
+    sourcefile = argv[1];
   }
 
   dballe::impl::msg::TagDomainErrors domain_errors_tag;
   wreport::options::var_hook_domain_errors = &domain_errors_tag;
-
+  int exit_status = 0;
   try {
-    meteo::vm2::Source* source = NULL;
-
-    if (sourcefile.empty())
-      source = new meteo::vm2::Source(METEO_VM2_BUFR_SOURCE);
-    else
-      source = new meteo::vm2::Source(sourcefile);
-
+    meteo::vm2::Source* source = new meteo::vm2::Source(sourcefile);
     meteo::vm2::Parser parser(std::cin);
-
     meteo::vm2::Value value;
-
     std::string line;
     lua_State* L = source->L;
     while (parser.next(value, line)) {
@@ -220,6 +209,7 @@ int main(int argc, const char** argv)
 
       } catch (std::exception& e) {
         std::cerr << parser.lineno << ":[" << line << "] - " << e.what() << std::endl;
+        exit_status = 2;
       }
 
       lua_settop(L, top);
@@ -229,5 +219,5 @@ int main(int argc, const char** argv)
     return 1;
   }
 
-  return 0;
+  return exit_status;
 }

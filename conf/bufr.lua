@@ -1138,7 +1138,7 @@ return {
         [5893]={ident=nil,lon=1084304,lat=4457223,rep='idrost',B01019='Formigine',B07030='830',B07031='820',},
         [5894]={ident=nil,lon=938543,lat=4501649,rep='idrost',B01019='Fornello',B07030='1850',B07031='1850',},
         [5895]={ident=nil,lon=1125222,lat=4495000,rep='idrost',B01019='Fossa Mozza',B07030='90',B07031='90',},
-        [5896]={ident=nil,lon=1057565,lat=4429574,rep='idrost',B01019='Frassinoro',B07030='10910',B07031='10970',},
+        [5896]={ident=nil,lon=1057565,lat=4429574,rep='idrost',B01019='Frassinoro 0',B07030='10910',B07031='10970',},
         [5897]={ident=nil,lon=1023556,lat=4431667,rep='idrost',B01019='Gabellina',B07030='9400',B07031='9400',},
         [5898]={ident=nil,lon=1085222,lat=4428333,rep='idrost',B01019='Gaiato',B07030='8000',B07031='8000',},
         [5899]={ident=nil,lon=916889,lat=4453333,rep='idrost',B01019='Garaventa',B07030='9530',B07031='9530',},
@@ -4040,6 +4040,7 @@ return {
         [53158]={ident=nil,lon=1275068,lat=4397027,rep='boa',B01019='Cattolica Porto radar',B07030='0',B07031='0',},
         [53159]={ident=nil,lon=1234395,lat=4483593,rep='marefe',B01019='Po di Goro',B07030='0',B07031='0',},
         [53160]={ident=nil,lon=1169918,lat=4455254,rep='agrmet',B01019='S. Antonio Arpa 0',B07030='80',},
+        [53161]={ident=nil,lon=1057472,lat=4429472,rep='idrost',B01019='Frassinoro',B07030='11050',B07031='11050',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

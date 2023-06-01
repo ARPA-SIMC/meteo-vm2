@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        2.0.11
+Version:        2.0.12
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,10 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Thu Jun  1 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.12-1
+- Rinominata stazione 5896 da "Frassinoro" a "Frassinoro 0"
+- Creata stazione 53161 "Frassinoro" (rete idrost)
+
 * Mon May  8 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.11-1
 - Nuova stazione "S. Antonio Arpa 0" (53160)
 

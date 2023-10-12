@@ -14,6 +14,7 @@
 #include <sys/types.h>
 #include <utime.h>
 #include <alloca.h>
+#include <algorithm>
 
 namespace {
 
@@ -168,6 +169,23 @@ std::string getcwd()
 #endif
 }
 
+void chdir(const std::string& dir)
+{
+    if (::chdir(dir.c_str()) == -1)
+        throw std::system_error(errno, std::system_category(), "cannot change the current working directory to " + dir);
+}
+
+void chroot(const std::string& dir)
+{
+    if (::chroot(dir.c_str()) == -1)
+        throw std::system_error(errno, std::system_category(), "cannot chroot to " + dir);
+}
+
+mode_t umask(mode_t mask)
+{
+    return ::umask(mask);
+}
+
 std::string abspath(const std::string& pathname)
 {
     if (pathname[0] == '/')
@@ -279,6 +297,26 @@ size_t FileDescriptor::read(void* buf, size_t count)
     return res;
 }
 
+bool FileDescriptor::read_all_or_retry(void* buf, size_t count)
+{
+    char* dest = (char*)buf;
+    size_t remaining = count;
+    while (remaining > 0)
+    {
+        size_t res = read(dest, remaining);
+        if (res == 0)
+        {
+            if (remaining == count)
+                return false;
+
+            throw_runtime_error("partial read before EOF");
+        }
+        dest += res;
+        remaining -= res;
+    }
+    return true;
+}
+
 void FileDescriptor::read_all_or_throw(void* buf, size_t count)
 {
     size_t res = read(buf, count);
@@ -387,6 +425,20 @@ bool FileDescriptor::ofd_getlk(struct flock& lk)
     return lk.l_type == F_UNLCK;
 }
 
+int FileDescriptor::getfl()
+{
+    int res = fcntl(fd, F_GETFL, 0);
+    if (res == -1)
+        throw_error("cannot get file flags (fcntl F_GETFL)");
+    return res;
+}
+
+void FileDescriptor::setfl(int flags)
+{
+    if (fcntl(fd, F_SETFL, flags) == -1)
+        throw_error("cannot set file flags (fcntl F_SETFL)");
+}
+
 void FileDescriptor::futimens(const struct ::timespec ts[2])
 {
     if (::futimens(fd, ts) == -1)
@@ -483,26 +535,30 @@ ManagedNamedFileDescriptor& ManagedNamedFileDescriptor::operator=(ManagedNamedFi
  * Path
  */
 
-Path::Path(const char* pathname, int flags)
+Path::Path(const char* pathname, int flags, mode_t mode)
     : ManagedNamedFileDescriptor(-1, pathname)
 {
-    fd = open(pathname, flags | O_PATH);
-    if (fd == -1)
-        throw_error("cannot open path");
+    open(flags, mode);
 }
 
-Path::Path(const std::string& pathname, int flags)
+Path::Path(const std::string& pathname, int flags, mode_t mode)
     : ManagedNamedFileDescriptor(-1, pathname)
 {
-    fd = open(pathname.c_str(), flags | O_PATH);
-    if (fd == -1)
-        throw_error("cannot open path");
+    open(flags, mode);
 }
 
-Path::Path(Path& parent, const char* pathname, int flags)
-    : ManagedNamedFileDescriptor(parent.openat(pathname, flags | O_PATH),
+Path::Path(Path& parent, const char* pathname, int flags, mode_t mode)
+    : ManagedNamedFileDescriptor(parent.openat(pathname, flags | O_PATH, mode),
             str::joinpath(parent.name(), pathname))
 {
+}
+
+void Path::open(int flags, mode_t mode)
+{
+    close();
+    fd = ::open(pathname.c_str(), flags | O_PATH, mode);
+    if (fd == -1)
+        throw_error("cannot open path");
 }
 
 DIR* Path::fdopendir()
@@ -596,11 +652,42 @@ void Path::unlinkat(const char* pathname)
         throw_error("cannot unlinkat");
 }
 
+void Path::mkdirat(const char* pathname, mode_t mode)
+{
+    if (::mkdirat(fd, pathname, mode) == -1)
+        throw_error("cannot mkdirat");
+}
+
 void Path::rmdirat(const char* pathname)
 {
     if (::unlinkat(fd, pathname, AT_REMOVEDIR) == -1)
         throw_error("cannot unlinkat");
 }
+
+void Path::symlinkat(const char* target, const char* linkpath)
+{
+    if (::symlinkat(target, fd, linkpath) == -1)
+        throw_error("cannot symlinkat");
+}
+
+std::string Path::readlinkat(const char* pathname)
+{
+    std::string res(256, 0);
+    while (true)
+    {
+        // TODO: remove the cast to char* after C++14
+        ssize_t sz = ::readlinkat(fd, pathname, (char*)res.data(), res.size());
+        if (sz == -1)
+            throw_error("cannot readlinkat");
+        if (sz < (ssize_t)res.size())
+        {
+            res.resize(sz);
+            return res;
+        }
+        res.resize(res.size() * 2);
+    }
+}
+
 
 Path::iterator::iterator()
 {
@@ -765,6 +852,30 @@ void Path::rmtree()
     rmdir(name());
 }
 
+std::string Path::mkdtemp(const std::string& prefix)
+{
+    char* fbuf = (char*)alloca(prefix.size() + 7);
+    memcpy(fbuf, prefix.data(), prefix.size());
+    memcpy(fbuf + prefix.size(), "XXXXXX", 7);
+    return mkdtemp(fbuf);
+}
+
+std::string Path::mkdtemp(const char* prefix)
+{
+    size_t prefix_size = strlen(prefix);
+    char* fbuf = (char*)alloca(prefix_size + 7);
+    memcpy(fbuf, prefix, prefix_size);
+    memcpy(fbuf + prefix_size, "XXXXXX", 7);
+    return mkdtemp(fbuf);
+}
+
+std::string Path::mkdtemp(char* pathname_template)
+{
+    if (char* pathname = ::mkdtemp(pathname_template))
+        return pathname;
+    throw std::system_error(errno, std::system_category(), std::string("mkdtemp failed on ") + pathname_template);
+}
+
 /*
  * File
  */
@@ -821,6 +932,55 @@ File File::mkstemp(char* pathname_template)
         throw std::system_error(errno, std::system_category(), std::string("cannot create temporary file ") + pathname_template);
     return File(fd, pathname_template);
 }
+
+
+/*
+ * Tempfile
+ */
+
+Tempfile::Tempfile() : sys::File(sys::File::mkstemp("")) {}
+Tempfile::Tempfile(const std::string& prefix) : sys::File(sys::File::mkstemp(prefix)) {}
+Tempfile::Tempfile(const char* prefix) : sys::File(sys::File::mkstemp(prefix)) {}
+
+Tempfile::~Tempfile()
+{
+    if (m_unlink_on_exit)
+        ::unlink(name().c_str());
+}
+
+void Tempfile::unlink_on_exit(bool val)
+{
+    m_unlink_on_exit = val;
+}
+
+void Tempfile::unlink()
+{
+    sys::unlink(name());
+}
+
+
+/*
+ * Tempdir
+ */
+
+Tempdir::Tempdir() : sys::Path(sys::Path::mkdtemp("")) {}
+Tempdir::Tempdir(const std::string& prefix) : sys::Path(sys::Path::mkdtemp(prefix)) {}
+Tempdir::Tempdir(const char* prefix) : sys::Path(sys::Path::mkdtemp(prefix)) {}
+
+Tempdir::~Tempdir()
+{
+    if (m_rmtree_on_exit)
+        try {
+            rmtree();
+        } catch (...) {
+        }
+}
+
+void Tempdir::rmtree_on_exit(bool val)
+{
+    m_rmtree_on_exit = val;
+}
+
 
 std::string read_file(const std::string& file)
 {

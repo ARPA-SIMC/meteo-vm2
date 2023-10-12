@@ -44,7 +44,7 @@ void TestMethodResult::print_failure_details(FILE* out) const
 unsigned long long TestCaseResult::elapsed_ns() const
 {
     unsigned long long res = 0;
-    for (const auto tmr: methods)
+    for (const auto& tmr: methods)
         res += tmr.elapsed_ns;
     return res;
 }
@@ -56,10 +56,10 @@ unsigned long long TestCaseResult::elapsed_ns() const
 
 bool FilteringTestController::test_method_should_run(const std::string& fullname) const
 {
-    if (!whitelist.empty() && fnmatch(whitelist.c_str(), fullname.c_str(), 0) == FNM_NOMATCH)
+    if (!allowlist.empty() && fnmatch(allowlist.c_str(), fullname.c_str(), 0) == FNM_NOMATCH)
         return false;
 
-    if (!blacklist.empty() && fnmatch(blacklist.c_str(), fullname.c_str(), 0) != FNM_NOMATCH)
+    if (!blocklist.empty() && fnmatch(blocklist.c_str(), fullname.c_str(), 0) != FNM_NOMATCH)
         return false;
 
     return true;
@@ -236,7 +236,7 @@ std::vector<TestCaseResult> TestRegistry::run_tests(TestController& controller)
     {
         e->register_tests_once();
         // TODO: filter on e.name
-        res.emplace_back(std::move(e->run_tests(controller)));
+        res.emplace_back(e->run_tests(controller));
     }
     return res;
 }

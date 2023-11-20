@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        2.0.14
+Version:        2.0.15
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Mon Nov 20 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.15-1
+- Nuove stazioni idrtl9
+
 * Thu Nov  9 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.14-1
 - Nuove stazioni profe
 

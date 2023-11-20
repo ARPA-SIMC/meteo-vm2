@@ -4089,6 +4089,13 @@ return {
         [53207]={ident=nil,lon=1171925,lat=4476940,rep='profe',},
         [53208]={ident=nil,lon=1201409,lat=4481664,rep='profe',},
         [53209]={ident=nil,lon=1204094,lat=4484114,rep='profe',},
+        [53210]={ident=nil,lon=1226090,lat=4425901,rep='idrtl9',},
+        [53211]={ident=nil,lon=1243518,lat=4493596,rep='idrtl9',},
+        [53212]={ident=nil,lon=1136644,lat=4445353,rep='idrtl9',},
+        [53213]={ident=nil,lon=1233110,lat=4495786,rep='idrtl9',},
+        [53214]={ident=nil,lon=972244,lat=4486971,rep='idrtl9',},
+        [53215]={ident=nil,lon=1240511,lat=4398290,rep='idrtl9',},
+        [53216]={ident=nil,lon=1230313,lat=4494823,rep='idrtl9',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',},
     },
     variables={

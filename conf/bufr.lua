@@ -4089,6 +4089,13 @@ return {
         [53207]={ident=nil,lon=1171925,lat=4476940,rep='profe',B01019='GUALDO',B07030='20',B07031='20',},
         [53208]={ident=nil,lon=1201409,lat=4481664,rep='profe',B01019='MASSAFISCAGLIA',B07030='20',B07031='20',},
         [53209]={ident=nil,lon=1204094,lat=4484114,rep='profe',B01019='BAGAGLIONE',B07030='-30',B07031='-30',},
+        [53210]={ident=nil,lon=1226090,lat=4425901,rep='idrtl9',B01019='Castiglione',B07030='140',B07031='500',},
+        [53211]={ident=nil,lon=1243518,lat=4493596,rep='idrtl9',B01019='Ca Dolfin',B07030='90',B07031='10',},
+        [53212]={ident=nil,lon=1136644,lat=4445353,rep='idrtl9',B01019='S. Ruffillo Canale',B07030='920',B07031='920',},
+        [53213]={ident=nil,lon=1233110,lat=4495786,rep='idrtl9',B01019='Ca Venier',B07030='90',},
+        [53214]={ident=nil,lon=972244,lat=4486971,rep='idrtl9',B01019='Veggiola',B07030='2020',B07031='2140',},
+        [53215]={ident=nil,lon=1240511,lat=4398290,rep='idrtl9',B01019='Ponte Verucchio',B07030='1160',B07031='1160',},
+        [53216]={ident=nil,lon=1230313,lat=4494823,rep='idrtl9',B01019='Porto Tolle',B07030='140',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        2.0.16
+Version:        2.0.17
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,10 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Mon Mar 11 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.17-1
+- Nuova variabile "Direzione del massimo valore di raffica lunga a 10 m dal
+  suolo nell'ora" (1775)
+
 * Tue Mar  5 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.16-1
 - Nuovi idrometri CAE
 

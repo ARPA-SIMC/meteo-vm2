@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        2.0.17
+Version:        2.0.18
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Mon Mar 18 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.18-1
+- "Bagnatura fogliare cumulata su 15 minuti" (1776)
+
 * Mon Mar 11 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.17-1
 - Nuova variabile "Direzione del massimo valore di raffica lunga a 10 m dal
   suolo nell'ora" (1775)

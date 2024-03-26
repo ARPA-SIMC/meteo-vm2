@@ -3945,7 +3945,7 @@ return {
         [53064]={ident=nil,lon=1155204,lat=4463157,rep='profe',B01019='Minerbio',B07030='60',B07031='60',},
         [53065]={ident=nil,lon=943506,lat=4496816,rep='rmap',B01019='Borgonovo - Genesi',B07030='1640',B07031='1640',},
         [53066]={ident=nil,lon=938482,lat=4498058,rep='rmap',B01019='Vicomarino',B07030='2340',B07031='2340',},
-        [53067]={ident=nil,lon=940037,lat=4496295,rep='rmap',B01019='Verago',B07030='3200',B07031='3200',},
+        [53067]={ident=nil,lon=939967,lat=4496087,rep='rmap',B01019='Verago',B07030='3200',B07031='3200',},
         [53068]={ident=nil,lon=944281,lat=4495427,rep='rmap',B01019='Arcello',B07030='2420',B07031='2420',},
         [53069]={ident=nil,lon=941685,lat=4497999,rep='rmap',B01019='Albareto - Caraffini',B07030='2540',B07031='2540',},
         [53070]={ident=nil,lon=1183867,lat=4387008,rep='spdsra',B01019='Diga di Ridracoli derivazione',B07030='5650',B07031='5650',},

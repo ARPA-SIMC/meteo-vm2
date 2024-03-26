@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        2.0.18
+Version:        2.0.19
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,10 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Tue Mar 26 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.19-1
+- Nuove stazioni Polesera Opera (53236) e Polesera Cassa (53237)
+- Eliminazione stazione Ravone Torretta (14612)
+
 * Mon Mar 18 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.18-1
 - "Bagnatura fogliare cumulata su 15 minuti" (1776)
 

@@ -4116,6 +4116,8 @@ return {
         [53235]={ident=nil,lon=977388,lat=4475171,rep='simnpr',B01019='Case Bonini Briglia',B07030='3490',B07031='3490',},
         [53236]={ident=nil,lon=943118,lat=4504180,rep='simnpr',B01019='Polesera Opera',B07030='870',B07031='870',},
         [53237]={ident=nil,lon=942891,lat=4504361,rep='simnpr',B01019='Polesera Cassa',B07030='870',B07031='870',},
+        [53238]={ident=nil,lon=928800,lat=4490708,rep='provpc',B01019='Molato Diga Monte',B07030='3550',B07031='3550',},
+        [53239]={ident=nil,lon=928837,lat=4490803,rep='provpc',B01019='Molato Diga Valle',B07030='3340',B07031='3340',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        2.0.20
+Version:        2.0.21
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Thu Apr  4 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.21-1
+- Correzione coordinate
+
 * Tue Mar 26 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.20-1
 - Correzione coordinate Verago (53067)
 

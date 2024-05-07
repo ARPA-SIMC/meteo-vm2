@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        2.0.22
+Version:        2.0.23
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Tue May  7 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.23-1
+- Nuova stazione Traversa Lentino
+
 * Tue Apr  9 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.22-1
 - Correzioni coordinate
 

@@ -4120,6 +4120,8 @@ return {
         [53239]={ident=nil,lon=928837,lat=4490803,rep='provpc',B01019='Molato Diga Valle',B07030='3340',B07031='3340',},
         [53240]={ident=nil,lon=1182495,lat=4491940,rep='agrmet',B01019='Copparo',B07030='10',B07031='10',},
         [53241]={ident=nil,lon=934442,lat=4491214,rep='provpc',B01019='Traversa Lentino',B07030='2630',B07031='2630',},
+        [53243]={ident=nil,lon=1041758,lat=4493909,rep='simnpr',B01019='Chiavica Rossa',B07030='250',B07031='250',},
+        [53244]={ident=nil,lon=1047650,lat=4490680,rep='simnpr',B01019='Mezzani',B07030='230',B07031='230',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

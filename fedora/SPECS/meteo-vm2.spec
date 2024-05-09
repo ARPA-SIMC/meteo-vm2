@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        2.0.23
+Version:        2.0.24
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Thu May  9 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.24-1
+- Nuove stazioni Chiavica Rossa e Mezzani
+
 * Tue May  7 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.23-1
 - Nuova stazione Traversa Lentino
 

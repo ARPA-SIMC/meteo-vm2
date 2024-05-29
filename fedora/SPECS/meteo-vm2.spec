@@ -1,4 +1,4 @@
-%global releaseno 1
+%global releaseno 2
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
@@ -102,6 +102,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Wed May 29 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.25-2
+- Ripacchettizzato per problemi di tag
+
 * Wed May 29 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.25-1
 - Nuova stazione Monte Colombo
 

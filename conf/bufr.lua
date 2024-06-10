@@ -3950,7 +3950,7 @@ return {
         [53069]={ident=nil,lon=941685,lat=4497999,rep='rmap',B01019='Albareto - Caraffini',B07030='2540',B07031='2540',},
         [53070]={ident=nil,lon=1183867,lat=4387008,rep='spdsra',B01019='Diga di Ridracoli derivazione',B07030='5650',B07031='5650',},
         [53071]={ident=nil,lon=1183865,lat=4387010,rep='spdsra',B01019='Diga di Ridracoli scarico',B07030='5650',B07031='5650',},
-        [53072]={ident=nil,lon=1270026,lat=4395818,rep='spdsra',B01019='Conca',B07030='190',B07031='190',},
+        [53072]={ident=nil,lon=1270026,lat=4395818,rep='spdsra',B01019='Conca Diga',B07030='190',B07031='190',},
         [53073]={ident=nil,lon=1270027,lat=4395820,rep='spdsra',B01019='Conca derivazione',B07030='190',B07031='190',},
         [53074]={ident=nil,lon=1270029,lat=4395818,rep='spdsra',B01019='Conca scarico',B07030='190',B07031='190',},
         [53075]={ident=nil,lon=1042692,lat=4476993,rep='simnpr',B01019='S. Ilario d\'Enza',B07030='580',B07031='580',},
@@ -4123,6 +4123,7 @@ return {
         [53243]={ident=nil,lon=1041758,lat=4493909,rep='simnpr',B01019='Chiavica Rossa',B07030='250',B07031='250',},
         [53244]={ident=nil,lon=1047650,lat=4490680,rep='simnpr',B01019='Mezzani',B07030='230',B07031='230',},
         [53245]={ident=nil,lon=1258065,lat=4392705,rep='simnbo',B01019='Monte Colombo',B07030='2170',B07031='2170',},
+        [53246]={ident=nil,lon=933642,lat=4462484,rep='simnpr',B01019='Ottone',B07030='5890',B07031='5890',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

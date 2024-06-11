@@ -4124,6 +4124,8 @@ return {
         [53244]={ident=nil,lon=1047650,lat=4490680,rep='simnpr',B01019='Mezzani',B07030='230',B07031='230',},
         [53245]={ident=nil,lon=1258065,lat=4392705,rep='simnbo',B01019='Monte Colombo',B07030='2170',B07031='2170',},
         [53246]={ident=nil,lon=933642,lat=4462484,rep='simnpr',B01019='Ottone',B07030='5890',B07031='5890',},
+        [53247]={ident=nil,lon=1012402,lat=4469776,rep='simnpr',B01019='Rio Riccò',B07030='1420',B07031='1420',},
+        [53248]={ident=nil,lon=1016805,lat=4468913,rep='simnpr',B01019='Cafragna',B07030='1980',B07031='1980',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

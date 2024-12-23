@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        2.0.29
+Version:        2.0.30
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Mon Dec 23 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.30-1
+- Cambio nomi stazioni 53135,53136,53137
+
 * Mon Nov 25 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.29-1
 - Aggiunta stazione Riccardina 53253
 

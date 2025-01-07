@@ -8,7 +8,3 @@ include /usr/share/dpkg/buildflags.mk
 
 override_dh_auto_configure:
 	dh_auto_configure -- --sharedstatedir=/var/lib
-
-override_dh_fixperms:
-	dh_fixperms
-	test -e /usr/bin/dh_buildinfo && dh_buildinfo

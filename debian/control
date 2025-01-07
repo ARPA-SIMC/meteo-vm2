@@ -2,7 +2,7 @@ Source: meteo-vm2
 Section: science
 Priority: optional
 Maintainer: Enrico Zini <enrico@debian.org>
-Build-Depends: debhelper (>= 13), dh-buildinfo, pkg-config, dballe, libdballe-dev, liblua5.1-dev, lua5.1, curl, doxygen, help2man
+Build-Depends: debhelper-compat (= 13), pkg-config, dballe, libdballe-dev, liblua5.1-dev, lua5.1, curl, doxygen, help2man
 Standards-Version: 4.5.1
 Homepage: https://github.com/ARPA-SIMC/meteo-vm2
 Vcs-Git: https://github.com/ARPA-SIMC/meteo-vm2.git

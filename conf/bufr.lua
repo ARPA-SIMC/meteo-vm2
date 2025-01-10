@@ -4014,7 +4014,7 @@ return {
         [53133]={ident=nil,lon=1174533,lat=4408200,rep='simnbo',B01019='Tredozio',B07030='3300',B07031='3300',},
         [53134]={ident=nil,lon=1178709,lat=4398494,rep='simnbo',B01019='Premilcuore',B07030='4270',B07031='4270',},
         [53135]={ident=nil,lon=1133462,lat=4452053,rep='simnbo',B01019='Battiferro Monte',B07030='320',B07031='320',},
-        [53136]={ident=nil,lon=1133463,lat=4452052,rep='simnbo',B01019='Battiferro Valle',B07030='320',B07031='320',},
+        [53136]={ident=nil,lon=1133483,lat=4452138,rep='simnbo',B01019='Battiferro Valle',B07030='320',B07031='320',},
         [53137]={ident=nil,lon=1133472,lat=4452066,rep='simnbo',B01019='Navile Valle',B07030='320',B07031='320',},
         [53138]={ident=nil,lon=1200472,lat=4379417,rep='simnbo',B01019='Verghereto',B07030='8050',B07031='8050',},
         [53139]={ident=nil,lon=1207528,lat=4379139,rep='cofor',B01019='Monte Fumaiolo',B07030='13800',B07031='13800',},

@@ -4014,7 +4014,7 @@ return {
         [53133]={ident=nil,lon=1174533,lat=4408200,rep='simnbo',},
         [53134]={ident=nil,lon=1178709,lat=4398494,rep='simnbo',},
         [53135]={ident=nil,lon=1133462,lat=4452053,rep='simnbo',},
-        [53136]={ident=nil,lon=1133463,lat=4452052,rep='simnbo',},
+        [53136]={ident=nil,lon=1133483,lat=4452138,rep='simnbo',},
         [53137]={ident=nil,lon=1133472,lat=4452066,rep='simnbo',},
         [53138]={ident=nil,lon=1200472,lat=4379417,rep='simnbo',},
         [53139]={ident=nil,lon=1207528,lat=4379139,rep='cofor',},

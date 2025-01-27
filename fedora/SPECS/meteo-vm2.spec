@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        2.0.31
+Version:        2.0.32
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -102,6 +102,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Mon Jan 27 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.32-1
+- Stazioni 53254 e 53255
+
 * Fri Jan  9 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.31-1
 - Cambio coordinate stazione 53136
 

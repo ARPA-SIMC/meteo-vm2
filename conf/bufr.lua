@@ -3648,7 +3648,7 @@ return {
         [14717]={ident=nil,lon=1201419,lat=4492757,rep='profe',B01019='Contane',B07030='-60',},
         [14719]={ident=nil,lon=1202761,lat=4478720,rep='profe',B01019='Corte Centrale',B07030='-20',},
         [14721]={ident=nil,lon=1134486,lat=4477931,rep='profe',B01019='Dosso',B07030='80',},
-        [14723]={ident=nil,lon=1186766,lat=4481082,rep='profe',B01019='Final di Rero',B07030='-20',},
+        [14723]={ident=nil,lon=1186766,lat=4481082,rep='profe',B01019='Final di Reno',B07030='-20',},
         [14725]={ident=nil,lon=1166262,lat=4476897,rep='profe',B01019='Gaibanella',B07030='30',},
         [14727]={ident=nil,lon=1220016,lat=4481383,rep='profe',B01019='Giralda',B07030='-20',},
         [14729]={ident=nil,lon=1165247,lat=4437911,rep='profe',B01019='Imola2',B07030='660',},

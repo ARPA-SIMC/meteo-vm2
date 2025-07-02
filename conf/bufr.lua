@@ -4302,6 +4302,7 @@ return {
         [53422]={ident=nil,lon=978713,lat=4444972,rep='idrost',B01019='S. Maria Valdena',B07030='7310',B07031='7310',},
         [53423]={ident=nil,lon=911788,lat=4448105,rep='idrost',B01019='Scoffera',B07030='6780',B07031='6780',},
         [53424]={ident=nil,lon=1034764,lat=4441317,rep='idrost',B01019='Sparavalle',B07030='9700',B07031='9700',},
+        [53425]={ident=nil,lon=1214217,lat=4415206,rep='spdsra',B01019='Bertinoro Scuola',B07030='1390',B07031='1390',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

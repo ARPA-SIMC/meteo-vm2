@@ -2034,7 +2034,7 @@ return {
         [11280]={ident=nil,lon=1129334,lat=4501486,rep='idrtl9',B01019='Sermide',B07030='100',B07031='100',},
         [11281]={ident=nil,lon=1160807,lat=4488830,rep='idrtl9',B01019='Pontelagoscuro',B07030='80',B07031='70',},
         [11282]={ident=nil,lon=1080601,lat=4463711,rep='simnpr',B01019='Marzaglia',B07030='540',},
-        [11283]={ident=nil,lon=999484,lat=4512835,rep='idrtl9',B01019='Cremona SIAP',B07030='450',B07031='450',},
+        [11283]={ident=nil,lon=999503,lat=4512860,rep='idrtl9',B01019='Cremona',B07030='450',B07031='450',},
         [11284]={ident=nil,lon=1096231,lat=4458855,rep='idrtl9',B01019='S. Donnino',B07030='440',B07031='350',},
         [11285]={ident=nil,lon=1096490,lat=4485676,rep='idrtl9',B01019='Pioppa',B07030='320',B07031='200',},
         [11286]={ident=nil,lon=1017139,lat=4463485,rep='idrtl9',B01019='Marzolara',B07030='3090',B07031='3230',},

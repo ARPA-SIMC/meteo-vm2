@@ -4306,6 +4306,7 @@ return {
         [53426]={ident=nil,lon=1142180,lat=4463566,rep='simnbo',B01019='Bentivoglio Navile',B07030='170',B07031='170',},
         [53427]={ident=nil,lon=1152949,lat=4471790,rep='simnbo',B01019='Malalbergo Navile',B07030='60',B07031='60',},
         [53428]={ident=nil,lon=1126869,lat=4433434,rep='simnbo',B01019='Ponte via Allocco',B07030='1390',B07031='1390',},
+        [53429]={ident=nil,lon=1155854,lat=4469078,rep='simnbo',B01019='Boschi Baricella',B07030='110',B07031='110',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        2.0.41
+Version:        2.0.42
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -101,7 +101,10 @@ VM2 decoding/encoding library - SIMC config files
 %postun
 /sbin/ldconfig
 
-%changelogi
+%changelog
+* Fri Mar 13 2026 Caterina Toscano <ctoscano@arpae.it> - 2.0.42-1
+- Nuove stazioni 53432 53433 53434
+
 * Fri Mar 13 2026 Caterina Toscano <ctoscano@arpae.it> - 2.0.41-1
 - Nuove stazioni 53430 53431
 

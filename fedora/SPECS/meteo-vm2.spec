@@ -1,4 +1,4 @@
-%global releaseno 1
+%global releaseno 2
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
@@ -92,8 +92,10 @@ VM2 decoding/encoding library - SIMC config files
 %files data-simc
 %defattr(-,root,root,-)
 %dir %{_sharedstatedir}/%{name}
-%{_sharedstatedir}/%{name}/source/default.lua*
-%{_sharedstatedir}/%{name}/source/bufr.lua*
+%{_sharedstatedir}/%{name}/source/default.lua
+%{_sharedstatedir}/%{name}/source/default.luac
+%{_sharedstatedir}/%{name}/source/bufr.lua
+%{_sharedstatedir}/%{name}/source/bufr.luac
 
 %post
 /sbin/ldconfig

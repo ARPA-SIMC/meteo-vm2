@@ -113,7 +113,7 @@ VM2 decoding/encoding library - SIMC config files
 * Tue Dec  2 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.40-1
 - Nuova stazione 53429
 
-* Mon Nov  2 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.39-1
+* Sun Nov  2 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.39-1
 - Nuova stazione 53428
 
 * Wed Oct  8 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.38-1
@@ -138,7 +138,7 @@ VM2 decoding/encoding library - SIMC config files
 * Mon Jan 27 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.32-1
 - Stazioni 53254 e 53255
 
-* Fri Jan  9 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.31-1
+* Thu Jan  9 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.31-1
 - Cambio coordinate stazione 53136
 
 * Mon Dec 23 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.30-1

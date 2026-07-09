@@ -3,7 +3,7 @@
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        2.0.11
+Version:        2.0.45
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -92,8 +92,10 @@ VM2 decoding/encoding library - SIMC config files
 %files data-simc
 %defattr(-,root,root,-)
 %dir %{_sharedstatedir}/%{name}
-%{_sharedstatedir}/%{name}/source/default.lua*
-%{_sharedstatedir}/%{name}/source/bufr.lua*
+%{_sharedstatedir}/%{name}/source/default.lua
+%{_sharedstatedir}/%{name}/source/default.luac
+%{_sharedstatedir}/%{name}/source/bufr.lua
+%{_sharedstatedir}/%{name}/source/bufr.luac
 
 %post
 /sbin/ldconfig
@@ -102,6 +104,115 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Thu Jun 18 2026 Caterina Toscano <ctoscano@arpae.it> - 2.0.45-1
+- nuove stazioni 53441-53450 ticket #2026061822000456
+
+* Thu Jun 4 2026 Caterina Toscano <ctoscano@arpae.it> - 2.0.44-1
+- nuove stazioni 53441-53449 ticket #2026052522000033
+
+* Wed May 6 2026 Caterina Toscano <ctoscano@arpae.it> - 2.0.43-1
+- nuove stazioni 53435,53436,53437,53438,53439,53440
+
+* Fri Mar 13 2026 Caterina Toscano <ctoscano@arpae.it> - 2.0.42-1
+- Nuove stazioni 53432 53433 53434
+
+* Fri Mar 13 2026 Caterina Toscano <ctoscano@arpae.it> - 2.0.41-1
+- Nuove stazioni 53430 53431
+
+* Tue Dec  2 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.40-1
+- Nuova stazione 53429
+
+* Sun Nov  2 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.39-1
+- Nuova stazione 53428
+
+* Wed Oct  8 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.38-1
+- Aggiornamento nomi stazioni 3038 5714 53425
+- Creazione stazioni 53426 53427
+
+* Mon Aug 18 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.37-1
+- Aggiornamento nome e coordinate stazione 11283
+
+* Wed Jul  2 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.36-1
+- Nuova stazione 53425
+
+* Wed May 28 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.35-1
+- Cambio nome stazione 14723
+
+* Tue Mar 11 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.34-1
+- Nuove stazioni IDROST
+
+* Tue Mar 11 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.33-1
+- Fix nome stazione 14723
+
+* Mon Jan 27 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.32-1
+- Stazioni 53254 e 53255
+
+* Thu Jan  9 2025 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.31-1
+- Cambio coordinate stazione 53136
+
+* Mon Dec 23 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.30-1
+- Cambio nomi stazioni 53135,53136,53137
+
+* Mon Nov 25 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.29-1
+- Aggiunta stazione Riccardina 53253
+
+* Tue Nov 12 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.28-1
+- Nuove stazioni da 53249 a 53252
+
+* Tue Jun 11 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.27-1
+- Nuove stazioni 53247 e 53248
+
+* Mon Jun 10 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.26-1
+- Nuova stazione 53246
+
+* Wed May 29 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.25-2
+- Ripacchettizzato per problemi di tag
+
+* Wed May 29 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.25-1
+- Nuova stazione Monte Colombo
+
+* Thu May  9 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.24-1
+- Nuove stazioni Chiavica Rossa e Mezzani
+
+* Tue May  7 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.23-1
+- Nuova stazione Traversa Lentino
+
+* Tue Apr  9 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.22-1
+- Correzioni coordinate
+
+* Thu Apr  4 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.21-1
+- Correzione coordinate
+
+* Tue Mar 26 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.20-1
+- Correzione coordinate Verago (53067)
+
+* Tue Mar 26 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.19-1
+- Nuove stazioni Polesera Opera (53236) e Polesera Cassa (53237)
+- Eliminazione stazione Ravone Torretta (14612)
+
+* Mon Mar 18 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.18-1
+- "Bagnatura fogliare cumulata su 15 minuti" (1776)
+
+* Mon Mar 11 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.17-1
+- Nuova variabile "Direzione del massimo valore di raffica lunga a 10 m dal
+  suolo nell'ora" (1775)
+
+* Tue Mar  5 2024 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.16-1
+- Nuovi idrometri CAE
+
+* Mon Nov 20 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.15-1
+- Nuove stazioni idrtl9
+
+* Thu Nov  9 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.14-1
+- Nuove stazioni profe
+
+* Thu Oct 12 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.13-1
+- Nuove stazioni idrost e idrtl9
+
+* Thu Jun  1 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.12-1
+- Rinominata stazione 5896 da "Frassinoro" a "Frassinoro 0"
+- Creata stazione 53161 "Frassinoro" (rete idrost)
+
 * Mon May  8 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.0.11-1
 - Nuova stazione "S. Antonio Arpa 0" (53160)
 

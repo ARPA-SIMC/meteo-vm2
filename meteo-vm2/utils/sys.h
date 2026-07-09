@@ -89,6 +89,15 @@ bool exists(const std::string& s);
 /// Get the absolute path of the current working directory
 std::string getcwd();
 
+/// Change working directory
+void chdir(const std::string& dir);
+
+/// Change root directory
+void chroot(const std::string& dir);
+
+/// Change umask (always succeeds and returns the previous umask)
+mode_t umask(mode_t mask);
+
 /// Get the absolute path of a file
 std::string abspath(const std::string& pathname);
 
@@ -119,7 +128,7 @@ public:
     operator const T*() const { return reinterpret_cast<const T*>(addr); }
 
     template<typename T>
-    operator T*() const { return reinterpret_cast<T*>(addr); };
+    operator T*() const { return reinterpret_cast<T*>(addr); }
 };
 
 /**
@@ -188,6 +197,15 @@ public:
     int dup();
 
     size_t read(void* buf, size_t count);
+
+    /**
+     * Read `count` bytes into bufr, retrying partial reads, stopping at EOF.
+     *
+     * Return true if `count` bytes have been read, false in case of eof, and
+     * raise an exception in case EOF was found after reading between 0 and
+     * count-1 bytes.
+     */
+    bool read_all_or_retry(void* buf, size_t count);
 
     /**
      * Read all the data into buf, throwing runtime_error in case of a partial
@@ -264,6 +282,12 @@ public:
      * Returns true if the lock would have been obtainable, false if not.
      */
     bool ofd_getlk(struct ::flock&);
+
+    /// Get open flags for the file
+    int getfl();
+
+    /// Set open flags for the file
+    void setfl(int flags);
 
     operator int() const { return fd; }
 };
@@ -343,8 +367,14 @@ struct Path : public ManagedNamedFileDescriptor
     /**
      * Iterator for directory entries
      */
-    struct iterator : public std::iterator<std::input_iterator_tag, struct dirent>
+    struct iterator
     {
+        using iterator_category = std::input_iterator_tag;
+        using value_type = struct dirent;
+        using difference_type = int;
+        using pointer = struct dirent*;
+        using reference = struct dirent&;
+
         Path* path = nullptr;
         DIR* dir = nullptr;
         struct dirent* cur_entry = nullptr;
@@ -400,19 +430,22 @@ struct Path : public ManagedNamedFileDescriptor
     /**
      * Open the given pathname with flags | O_PATH.
      */
-    Path(const char* pathname, int flags=0);
+    Path(const char* pathname, int flags=0, mode_t mode=0777);
     /**
      * Open the given pathname with flags | O_PATH.
      */
-    Path(const std::string& pathname, int flags=0);
+    Path(const std::string& pathname, int flags=0, mode_t mode=0777);
     /**
      * Open the given pathname calling parent.openat, with flags | O_PATH
      */
-    Path(Path& parent, const char* pathname, int flags=0);
+    Path(Path& parent, const char* pathname, int flags=0, mode_t mode=0777);
     Path(const Path&) = delete;
     Path(Path&&) = default;
     Path& operator=(const Path&) = delete;
     Path& operator=(Path&&) = default;
+
+    /// Wrapper around open(2) with flags | O_PATH
+    void open(int flags, mode_t mode=0777);
 
     DIR* fdopendir();
 
@@ -442,8 +475,14 @@ struct Path : public ManagedNamedFileDescriptor
 
     void unlinkat(const char* pathname);
 
+    void mkdirat(const char* pathname, mode_t mode=0777);
+
     /// unlinkat with the AT_REMOVEDIR flag set
     void rmdirat(const char* pathname);
+
+    void symlinkat(const char* target, const char* linkpath);
+
+    std::string readlinkat(const char* pathname);
 
     /**
      * Delete the directory pointed to by this Path, with all its contents.
@@ -451,6 +490,10 @@ struct Path : public ManagedNamedFileDescriptor
      * The path must point to a directory.
      */
     void rmtree();
+
+    static std::string mkdtemp(const std::string& prefix);
+    static std::string mkdtemp(const char* prefix);
+    static std::string mkdtemp(char* pathname_template);
 };
 
 
@@ -489,6 +532,53 @@ public:
     static File mkstemp(const char* prefix);
     static File mkstemp(char* pathname_template);
 };
+
+
+/**
+ * Open a temporary file.
+ *
+ * By default, the temporary file will be deleted when the object is deleted.
+ */
+class Tempfile : public File
+{
+protected:
+    bool m_unlink_on_exit = true;
+
+public:
+    Tempfile();
+    Tempfile(const std::string& prefix);
+    Tempfile(const char* prefix);
+    ~Tempfile();
+
+    /// Change the unlink-on-exit behaviour
+    void unlink_on_exit(bool val);
+
+    /// Unlink the file right now
+    void unlink();
+};
+
+
+/**
+ * Open a temporary directory.
+ *
+ * By default, the temporary directory will be deleted when the object is
+ * deleted.
+ */
+class Tempdir : public Path
+{
+protected:
+    bool m_rmtree_on_exit = true;
+
+public:
+    Tempdir();
+    Tempdir(const std::string& prefix);
+    Tempdir(const char* prefix);
+    ~Tempdir();
+
+    /// Change the rmtree-on-exit behaviour
+    void rmtree_on_exit(bool val);
+};
+
 
 /// Read whole file into memory. Throws exceptions on failure.
 std::string read_file(const std::string &file);

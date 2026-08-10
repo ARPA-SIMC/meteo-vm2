@@ -4328,6 +4328,8 @@ return {
         [53448]={ident=nil,lon=1104280,lat=4413436,rep='simnbo',},
         [53449]={ident=nil,lon=1209804,lat=4483504,rep='simnbo',},
         [53450]={ident=nil,lon=1252183,lat=4442867,rep='boa',},
+        [53451]={ident=nil,lon=1056130,lat=4480247,rep='simnpr',},
+        [53452]={ident=nil,lon=1220003,lat=4441500,rep='simnbo',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',},
     },
     variables={

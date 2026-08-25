@@ -4330,6 +4330,8 @@ return {
         [53450]={ident=nil,lon=1252183,lat=4442867,rep='boa',B01019='Calipso',B07030='0',B07031='0',},
         [53451]={ident=nil,lon=1056130,lat=4480247,rep='simnpr',B01019='Castelnovo di Sotto',B07030='230',B07031='230',},
         [53452]={ident=nil,lon=1220003,lat=4441500,rep='simnbo',B01019='Ravenna urbana',B07030='270',B07031='270',},
+        [53453]={ident=nil,lon=1204182,lat=4422039,rep='simnbo',B01019='Forlì Urbana',B07030='510',B07031='510',},
+        [53454]={ident=nil,lon=1091699,lat=4465639,rep='simnpr',B01019='Modena urbana',B07030='730',B07031='730',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

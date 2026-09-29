@@ -4302,7 +4302,7 @@ return {
         [53422]={ident=nil,lon=978713,lat=4444972,rep='idrost',B01019='S. Maria Valdena',B07030='7310',B07031='7310',},
         [53423]={ident=nil,lon=911788,lat=4448105,rep='idrost',B01019='Scoffera',B07030='6780',B07031='6780',},
         [53424]={ident=nil,lon=1034764,lat=4441317,rep='idrost',B01019='Sparavalle',B07030='9700',B07031='9700',},
-        [53425]={ident=nil,lon=1214217,lat=4415206,rep='spdsra',B01019='Bertinoro',B07030='1390',B07031='1390',},
+        [53425]={ident=nil,lon=1214217,lat=4415206,rep='simnbo',B01019='Bertinoro',B07030='1390',B07031='1390',},
         [53426]={ident=nil,lon=1142180,lat=4463566,rep='simnbo',B01019='Bentivoglio Navile',B07030='170',B07031='170',},
         [53427]={ident=nil,lon=1152949,lat=4471790,rep='simnbo',B01019='Malalbergo Navile',B07030='60',B07031='60',},
         [53428]={ident=nil,lon=1126869,lat=4433434,rep='simnbo',B01019='Ponte via Allocco',B07030='1390',B07031='1390',},
@@ -4333,6 +4333,7 @@ return {
         [53453]={ident=nil,lon=1204182,lat=4422039,rep='simnbo',B01019='Forlì Urbana',B07030='510',B07031='510',},
         [53454]={ident=nil,lon=1091699,lat=4465639,rep='simnpr',B01019='Modena urbana',B07030='730',B07031='730',},
         [53455]={ident=nil,lon=1132820,lat=4426087,rep='simnbo',B01019='Loiano Meteo',B07030='7410',B07031='7410',},
+        [53456]={ident=nil,lon=1208401,lat=4395038,rep='simnbo',B01019='Rullato',B07030='6200',B07031='6200',},
         [70000]={ident=nil,lon=1175545,lat=4421978,rep='agrmet',B01019='Brisighella',B07030='1850',B07031='1850',},
     },
     variables={

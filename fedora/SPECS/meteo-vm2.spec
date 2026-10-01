@@ -1,4 +1,4 @@
-%global releaseno 1
+%global releaseno 2
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
@@ -78,6 +78,7 @@ Collection of utilities for VM2 files
 %files utils
 %defattr(-,root,root,-)
 %{_bindir}/meteo-vm2-to-bufr
+%{_bindir}/meteo-vm2-to-csv
 %{_bindir}/bufr-to-meteo-vm2
 %{_bindir}/meteo-vm2-update-source
 %{_mandir}/man1/bufr-to-meteo-vm2.1.gz
@@ -104,6 +105,9 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Thu Oct  1 2026 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.1.0-2
+- Fix bindir
+
 * Thu Oct  1 2026 Emanuele Di Giacomo <edigiacomo@arpae.it> - 2.1.0-1
 - Nuovo comando meteo-vm2-to-csv
 

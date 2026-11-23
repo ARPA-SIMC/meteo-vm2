@@ -1,9 +1,9 @@
-%global releaseno 1
+%global releaseno 2
 # Note: define _srcarchivename in Travis build only.
 %{!?srcarchivename: %global srcarchivename %{name}-%{version}-%{releaseno}}
 
 Name:           meteo-vm2
-Version:        2.1.1
+Version:        2.1.2
 Release:        %{releaseno}%{?dist}
 Summary:        C++ library for VM2 data 
 
@@ -105,6 +105,12 @@ VM2 decoding/encoding library - SIMC config files
 /sbin/ldconfig
 
 %changelog
+* Mon Nov 23 2026 Caterina Toscano <ctoscano@arpae.it> - 2.1.2-2
+- Fix
+
+* Mon Nov 23 2026 Caterina Toscano <ctoscano@arpae.it> - 2.1.2-1
+- Stazioni 53462 53463
+
 * Thu Oct  15 2026 Caterina Toscano <ctoscano@arpae.it> - 2.1.1-1
 - Stazioni 53457-53461
 
